@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-hidden="true">
+<defs><radialGradient id="n" cx=".5" cy=".3" r=".8"><stop offset="0" stop-color="#3F6F6B"/><stop offset="1" stop-color="#0E2A2E"/></radialGradient></defs>
+<rect width="1200" height="1500" fill="url(#n)"/>
+<circle cx="600" cy="560" r="190" fill="#E9C9A6"/>
+<path d="M410 540 C410 360 790 360 790 540 C760 430 440 430 410 540Z" fill="#3A2A22"/>
+<path d="M395 560 a205 205 0 0 1 410 0" fill="none" stroke="#C9A46A" stroke-width="18"/><rect x="372" y="540" width="44" height="90" rx="20" fill="#C9A46A"/><rect x="784" y="540" width="44" height="90" rx="20" fill="#C9A46A"/>
+<path d="M806 610 C820 690 760 730 690 735" fill="none" stroke="#C9A46A" stroke-width="10"/><circle cx="680" cy="736" r="16" fill="#C9A46A"/>
+<path d="M240 1500 C240 1050 380 860 600 860 C820 860 960 1050 960 1500Z" fill="#1C5F5A"/>
+<path d="M520 860 L600 980 L680 860Z" fill="#FFFBF5"/>
+<rect x="690" y="1040" width="120" height="120" rx="18" fill="#FFFBF5"/><rect x="738" y="1060" width="24" height="80" fill="#B5693A"/><rect x="710" y="1088" width="80" height="24" fill="#B5693A"/>
+</svg>
