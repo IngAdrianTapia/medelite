@@ -10,6 +10,7 @@ import { HOSPITALS } from "../data/hospitals";
 import { PEOPLE } from "../data/people";
 import { PACKAGE_BANDS, PACKAGE_IDS, formatCad, formatRange } from "../data/packages";
 import { CRA_MEDICAL_EXPENSES, HM_RELEASE, SOURCES } from "../data/sources";
+import { FACILITY_GALLERY } from "../data/photoCredits";
 import { PHOTO_OF } from "../i18n/labels";
 import { useI18n } from "../i18n";
 
@@ -184,6 +185,31 @@ export function HomePage() {
             {m.network.future}{" "}
             <a className="underline" href={HM_RELEASE} rel="noopener noreferrer">{m.network.hm}</a>
           </p>
+        </div>
+      </section>
+
+      <section id="instalaciones" className="bg-ivory py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-5">
+          <p className="text-xs tracking-[0.22em] text-gold uppercase">
+            {lang === "en" ? "Facilities" : lang === "fr" ? "Installations" : "Instalaciones"}
+          </p>
+          <h2 className="mt-3 max-w-3xl font-serif text-5xl leading-[0.95] md:text-6xl">
+            {lang === "en" ? "Rooms published by the hospitals" : lang === "fr" ? "Salles publiées par les hôpitaux" : "Salas publicadas por los hospitales"}
+          </h2>
+          <p className="mt-4 max-w-2xl text-muted">
+            {lang === "en"
+              ? "Empty operating room, patient room, CT suite and lobby. No patient is in these photographs."
+              : lang === "fr"
+                ? "Salle d’opération, chambre, tomodensitomètre et hall, tous vides. Aucun patient n’apparaît."
+                : "Quirófano, habitación, tomógrafo y vestíbulo, todos vacíos. No aparece ningún paciente."}
+          </p>
+        </div>
+        <div className="mx-auto mt-10 grid max-w-6xl gap-4 px-5 sm:grid-cols-2">
+          {FACILITY_GALLERY.map((name) => (
+            <figure key={name} className="relative h-72 overflow-hidden rounded-[2rem] bg-navy md:h-80">
+              <FacilityPhoto name={name} fill alt={PHOTO_OF[name]?.[lang] ?? ""} sizes="(min-width: 640px) 36rem, 100vw" />
+            </figure>
+          ))}
         </div>
       </section>
 

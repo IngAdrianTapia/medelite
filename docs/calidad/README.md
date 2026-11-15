@@ -11,5 +11,6 @@
 | [CHANGELOG.md](./CHANGELOG.md) | Cambios de esta alineación y su evidencia |
 | [evidencias/2026-11-15-logo-transparente.md](./evidencias/2026-11-15-logo-transparente.md) | Ficha del logo transparente: requisito, etapas 12207, medidas y resultado |
 | [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md) | Ficha del hero legible, el logo móvil y el dock |
+| [evidencias/2026-11-15-fotos-joya.md](./evidencias/2026-11-15-fotos-joya.md) | Ficha de las fotos Joya: selección, peso, trazabilidad y capturas |
 
 Idiomas del sitio: español (México), inglés (Canadá) y francés (Canadá). El sitio no guarda expedientes de pacientes.

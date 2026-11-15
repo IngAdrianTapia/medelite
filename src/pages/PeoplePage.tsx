@@ -1,5 +1,6 @@
 import { Seo } from "../components/Seo";
 import { personRole } from "../data/personRoles";
+import { portraitOf } from "../data/photoCredits";
 import { PEOPLE } from "../data/people";
 import { useI18n } from "../i18n";
 
@@ -33,13 +34,26 @@ export function PeoplePage() {
             {person.photo ? (
               <img
                 src={person.photo}
-                alt=""
+                alt={person.name}
                 width={640}
                 height={800}
                 loading="lazy"
                 decoding="async"
                 className="mb-4 h-40 w-32 rounded-2xl object-cover object-top"
               />
+            ) : portraitOf(person.id) ? (
+              <picture>
+                <source type="image/avif" srcSet={`/assets/photos/people/${person.id}-720.avif`} />
+                <img
+                  src={`/assets/photos/people/${person.id}-720.webp`}
+                  alt={person.name}
+                  width={720}
+                  height={900}
+                  loading="lazy"
+                  decoding="async"
+                  className="mb-4 h-40 w-32 rounded-2xl object-cover object-top"
+                />
+              </picture>
             ) : null}
             <h2 className="font-serif text-2xl">{person.name}</h2>
             <p className="mt-2 text-sm leading-relaxed">{personRole(lang, person)}</p>
