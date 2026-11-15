@@ -6,6 +6,8 @@ import { defineConfig } from "vitest/config";
 
 /** Motion sets element styles, so style-src allows inline styles.
  * script-src stays 'self': no inline scripts and no third-party script hosts.
+ * frame-ancestors is omitted: a meta CSP ignores it. GitHub Pages cannot set it as a header.
+ * frame-src 'none' is honored from this meta tag.
  */
 const CSP = [
   "default-src 'self'",
@@ -18,6 +20,7 @@ const CSP = [
   "worker-src 'self'",
   "manifest-src 'self'",
   "form-action mailto:",
+  "frame-src 'none'",
   "base-uri 'self'",
   "object-src 'none'",
   "upgrade-insecure-requests",
@@ -70,6 +73,16 @@ export default defineConfig({
   ],
   build: {
     sourcemap: false,
+    modulePreload: { polyfill: false },
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) return;
+          if (id.includes("motion")) return "motion";
+          if (id.includes("react-dom") || id.includes("react-router") || id.includes("/react/")) return "react";
+        },
+      },
+    },
   },
   test: {
     environment: "jsdom",
