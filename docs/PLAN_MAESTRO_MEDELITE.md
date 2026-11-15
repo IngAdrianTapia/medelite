@@ -14,6 +14,21 @@ Lo que sí está publicado, y el sitio puede decir:
 
 TODO(ingeniero): el enunciado «Erika es sobrina del Dr. Joya» no está en los textos de este repositorio. No se imprime hasta que haya una frase pública que se pueda citar.
 
+## Brief de marketing, en espera
+
+El Ingeniero enviará después el estudio (posicionamiento de cinco estrellas, ciudades de Canadá como Vancouver, Toronto y Calgary, turismo médico internacional, especialidades y brechas de precio). Hasta ese brief no se reescribe el posicionamiento.
+
+Lo que ya está publicado se conserva. Lo que el brief va a cambiar está reunido para editarse en un solo lugar:
+
+| Hueco | Archivo |
+| --- | --- |
+| Titular de portada, nota Fraser, pie del mapa | `src/content/positioning.ts` (`POSITIONING`) |
+| Hero, verticales y nota de paquetes | `src/i18n/en.ts`, y el mismo bloque en `es.ts` y `fr.ts` |
+| Ciudades | `CANADA_CITIES`. Solo Vancouver está `published`. Toronto y Calgary están `awaiting-brief` y no se renderizan. |
+| Cinco estrellas y brechas de precio | `FIVE_STAR` y `PRICE_GAPS`, hoy `null` |
+
+La versión para Canadá es inglés primero: `/` y `x-default` siguen en `en-CA`, el interruptor de idioma abre con EN, y `/canada` arma el recorrido con los textos que ya existen. Español y francés siguen en `/es` y `/fr`.
+
 ## Mapa del sitio
 
 | Menú | Ruta | Qué contiene |
@@ -21,6 +36,7 @@ TODO(ingeniero): el enunciado «Erika es sobrina del Dr. Joya» no está en los 
 | Inicio | `/` | Historia de coordinación, recorrido, sedes, paquetes de rodilla ya publicados, contacto |
 | Hospital Joya | `/hospital-joya` | Fotos agrupadas: fachadas, instalaciones, quirófanos, habitaciones, urgencias |
 | MedElite | `/que-es` | Qué es la oficina de Vancouver |
+| Canadá | `/canada` | Versión en inglés para pacientes en Canadá. Pie de página, no el menú principal, hasta el brief |
 | Especialidades | `/especialidades` y `/especialidades/:id` | Las 17 de la página Joya y las 33 categorías del directorio, cada una con ficha |
 | Médicos | `/equipo` | Solo nombres ya publicados, con retrato si la colección lo trae |
 | Galería | `/galeria` | Las mismas fotos, con filtro por categoría |

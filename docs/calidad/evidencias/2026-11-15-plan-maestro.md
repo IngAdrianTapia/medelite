@@ -18,4 +18,6 @@ El menú nombra las partes del negocio. La galería filtra por fachadas, instala
 
 ## 25012 y seguridad
 
+El brief de marketing no llegó. `FIVE_STAR` y `PRICE_GAPS` siguen en `null`, y Toronto y Calgary no tienen etiqueta, así que la página de Canadá no puede mostrarlos. Prueba: `src/content/positioning.test.ts`.
+
 No se añadieron precios, cédulas ni procedimientos. Los médicos de una ficha salen solo si `people.ts` ya les asigna ese enfoque. Las fotos siguen citadas en `src/data/photoCredits.ts`. No hay script ni dependencia nueva. La CSP no se tocó.

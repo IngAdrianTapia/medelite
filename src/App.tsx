@@ -25,6 +25,7 @@ const PeoplePage = lazy(() => import("./pages/PeoplePage").then((module) => ({ d
 const JoinPage = lazy(() => import("./pages/JoinPage").then((module) => ({ default: module.JoinPage })));
 const GalleryPage = lazy(() => import("./pages/GalleryPage").then((module) => ({ default: module.GalleryPage })));
 const HospitalJoyaPage = lazy(() => import("./pages/HospitalJoyaPage").then((module) => ({ default: module.HospitalJoyaPage })));
+const CanadaPage = lazy(() => import("./pages/CanadaPage").then((module) => ({ default: module.CanadaPage })));
 
 function PrivacyRoute() {
   const { m } = useI18n();
@@ -83,6 +84,7 @@ export function AppRoutes() {
             <Route path="/vuelos" element={<FlightsPage />} />
             <Route path="/seguros" element={<InsurancePage />} />
             <Route path="/que-es" element={<RolePage />} />
+            <Route path="/canada" element={<CanadaPage />} />
             <Route path="/preparacion" element={<PreparePage />} />
             <Route path="/ruta" element={<RoutePage />} />
             <Route path="/comparar" element={<ComparePage />} />

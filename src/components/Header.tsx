@@ -5,8 +5,8 @@ import type { Lang } from "../i18n/types";
 import { BrandMark } from "./BrandMark";
 
 const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
-  { id: "es", label: "ES", name: "Español", html: "es-MX" },
   { id: "en", label: "EN", name: "English", html: "en-CA" },
+  { id: "es", label: "ES", name: "Español", html: "es-MX" },
   { id: "fr", label: "FR", name: "Français", html: "fr-CA" },
 ];
 

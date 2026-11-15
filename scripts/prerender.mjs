@@ -18,8 +18,8 @@ const template = readFileSync(new URL("index.html", dist), "utf8");
 
 const HTML_LANG = { es: "es-MX", en: "en-CA", fr: "fr-CA" };
 
-function writePage(route, filename, lang) {
-  const html = render(route, lang);
+async function writePage(route, filename, lang) {
+  const html = await render(route, lang);
   const marker = route === "/404" ? "404" : route;
   const page = template
     .replace(/<html lang="[^"]*">/, `<html lang="${HTML_LANG[lang]}">`)
@@ -44,6 +44,7 @@ const ROUTES = [
   ["/vuelos", "vuelos/index.html"],
   ["/seguros", "seguros/index.html"],
   ["/que-es", "que-es/index.html"],
+  ["/canada", "canada/index.html"],
   ["/preparacion", "preparacion/index.html"],
   ["/ruta", "ruta/index.html"],
   ["/comparar", "comparar/index.html"],
@@ -57,14 +58,14 @@ const ROUTES = [
 ];
 
 for (const [route, filename] of ROUTES) {
-  writePage(route, filename, "en");
+  await writePage(route, filename, "en");
   for (const lang of ["es", "en", "fr"]) {
     const prefixed = route === "/" ? `/${lang}` : `/${lang}${route}`;
     const file = route === "/" ? `${lang}/index.html` : `${lang}/${filename}`;
-    writePage(prefixed, file, lang);
+    await writePage(prefixed, file, lang);
   }
 }
-writePage("/404", "404.html", "en");
+await writePage("/404", "404.html", "en");
 
 const sw = await generateSW({
   globDirectory: dist.pathname,
