@@ -98,7 +98,7 @@ Recorrido de la previsualización de producción (`npm run preview` en `http://1
 
 ### Entrega
 
-La entrega de este repositorio es el merge a `main`. GitHub Pages despliega solo en push a `main` (`.github/workflows/pages.yml`, job `Deploy GitHub Pages`). Esta ficha cubre la verificación local anterior al merge. El resultado de ese workflow se anota al cerrar la entrega; no se inventa aquí un número de ejecución que todavía no existe.
+La entrega de este repositorio es el merge a `main`. El PR es https://github.com/IngAdrianTapia/medelite/pull/3 (rama `cursor/transparent-logo-outline-b5e5`). GitHub Pages despliega solo en push a `main` (`.github/workflows/pages.yml`, workflow «Deploy GitHub Pages»). Esta ficha cubre la verificación local anterior al merge. El resultado de ese workflow se anota al cerrar la entrega; no se inventa aquí un número de ejecución que todavía no existe.
 
 ### Mantenimiento
 
