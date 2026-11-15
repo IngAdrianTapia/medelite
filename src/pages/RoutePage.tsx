@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
 import { Seo } from "../components/Seo";
+import { personRole } from "../data/personRoles";
 import { PEOPLE } from "../data/people";
 import { HOSPITALS, type HospitalId } from "../data/hospitals";
 import { ORIGIN_CODES, type OriginCode } from "../data/flights";
@@ -153,7 +154,7 @@ const COPY = {
     cost: "Fourchette du forfait en CAD",
     flight: "Vol",
     total: "Obtenez votre devis",
-    cta: "Demander un devis",
+    cta: "Demander une soumission",
     share: "Lien à partager",
     print: "Imprimer ou enregistrer en PDF",
     ready: "Liste de préparation",
@@ -282,7 +283,7 @@ export function RoutePage() {
             if (!person) return null;
             return (
               <li key={id}>
-                {person.name} — {person.role} ({t.according} {person.source})
+                {person.name} — {personRole(lang, person)} ({t.according} {person.source})
               </li>
             );
           })}

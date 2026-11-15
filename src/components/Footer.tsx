@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { SOCIAL } from "../data/sources";
 import { useI18n } from "../i18n";
+import { BrandMark } from "./BrandMark";
 
 export function Footer() {
   const { m, lang } = useI18n();
@@ -11,7 +12,7 @@ export function Footer() {
       </p>
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 md:grid-cols-4">
         <div className="md:col-span-2">
-          <img src="/assets/brand/medelite-logo-horizontal.png" width={643} height={160} alt="" className="h-10 w-auto" />
+          <BrandMark className="h-16 md:h-20" alt="" />
           <p className="mt-6 max-w-md font-serif text-4xl leading-tight">{m.footer.tag}</p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">{m.footer.about}</p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-white/60">{m.footer.fine}</p>

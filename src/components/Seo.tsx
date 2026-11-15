@@ -29,7 +29,8 @@ export function Seo({
   const { lang } = useI18n();
 
   useEffect(() => {
-    const url = `https://medelite.com.mx${path === "/" ? "/" : path}`;
+    const suffix = path === "/" ? "" : path;
+    const url = `https://medelite.com.mx/${lang}${suffix}`;
     document.title = title;
     document.documentElement.lang = htmlLang(lang);
     upsertMeta("name", "description", description);
@@ -45,11 +46,9 @@ export function Seo({
       ["fr-CA", "fr"],
     ] as const;
     for (const [code, id] of langs) {
-      const href = new URL(url);
-      href.searchParams.set("lang", id);
-      setHref(`link[rel="alternate"][hreflang="${code}"]`, href.toString());
+      setHref(`link[rel="alternate"][hreflang="${code}"]`, `https://medelite.com.mx/${id}${suffix}`);
     }
-    setHref('link[rel="alternate"][hreflang="x-default"]', url);
+    setHref('link[rel="alternate"][hreflang="x-default"]', `https://medelite.com.mx/en${suffix}`);
   }, [description, lang, path, title]);
 
   return null;

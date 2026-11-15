@@ -47,7 +47,7 @@ export function SpecialtiesPage() {
       none: "La page des spécialités ne dit pas dans quel hôpital c’est offert.",
       more: "Plusieurs fiches disent « plus de 30 spécialités » sans les énumérer : Guadalajara, Cancún, Playa del Carmen, Chapala et La Peñita.",
       directory: "Catégories du répertoire (aucun médecin publié)",
-      cta: "Demander un devis",
+      cta: "Demander une soumission",
       route: "Itinéraire de coordination MedElite, pas une attribution publiée par Joya :",
     },
   }[lang];
@@ -63,21 +63,44 @@ export function SpecialtiesPage() {
       </header>
       <div className="mx-auto max-w-6xl px-5 py-10">
       <p className="max-w-3xl text-sm text-muted">{t.more}</p>
-      <p className="mt-3 max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {LINE_IDS.map((id) => (
           <li key={id} className="rounded-full border border-line bg-white px-3 py-2 text-sm">
             {{
-              knee: "Ortopedia · rodilla",
-              hip: "Ortopedia · cadera",
-              bariatric: "Bariátrica",
-              plastic: "Plástica",
-              dental: "Dental",
-              ophthalmology: "Oftalmología",
-              cardiology: "Cardiología",
-              fertility: "Fertilidad",
-              checkup: "Chequeo",
-            }[id]}
+              es: {
+                knee: "Ortopedia · rodilla",
+                hip: "Ortopedia · cadera",
+                bariatric: "Bariátrica",
+                plastic: "Plástica",
+                dental: "Dental",
+                ophthalmology: "Oftalmología",
+                cardiology: "Cardiología",
+                fertility: "Fertilidad",
+                checkup: "Chequeo",
+              },
+              en: {
+                knee: "Orthopedics · knee",
+                hip: "Orthopedics · hip",
+                bariatric: "Bariatric",
+                plastic: "Plastic surgery",
+                dental: "Dental",
+                ophthalmology: "Ophthalmology",
+                cardiology: "Cardiology",
+                fertility: "Fertility",
+                checkup: "Check-up",
+              },
+              fr: {
+                knee: "Orthopédie · genou",
+                hip: "Orthopédie · hanche",
+                bariatric: "Bariatrique",
+                plastic: "Chirurgie plastique",
+                dental: "Dentaire",
+                ophthalmology: "Ophtalmologie",
+                cardiology: "Cardiologie",
+                fertility: "Fertilité",
+                checkup: "Bilan",
+              },
+            }[lang][id]}
             {LINE_STATUS[id] === "coming-soon"
               ? lang === "en"
                 ? " · via network partners, coming soon"

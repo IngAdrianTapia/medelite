@@ -1,4 +1,5 @@
 import { Seo } from "../components/Seo";
+import { personRole } from "../data/personRoles";
 import { PEOPLE } from "../data/people";
 import { useI18n } from "../i18n";
 
@@ -41,7 +42,7 @@ export function PeoplePage() {
               />
             ) : null}
             <h2 className="font-serif text-2xl">{person.name}</h2>
-            <p className="mt-2 text-sm leading-relaxed">{person.role}</p>
+            <p className="mt-2 text-sm leading-relaxed">{personRole(lang, person)}</p>
             {person.credentials.length > 0 ? (
               <ul className="mt-2 text-sm">
                 {person.credentials.map((line) => (

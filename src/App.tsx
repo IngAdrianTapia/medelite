@@ -1,9 +1,10 @@
-import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router";
+import { lazy, Suspense, useLayoutEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import { ContactDock } from "./components/ContactDock";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { useI18n } from "./i18n";
+import { parseLocalePath, prefixPath } from "./i18n/locale";
 import { HomePage } from "./pages/HomePage";
 import { LegalPage } from "./pages/LegalPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -40,13 +41,34 @@ function Pending() {
   );
 }
 
+function LocaleSync() {
+  const { lang, setLang } = useI18n();
+  const location = useLocation();
+  const navigate = useNavigate();
+  useLayoutEffect(() => {
+    const parsed = parseLocalePath(location.pathname);
+    if (parsed.lang && parsed.lang !== lang) {
+      setLang(parsed.lang);
+      return;
+    }
+    const target = prefixPath(lang, parsed.path);
+    if (target !== location.pathname) {
+      navigate({ pathname: target, search: location.search, hash: location.hash }, { replace: true });
+    }
+  }, [lang, location.hash, location.pathname, location.search, navigate, setLang]);
+  return null;
+}
+
 export function AppRoutes() {
+  const location = useLocation();
+  const stripped = { ...location, pathname: parseLocalePath(location.pathname).path };
   return (
     <>
+      <LocaleSync />
       <Header />
       <div>
         <Suspense fallback={<Pending />}>
-          <Routes>
+          <Routes location={stripped}>
             <Route path="/" element={<HomePage />} />
             <Route path="/red" element={<NetworkPage />} />
             <Route path="/red/:hospitalId" element={<HospitalPage />} />

@@ -61,7 +61,7 @@ const UI = {
     result: "3. Aller-retour",
     arrival: "Aéroport d’arrivée",
     quote: "Nous établissons le devis de votre vol.",
-    cta: "Demander un devis",
+    cta: "Demander une soumission",
     note: "La compagnie confirme le prix. Ce site ne vend pas de billets.",
   },
 } as const satisfies Record<Lang, Record<string, string>>;

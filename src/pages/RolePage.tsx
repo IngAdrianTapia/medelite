@@ -36,7 +36,7 @@ export function RolePage() {
       ],
     },
   }[lang];
-  const cta = lang === "fr" ? "Demander un devis" : lang === "en" ? "Request a quote" : "Solicitar cotización";
+  const cta = lang === "fr" ? "Demander une soumission" : lang === "en" ? "Request a quote" : "Solicitar cotización";
   return (
     <main id="contenido" className="bg-navy text-white">
       <Seo title={`${t.title} — MedElite`} description={t.points[0] ?? t.title} path="/que-es" />

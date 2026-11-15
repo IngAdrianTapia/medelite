@@ -1,17 +1,25 @@
 /* Context module: the hook is exported next to the provider. */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { en } from "./en";
 import { es } from "./es";
+import { fr } from "./fr";
+import { detectNavigatorLanguage, parseLocalePath } from "./locale";
 import type { Lang, Messages } from "./types";
 
-async function loadMessages(lang: Lang): Promise<Messages> {
-  if (lang === "en") return (await import("./en")).en;
-  if (lang === "fr") return (await import("./fr")).fr;
+export function messagesFor(lang: Lang): Messages {
+  if (lang === "en") return en;
+  if (lang === "fr") return fr;
   return es;
 }
 
-function readLang(): Lang {
-  if (typeof window === "undefined") return "es";
+export function readLang(): Lang {
+  if (typeof window === "undefined") {
+    const baked = (globalThis as { __ME_LANG?: Lang }).__ME_LANG;
+    return baked === "es" || baked === "fr" || baked === "en" ? baked : "en";
+  }
+  const fromPath = parseLocalePath(window.location.pathname).lang;
+  if (fromPath) return fromPath;
   const query = new URLSearchParams(window.location.search).get("lang");
   if (query === "en" || query === "fr" || query === "es") return query;
   try {
@@ -20,7 +28,8 @@ function readLang(): Lang {
   } catch {
     /* private mode */
   }
-  return "es";
+  const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+  return detectNavigatorLanguage(languages);
 }
 
 interface I18nValue {
@@ -31,30 +40,27 @@ interface I18nValue {
 
 const I18nContext = createContext<I18nValue | null>(null);
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(readLang);
-  const [messages, setMessages] = useState<Messages>(es);
+export function I18nProvider({
+  children,
+  initialLang,
+}: {
+  children: ReactNode;
+  initialLang?: Lang;
+}) {
+  const [lang, setLangState] = useState<Lang>(initialLang ?? readLang);
+  const messages = useMemo(() => messagesFor(lang), [lang]);
 
   useEffect(() => {
-    let cancelled = false;
-    void loadMessages(lang).then((next) => {
-      if (!cancelled) setMessages(next);
-    });
-    return () => {
-      cancelled = true;
-    };
+    document.documentElement.lang = htmlLang(lang);
+    try {
+      window.localStorage.setItem("me-lang", lang);
+    } catch {
+      /* private mode */
+    }
   }, [lang]);
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next);
-    try {
-      window.localStorage.setItem("me-lang", next);
-    } catch {
-      /* ignore quota or private mode */
-    }
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", next);
-    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   }, []);
 
   const value = useMemo<I18nValue>(() => ({ lang, m: messages, setLang }), [lang, messages, setLang]);

@@ -6,39 +6,52 @@ import { render } from "../dist-ssr/entry-server.js";
 const dist = new URL("../dist/", import.meta.url);
 const template = readFileSync(new URL("index.html", dist), "utf8");
 
-function writePage(route, filename) {
-  const html = render(route);
+const HTML_LANG = { es: "es-MX", en: "en-CA", fr: "fr-CA" };
+
+function writePage(route, filename, lang) {
+  const html = render(route, lang);
   const marker = route === "/404" ? "404" : route;
-  const page = template.replace(
-    '<div id="root"></div>',
-    `<div id="root" data-prerender="${marker}">${html}</div>`,
-  );
+  const page = template
+    .replace(/<html lang="[^"]*">/, `<html lang="${HTML_LANG[lang]}">`)
+    .replace(
+      '<div id="root"></div>',
+      `<div id="root" data-prerender="${marker}" data-lang="${lang}">${html}</div>`,
+    );
   const file = join(dist.pathname, filename);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, page);
 }
 
-writePage("/", "index.html");
-writePage("/red", "red/index.html");
-for (const id of ["marina", "riviera", "guadalajara", "sma", "queretaro", "cancun", "playa", "chapala", "penita"]) {
-  writePage(`/red/${id}`, `red/${id}/index.html`);
+const ROUTES = [
+  ["/", "index.html"],
+  ["/red", "red/index.html"],
+  ...["marina", "riviera", "guadalajara", "sma", "queretaro", "cancun", "playa", "chapala", "penita"].map((id) => [`/red/${id}`, `red/${id}/index.html`]),
+  ["/especialidades", "especialidades/index.html"],
+  ["/bariatrica", "bariatrica/index.html"],
+  ["/vuelos", "vuelos/index.html"],
+  ["/seguros", "seguros/index.html"],
+  ["/que-es", "que-es/index.html"],
+  ["/preparacion", "preparacion/index.html"],
+  ["/ruta", "ruta/index.html"],
+  ["/comparar", "comparar/index.html"],
+  ["/mapa", "mapa/index.html"],
+  ["/equipo", "equipo/index.html"],
+  ["/hospitales", "hospitales/index.html"],
+  ["/privacy", "privacy/index.html"],
+  ["/privacidad", "privacidad/index.html"],
+  ["/terms", "terms/index.html"],
+  ["/terminos", "terminos/index.html"],
+];
+
+for (const [route, filename] of ROUTES) {
+  writePage(route, filename, "en");
+  for (const lang of ["es", "en", "fr"]) {
+    const prefixed = route === "/" ? `/${lang}` : `/${lang}${route}`;
+    const file = route === "/" ? `${lang}/index.html` : `${lang}/${filename}`;
+    writePage(prefixed, file, lang);
+  }
 }
-writePage("/especialidades", "especialidades/index.html");
-writePage("/bariatrica", "bariatrica/index.html");
-writePage("/vuelos", "vuelos/index.html");
-writePage("/seguros", "seguros/index.html");
-writePage("/que-es", "que-es/index.html");
-writePage("/preparacion", "preparacion/index.html");
-writePage("/ruta", "ruta/index.html");
-writePage("/comparar", "comparar/index.html");
-writePage("/mapa", "mapa/index.html");
-writePage("/equipo", "equipo/index.html");
-writePage("/hospitales", "hospitales/index.html");
-writePage("/privacy", "privacy/index.html");
-writePage("/privacidad", "privacidad/index.html");
-writePage("/terms", "terms/index.html");
-writePage("/terminos", "terminos/index.html");
-writePage("/404", "404.html");
+writePage("/404", "404.html", "en");
 
 const sw = await generateSW({
   globDirectory: dist.pathname,

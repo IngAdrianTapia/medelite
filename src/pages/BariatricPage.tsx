@@ -108,7 +108,7 @@ export function BariatricPage() {
       ],
       missing: "Le site ne dit pas combien de nuits d’hôtel entrent dans le forfait, ni la devise, ni les vols. Il nomme le Paradise Village comme hôtel qu’ils aident à réserver, à environ 9 minutes à pied. Tant que ce n’est pas confirmé par écrit, l’hôtel n’est pas traité comme inclus.",
       price: "Aucun prix n’est publié. MedElite n’invente pas non plus de bande bariatrique.",
-      cta: "Demander un devis",
+      cta: "Demander une soumission",
     },
   }[lang];
 

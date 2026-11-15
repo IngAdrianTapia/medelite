@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { useI18n } from "../i18n";
 import type { Lang } from "../i18n/types";
+import { BrandMark } from "./BrandMark";
 
 const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
   { id: "es", label: "ES", name: "Español", html: "es-MX" },
@@ -13,6 +14,7 @@ export function Header() {
   const { m, lang, setLang } = useI18n();
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const [solid, setSolid] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLElement>(null);
 
@@ -29,6 +31,13 @@ export function Header() {
     if (first instanceof HTMLElement) first.focus();
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const extra = {
     es: { flights: "Vuelos", route: "Ruta", map: "Mapa", what: "Qué es" },
@@ -52,9 +61,9 @@ export function Header() {
       >
         {m.skip}
       </a>
-      <div className="pointer-events-auto mx-auto mt-3 flex max-w-6xl items-center gap-3 rounded-full border border-white/25 bg-navy/45 px-3 py-2 text-white shadow-premium backdrop-blur-xl">
-        <Link to="/#inicio" className="shrink-0 pl-1" onClick={() => setOpen(false)}>
-          <img src="/assets/brand/medelite-logo-horizontal.png" width={643} height={160} alt="MedElite International Health" className="h-8 w-auto" />
+      <div className={`pointer-events-auto mx-3 mt-3 flex max-w-6xl flex-wrap items-center gap-3 rounded-3xl border px-3 py-2 text-white shadow-premium md:mx-auto ${solid ? "border-white/15 bg-navy" : "border-white/30 bg-navy/70 backdrop-blur-xl"}`}>
+        <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)}>
+          <BrandMark className="h-12 sm:h-14 md:h-16" />
         </Link>
         <nav className="ml-auto hidden items-center gap-5 lg:flex" aria-label={m.nav.aria}>
           {links.map(([href, label]) => (

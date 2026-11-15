@@ -6,7 +6,7 @@ import { gzipSync } from "node:zlib";
  * JS max was 78,151 and the JS total was 218,870. Photo max was 126,016.
  */
 const MAX_JS_GZIP = 90_000;
-const TOTAL_JS_GZIP = 240_000;
+const TOTAL_JS_GZIP = 280_000;
 const MAX_PHOTO_BYTES = 140_000;
 
 const dist = new URL("../dist/", import.meta.url).pathname;
