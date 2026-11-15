@@ -1,24 +1,32 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router";
 import { useI18n } from "../i18n";
 import type { Lang } from "../i18n/types";
 
-const LANGS: { id: Lang; label: string; name: string }[] = [
-  { id: "es", label: "ES", name: "Español" },
-  { id: "en", label: "EN", name: "English" },
-  { id: "fr", label: "FR", name: "Français" },
+const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
+  { id: "es", label: "ES", name: "Español", html: "es-MX" },
+  { id: "en", label: "EN", name: "English", html: "en-CA" },
+  { id: "fr", label: "FR", name: "Français", html: "fr-CA" },
 ];
 
 export function Header() {
   const { m, lang, setLang } = useI18n();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
+    const first = menuRef.current?.querySelector("a");
+    if (first instanceof HTMLElement) first.focus();
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
@@ -56,9 +64,14 @@ export function Header() {
         </Link>
         <nav className="ml-auto hidden items-center gap-6 lg:flex" aria-label={m.nav.aria}>
           {links.map(([href, label]) => (
-            <a key={href} href={href} className="text-sm font-medium text-muted hover:text-navy">
+            <Link
+              key={href}
+              to={href}
+              aria-current={pathname === href ? "page" : undefined}
+              className="text-sm font-medium text-muted hover:text-navy"
+            >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
@@ -67,6 +80,7 @@ export function Header() {
               <button
                 key={item.id}
                 type="button"
+                lang={item.html}
                 aria-pressed={lang === item.id}
                 aria-label={`${item.label}, ${item.name}`}
                 className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-bold tracking-wide ${
@@ -78,13 +92,14 @@ export function Header() {
               </button>
             ))}
           </div>
-          <a
-            href="/#cotizar"
+          <Link
+            to="/#cotizar"
             className="hidden min-h-11 items-center rounded-full bg-navy px-4 text-sm font-semibold text-white shadow-premium hover:bg-navy-2 md:inline-flex"
           >
             {m.nav.quote}
-          </a>
+          </Link>
           <button
+            ref={menuButtonRef}
             type="button"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line bg-white text-navy lg:hidden"
             aria-expanded={open}
@@ -100,19 +115,28 @@ export function Header() {
           </button>
         </div>
       </div>
-      {open ? (
-        <nav id="menu-movil" className="border-t border-line bg-white px-5 py-4 lg:hidden" aria-label={m.nav.aria}>
-          <ul className="grid gap-1">
-            {links.map(([href, label]) => (
-              <li key={href}>
-                <a href={href} className="block rounded-2xl px-4 py-3 text-base font-medium hover:bg-soft" onClick={() => setOpen(false)}>
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      ) : null}
+      <nav
+        id="menu-movil"
+        ref={menuRef}
+        hidden={!open}
+        className="border-t border-line bg-white px-5 py-4 lg:hidden"
+        aria-label={m.nav.aria}
+      >
+        <ul className="grid gap-1">
+          {links.map(([href, label]) => (
+            <li key={href}>
+              <Link
+                to={href}
+                aria-current={pathname === href ? "page" : undefined}
+                className="block rounded-2xl px-4 py-3 text-base font-medium hover:bg-soft"
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 }

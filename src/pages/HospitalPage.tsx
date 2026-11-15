@@ -93,7 +93,7 @@ export function HospitalPage() {
       </p>
       <p className="mt-4 text-sm">
         {copy.source}:{" "}
-        <a className="underline" href={facts.url}>
+        <a className="underline" href={facts.url} rel="noopener noreferrer">
           hospitaljoya.com
         </a>
       </p>

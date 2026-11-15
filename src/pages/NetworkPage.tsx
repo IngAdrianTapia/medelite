@@ -93,7 +93,7 @@ export function NetworkPage() {
             <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-56 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
             <div className="p-5">
               <h2 className="font-serif text-2xl">
-                <Link className="underline decoration-line underline-offset-4" to={`/red/${hospital.id}`}>
+                <Link className="underline decoration-current underline-offset-4" to={`/red/${hospital.id}`}>
                   {hospital.name}
                 </Link>
               </h2>
@@ -115,8 +115,9 @@ export function NetworkPage() {
         ))}
       </ul>
       <h2 className="mt-14 font-serif text-3xl">{intro.compare}</h2>
-      <div className="mt-4 overflow-x-auto rounded-[2rem] border border-line bg-white shadow-glass">
+      <div tabIndex={0} aria-label={intro.compare} className="mt-4 overflow-x-auto rounded-[2rem] border border-line bg-white shadow-glass">
         <table className="w-full min-w-[44rem] text-left text-sm">
+          <caption className="sr-only">{intro.compare}</caption>
           <thead className="border-b border-line">
             <tr>
               <th className="px-3 py-3" scope="col">
@@ -162,7 +163,7 @@ export function NetworkPage() {
         <p>{intro.notClaim}</p>
         <p>{intro.verified}</p>
         <p>
-          <a className="underline" href="https://www.hmhospitales.com/comunicado-prensa/hm-hospitales-y-grupo-medico-joya-sellan-una-alianza-estrategica-para-impulsar-la-continuidad-asistencial-entre-espana-y-mexico/">
+          <a className="underline" href="https://www.hmhospitales.com/comunicado-prensa/hm-hospitales-y-grupo-medico-joya-sellan-una-alianza-estrategica-para-impulsar-la-continuidad-asistencial-entre-espana-y-mexico/" rel="noopener noreferrer">
             HM Hospitales, 10 {lang === "en" ? "September" : lang === "fr" ? "septembre" : "de septiembre"} 2026
           </a>
         </p>

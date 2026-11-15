@@ -14,22 +14,26 @@ export type PersonId =
   | "diana-miramontes"
   | "laura-quintero"
   | "julio-carbajal"
-  | "francisco-borrayo";
+  | "francisco-borrayo"
+  | "erika-cruz-joya";
 
 export interface Person {
   id: PersonId;
   name: string;
   role: string;
-  source: "drjoyaofficial.com" | "hospitaljoya.com";
+  source: "drjoyaofficial.com" | "hospitaljoya.com" | "medeliteofficial.com";
   sourceUrl: string;
   focus: "bariatric" | "anesthesia" | "nutrition" | "internal" | "general-surgery" | "leadership" | "talk";
   credentials: string[];
+  /** Path already in this repo. Omitted when no portrait was published here. */
+  photo?: string;
 }
 
 const DRJOYA = "https://drjoyaofficial.com/";
 const BIO = "https://drjoyaofficial.com/dr-armando-joya/";
 const HM = "https://hospitaljoya.com/cuidate/grupo-medico-joya-firma-alianza-historica-con-hm-hospitales-de-espana/";
 const HPV = "https://hospitaljoya.com/cuidate/rompiendo-mitos-sobre-el-vph-dr-francisco-borrayo-ofrece-charla-informativa-en-hospital-joya/";
+const MEDE = "https://www.medeliteofficial.com/";
 
 export const PEOPLE: readonly Person[] = [
   {
@@ -161,6 +165,17 @@ export const PEOPLE: readonly Person[] = [
     sourceUrl: HPV,
     focus: "talk",
     credentials: [],
+  },
+  {
+    id: "erika-cruz-joya",
+    name: "Erika Cruz Joya",
+    // TODO(owner): biography, cédula, studies, awards, patient counts and the exact About Us URL are not in this repository. Do not invent them. The only portrait on file is public/assets/img/equipo/erika-cruz-joya.jpg. The only source URL stored here is the site root below.
+    role: "Founder and chief executive, as named on medeliteofficial.com. That page says she leads vision, partnerships and operations, and that she has a close connection to the Joya hospital network. No licence number or biography was published with that note.",
+    source: "medeliteofficial.com",
+    sourceUrl: MEDE,
+    focus: "leadership",
+    credentials: [],
+    photo: "/assets/img/equipo/erika-cruz-joya.jpg",
   },
 ];
 

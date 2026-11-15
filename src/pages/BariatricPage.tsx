@@ -142,7 +142,7 @@ export function BariatricPage() {
         {PROCEDURES.map((item) => (
           <li key={item.id} className="rounded-2xl border border-line p-4 text-sm leading-relaxed">
             <p>{item[lang]}</p>
-            <a className="mt-2 inline-block underline" href={item.url}>
+            <a className="mt-2 inline-block underline" href={item.url} rel="noopener noreferrer">
               drjoyaofficial.com
             </a>
           </li>

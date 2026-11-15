@@ -21,9 +21,6 @@ function isAge(value: unknown): value is AgeBand {
 function isBmi(value: unknown): value is BmiBand {
   return typeof value === "string" && (BMI_BANDS as readonly string[]).includes(value);
 }
-function isCondition(value: unknown): value is Condition {
-  return typeof value === "string" && (CONDITIONS as readonly string[]).includes(value);
-}
 
 function loadState(): WizardState {
   if (typeof sessionStorage === "undefined") return EMPTY_WIZARD;
@@ -33,26 +30,14 @@ function loadState(): WizardState {
     const parsed: unknown = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return EMPTY_WIZARD;
     const data = parsed as Record<string, unknown>;
-    const conditions = Array.isArray(data.conditions) ? data.conditions.filter(isCondition) : [];
     return {
       ...EMPTY_WIZARD,
       procedure: isProcedure(data.procedure) ? data.procedure : "",
       packageId: isPackage(data.packageId) ? data.packageId : "",
-      ageBand: isAge(data.ageBand) ? data.ageBand : "",
-      bmiBand: isBmi(data.bmiBand) ? data.bmiBand : "",
-      conditions,
       inMexico: typeof data.inMexico === "boolean" ? data.inMexico : null,
       month: typeof data.month === "string" ? data.month : "",
       flexible: data.flexible === true,
       companion: typeof data.companion === "boolean" ? data.companion : null,
-      firstName: typeof data.firstName === "string" ? data.firstName : "",
-      lastName: typeof data.lastName === "string" ? data.lastName : "",
-      email: typeof data.email === "string" ? data.email : "",
-      phone: typeof data.phone === "string" ? data.phone : "",
-      city: typeof data.city === "string" ? data.city : "",
-      note: typeof data.note === "string" ? data.note : "",
-      consent: data.consent === true,
-      adult: data.adult === true,
     };
   } catch {
     return EMPTY_WIZARD;
@@ -78,13 +63,22 @@ export function QuoteWizard() {
   const [step, setStep] = useState<StepId>("procedure");
   const [errors, setErrors] = useState<FieldError[]>([]);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const alertRef = useRef<HTMLDivElement>(null);
   const firstRender = useRef(true);
   const baseId = useId();
   const today = new Date();
   const bounds = monthBounds(today);
 
   useEffect(() => {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    const kept = {
+      procedure: state.procedure,
+      packageId: state.packageId,
+      inMexico: state.inMexico,
+      month: state.month,
+      flexible: state.flexible,
+      companion: state.companion,
+    };
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(kept));
   }, [state]);
 
   useEffect(() => {
@@ -95,6 +89,12 @@ export function QuoteWizard() {
     headingRef.current?.focus();
   }, [step]);
 
+  useEffect(() => {
+    if (errors.length === 0) return;
+    alertRef.current?.focus();
+  }, [errors]);
+
+  const errorId = `${baseId}-errors`;
   const stepIndex = STEP_IDS.indexOf(step);
   const progress = m.wizard.progress.replace("{current}", String(stepIndex + 1)).replace("{total}", String(STEP_IDS.length));
 
@@ -171,7 +171,7 @@ export function QuoteWizard() {
       </h3>
 
       {errors.length > 0 ? (
-        <div role="alert" className="mt-4 rounded-2xl bg-warn-soft px-4 py-3 text-sm text-warn">
+        <div ref={alertRef} id={errorId} tabIndex={-1} role="alert" className="mt-4 rounded-2xl bg-warn-soft px-4 py-3 text-sm text-warn">
           <ul className="grid gap-1">
             {errors.map((code) => (
               <li key={code}>{m.wizard.errors[code]}</li>
@@ -182,7 +182,7 @@ export function QuoteWizard() {
 
       <div className="mt-6">
         {step === "procedure" ? (
-          <fieldset>
+          <fieldset aria-invalid={errors.includes("required") ? true : undefined} aria-describedby={errors.includes("required") ? errorId : undefined}>
             <legend className="text-sm font-medium">{m.wizard.procedureLegend}</legend>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {PROCEDURE_IDS.map((id) => (
@@ -204,7 +204,7 @@ export function QuoteWizard() {
         ) : null}
 
         {step === "package" ? (
-          <fieldset>
+          <fieldset aria-invalid={errors.includes("required") ? true : undefined} aria-describedby={errors.includes("required") ? errorId : undefined}>
             <legend className="text-sm font-medium">{m.wizard.packageLegend}</legend>
             <div className="mt-3 grid gap-3">
               {PACKAGE_IDS.map((id) => (
@@ -237,6 +237,8 @@ export function QuoteWizard() {
                 <select
                   className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40"
                   value={state.ageBand}
+                  aria-invalid={errors.includes("required") && !state.ageBand ? true : undefined}
+                  aria-describedby={errors.includes("required") && !state.ageBand ? errorId : undefined}
                   onChange={(event) => patch({ ageBand: isAge(event.target.value) ? event.target.value : "" })}
                 >
                   <option value="">{m.wizard.age}</option>
@@ -252,6 +254,8 @@ export function QuoteWizard() {
                 <select
                   className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40"
                   value={state.bmiBand}
+                  aria-invalid={errors.includes("required") && !state.bmiBand ? true : undefined}
+                  aria-describedby={errors.includes("required") && !state.bmiBand ? errorId : undefined}
                   onChange={(event) => patch({ bmiBand: isBmi(event.target.value) ? event.target.value : "" })}
                 >
                   <option value="">{m.wizard.bmi}</option>
@@ -266,7 +270,13 @@ export function QuoteWizard() {
             <p className="mt-4 text-sm" id={`${baseId}-conditions`}>
               {m.wizard.conditions}
             </p>
-            <div className="mt-2 grid gap-2" role="group" aria-labelledby={`${baseId}-conditions`}>
+            <div
+              className="mt-2 grid gap-2"
+              role="group"
+              aria-labelledby={`${baseId}-conditions`}
+              aria-invalid={errors.includes("conditions") || errors.includes("conflict") ? true : undefined}
+              aria-describedby={errors.includes("conditions") || errors.includes("conflict") ? errorId : undefined}
+            >
               {CONDITIONS.map((id, index) => (
                 <label key={id} className="flex min-h-11 items-center gap-3 rounded-xl border border-line px-3 text-sm">
                   <input
@@ -278,7 +288,7 @@ export function QuoteWizard() {
                 </label>
               ))}
             </div>
-            <fieldset className="mt-4">
+            <fieldset className="mt-4" aria-invalid={errors.includes("required") && state.inMexico === null ? true : undefined} aria-describedby={errors.includes("required") && state.inMexico === null ? errorId : undefined}>
               <legend className="text-sm">{m.wizard.inMexico}</legend>
               <div className="mt-2 flex gap-3">
                 {[true, false].map((value) => (
@@ -310,7 +320,12 @@ export function QuoteWizard() {
               value={state.month}
               min={bounds.min}
               max={bounds.max}
-              aria-describedby={`${baseId}-month-hint`}
+              aria-invalid={errors.includes("month") || errors.includes("past") || (errors.includes("required") && !state.month) ? true : undefined}
+              aria-describedby={
+                errors.includes("month") || errors.includes("past") || (errors.includes("required") && !state.month)
+                  ? `${baseId}-month-hint ${errorId}`
+                  : `${baseId}-month-hint`
+              }
               onChange={(event) => patch({ month: event.target.value })}
             />
             <p id={`${baseId}-month-hint`} className="mt-2 text-sm text-muted">
@@ -320,7 +335,7 @@ export function QuoteWizard() {
               <input type="checkbox" checked={state.flexible} onChange={(event) => patch({ flexible: event.target.checked })} />
               {m.wizard.flexible}
             </label>
-            <fieldset className="mt-4">
+            <fieldset className="mt-4" aria-invalid={errors.includes("required") && state.companion === null ? true : undefined} aria-describedby={errors.includes("required") && state.companion === null ? errorId : undefined}>
               <legend className="text-sm">{m.wizard.companion}</legend>
               <div className="mt-2 flex gap-3">
                 {[true, false].map((value) => (
@@ -345,35 +360,35 @@ export function QuoteWizard() {
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               <label className="grid gap-2 text-sm">
                 {m.wizard.first}
-                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="given-name" maxLength={60} value={state.firstName} onChange={(event) => patch({ firstName: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="given-name" maxLength={60} aria-invalid={errors.includes("required") && state.firstName.trim().length === 0 ? true : undefined} aria-describedby={errors.includes("required") && state.firstName.trim().length === 0 ? errorId : undefined} value={state.firstName} onChange={(event) => patch({ firstName: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm">
                 {m.wizard.last}
-                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="family-name" maxLength={60} value={state.lastName} onChange={(event) => patch({ lastName: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="family-name" maxLength={60} aria-invalid={errors.includes("required") && state.lastName.trim().length === 0 ? true : undefined} aria-describedby={errors.includes("required") && state.lastName.trim().length === 0 ? errorId : undefined} value={state.lastName} onChange={(event) => patch({ lastName: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm">
                 {m.wizard.email}
-                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="email" autoComplete="email" maxLength={120} value={state.email} onChange={(event) => patch({ email: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="email" autoComplete="email" maxLength={120} aria-invalid={errors.includes("email") ? true : undefined} aria-describedby={errors.includes("email") ? errorId : undefined} value={state.email} onChange={(event) => patch({ email: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm">
                 {m.wizard.phone}
-                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="tel" autoComplete="tel" maxLength={30} value={state.phone} onChange={(event) => patch({ phone: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="tel" autoComplete="tel" maxLength={30} aria-invalid={errors.includes("phone") || errors.includes("card") ? true : undefined} aria-describedby={errors.includes("phone") || errors.includes("card") ? errorId : undefined} value={state.phone} onChange={(event) => patch({ phone: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm md:col-span-2">
                 {m.wizard.city}
-                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="address-level2" maxLength={80} placeholder={m.wizard.cityPh} value={state.city} onChange={(event) => patch({ city: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="address-level2" maxLength={80} placeholder={m.wizard.cityPh} aria-invalid={errors.includes("required") && state.city.trim().length < 2 ? true : undefined} aria-describedby={errors.includes("required") && state.city.trim().length < 2 ? errorId : undefined} value={state.city} onChange={(event) => patch({ city: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm md:col-span-2">
                 {m.wizard.note}
-                <textarea className="min-h-28 rounded-2xl border border-line bg-white px-4 py-3 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" maxLength={800} placeholder={m.wizard.notePh} value={state.note} onChange={(event) => patch({ note: event.target.value })} />
+                <textarea className="min-h-28 rounded-2xl border border-line bg-white px-4 py-3 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" maxLength={800} placeholder={m.wizard.notePh} aria-invalid={errors.includes("card") ? true : undefined} aria-describedby={errors.includes("card") ? errorId : undefined} value={state.note} onChange={(event) => patch({ note: event.target.value })} />
               </label>
             </div>
             <label className="mt-4 flex items-start gap-3 text-sm leading-relaxed">
-              <input className="mt-1" type="checkbox" checked={state.adult} onChange={(event) => patch({ adult: event.target.checked })} />
+              <input className="mt-1 size-6" type="checkbox" checked={state.adult} aria-invalid={errors.includes("adult") ? true : undefined} aria-describedby={errors.includes("adult") ? errorId : undefined} onChange={(event) => patch({ adult: event.target.checked })} />
               <span>{m.wizard.adult}</span>
             </label>
             <label className="mt-3 flex items-start gap-3 text-sm leading-relaxed">
-              <input className="mt-1" type="checkbox" checked={state.consent} onChange={(event) => patch({ consent: event.target.checked })} />
+              <input className="mt-1 size-6" type="checkbox" checked={state.consent} aria-invalid={errors.includes("consent") ? true : undefined} aria-describedby={errors.includes("consent") ? errorId : undefined} onChange={(event) => patch({ consent: event.target.checked })} />
               <span>
                 {m.wizard.consent}{" "}
                 <Link className="underline" to="/privacy">

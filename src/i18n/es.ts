@@ -491,7 +491,7 @@ export const es: Messages = {
       {
         heading: "Su navegador",
         paragraphs: [
-          "Mientras la pestaña sigue abierta, el cuestionario puede guardar las respuestas en sessionStorage para no perderlas. Esa copia no sale de su dispositivo. El botón de borrar la elimina. El idioma elegido se guarda en localStorage y no incluye datos de salud.",
+          "Mientras la pestaña sigue abierta, el cuestionario puede guardar en sessionStorage solo el procedimiento, el paquete, el mes, si ya está en México y si viaja con acompañante. No guarda nombre, correo, teléfono, ciudad, notas, edad, IMC ni condiciones. El botón de borrar elimina esa copia. El idioma elegido se guarda en localStorage y no incluye datos de salud.",
         ],
       },
       {

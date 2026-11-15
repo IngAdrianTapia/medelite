@@ -490,7 +490,7 @@ export const en: Messages = {
       {
         heading: "Your browser",
         paragraphs: [
-          "While the tab stays open, the questionnaire may keep answers in sessionStorage so they are not lost. That copy does not leave your device. The clear button deletes it. The language you choose is stored in localStorage and does not include health information.",
+          "While the tab stays open, the questionnaire may keep only the procedure, package, month, whether you are already in Mexico, and whether a companion is travelling in sessionStorage. It does not store name, email, phone, city, notes, age, BMI or conditions. The clear button deletes that copy. The language you choose is stored in localStorage and does not include health information.",
         ],
       },
       {

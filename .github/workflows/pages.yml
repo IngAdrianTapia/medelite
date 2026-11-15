@@ -40,6 +40,12 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=low
+
+      - name: Audit toolchain for moderate or higher
+        run: npm audit --audit-level=moderate
+
       - name: Build
         run: npm run build
 

@@ -490,7 +490,7 @@ export const fr: Messages = {
       {
         heading: "Votre navigateur",
         paragraphs: [
-          "Tant que l’onglet reste ouvert, le questionnaire peut conserver les réponses dans sessionStorage pour ne pas les perdre. Cette copie ne quitte pas votre appareil. Le bouton d’effacement la supprime. La langue choisie est enregistrée dans localStorage et ne contient pas de donnée de santé.",
+          "Tant que l’onglet reste ouvert, le questionnaire peut conserver dans sessionStorage seulement l’intervention, le forfait, le mois, la présence déjà au Mexique et la présence d’un accompagnateur. Il n’enregistre ni le nom, ni le courriel, ni le téléphone, ni la ville, ni les notes, ni l’âge, ni l’IMC, ni les situations cochées. Le bouton d’effacement supprime cette copie. La langue choisie est enregistrée dans localStorage et ne contient pas de donnée de santé.",
         ],
       },
       {

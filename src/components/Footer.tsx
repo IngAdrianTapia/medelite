@@ -17,11 +17,11 @@ export function Footer() {
         <div className="md:col-span-4 lg:col-span-3 lg:col-start-6">
           <h2 className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{m.footer.contact}</h2>
           <p className="mt-4 text-sm leading-relaxed">
-            <a className="font-medium underline decoration-line underline-offset-4 hover:text-navy" href="mailto:info@medeliteofficial.com">
+            <a className="font-medium underline decoration-current underline-offset-4 hover:text-navy" href="mailto:info@medeliteofficial.com">
               info@medeliteofficial.com
             </a>
             <br />
-            <a className="font-medium underline decoration-line underline-offset-4 hover:text-navy" href="tel:+16044428475">
+            <a className="font-medium underline decoration-current underline-offset-4 hover:text-navy" href="tel:+16044428475">
               +1 (604) 442-8475
             </a>
           </p>
@@ -29,7 +29,7 @@ export function Footer() {
           <p className="mt-2 text-sm text-muted">{m.contact.city}</p>
           <p className="mt-4 text-sm">
             <span className="text-muted">{m.footer.official}: </span>
-            <a className="font-medium underline decoration-line underline-offset-4 hover:text-navy" href="https://www.medeliteofficial.com/" rel="noopener noreferrer">
+            <a className="font-medium underline decoration-current underline-offset-4 hover:text-navy" href="https://www.medeliteofficial.com/" rel="noopener noreferrer">
               medeliteofficial.com
             </a>
           </p>
@@ -38,22 +38,22 @@ export function Footer() {
           <h2 className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{m.footer.legal}</h2>
           <ul className="mt-4 grid gap-3 text-sm">
             <li>
-              <Link className="text-muted underline decoration-line underline-offset-4 hover:text-navy" to="/equipo">
+              <Link className="text-muted underline decoration-current underline-offset-4 hover:text-navy" to="/equipo">
                 {lang === "en" ? "Published names" : lang === "fr" ? "Noms publiés" : "Nombres publicados"}
               </Link>
             </li>
             <li>
-              <Link className="text-muted underline decoration-line underline-offset-4 hover:text-navy" to="/hospitales">
+              <Link className="text-muted underline decoration-current underline-offset-4 hover:text-navy" to="/hospitales">
                 {lang === "en" ? "For hospitals" : lang === "fr" ? "Pour les hôpitaux" : "Para hospitales"}
               </Link>
             </li>
             <li>
-              <Link className="text-muted underline decoration-line underline-offset-4 hover:text-navy" to="/privacy">
+              <Link className="text-muted underline decoration-current underline-offset-4 hover:text-navy" to="/privacy">
                 {m.nav.privacy}
               </Link>
             </li>
             <li>
-              <Link className="text-muted underline decoration-line underline-offset-4 hover:text-navy" to="/terms">
+              <Link className="text-muted underline decoration-current underline-offset-4 hover:text-navy" to="/terms">
                 {m.nav.terms}
               </Link>
             </li>
@@ -62,7 +62,7 @@ export function Footer() {
           <ul className="mt-4 flex flex-wrap gap-4 text-sm">
             {SOCIAL.map((item) => (
               <li key={item.href}>
-                <a className="text-muted underline decoration-line underline-offset-4 hover:text-navy" href={item.href} rel="noopener noreferrer">
+                <a className="text-muted underline decoration-current underline-offset-4 hover:text-navy" href={item.href} rel="noopener noreferrer">
                   {item.label}
                   <span className="sr-only"> (external)</span>
                 </a>

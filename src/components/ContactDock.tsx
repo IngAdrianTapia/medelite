@@ -9,8 +9,9 @@ export function ContactDock() {
     en: "Emergency: call local services, not this office.",
     fr: "Urgence : appelez le service local, pas ce bureau.",
   }[lang];
+  const label = { es: "Contacto rápido", en: "Quick contact", fr: "Contact rapide" }[lang];
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 shadow-glass backdrop-blur-md">
+    <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 shadow-glass backdrop-blur-md" aria-label={label}>
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-3 py-2">
         <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-semibold text-white" href="tel:+16044428475">
           +1 (604) 442-8475
@@ -23,6 +24,6 @@ export function ContactDock() {
         </Link>
         <p className="text-xs text-warn">{emergency}</p>
       </div>
-    </div>
+    </nav>
   );
 }

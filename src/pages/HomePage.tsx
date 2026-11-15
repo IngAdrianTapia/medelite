@@ -268,7 +268,7 @@ export function HomePage() {
         <Kicker>{m.facts.kicker}</Kicker>
         <Title>{m.facts.title}</Title>
         <Deck>{m.facts.deck}</Deck>
-        <div className="mt-8 overflow-x-auto rounded-[2rem] border border-line bg-white shadow-glass">
+        <div tabIndex={0} aria-label={m.facts.caption} className="mt-8 overflow-x-auto rounded-[2rem] border border-line bg-white shadow-glass">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <caption className="sr-only">{m.facts.caption}</caption>
             <thead className="border-b border-line text-xs tracking-wide uppercase">
@@ -313,6 +313,8 @@ export function HomePage() {
               width={640}
               height={800}
               alt={m.about.erikaAlt}
+              loading="lazy"
+              decoding="async"
               className="h-56 w-full rounded-2xl object-cover object-top"
             />
             <h4 className="mt-4 text-lg font-semibold">Erika Cruz Joya</h4>
@@ -351,7 +353,7 @@ export function HomePage() {
         <article className="mt-6 max-w-xl rounded-[2rem] border border-line bg-white p-5 shadow-glass">
           <h3 className="font-serif text-2xl">{m.audio.heading}</h3>
           <p className="mt-2 text-sm text-muted">{m.audio.body}</p>
-          <audio className="mt-4 w-full" controls preload="none" src={`/assets/audio/intro-${lang}.mp3`} />
+          <audio className="mt-4 w-full" controls preload="none" aria-label={m.audio.heading} src={`/assets/audio/intro-${lang}.mp3`} />
           <details className="mt-3">
             <summary className="cursor-pointer text-sm">{m.audio.transcript}</summary>
             <p className="mt-2 text-sm leading-relaxed text-muted">{m.audio.text}</p>

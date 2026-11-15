@@ -5,3 +5,16 @@ dev-dist
 *.local
 .DS_Store
 coverage
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+id_ecdsa
+credentials.json
+.secrets
+*.secret

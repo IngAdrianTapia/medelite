@@ -2,7 +2,7 @@ import type { PersonId } from "../data/people";
 import { peopleByFocus } from "../data/people";
 import { HOSPITAL_IDS, type HospitalId } from "../data/hospitals";
 import { PACKAGE_BANDS, type PackageId } from "../data/packages";
-import { HOSPITAL_AIRPORT, illustrateTotal, quoteStaticSample, type OriginCode } from "../data/flights";
+import type { OriginCode } from "../data/flights";
 
 export const LINE_IDS = [
   "knee",
@@ -126,17 +126,8 @@ export function readiness(input: ReadinessInput): { items: ReadinessItem[]; read
 }
 
 export function journeyQuote(input: JourneyInput) {
-  const airport = HOSPITAL_AIRPORT[input.hospitalId];
-  const flight = quoteStaticSample({
-    origin: input.origin,
-    destination: airport,
-    depart: `${input.month}-15`,
-    returnDate: `${input.month}-25`,
-    adults: 1,
-    cabin: "economy",
-  });
   const band = input.line === "knee" || input.line === "hip" ? PACKAGE_BANDS[input.packageId] : null;
-  return { flight, band, total: illustrateTotal(flight, band) };
+  return { band };
 }
 
 export function journeySearch(input: JourneyInput): string {

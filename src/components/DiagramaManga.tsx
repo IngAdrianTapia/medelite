@@ -93,7 +93,7 @@ export function DiagramaManga() {
           </button>
         ))}
       </div>
-      <div className="mt-6 overflow-x-auto rounded-[2rem] border border-line bg-paper p-4">
+      <div tabIndex={0} role="region" aria-label={copy.title} className="mt-6 overflow-x-auto rounded-[2rem] border border-line bg-paper p-4">
         <svg viewBox="0 0 860 440" role="img" aria-label={copy.title} className="h-auto min-w-[40rem] w-full">
           <rect x="16" y="16" width="396" height="408" rx="24" fill="#FFFFFF" stroke="#E2E8F0" />
           <text x="40" y="52" fill="#0A2540" fontSize="12" fontWeight="700">

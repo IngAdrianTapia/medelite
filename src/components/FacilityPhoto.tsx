@@ -19,8 +19,9 @@ const VARIANTS: Record<string, readonly [number, number][]> = {
   "bariatric-room": [[640, 640], [960, 800]],
 };
 
+/** Largest real pixel size in this repo. Ratios match the files; nothing is upscaled in the markup. */
 const INTRINSIC: Record<string, [number, number]> = {
-  marina: [2560, 1438],
+  marina: [1280, 719],
   riviera: [800, 600],
   guadalajara: [800, 600],
   sma: [480, 320],
@@ -28,10 +29,10 @@ const INTRINSIC: Record<string, [number, number]> = {
   cancun: [960, 750],
   playa: [960, 750],
   chapala: [742, 530],
-  penita: [2560, 1920],
-  "operating-room": [1600, 1800],
+  penita: [1280, 960],
+  "operating-room": [1280, 1440],
   "patient-room": [1278, 723],
-  "bariatric-or": [1613, 1080],
+  "bariatric-or": [1280, 857],
   "bariatric-room": [800, 536],
 };
 
@@ -62,12 +63,14 @@ export function FacilityPhoto({
   sizes?: string;
 }) {
   const box = INTRINSIC[name] ?? [4, 3];
+  const rows = VARIANTS[name] ?? [];
+  const fallbackSlot = rows[rows.length - 1]?.[0] ?? 640;
   return (
     <picture>
       <source type="image/avif" srcSet={srcSet(name, "avif")} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet(name, "webp")} sizes={sizes} />
       <img
-        src={`/assets/photos/${name}-960.webp`}
+        src={`/assets/photos/${name}-${fallbackSlot}.webp`}
         alt={alt}
         width={box[0]}
         height={box[1]}
