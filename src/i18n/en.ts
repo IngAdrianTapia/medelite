@@ -1,0 +1,571 @@
+import type { Messages } from "./types";
+
+export const en: Messages = {
+  meta: {
+    title: "MedElite International Health — Elite Medical Care in Mexico",
+    description:
+      "MedElite International Health, based in Vancouver, connects you with top-tier hospitals and renowned specialists in Mexico. Personalized care, transparent pricing and full support every step of the way.",
+  },
+  skip: "Skip to content",
+  nav: {
+    aria: "Primary",
+    menu: "Open menu",
+    close: "Close menu",
+    specialties: "Specialties",
+    packages: "Packages",
+    quote: "Estimate",
+    journey: "Journey",
+    snowbirds: "Snowbirds",
+    trust: "Trust",
+    network: "Network",
+    faq: "FAQ",
+    contact: "Contact",
+    privacy: "Privacy",
+    terms: "Terms",
+  },
+  langAria: "Language",
+  notice:
+    "Please note. Amounts on this page are planning ranges, with the example and the limit stated. They are not quotes. Every plan is confirmed in writing after the surgeon in Mexico reviews the case.",
+  hero: {
+    kicker: "MedElite International Health · Vancouver, BC",
+    title: "Elite Medical Care in Mexico for Canadians",
+    lede:
+      "We coordinate elective care in Mexico for patients from Canada, from an office in Vancouver. The anchor partner is Grupo Médico Joya, with nine hospitals. The medical act takes place in Mexico. This page is not a consultation.",
+    ctaQuote: "Estimate a range",
+    ctaHow: "How it works",
+    illAlt: "Illustration of Banderas Bay at dusk. Not a photograph.",
+    illCap: "Illustration, not a photograph of the hospital.",
+    route: "Vancouver (YVR) – Puerto Vallarta (PVR), a nonstop flight of about 5 hours.",
+    metrics: [
+      { value: "105,529", label: "Canadians treated outside the country in 2025 (Fraser Institute estimate)" },
+      { value: "32.2 wk", label: "Median wait in British Columbia, from family doctor to treatment (Fraser 2025)" },
+      { value: "~5 h", label: "Nonstop flight Vancouver – Puerto Vallarta (Air Canada, WestJet, Flair)" },
+      { value: "490,000+", label: "Canadians arriving in Jalisco by air in 2024 (SECTUR Jalisco)" },
+    ],
+  },
+  role: {
+    kicker: "What we do",
+    title: "A coordination office, not a hospital",
+    body: "MedElite International Health handles the administrative and logistics path: an estimate, an informational video call with the surgeon in Mexico, travel, the stay, and the summary for your family doctor. We do not diagnose, prescribe, or operate.",
+    points: [
+      "The Vancouver team collects your questionnaire. It does not perform clinical triage.",
+      "The decision to operate is the surgeon’s, at the hospital, in Mexico.",
+      "The network can add more Mexican hospitals. The partner named today is Grupo Médico Joya.",
+    ],
+  },
+  verticals: {
+    kicker: "Specialties",
+    title: "Three verticals, and everything else on request",
+    deck: "At this stage we concentrate coordination on three groups of procedures and map them to Joya hospitals as a routing guide. That map is not a hospital accreditation.",
+    focus: "Coordination route",
+    request: "On request",
+    items: [
+      {
+        title: "Orthopedics: hip and knee",
+        body: "Joint replacement for people already on a wait list. The planned stay after surgery is 7 to 10 days, with a fit-to-fly assessment before the flight home.",
+        sites: "Marina Vallarta, Riviera Nayarit, Chapala (Ajijic) and San Miguel de Allende.",
+        request: false,
+      },
+      {
+        title: "Bariatric surgery",
+        body: "Metabolic and weight-loss procedures. The same 7-to-10-day stay applies before flying. The surgeon decides whether travel is appropriate.",
+        sites: "Guadalajara and Querétaro.",
+        request: false,
+      },
+      {
+        title: "Plastic surgery and ophthalmology",
+        body: "Plastic, reconstructive and eye surgery, with recovery as the surgeon instructs. The published range on this page is the knee example, not the price of these procedures.",
+        sites: "Cancún and Playa del Carmen.",
+        request: false,
+      },
+      {
+        title: "Other specialties",
+        body: "Cardiology, oncology, spine, dental, fertility and the rest are reviewed only on request. We do not publish a price, and we do not present them as centres of excellence for this stage.",
+        sites: "Confirmed in writing if a suitable hospital is available.",
+        request: true,
+      },
+    ],
+  },
+  packages: {
+    kicker: "Packages",
+    title: "Three levels, from a knee example",
+    deck: "The ranges are the planning example for a total knee replacement, in Canadian dollars. They say “starting from” because the surgeon can change the number. They do not include a flight you buy yourself, unless the written agreement says so.",
+    from: "Starting from",
+    range: "Planning range",
+    example: "Example: total knee replacement. Subject to medical evaluation. Not a quote.",
+    note: "medeliteofficial.com states savings of 50–70% versus Canada. That is the company’s own commercial statement, not an independent audit. The only price is the written quote.",
+    payment:
+      "The intended model is a 30% deposit (Interac e-Transfer or card) and 70% by bank transfer 15 days before travel, to the account named in the written agreement. This website does not take payment and does not store card numbers.",
+    items: {
+      snowbird: {
+        name: "Snowbird",
+        who: "For someone already in Mexico: Puerto Vallarta, Riviera Nayarit, Ajijic, La Peñita or San Miguel de Allende.",
+        points: [
+          "Surgery and, if an implant is used, the implant named in the quote.",
+          "Two hospital nights in the knee example.",
+          "The package design includes a complications policy, valid only if the quote names it and confirms the surgeon.",
+          "Home nursing visits and initial physiotherapy, as in the planning example.",
+          "No hotel and no flights.",
+        ],
+      },
+      essential: {
+        name: "Essential",
+        who: "For someone travelling from Canada who wants a clear package off a wait list.",
+        points: [
+          "Everything in Snowbird.",
+          "Seven nights in an accessible four-star hotel room, in the knee example.",
+          "Private transfers: airport, hospital and hotel.",
+          "A bilingual coordinator.",
+          "Arrangement of the fit-to-fly assessment before the flight home.",
+        ],
+      },
+      executive: {
+        name: "Executive",
+        who: "For someone travelling with a companion who wants a more comfortable stay.",
+        points: [
+          "A hospital suite, subject to the availability named in the quote.",
+          "Eight nights in a five-star hotel, with breakfast, in the example.",
+          "Daily nursing at the hotel and four physiotherapy sessions in Mexico, in the knee example.",
+          "Remote rehabilitation follow-up once you are back in Canada, as part of the package design.",
+        ],
+      },
+    },
+  },
+  wizard: {
+    kicker: "Estimate",
+    title: "Coordination questionnaire",
+    deck: "Four groups of questions — procedure, basic health, dates and contact — and a range when a published band exists. If you send it, your email app opens a message to info@medeliteofficial.com. Nothing is posted to a server on this page.",
+    admin:
+      "This is an administrative questionnaire for a coordination file. It is not a medical assessment and it is not clinical triage in Canada. The surgeon in Mexico reviews the case.",
+    emergency: "If this is an emergency, call local emergency services where you are. MedElite is not an ambulance and not an emergency department.",
+    steps: ["Procedure", "Package", "Health", "Dates", "Contact", "Range"],
+    progress: "Step {current} of {total}",
+    back: "Back",
+    next: "Continue",
+    clear: "Clear answers from this session",
+    procedureLegend: "Which procedure are you asking about?",
+    procedures: {
+      knee: { label: "Knee replacement", hint: "Orthopedic route in the Joya network." },
+      hip: { label: "Hip replacement", hint: "Same route. The range shown is the knee example." },
+      bariatric: { label: "Bariatric surgery", hint: "Guadalajara or Querétaro. The price is confirmed in writing." },
+      plastic: { label: "Plastic surgery", hint: "Cancún or Playa del Carmen. No published band on this page." },
+      ophthalmology: { label: "Ophthalmology", hint: "Cancún or Playa del Carmen. No published band on this page." },
+      other: { label: "Another specialty", hint: "On request. No range on this page." },
+    },
+    packageLegend: "Which level do you want to compare?",
+    healthLegend: "Basic details for the surgeon",
+    age: "Age range",
+    ages: ["18–39", "40–54", "55–69", "70 or older"],
+    bmi: "BMI range, if you know it",
+    bmis: ["Under 30", "30–34", "35–39", "40 or higher"],
+    conditions: "Check what applies. Do not type diagnoses or test results.",
+    conditionOpts: ["Diabetes", "Heart disease", "Blood thinners", "None of these"],
+    inMexico: "Are you already in Mexico?",
+    yes: "Yes",
+    no: "No",
+    datesLegend: "Dates",
+    month: "Preferred month",
+    monthHint: "Within the next 24 months.",
+    flexible: "My dates are flexible",
+    companion: "Travelling with a companion?",
+    contactLegend: "How we reach you",
+    first: "First name",
+    last: "Last name",
+    email: "Email",
+    phone: "Phone",
+    city: "City and province in Canada",
+    cityPh: "e.g. Vancouver, BC",
+    note: "Optional note, with no detailed clinical information and no card numbers",
+    notePh: "Tell us in general terms how we can help. Do not include diagnoses, test results or card numbers.",
+    adult: "I confirm that I am 18 or older.",
+    consent:
+      "I consent to MedElite using these details to coordinate my request and, if needed for that request, sharing them with the hospital and surgeon in Mexico. I understand the cross-border transfer under PIPEDA and British Columbia’s PIPA, and handling in Mexico under the LFPDPPP. I have read the privacy notice.",
+    errors: {
+      required: "Complete the marked fields.",
+      email: "Enter a valid email address.",
+      phone: "Enter a phone number with at least 10 digits.",
+      consent: "The consent checkbox is required to continue.",
+      adult: "This form is for adults 18 and older.",
+      card: "Do not include card numbers.",
+      month: "Choose a month within the next 24 months.",
+      past: "That month has already passed.",
+      conditions: "Select at least one health option.",
+      conflict: "If you select “none”, do not select other options.",
+    },
+    resultTitle: "Your estimated range",
+    fromLabel: "Starting from",
+    onRequest:
+      "There is no published band for this procedure. A coordinator in Vancouver will write with a range after the surgeon in Mexico reviews the case.",
+    kneeBasis: "Planning band for a total knee replacement. Subject to medical evaluation. Not a quote.",
+    hipBasis:
+      "The only published band is for total knee replacement. Hip replacement is shown in the same band until the surgeon reviews the case.",
+    complexity:
+      "The top of the range is 8% higher because you reported a condition or a BMI of 40 or more. That is a rule of this page, not a clinical fee.",
+    snowFlag:
+      "Snowbird does not include a hotel or flights. It is for people already in Mexico. If you are travelling from Canada, compare Essential.",
+    notQuote: "A coordinator reviews the message during Vancouver hours and aims to reply within one business day. The written quote replaces this range.",
+    send: "Open an email to info@medeliteofficial.com",
+    sent: "If your email app did not open, write to info@medeliteofficial.com. You decide whether to send the message.",
+    subject: "MedElite estimate — coordination request",
+    leadIntro: "Coordination request from medelite.com.mx. This is not a quote.",
+    leadConsent: "Consent: the person accepted PIPEDA, PIPA (BC) and the LFPDPPP for this request.",
+    leadDisclaimer: "The range, if shown, is an estimate subject to medical evaluation in Mexico.",
+  },
+  journey: {
+    kicker: "Journey",
+    title: "From the estimate to follow-up at home",
+    deck: "Eight steps. The hospital confirms the dates. If the surgeon decides travel is not safe, no trip is arranged.",
+    steps: [
+      { title: "Estimate", body: "The questionnaire on this page produces a range when a band is published, or marks the case as on request." },
+      { title: "Video call with the surgeon", body: "The session with the Mexican surgeon is informational. It is not the practice of medicine in Canada. Diagnosis and the treatment decision happen in Mexico." },
+      { title: "Booking", body: "If the case proceeds, you receive a written quote. Any payment is made off this website, under that document." },
+      { title: "Travel", body: "We outline nonstop flights, entry to Mexico, a companion and transfers. You buy your own flights unless the agreement says otherwise." },
+      { title: "Surgery", body: "Surgery takes place at the hospital in Mexico, by that hospital’s surgeon. MedElite does not operate." },
+      { title: "7 to 10 days of recovery", body: "For hip, knee and bariatric surgery the plan is to stay in Mexico 7 to 10 days before flying. Other procedures follow the surgeon’s instruction." },
+      { title: "Fit to fly", body: "Before the flight home, the surgeon assesses whether you can fly. Airlines may require that certificate because of the risk of blood clots." },
+      { title: "Follow-up at home", body: "The path is designed to include a discharge summary for your family doctor and a follow-up contact. The clinical record stays at the hospital." },
+    ],
+  },
+  snow: {
+    kicker: "Snowbirds",
+    title: "If you already spend the winter in Mexico",
+    paragraphs: [
+      "Some of the Canadians MedElite can accompany are not flying from Vancouver for surgery. They already spend the winter in Puerto Vallarta, Nuevo Vallarta, Bucerías, Ajijic, La Peñita or San Miguel de Allende. Grupo Médico Joya has a hospital in those areas.",
+      "A snowbird directory estimates that 4% of Canadian snowbirds winter in Puerto Vallarta. The Globe and Mail has described the bay as an established winter destination, with “thousands” of Canadians. Those are third-party descriptions, not a MedElite census.",
+      "The Snowbird package is in situ: no hotel and no flights. It is for someone already there who wants to coordinate elective surgery, a check-up, or the route to the local Joya hospital. It is not travel insurance and not an ambulance service.",
+    ],
+    alt: "Illustration of a coordinator wearing a headset. Not a photograph of a real person.",
+    cap: "Illustration. Coordination in Vancouver is done by people; this image does not portray an employee.",
+  },
+  metc: {
+    kicker: "Tax",
+    title: "Medical Expense Tax Credit (METC)",
+    paragraphs: [
+      "The Canada Revenue Agency administers the Medical Expense Tax Credit. Some medical expenses paid outside Canada can be eligible. Tourist lodging, flights and logistics coordination generally are not.",
+      "MedElite’s model is to separate clinical charges from hotel and logistics on the paperwork, so your accountant can tell the lines apart. That does not guarantee that the CRA will accept an amount.",
+    ],
+    disclaimer: "This is not tax or legal advice. Ask a CPA and read the CRA page before you file.",
+    link: "CRA page on medical expenses",
+  },
+  trust: {
+    kicker: "Trust",
+    title: "What we state, and what we do not",
+    deck: "Trust depends on clear limits. These are the public rules of this page.",
+    items: [
+      {
+        title: "Facilitator, not the treating team",
+        body: "MedElite coordinates. The hospital and the surgeon in Mexico are responsible for the medical act. Using this site does not create a doctor-patient relationship with MedElite.",
+      },
+      {
+        title: "Video calls",
+        body: "A virtual session with a physician in Mexico is an informational orientation. It is not the practice of medicine in British Columbia or elsewhere in Canada, and it does not include a prescription for use in Canada.",
+      },
+      {
+        title: "No accreditation claimed as obtained",
+        body: "We do not claim JCI, CLACS, CSG, GHA or MTA for MedElite or for Grupo Médico Joya. GHA and MTA are standards MedElite is working toward. They are not held.",
+      },
+      {
+        title: "Complications insurance",
+        body: "The package design includes a complications policy. It exists only if your quote names the insurer and confirms that the surgeon and hospital are registered. Until then, do not treat a policy as in force.",
+      },
+      {
+        title: "Two wait clocks",
+        body: "Fraser Institute, 2025: 32.2 weeks in B.C. from family doctor to treatment, and 48.6 weeks nationally for orthopedics. The B.C. Ministry of Health measured a different segment for 2025–2026: 97,963 people on the surgical list and 6.0 weeks from booking to surgery. We do not mix those figures.",
+      },
+      {
+        title: "Provincial plans",
+        body: "Provincial plans generally do not cover elective surgery abroad. Some private policies review certain expenses. Ask your insurer. MedElite does not promise a reimbursement.",
+      },
+    ],
+    standards: "Credentials, technology and outcomes are checked case by case before a written quote. This page does not publish a physician directory.",
+  },
+  network: {
+    kicker: "Network",
+    title: "Nine Grupo Médico Joya hospitals",
+    deck: "Facts taken from hospitaljoya.com (checked 14 November 2026). MedElite does not speak for the hospital. The network can add more Mexican hospitals; a name appears here only after an agreement. The anchor partner today is this group.",
+    open: "On the pages reviewed, the group announces — and does not list as open — hospitals in Tulum, Manzanillo and Mérida, plus an oncology centre in Bahía de Banderas. They are not coordinated as open hospitals.",
+    future: "In September 2026, Grupo Médico Joya and HM Hospitales (Spain) announced a framework agreement. That agreement is between those two groups. It is not a MedElite accreditation.",
+    hm: "HM Hospitales release, 10 September 2026",
+    view: "Hospital page",
+    opened: "Year the group publishes: {year}",
+    logoAlt: "Hospital Joya logo, the allied hospital network",
+    source: "Addresses and phones follow the group’s hospital pages and contact page. Playa del Carmen, Chapala and La Peñita use the numbers from that contact page.",
+    phones: "Phone",
+    focus: {
+      orthopedics: "Route: orthopedics",
+      bariatric: "Route: bariatric",
+      plastic: "Route: plastic surgery and ophthalmology",
+      general: "In the network, no vertical assigned",
+    },
+    blurbs: {
+      marina: "The group describes it as the first tertiary hospital in Bahía de Banderas, opened in 2000, with emergency care, intensive care and a haemodynamics service. MedElite’s preferred route for major orthopedics.",
+      riviera: "Opened in 2011. The group presents it as tied to medical travel in the area. Orthopedic route alongside Marina, Chapala and San Miguel.",
+      guadalajara: "The group describes a tertiary hospital of more than 6,500 m². Bariatric route, with Querétaro.",
+      sma: "Opened in March 2021, according to the group’s page. Orthopedic route for people wintering in San Miguel de Allende.",
+      queretaro: "Opened in 2022, according to the group’s page. Bariatric route, with Guadalajara.",
+      cancun: "Opened in December 2022, according to the group’s page. Plastic surgery and ophthalmology route, with Playa del Carmen.",
+      playa: "Hospital in the Riviera Maya. Plastic surgery and ophthalmology route. The phone listed here is the one on the group’s contact page.",
+      chapala: "In Ajijic, by Lake Chapala. Orthopedic route for snowbirds in that area.",
+      penita: "Coastal hospital in La Peñita de Jaltemba. One of the nine hospitals; no vertical is assigned at this stage.",
+    },
+  },
+  facts: {
+    kicker: "Context",
+    title: "Public figures, with sources",
+    deck: "These are not MedElite outcomes and not Joya Hospitals rates.",
+    caption: "Figures cited on this page",
+    columns: ["Indicator", "Figure", "Source"],
+    rows: [
+      {
+        ind: "Canadians treated abroad, 2025",
+        fig: "105,529 (2.1% of procedures). The study warns this may be an underestimate.",
+        src: "Fraser Institute",
+      },
+      {
+        ind: "British Columbia and Ontario",
+        fig: "B.C.: 25,698 patients and a 32.2-week median wait. Ontario: 51,538 patients and 19.2 weeks. Canada: 28.6 weeks.",
+        src: "Fraser Institute, Waiting Your Turn 2025",
+      },
+      {
+        ind: "Orthopedics in Canada",
+        fig: "48.6 weeks, the longest national wait among the usual surgical specialties the study publishes.",
+        src: "Fraser Institute, 2025",
+      },
+      {
+        ind: "A different segment in British Columbia",
+        fig: "97,963 people on the surgical list and 6.0 weeks from booking to surgery, 2025–2026. This does not include the wait to see the specialist.",
+        src: "B.C. Ministry of Health, as cited on this page",
+      },
+      {
+        ind: "YVR–PVR air bridge",
+        fig: "About 5 hours to 5 hours 10 minutes. For the week of 16–22 November 2026, Directflights.com reported about 26 nonstop flights a week (WestJet, Air Canada, Flair).",
+        src: "Directflights.com; SECTUR Jalisco on Air Canada frequencies",
+      },
+      {
+        ind: "Canadians to Jalisco, 2024",
+        fig: "More than 490,000 by air; 24.5% of Jalisco’s foreign tourists.",
+        src: "SECTUR Jalisco, via El Informador (June 2025)",
+      },
+    ],
+  },
+  about: {
+    kicker: "About",
+    title: "An office in Vancouver, care in Mexico",
+    lead: "Choosing medical care is a personal decision. MedElite exists to make the path between Canada and the Joya network orderly: clear about price, about who does what, and about what this page cannot promise.",
+    storyTitle: "Who the official site names",
+    story: [
+      "On medeliteofficial.com, Erika Cruz Joya is named founder and chief executive. The page says she leads vision, partnerships and operations, and that she has a close connection to the Joya hospital network.",
+      "On the same page, Dra. Ana Carolina Belloso is named the official medical representative of Joya Hospitals in Mexico: she coordinates patients and providers and follows the clinical itinerary. We do not publish a portrait of her here.",
+    ],
+    teamTitle: "Published team",
+    erikaRole: "Founder and chief executive",
+    erika: "As stated on the About Us page of medeliteofficial.com. We do not add roles, awards or patient counts that page does not publish.",
+    erikaAlt: "Photograph of Erika Cruz Joya, founder and chief executive, published with the MedElite team.",
+    anaName: "Dra. Ana Carolina Belloso",
+    anaRole: "Official medical representative of Joya Hospitals in Mexico",
+    ana: "Role taken from the About Us page of medeliteofficial.com. Clinical review of a case is done by the treating surgeon in Mexico.",
+  },
+  faq: {
+    kicker: "Questions",
+    title: "Frequently asked questions",
+    deck: "Answers that match MedElite’s role: coordinate, not treat.",
+    items: [
+      {
+        q: "Does Canadian insurance cover this?",
+        a: "Provincial plans generally do not cover elective surgery outside the country. Some private policies review certain procedures or travel costs. Ask your insurer. MedElite does not promise a reimbursement.",
+      },
+      {
+        q: "Is it safe to fly after surgery?",
+        a: "The plan is for the surgeon to assess fit-to-fly before departure. For hip, knee and bariatric surgery the planned stay in Mexico is 7 to 10 days. The airline may require the certificate.",
+      },
+      {
+        q: "What happens after I return to Canada?",
+        a: "The path is designed to include a summary for your family doctor and a follow-up channel with the team in Mexico. The public system treats life-threatening emergencies; a surgeon in Canada may decline minor complications from surgery done abroad. That is why the stay and the report matter.",
+      },
+      {
+        q: "Is MedElite the hospital?",
+        a: "No. MedElite is the coordination office in Vancouver. Grupo Médico Joya is the anchor hospital partner. The medical act belongs to the hospital and the surgeon in Mexico.",
+      },
+      {
+        q: "Is the video call a medical appointment in Canada?",
+        a: "No. It is an informational orientation with the physician in Mexico. It does not create a medical practice in British Columbia and it does not authorize a prescription for Canada.",
+      },
+      {
+        q: "Do you hold JCI, CLACS, CSG, GHA or MTA?",
+        a: "We do not claim them. Those names are not presented as accreditations obtained. GHA and MTA are standards MedElite is working toward.",
+      },
+      {
+        q: "Is the questionnaire range the price?",
+        a: "No. It is an estimate from the knee example, or a notice that the case is on request. The written quote, after the surgeon’s review, is the only price.",
+      },
+      {
+        q: "Can I deduct the surgery on my taxes?",
+        a: "A medical portion may qualify under the CRA’s METC rules. Hotel and logistics usually do not. Ask your accountant. This page is not tax advice.",
+      },
+      {
+        q: "Can a family member travel with me?",
+        a: "Yes. The Executive level is designed with a companion in mind. The written document states what their stay includes.",
+      },
+      {
+        q: "Which languages do you coordinate in?",
+        a: "This page is in Spanish, English and French. The group describes English and Spanish care at several hospitals. If you need French at the hospital, we ask when we coordinate; we do not guarantee it at every site.",
+      },
+    ],
+  },
+  audio: {
+    kicker: "Audio",
+    title: "A short introduction",
+    deck: "Voice generated by artificial intelligence, with a transcript. It is not the voice of a team member.",
+    heading: "What MedElite is",
+    body: "Narration in the language of this page. Synthetic voice.",
+    transcript: "Transcript",
+    text: "MedElite International Health is a Canadian medical coordination service, with an office in Vancouver. It connects patients from Canada with the allied Joya hospital network in Mexico. The questionnaire on this page is not a clinical assessment. The medical decision is the surgeon’s, in Mexico. This narration was generated with artificial intelligence.",
+  },
+  contact: {
+    kicker: "Contact",
+    title: "Coordination office in Vancouver",
+    deck: "Monday to Friday, 9:00 a.m. to 5:00 p.m. Vancouver time. The published aim is to reply within one business day. Do not send scans, diagnoses or card numbers this way.",
+    email: "Email",
+    phone: "Phone",
+    hours: "Hours",
+    hoursValue: "Mon–Fri, 9:00 a.m.–5:00 p.m. (Vancouver time)",
+    response: "info@medeliteofficial.com · +1 (604) 442-8475",
+    city: "Vancouver, BC, Canada. We do not publish a street address.",
+  },
+  footer: {
+    tag: "Coordination of elective care between Canada and Mexico.",
+    about:
+      "MedElite International Health is a Canadian company with a coordination office in Vancouver. Hospital Joya is the allied hospital network. MedElite does not speak for the hospital.",
+    fine: "Nothing on this page is a quote, a diagnosis or a promise of outcome. The written agreement, if you proceed, replaces these texts.",
+    follow: "Social",
+    contact: "Contact",
+    legal: "Legal",
+    copy: "© 2026 MedElite International Health.",
+    pwa: "You can install this site from your browser. It updates itself when a new version is published.",
+    official: "Official site",
+  },
+  sourcesTitle: "Sources",
+  privacy: {
+    kicker: "Notice",
+    title: "Privacy notice",
+    updated: "Version of 14 November 2026.",
+    sections: [
+      {
+        heading: "Who is responsible",
+        paragraphs: [
+          "MedElite International Health operates a coordination office in Vancouver, British Columbia, Canada. This site, medelite.com.mx, is the public portal for that coordination.",
+          "Privacy contact: info@medeliteofficial.com and +1 (604) 442-8475, Monday to Friday, 9:00 a.m. to 5:00 p.m. Vancouver time.",
+        ],
+      },
+      {
+        heading: "This site does not keep a chart",
+        paragraphs: [
+          "There is no patient database on this site and no API keys in the code. The questionnaire opens the email app on your device, addressed to info@medeliteofficial.com. You decide whether to send the message.",
+        ],
+      },
+      {
+        heading: "What you may type",
+        paragraphs: [
+          "First name, last name, email, phone, city and province, procedure of interest, package level, approximate month, whether you are already in Mexico, whether a companion is travelling, and administrative health details: age band, BMI band, and the conditions you check (diabetes, heart disease, blood thinners).",
+          "Those health details are sensitive personal information. We do not ask for scans, images or card numbers. If you type a card number, the form rejects it when it detects one.",
+        ],
+      },
+      {
+        heading: "Why",
+        paragraphs: [
+          "To show a planning range, when one exists, and so a coordinator in Vancouver can answer your request. The range is not a quote and not a medical assessment.",
+        ],
+      },
+      {
+        heading: "Consent and transfer",
+        paragraphs: [
+          "The checkbox is consent to use those details for the request and, if needed to coordinate it, to share them with the relevant hospital and surgeon in Mexico.",
+          "In Canada, the federal PIPEDA applies and, because the office is in British Columbia, that province’s Personal Information Protection Act (PIPA) applies. If you live in another province, a local privacy law may also apply, for example PHIPA in Ontario.",
+          "In Mexico, sensitive personal information is governed by the LFPDPPP. If a clinical record comes to exist, the hospital holds it under NOM-004-SSA3-2012. This notice does not replace the hospital’s privacy notice.",
+        ],
+      },
+      {
+        heading: "Your browser",
+        paragraphs: [
+          "While the tab stays open, the questionnaire may keep answers in sessionStorage so they are not lost. That copy does not leave your device. The clear button deletes it. The language you choose is stored in localStorage and does not include health information.",
+        ],
+      },
+      {
+        heading: "Your rights",
+        paragraphs: [
+          "You may ask for access or correction, or withdraw consent, by writing to info@medeliteofficial.com. Withdrawing consent stops later uses that depend on it. It does not automatically delete a message you already sent, or a record the hospital already holds, except where the applicable law requires it.",
+        ],
+      },
+      {
+        heading: "Minors and security",
+        paragraphs: [
+          "This site is not directed at anyone under 18. The questionnaire asks you to confirm that you are an adult.",
+          "The site is served over HTTPS, with a content security policy that does not allow third-party scripts. That reduces the chance that an outside script reads the form. It is not an absolute guarantee.",
+        ],
+      },
+    ],
+  },
+  terms: {
+    kicker: "Terms",
+    title: "Terms of use",
+    updated: "Version of 14 November 2026.",
+    sections: [
+      {
+        heading: "MedElite coordinates",
+        paragraphs: [
+          "MedElite International Health is a coordination facilitator between patients from Canada and hospitals in Mexico. It is not a hospital, not a physician, not an insurer, and not an agency selling the medical act.",
+          "Using this site does not create a doctor-patient relationship with MedElite. Clinical responsibility for a procedure, if you accept one, rests with the surgeon and the hospital in Mexico.",
+        ],
+      },
+      {
+        heading: "Virtual sessions",
+        paragraphs: [
+          "Video calls with physicians in Mexico are informational and educational orientations. They are not the practice of medicine in British Columbia or in any other Canadian province.",
+          "The definitive diagnosis, any prescription, and the surgery take place in Mexico. A Mexican physician is not, by this page, licensed to practise medicine in Canada.",
+          "Vancouver staff act as patient navigation coordinators: they collect the questionnaire and arrange logistics. They do not perform clinical triage and they do not give medical advice.",
+        ],
+      },
+      {
+        heading: "Estimates",
+        paragraphs: [
+          "The ranges in Canadian dollars are the planning example for a total knee replacement (Snowbird, Essential and Executive). They are subject to medical evaluation. They are not an offer, they do not reserve an operating room, and they do not mean you are a candidate.",
+          "If a procedure has no published band, the questionnaire marks it on request. A later written quote replaces any figure on this page.",
+        ],
+      },
+      {
+        heading: "Accreditations",
+        paragraphs: [
+          "MedElite does not state that JCI, CLACS, CSG, GHA or MTA accreditation has been obtained, for itself or for Grupo Médico Joya.",
+          "GHA (Global Healthcare Accreditation) and MTA (Medical Tourism Association) are named only as standards the company is working toward.",
+        ],
+      },
+      {
+        heading: "Payment, travel and insurance",
+        paragraphs: [
+          "This site does not process payments. The intended model — a 30% deposit and the balance by transfer — binds you only if a written agreement says so.",
+          "The 7-to-10-day stay and the fit-to-fly assessment are part of the designed path for hip, knee and bariatric surgery. The surgeon may extend the stay or advise against flying.",
+          "A complications policy is part of the package design and is not treated as in force until the quote names the policy and confirms that the surgeon and hospital are registered.",
+        ],
+      },
+      {
+        heading: "Tax and emergencies",
+        paragraphs: [
+          "The text about the CRA Medical Expense Tax Credit is information. It is not tax advice. Ask an accountant.",
+          "If you have an emergency, contact local emergency services. Do not use this site for that.",
+        ],
+      },
+      {
+        heading: "The written agreement governs",
+        paragraphs: [
+          "If you continue, the coordination contract is a separate document. That document, not this page, sets the price, inclusions, cancellation and governing law.",
+          "The coordination office is in Vancouver. This notice is published from there.",
+        ],
+      },
+    ],
+  },
+  notFound: {
+    title: "This page is not here",
+    body: "The link does not match a section of this site.",
+    home: "Back to the home page",
+  },
+};
