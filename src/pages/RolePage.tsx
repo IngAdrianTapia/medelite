@@ -36,22 +36,28 @@ export function RolePage() {
       ],
     },
   }[lang];
+  const cta = lang === "fr" ? "Demander un devis" : lang === "en" ? "Request a quote" : "Solicitar cotización";
   return (
-    <main id="contenido" className="page-shell">
+    <main id="contenido" className="bg-navy text-white">
       <Seo title={`${t.title} — MedElite`} description={t.points[0] ?? t.title} path="/que-es" />
-      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
-      <ul className="mt-8 grid gap-3">
-        {t.points.map((point) => (
-          <li key={point} className="rounded-2xl border border-line bg-white shadow-sm p-4 leading-relaxed">
-            {point}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-8">
-        <Link className="underline" to="/#cotizar">
-          {lang === "fr" ? "Estimation" : lang === "en" ? "Estimate" : "Estimación"}
-        </Link>
-      </p>
+      <div className="grid min-h-svh lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="flex flex-col justify-end px-6 pt-32 pb-16 lg:px-14">
+          <h1 className="font-serif text-6xl leading-[0.9] md:text-7xl">{t.title}</h1>
+          <p className="mt-8">
+            <Link className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white" to="/#cotizar">
+              {cta}
+            </Link>
+          </p>
+        </div>
+        <ol className="divide-y divide-white/15 border-t border-white/15 lg:border-t-0 lg:border-l">
+          {t.points.map((point, index) => (
+            <li key={point} className="grid grid-cols-[4rem_1fr] gap-4 px-6 py-8 lg:px-10">
+              <span className="font-serif text-3xl text-gold-line">{String(index + 1).padStart(2, "0")}</span>
+              <p className="text-lg leading-relaxed">{point}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
     </main>
   );
 }

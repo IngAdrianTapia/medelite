@@ -52,19 +52,19 @@ export function HospitalPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="page-shell">
+    <main id="contenido">
       <Seo title={`${hospital.name} — MedElite`} description={hospital.address} path={`/red/${hospital.id}`} />
-      <p>
-        <Link className="text-sm underline" to="/red">
-          {copy.back}
-        </Link>
-      </p>
-      <h1 className="mt-4 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{hospital.name}</h1>
-      <p className="mt-2 text-muted">{hospital.city}</p>
-      <figure className="mt-6 overflow-hidden rounded-3xl border border-line">
-        <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-auto w-full object-cover" sizes="(min-width: 768px) 48rem, 100vw" priority />
-      </figure>
-      <p className="mt-6">{hospital.address}</p>
+      <header className="relative flex min-h-[78vh] items-end bg-navy text-white">
+        <FacilityPhoto name={hospital.id} fill priority alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-navy/20" />
+        <div className="relative z-10 w-full px-6 pt-32 pb-12">
+          <Link className="text-sm text-gold-line underline" to="/red">{copy.back}</Link>
+          <h1 className="mt-4 max-w-4xl font-serif text-5xl leading-[0.92] md:text-7xl">{hospital.name}</h1>
+          <p className="mt-3 text-lg text-white/80">{hospital.city}</p>
+        </div>
+      </header>
+      <div className="mx-auto max-w-3xl px-5 py-12">
+      <p>{hospital.address}</p>
       <ul className="mt-3 grid gap-2 text-sm">
         {facts.phones.map((phone) => (
           <li key={phone.tel}>
@@ -97,6 +97,7 @@ export function HospitalPage() {
           hospitaljoya.com
         </a>
       </p>
+      </div>
     </main>
   );
 }

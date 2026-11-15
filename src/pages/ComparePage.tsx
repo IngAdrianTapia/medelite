@@ -40,27 +40,31 @@ export function ComparePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="page-shell">
+    <main id="contenido">
       <Seo title={`${t.title} — MedElite`} description={t.waitBody} path="/comparar" />
-      <p className="font-serif text-4xl leading-tight">{t.hook}</p>
-      <h1 className="mt-4 font-serif text-4xl">{t.title}</h1>
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <article className="rounded-[2rem] border border-line bg-white shadow-glass p-5">
-          <h2 className="font-serif text-2xl">{t.wait}</h2>
-          <p className="mt-3 text-sm leading-relaxed">{t.waitBody}</p>
+      <header className="bg-navy px-6 pt-32 pb-16 text-white">
+        <p className="mx-auto max-w-6xl font-serif text-2xl text-gold-line">{t.hook}</p>
+        <h1 className="mx-auto mt-4 max-w-6xl font-serif text-5xl leading-[0.92] md:text-7xl">{t.title}</h1>
+      </header>
+      <div className="grid lg:grid-cols-2">
+        <article className="bg-ivory px-6 py-16 lg:px-12">
+          <h2 className="font-serif text-4xl">{t.wait}</h2>
+          <p className="mt-4 text-lg leading-relaxed">{t.waitBody}</p>
         </article>
-        <article className="rounded-[2rem] border border-line bg-paper shadow-glass p-5">
-          <h2 className="font-serif text-2xl">{t.schedule}</h2>
-          <p className="mt-3 text-sm leading-relaxed">{t.scheduleBody}</p>
+        <article className="bg-navy px-6 py-16 text-white lg:px-12">
+          <h2 className="font-serif text-4xl">{t.schedule}</h2>
+          <p className="mt-4 text-lg leading-relaxed text-white/80">{t.scheduleBody}</p>
         </article>
       </div>
-      <h2 className="mt-10 font-serif text-3xl">{t.cost}</h2>
-      <p className="mt-3 text-sm leading-relaxed">{t.costBody}</p>
-      <ul className="mt-4 grid gap-2 text-sm">
-        <li>{t.knee} Snowbird: CAD {PACKAGE_BANDS.snowbird.low.toLocaleString("en-CA")}</li>
-        <li>{t.knee} Essential: CAD {PACKAGE_BANDS.essential.low.toLocaleString("en-CA")}</li>
-        <li>{t.knee} Executive: CAD {PACKAGE_BANDS.executive.low.toLocaleString("en-CA")}</li>
-      </ul>
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <h2 className="font-serif text-4xl">{t.cost}</h2>
+        <p className="mt-4 max-w-3xl leading-relaxed text-muted">{t.costBody}</p>
+        <ul className="mt-8 grid gap-4 md:grid-cols-3">
+          <li className="rounded-[2rem] border border-line bg-white p-6"><span className="block text-sm text-muted">{t.knee} Snowbird</span><span className="mt-2 block font-serif text-4xl">CAD {PACKAGE_BANDS.snowbird.low.toLocaleString("en-CA")}</span></li>
+          <li className="rounded-[2rem] border-2 border-gold bg-white p-6"><span className="block text-sm text-muted">{t.knee} Essential</span><span className="mt-2 block font-serif text-4xl">CAD {PACKAGE_BANDS.essential.low.toLocaleString("en-CA")}</span></li>
+          <li className="rounded-[2rem] border border-line bg-white p-6"><span className="block text-sm text-muted">{t.knee} Executive</span><span className="mt-2 block font-serif text-4xl">CAD {PACKAGE_BANDS.executive.low.toLocaleString("en-CA")}</span></li>
+        </ul>
+      </section>
     </main>
   );
 }

@@ -9,9 +9,6 @@ const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
   { id: "fr", label: "FR", name: "Français", html: "fr-CA" },
 ];
 
-const ctaClass =
-  "min-h-11 items-center justify-center rounded-full bg-gold px-5 text-sm font-semibold text-white shadow-premium transition hover:bg-white hover:text-navy";
-
 export function Header() {
   const { m, lang, setLang } = useI18n();
   const { pathname } = useLocation();
@@ -34,49 +31,44 @@ export function Header() {
   }, [open]);
 
   const extra = {
-    es: { flights: "Vuelos", route: "Mi ruta", map: "Mapa" },
-    en: { flights: "Flights", route: "My route", map: "Map" },
-    fr: { flights: "Vols", route: "Ma route", map: "Carte" },
+    es: { flights: "Vuelos", route: "Ruta", map: "Mapa", what: "Qué es" },
+    en: { flights: "Flights", route: "Route", map: "Map", what: "What we are" },
+    fr: { flights: "Vols", route: "Route", map: "Carte", what: "Qui nous sommes" },
   }[lang];
   const links = [
-    ["/ruta", extra.route],
-    ["/comparar", lang === "en" ? "Compare" : lang === "fr" ? "Comparer" : "Comparar"],
+    ["/que-es", extra.what],
     ["/red", m.nav.network],
-    ["/mapa", extra.map],
+    ["/especialidades", m.nav.specialties],
+    ["/ruta", extra.route],
     ["/vuelos", extra.flights],
+    ["/mapa", extra.map],
   ] as const;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/92 text-white shadow-premium backdrop-blur-xl">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <a
         href="#contenido"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-gold-line focus:px-5 focus:py-2 focus:text-navy"
+        className="pointer-events-auto sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-gold-line focus:px-5 focus:py-2 focus:text-navy"
       >
         {m.skip}
       </a>
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-3">
-        <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)}>
-          <img
-            src="/assets/brand/medelite-logo-horizontal.png"
-            width={643}
-            height={160}
-            alt="MedElite International Health"
-            className="h-8 w-auto md:h-9"
-          />
+      <div className="pointer-events-auto mx-auto mt-3 flex max-w-6xl items-center gap-3 rounded-full border border-white/25 bg-navy/45 px-3 py-2 text-white shadow-premium backdrop-blur-xl">
+        <Link to="/#inicio" className="shrink-0 pl-1" onClick={() => setOpen(false)}>
+          <img src="/assets/brand/medelite-logo-horizontal.png" width={643} height={160} alt="MedElite International Health" className="h-8 w-auto" />
         </Link>
-        <nav className="ml-auto hidden items-center gap-7 lg:flex" aria-label={m.nav.aria}>
+        <nav className="ml-auto hidden items-center gap-5 lg:flex" aria-label={m.nav.aria}>
           {links.map(([href, label]) => (
             <Link
               key={href}
               to={href}
               aria-current={pathname === href ? "page" : undefined}
-              className="text-sm font-medium text-white/75 hover:text-white aria-[current=page]:text-gold-line"
+              className="text-sm text-white/80 hover:text-white aria-[current=page]:text-gold-line"
             >
               {label}
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-2 lg:ml-4">
+        <div className="ml-auto flex items-center gap-2 lg:ml-3">
           <div className="flex rounded-full bg-white/10 p-1" role="group" aria-label={m.langAria}>
             {LANGS.map((item) => (
               <button
@@ -85,32 +77,26 @@ export function Header() {
                 lang={item.html}
                 aria-pressed={lang === item.id}
                 aria-label={`${item.label}, ${item.name}`}
-                className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-bold tracking-wide ${
-                  lang === item.id ? "bg-white text-navy" : "text-white/70 hover:text-white"
-                }`}
+                className={`min-h-10 min-w-10 rounded-full px-2 text-xs font-bold ${lang === item.id ? "bg-white text-navy" : "text-white/75"}`}
                 onClick={() => setLang(item.id)}
               >
                 {item.label}
               </button>
             ))}
           </div>
-          <Link to="/#cotizar" className={`hidden md:inline-flex ${ctaClass}`}>
+          <Link to="/#cotizar" className="hidden min-h-10 items-center rounded-full bg-gold px-4 text-sm font-semibold text-white hover:bg-white hover:text-navy md:inline-flex">
             {m.hero.ctaQuote}
           </Link>
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/20 text-white lg:hidden"
+            className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-white/30 lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen((value) => !value)}
           >
             <span className="sr-only">{open ? m.nav.close : m.nav.menu}</span>
-            <span aria-hidden="true" className="flex w-4 flex-col gap-1">
-              <span className="h-0.5 bg-current" />
-              <span className="h-0.5 bg-current" />
-              <span className="h-0.5 bg-current" />
-            </span>
+            <span aria-hidden="true" className="text-lg leading-none">{open ? "×" : "☰"}</span>
           </button>
         </div>
       </div>
@@ -118,23 +104,18 @@ export function Header() {
         id="menu-movil"
         ref={menuRef}
         hidden={!open}
-        className="border-t border-white/10 bg-navy px-5 py-4 lg:hidden"
+        className="pointer-events-auto fixed inset-x-0 top-20 bottom-0 z-40 flex flex-col justify-center bg-navy/95 px-8 backdrop-blur-xl lg:hidden"
         aria-label={m.nav.aria}
       >
-        <ul className="grid gap-1">
+        <ul className="grid gap-2">
           <li>
-            <Link to="/#cotizar" className={`inline-flex w-full ${ctaClass}`} onClick={() => setOpen(false)}>
+            <Link to="/#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-gold px-5 text-sm font-semibold text-white" onClick={() => setOpen(false)}>
               {m.hero.ctaQuote}
             </Link>
           </li>
           {links.map(([href, label]) => (
             <li key={href}>
-              <Link
-                to={href}
-                aria-current={pathname === href ? "page" : undefined}
-                className="block rounded-2xl px-4 py-3 text-base font-medium text-white/85 hover:bg-white/10"
-                onClick={() => setOpen(false)}
-              >
+              <Link to={href} className="block py-2 font-serif text-4xl text-white" aria-current={pathname === href ? "page" : undefined} onClick={() => setOpen(false)}>
                 {label}
               </Link>
             </li>

@@ -53,11 +53,16 @@ export function SpecialtiesPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="page-shell-wide">
+    <main id="contenido">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
-      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
-      <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
-      <p className="mt-4 max-w-3xl leading-relaxed text-muted">{t.deck}</p>
+      <header className="bg-navy px-5 pt-32 pb-16 text-white">
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <h1 className="font-serif text-5xl leading-[0.92] md:text-7xl">{t.title}</h1>
+          <p className="text-lg text-white/75">{t.deck}</p>
+        </div>
+      </header>
+      <div className="mx-auto max-w-6xl px-5 py-10">
+      <p className="max-w-3xl text-sm text-muted">{t.more}</p>
       <p className="mt-3 max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {LINE_IDS.map((id) => (
@@ -87,14 +92,16 @@ export function SpecialtiesPage() {
           </li>
         ))}
       </ul>
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {PUBLIC_SPECIALTIES.map((id) => {
+      <div className="mt-10 grid gap-6">
+        {PUBLIC_SPECIALTIES.map((id, index) => {
           const photo = PHOTO_FOR[id] ?? "patient-room";
           const sites = SPECIALTY_SITES[id];
           return (
-            <article key={id} id={id} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
-              <FacilityPhoto name={photo} alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} className="h-48 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
-              <div className="p-5">
+            <article key={id} id={id} className={`grid overflow-hidden rounded-[2rem] bg-navy text-white md:grid-cols-2 ${index % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+              <div className="relative min-h-72">
+                <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} sizes="(min-width: 768px) 40rem, 100vw" />
+              </div>
+              <div className="flex flex-col justify-end p-8">
                 <h2 className="font-serif text-3xl">{SPECIALTY_LABEL[id][lang]}</h2>
                 {sites.length > 0 ? (
                   <ul className="mt-3 text-sm">
@@ -131,6 +138,7 @@ export function SpecialtiesPage() {
           </li>
         ))}
       </ul>
+      </div>
     </main>
   );
 }

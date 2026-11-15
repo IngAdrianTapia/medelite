@@ -81,16 +81,22 @@ export function NetworkPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="page-shell-wide">
+    <main id="contenido">
       <Seo title={`${intro.title} — MedElite`} description={intro.deck} path="/red" />
-      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{intro.kicker}</p>
-      <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.1] tracking-tight text-ink">{intro.title}</h1>
-      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{intro.deck}</p>
-      <p className="mt-4 max-w-3xl text-sm leading-relaxed">{intro.hours}</p>
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <header className="bg-navy px-5 pt-32 pb-12 text-white">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs tracking-[0.22em] text-gold-line uppercase">{intro.kicker}</p>
+          <h1 className="mt-3 max-w-4xl font-serif text-5xl leading-[0.92] md:text-7xl">{intro.title}</h1>
+          <p className="mt-5 max-w-2xl text-lg text-white/75">{intro.deck}</p>
+          <p className="mt-3 max-w-2xl text-sm text-white/60">{intro.hours}</p>
+        </div>
+      </header>
+      <div className="flex snap-x gap-4 overflow-x-auto bg-ivory px-5 py-8" tabIndex={0} aria-label={intro.title}>
         {HOSPITALS.map((hospital) => (
-          <article key={hospital.id} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
-            <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-56 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
+          <article key={hospital.id} className="w-80 shrink-0 snap-start overflow-hidden rounded-[2rem] bg-white shadow-premium">
+            <div className="relative h-64">
+              <FacilityPhoto name={hospital.id} fill alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="20rem" />
+            </div>
             <div className="p-5">
               <h2 className="font-serif text-2xl">
                 <Link className="underline decoration-current underline-offset-4" to={`/red/${hospital.id}`}>
@@ -106,6 +112,7 @@ export function NetworkPage() {
           </article>
         ))}
       </div>
+      <div className="mx-auto max-w-6xl px-5 pb-16">
       <h2 className="mt-14 font-serif text-3xl">{intro.soon}</h2>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2">
         {UPCOMING.map((id) => (
@@ -172,6 +179,7 @@ export function NetworkPage() {
             {lang === "en" ? "Insurers Joya publishes" : lang === "fr" ? "Assureurs que Joya publie" : "Aseguradoras que publica Joya"}
           </Link>
         </p>
+      </div>
       </div>
     </main>
   );

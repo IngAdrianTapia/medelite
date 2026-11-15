@@ -145,26 +145,29 @@ export function QuoteWizard() {
       : null;
 
   return (
-    <div className="rounded-3xl border border-line border-t-4 border-t-gold bg-white p-5 shadow-premium md:p-10">
-      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{m.wizard.kicker}</p>
-      <h2 className="mt-3 font-serif text-4xl tracking-tight">{m.wizard.title}</h2>
+    <div className="grid overflow-hidden rounded-[2rem] bg-white shadow-premium lg:grid-cols-[16rem_1fr]">
+      <aside className="bg-navy p-6 text-white">
+        <p className="text-xs tracking-[0.2em] text-gold-line uppercase">{m.wizard.kicker}</p>
+        <ol className="mt-6 grid gap-3" aria-label={progress}>
+          {STEP_IDS.map((id, index) => (
+            <li key={id}>
+              <span
+                className={`flex min-h-11 items-center gap-3 text-sm ${index === stepIndex ? "text-white" : "text-white/45"}`}
+                aria-current={index === stepIndex ? "step" : undefined}
+              >
+                <span className={`grid h-8 w-8 place-items-center rounded-full text-xs ${index === stepIndex ? "bg-gold text-white" : "border border-white/20"}`}>{index + 1}</span>
+                {m.wizard.steps[index]}
+              </span>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-6 text-xs text-white/60">{progress}</p>
+      </aside>
+      <div className="p-5 md:p-10">
+      <h2 className="font-serif text-4xl tracking-tight md:text-5xl">{m.wizard.title}</h2>
       <p className="mt-3 max-w-3xl text-muted">{m.wizard.deck}</p>
       <p className="mt-4 rounded-2xl bg-soft px-4 py-3 text-sm leading-relaxed text-ink">{m.wizard.admin}</p>
       <p className="mt-3 text-sm leading-relaxed text-warn">{m.wizard.emergency}</p>
-
-      <ol className="mt-6 flex flex-wrap gap-2" aria-label={progress}>
-        {STEP_IDS.map((id, index) => (
-          <li key={id}>
-            <span
-              className={`inline-flex min-h-9 items-center rounded-full px-3 text-xs ${index === stepIndex ? "bg-navy text-white" : "bg-paper text-muted"}`}
-              aria-current={index === stepIndex ? "step" : undefined}
-            >
-              {m.wizard.steps[index]}
-            </span>
-          </li>
-        ))}
-      </ol>
-      <p className="mt-3 text-sm text-muted">{progress}</p>
 
       <h3 ref={headingRef} tabIndex={-1} className="mt-6 text-xl font-semibold">
         {m.wizard.steps[stepIndex]}
@@ -447,6 +450,7 @@ export function QuoteWizard() {
         <button type="button" className="inline-flex min-h-11 items-center rounded-full px-4 text-sm text-muted underline" onClick={clearAll}>
           {m.wizard.clear}
         </button>
+      </div>
       </div>
     </div>
   );

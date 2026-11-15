@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-15 — arquitectura nueva
+
+La portada deja de ser una columna de secciones. Ahora es un hero a pantalla completa con la fachada de Hospital Joya Cancún, una barra de vidrio, una retícula bento, una línea de tiempo ligada al scroll, un carrusel horizontal con un esquema de las nueve sedes, tarjetas grandes de especialidad, comparación de paquetes con Essential elevado, galería editorial y un cuestionario en dos paneles. No se inventaron precios, datos clínicos ni testimonios.
+
 ## 2026-11-15 — rediseño visual
 
 La portada pasa a un hero a dos columnas con la fotografía real de Hospital Joya Marina, barra y pie en navy, acento bronce y el llamado «Solicitar cotización» (en: Request a quote, fr: Demander un devis). No se añadieron testimonios, precios ni datos clínicos. Los textos de es/en/fr, la CSP y las pruebas existentes se mantienen.

@@ -44,7 +44,7 @@ export function AppRoutes() {
   return (
     <>
       <Header />
-      <div className="pb-24">
+      <div>
         <Suspense fallback={<Pending />}>
           <Routes>
             <Route path="/" element={<HomePage />} />

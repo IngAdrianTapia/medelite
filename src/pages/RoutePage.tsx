@@ -222,12 +222,15 @@ export function RoutePage() {
   }
 
   return (
-    <main id="contenido" className="page-shell print:max-w-none">
+    <main id="contenido" className="print:max-w-none">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
-      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
-      <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
-      <p className="mt-4 text-muted">{t.deck}</p>
-      <form className="mt-6 grid gap-3 sm:grid-cols-2 print:hidden" onSubmit={(event) => event.preventDefault()}>
+      <header className="bg-navy px-5 pt-32 pb-12 text-white">
+        <p className="mx-auto max-w-6xl text-xs tracking-[0.22em] text-gold-line uppercase">{t.kicker}</p>
+        <h1 className="mx-auto mt-3 max-w-6xl font-serif text-5xl leading-[0.92] md:text-7xl">{t.title}</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-white/75">{t.deck}</p>
+      </header>
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <form className="grid h-fit gap-3 rounded-[2rem] bg-white p-6 shadow-premium print:hidden" onSubmit={(event) => event.preventDefault()}>
         <label className="grid gap-1 text-sm">
           {t.origin}
           <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={origin} onChange={(event) => { const value = event.target.value as OriginCode; setOrigin(value); publish({ origin: value }); }}>
@@ -258,15 +261,17 @@ export function RoutePage() {
         </label>
       </form>
 
-      <ol id="itinerario" className="mt-8 border-l border-navy">
+      <ol id="itinerario" className="border-l-2 border-gold pl-6">
         {steps.map((step, index) => (
-          <li key={step.id} className="ml-4 border-b border-line py-4">
-            <p className="text-xs font-semibold text-navy">{String(index + 1).padStart(2, "0")}</p>
-            <p className="mt-1">{t.steps[step.id]}</p>
+          <li key={step.id} className="relative pb-8">
+            <p className="font-serif text-4xl text-gold">{String(index + 1).padStart(2, "0")}</p>
+            <p className="mt-1 text-lg">{t.steps[step.id]}</p>
           </li>
         ))}
       </ol>
+      </div>
 
+      <div className="mx-auto max-w-6xl px-5 pb-16">
       <section id="match" className="mt-10 rounded-[2rem] border border-line bg-white shadow-glass p-5">
         <h2 className="font-serif text-3xl">{t.match}</h2>
         <p className="mt-3 leading-relaxed">{t.why[match.why]}</p>
@@ -330,6 +335,7 @@ export function RoutePage() {
         <button type="button" className="inline-flex min-h-12 w-fit items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={() => window.print()}>
           {t.print}
         </button>
+      </div>
       </div>
     </main>
   );
