@@ -75,8 +75,8 @@ export function HomePage() {
     <main id="contenido">
       <Seo title={m.meta.title} description={m.meta.description} path="/" />
 
-      <section id="inicio" className="bg-navy pt-16 text-white lg:grid lg:min-h-svh lg:grid-cols-2 lg:pt-0">
-        <div className="order-1 relative h-44 overflow-hidden sm:h-80 lg:order-2 lg:h-auto lg:min-h-svh">
+      <section id="inicio" className="bg-navy px-5 pt-20 text-white lg:grid lg:min-h-svh lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-stretch lg:gap-12 lg:px-10 lg:pt-28 lg:pb-24">
+        <div className="relative h-44 overflow-hidden rounded-3xl sm:h-72 lg:order-2 lg:h-auto lg:min-h-[28rem] lg:rounded-[2rem]">
           {HERO_FRAMES.map((name, index) => (
             <div key={name} className="hero-frame absolute inset-0">
               <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
@@ -84,29 +84,30 @@ export function HomePage() {
                   name={name}
                   fill
                   priority={index === 0}
+                  fetchPriority={index === 0 ? "high" : "low"}
                   alt={index === 0 ? (PHOTO_OF[name]?.[lang] ?? name) : ""}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 46vw, 100vw"
                   className="object-center"
                 />
               </div>
             </div>
           ))}
         </div>
-        <div className="order-2 flex flex-col justify-center px-5 py-8 sm:px-8 lg:order-1 lg:px-12 lg:py-32">
+        <div className="flex flex-col justify-center pt-6 pb-4 lg:order-1 lg:py-6 lg:pr-2">
           <p className="text-xs font-semibold tracking-[0.18em] text-gold-line uppercase">{m.hero.kicker}</p>
-          <h1 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-balance text-white sm:text-5xl lg:text-6xl">{line}</h1>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white">{m.hero.title}</p>
-          <p className="mt-3 max-w-xl text-base leading-relaxed text-white/85">{m.hero.lede}</p>
-          <p className="mt-4 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-relaxed text-white/85">{m.notice}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <h1 className="mt-4 max-w-xl font-serif text-4xl leading-[1.05] text-balance text-white sm:text-5xl lg:mt-5 lg:text-6xl">{line}</h1>
+          <p className="mt-4 max-w-xl text-lg leading-snug font-medium text-white lg:mt-5">{m.hero.title}</p>
+          <p className="mt-3 max-w-xl text-base leading-7 text-white/90">{m.hero.lede}</p>
+          <p className="mt-5 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-6 text-white/90">{m.notice}</p>
+          <div className="mt-6 flex flex-wrap gap-3 pb-2">
             <a href="#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white hover:bg-white hover:text-navy">
               {m.hero.ctaQuote}
             </a>
-            <a href="#recorrido" className="inline-flex min-h-12 items-center rounded-full border border-white/40 px-6 text-sm text-white hover:bg-white hover:text-navy">
+            <a href="#recorrido" className="inline-flex min-h-12 items-center rounded-full border border-white/55 px-6 text-sm text-white hover:bg-white hover:text-navy">
               {m.hero.ctaHow}
             </a>
           </div>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85">{fraser}</p>
+          <p className="mt-12 max-w-xl text-sm leading-6 text-white/80 lg:mt-6">{fraser}</p>
         </div>
       </section>
 

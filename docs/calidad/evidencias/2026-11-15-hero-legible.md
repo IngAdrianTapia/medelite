@@ -130,6 +130,36 @@ No hay script nuevo, dependencia nueva ni origen externo. La CSP no se editó. L
 | A06 | Auditoría no repetida: no cambió el árbol de paquetes | Sigue el resultado de la ficha del logo |
 | A08 | Sin recurso de terceros | Fotos y fuentes ya del propio sitio |
 
+## Acabado
+
+El dueño pidió dejar la portada a un nivel más cuidado antes de fusionar. Lo que se veía mal en las capturas de 375×812 y 1440×1000, y cómo quedó:
+
+| Antes | Después |
+| --- | --- |
+| En 375 px la cita Fraser quedaba cortada a media línea, y los botones rozaban el borde | El primer pantallazo termina en los dos llamados, completos, con aire debajo. La cita empieza al desplazar |
+| En 1440 px la barra flotante pisaba la foto y el corte era vertical y duro | La foto es un panel con esquinas redondas, debajo de la barra. El dock queda sobre navy, no sobre el edificio |
+| El fundido de los tres encuadres era corto y, con `prefers-reduced-motion`, la animación terminaba en opacidad 0 y ocultaba la foto | El fundido dura unos 4.8 s dentro de un ciclo de 30 s. Ken Burns va de escala 1.02 a 1.08 en 26 s. Con movimiento reducido se queda el primer encuadre, visible |
+| El lede y el aviso iban a blanco al 85 % | Van a blanco al 90 % (14.61:1). La cita, al 80 % (11.69:1). El botón de oro sigue en 6.29:1. Todos por encima de 4.5:1 |
+| Los otros dos encuadres competían con la foto de arranque | El primero lleva `fetchpriority="high"` y `loading="eager"`. Los otros dos, `low` y `lazy` |
+
+El presupuesto de esta corrida: `JS gzip max 78340, total 223892, foto max 126016`. Lint, tipos y las 18 pruebas siguieron en 0.
+
+Antes, 375 px:
+
+![Portada antes, 375 px](./2026-11-15-hero-antes-375.png)
+
+Después, 375 px:
+
+![Portada después, 375 px](./2026-11-15-hero-despues-375.png)
+
+Antes, 1440 px:
+
+![Portada antes, 1440 px](./2026-11-15-hero-antes-1440.png)
+
+Después, 1440 px:
+
+![Portada después, 1440 px](./2026-11-15-hero-despues-1440.png)
+
 ## Resultado
 
 La portada se lee sobre navy y la fotografía queda libre. En 375×812 se ven el logo chico, la foto, el titular, el lede, el aviso y los dos llamados, sin el dock encima. En 1440×1000 el texto y la fachada van lado a lado. Motion, la paleta y los tres idiomas siguen. El fondo claro de la propuesta no se usó. Lint, tipos, 18 pruebas y el build terminaron en 0.

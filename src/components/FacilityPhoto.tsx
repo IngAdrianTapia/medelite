@@ -56,6 +56,7 @@ export function FacilityPhoto({
   fill = false,
   className = "",
   sizes = "(min-width: 1024px) 36rem, 100vw",
+  fetchPriority,
 }: {
   name: string;
   alt: string;
@@ -63,6 +64,7 @@ export function FacilityPhoto({
   fill?: boolean;
   className?: string;
   sizes?: string;
+  fetchPriority?: "high" | "low" | "auto";
 }) {
   const box = INTRINSIC[name] ?? [4, 3];
   const rows = VARIANTS[name] ?? [];
@@ -78,7 +80,7 @@ export function FacilityPhoto({
         height={box[1]}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
-        fetchPriority={priority ? "high" : "auto"}
+        fetchPriority={fetchPriority ?? (priority ? "high" : "auto")}
         className={fill ? `h-full w-full object-cover ${className}` : className}
       />
     </picture>

@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-15 — acabado de la portada
+
+La foto del hero pasa a un panel con esquinas redondas, debajo de la barra. En 375 px el primer pantallazo termina en los llamados, sin cortar la cita Fraser. El fundido de los tres encuadres es más largo, Ken Burns es más corto, y con `prefers-reduced-motion` el primer encuadre permanece visible. El lede y el aviso suben a blanco al 90 % (14.61:1). Capturas antes y después en [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md).
+
 ## 2026-11-15 — hero legible y barra en móvil
 
 La portada deja de poner el titular encima de la fotografía. En escritorio el texto queda en una columna navy y la foto, con los tres encuadres y el movimiento Ken Burns, ocupa la otra. En 375 px la foto va arriba y el texto debajo. El logo de la barra pasa a `h-8` por debajo de `sm`. El botón fijo de contacto se oculta hasta `md` para no tapar el contenido. `main .grid > *` admite `min-width: 0`. Se mantienen Motion, `prefers-reduced-motion`, la paleta navy y los textos es/en/fr. No se adoptó el fondo claro ni las clases sueltas de la propuesta. Ficha: [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md).
