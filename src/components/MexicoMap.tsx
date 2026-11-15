@@ -44,7 +44,7 @@ export function MexicoMap({ label }: { label: string }) {
             <li key={hospital.id} className="absolute" style={{ left: `${pin.x}%`, top: `${pin.y}%` }}>
               <Link
                 to={`/red/${hospital.id}`}
-                className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full px-2 py-2 text-[10px] font-semibold tracking-wide text-gold-line hover:text-white"
+                className="absolute -translate-x-1/2 -translate-y-1/2 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-gold-line hover:text-white"
               >
                 <span className="sr-only">{hospital.name}</span>
                 <span aria-hidden="true" className="block h-3 w-3 rounded-full bg-gold-line shadow-[0_0_0_6px_rgba(196,165,116,0.25)]" />

@@ -10,6 +10,7 @@ import { HOSPITALS } from "../data/hospitals";
 import { PEOPLE } from "../data/people";
 import { PACKAGE_BANDS, PACKAGE_IDS, formatCad, formatRange } from "../data/packages";
 import { CRA_MEDICAL_EXPENSES, HM_RELEASE, SOURCES } from "../data/sources";
+import { POSITIONING } from "../content/positioning";
 import { PHOTO_OF } from "../i18n/labels";
 import { useI18n } from "../i18n";
 
@@ -49,21 +50,7 @@ export function HomePage() {
   const { hash } = useLocation();
   const { m, lang } = useI18n();
   const reduce = useReducedMotion();
-  const line =
-    lang === "en" ? "Get treated in weeks, not years." : lang === "fr" ? "Se faire soigner en semaines, pas en années." : "Atenderse en semanas, no en años.";
-  const fraser =
-    lang === "en"
-      ? "Fraser Institute, Waiting Your Turn 2025: 48.6 weeks median for orthopedics in Canada. A date here is written after the surgeon in Mexico reviews the case. It is not a guaranteed interval."
-      : lang === "fr"
-        ? "Institut Fraser, Waiting Your Turn 2025 : 48,6 semaines médianes en orthopédie au Canada. Une date ici s’écrit après l’examen du chirurgien au Mexique. Ce n’est pas un délai garanti."
-        : "Fraser Institute, Waiting Your Turn 2025: 48.6 semanas de espera mediana en ortopedia en Canadá. Una fecha aquí se escribe después de que el cirujano en México revisa el caso. No es un plazo garantizado.";
-  const mapLabel = lang === "en" ? "Schematic of nine Joya hospitals" : lang === "fr" ? "Schéma des neuf hôpitaux Joya" : "Esquema de las nueve sedes Joya";
-  const mapNote =
-    lang === "en"
-      ? "A schematic, not a survey map. Dots are the nine open Joya hospitals."
-      : lang === "fr"
-        ? "Un schéma, pas une carte topographique. Les points sont les neuf hôpitaux Joya ouverts."
-        : "Un esquema, no un mapa topográfico. Los puntos son las nueve sedes Joya abiertas.";
+  const copy = POSITIONING[lang];
 
   useEffect(() => {
     if (!/^#[a-z0-9-]+$/i.test(hash)) return;
@@ -95,7 +82,7 @@ export function HomePage() {
         </div>
         <div className="flex flex-col justify-center pt-6 pb-4 lg:order-1 lg:py-6 lg:pr-2">
           <p className="text-xs font-semibold tracking-[0.18em] text-gold-line uppercase">{m.hero.kicker}</p>
-          <h1 className="mt-4 max-w-xl font-serif text-4xl leading-[1.05] text-balance text-white sm:text-5xl lg:mt-5 lg:text-6xl">{line}</h1>
+          <h1 className="mt-4 max-w-xl font-serif text-4xl leading-[1.05] text-balance text-white sm:text-5xl lg:mt-5 lg:text-6xl">{copy.headline}</h1>
           <p className="mt-4 max-w-xl text-lg leading-snug font-medium text-white lg:mt-5">{m.hero.title}</p>
           <p className="mt-3 max-w-xl text-base leading-7 text-white/90">{m.hero.lede}</p>
           <p className="mt-5 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-6 text-white/90">{m.notice}</p>
@@ -107,7 +94,7 @@ export function HomePage() {
               {m.hero.ctaHow}
             </a>
           </div>
-          <p className="mt-12 max-w-xl text-sm leading-6 text-white/80 lg:mt-6">{fraser}</p>
+          <p className="mt-12 max-w-xl text-sm leading-6 text-white/80 lg:mt-6">{copy.fraser}</p>
         </div>
       </section>
 
@@ -160,9 +147,9 @@ export function HomePage() {
             <p className="text-xs tracking-[0.22em] text-gold uppercase">{m.network.kicker}</p>
             <h2 className="mt-3 font-serif text-5xl leading-[0.95] md:text-6xl">{m.network.title}</h2>
             <p className="mt-4 text-muted">{m.network.deck}</p>
-            <p className="mt-3 text-sm text-muted">{mapNote}</p>
+            <p className="mt-3 text-sm text-muted">{copy.mapNote}</p>
           </div>
-          <MexicoMap label={mapLabel} />
+          <MexicoMap label={copy.mapLabel} />
         </div>
         <div className="mt-8 flex snap-x gap-4 overflow-x-auto px-5 pb-2" tabIndex={0} aria-label={m.network.title}>
           {HOSPITALS.map((hospital) => (
@@ -199,7 +186,7 @@ export function HomePage() {
             const wide = index === 0;
             return (
               <article key={item.title} className={`relative min-h-[28rem] overflow-hidden rounded-[2rem] ${wide ? "lg:col-span-2 lg:min-h-[36rem]" : ""}`}>
-                <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? item.title} sizes={wide ? "100vw" : "(min-width: 1024px) 40rem, 100vw"} />
+                <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? item.title} sizes={wide ? "(min-width: 1024px) 72rem, 100vw" : "(min-width: 1024px) 36rem, 100vw"} />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7">
                   <p className="text-xs tracking-[0.18em] text-gold-line uppercase">{item.request ? m.verticals.request : m.verticals.focus}</p>
@@ -377,7 +364,7 @@ export function HomePage() {
 
       <section id="cotizar" className="relative overflow-hidden bg-navy py-20 md:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-40">
-          <FacilityPhoto name="cancun" fill alt="" sizes="100vw" />
+          <FacilityPhoto name="cancun" fill protect alt="" sizes="100vw" />
         </div>
         <div className="absolute inset-0 bg-navy/80" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-5">

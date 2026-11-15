@@ -1,5 +1,17 @@
 # Changelog de calidad
 
+## 2026-11-15 — versión Canadá, sin el brief
+
+`/canada` reúne el recorrido con los textos ya publicados. El titular de portada y las ciudades editables están en `src/content/positioning.ts`. Toronto, Calgary, cinco estrellas y brechas de precio no se imprimen: esperan el brief. El idioma por defecto sigue siendo inglés de Canadá, y EN queda primero en el interruptor.
+
+## 2026-11-15 — plan maestro
+
+El menú pasa a Inicio, Hospital Joya, MedElite, Especialidades, Médicos, Galería y Contacto. Las fotos Joya salen de la portada y quedan en `/hospital-joya` y `/galeria`, por categoría. Cada especialidad de las listas ya guardadas tiene ficha, sin procedimientos inventados. Plan: `docs/PLAN_MAESTRO_MEDELITE.md`. Ficha: [evidencias/2026-11-15-plan-maestro.md](./evidencias/2026-11-15-plan-maestro.md).
+
+## 2026-11-15 — fotos Joya
+
+Las nueve sedes usan fachadas reales de la colección autorizada. Se añadieron quirófano, habitación, tomógrafo y vestíbulo, y retratos publicados del equipo. No entra el render de Manzanillo ni fotos con pacientes. Cada archivo usado tiene URL de origen en `src/data/photoCredits.ts`. Ficha: [evidencias/2026-11-15-fotos-joya.md](./evidencias/2026-11-15-fotos-joya.md).
+
 ## 2026-11-15 — acabado de la portada
 
 La foto del hero pasa a un panel con esquinas redondas, debajo de la barra. En 375 px el primer pantallazo termina en los llamados, sin cortar la cita Fraser. El fundido de los tres encuadres es más largo, Ken Burns es más corto, y con `prefers-reduced-motion` el primer encuadre permanece visible. El lede y el aviso suben a blanco al 90 % (14.61:1). Capturas antes y después en [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md).

@@ -5,8 +5,8 @@ import type { Lang } from "../i18n/types";
 import { BrandMark } from "./BrandMark";
 
 const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
-  { id: "es", label: "ES", name: "Español", html: "es-MX" },
   { id: "en", label: "EN", name: "English", html: "en-CA" },
+  { id: "es", label: "ES", name: "Español", html: "es-MX" },
   { id: "fr", label: "FR", name: "Français", html: "fr-CA" },
 ];
 
@@ -39,18 +39,14 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const extra = {
-    es: { flights: "Vuelos", route: "Ruta", map: "Mapa", what: "Qué es" },
-    en: { flights: "Flights", route: "Route", map: "Map", what: "What we are" },
-    fr: { flights: "Vols", route: "Route", map: "Carte", what: "Qui nous sommes" },
-  }[lang];
   const links = [
-    ["/que-es", extra.what],
-    ["/red", m.nav.network],
+    ["/", m.nav.home],
+    ["/hospital-joya", m.nav.joya],
+    ["/que-es", m.nav.medelite],
     ["/especialidades", m.nav.specialties],
-    ["/ruta", extra.route],
-    ["/vuelos", extra.flights],
-    ["/mapa", extra.map],
+    ["/equipo", m.nav.doctors],
+    ["/galeria", m.nav.gallery],
+    ["/#cotizar", m.nav.contact],
   ] as const;
 
   return (
@@ -86,20 +82,20 @@ export function Header() {
                 lang={item.html}
                 aria-pressed={lang === item.id}
                 aria-label={`${item.label}, ${item.name}`}
-                className={`min-h-10 min-w-10 rounded-full px-2 text-xs font-bold ${lang === item.id ? "bg-white text-navy" : "text-white/75"}`}
+                className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-bold ${lang === item.id ? "bg-white text-navy" : "text-white/75"}`}
                 onClick={() => setLang(item.id)}
               >
                 {item.label}
               </button>
             ))}
           </div>
-          <Link to="/#cotizar" className="hidden min-h-10 items-center rounded-full bg-gold px-4 text-sm font-semibold text-white hover:bg-white hover:text-navy md:inline-flex">
+          <Link to="/#cotizar" className="hidden min-h-11 items-center rounded-full bg-gold px-4 text-sm font-semibold text-white hover:bg-white hover:text-navy md:inline-flex">
             {m.hero.ctaQuote}
           </Link>
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-white/30 lg:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-white/30 lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen((value) => !value)}

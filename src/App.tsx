@@ -12,6 +12,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 const NetworkPage = lazy(() => import("./pages/NetworkPage").then((module) => ({ default: module.NetworkPage })));
 const HospitalPage = lazy(() => import("./pages/HospitalPage").then((module) => ({ default: module.HospitalPage })));
 const SpecialtiesPage = lazy(() => import("./pages/SpecialtiesPage").then((module) => ({ default: module.SpecialtiesPage })));
+const SpecialtyPage = lazy(() => import("./pages/SpecialtyPage").then((module) => ({ default: module.SpecialtyPage })));
 const BariatricPage = lazy(() => import("./pages/BariatricPage").then((module) => ({ default: module.BariatricPage })));
 const FlightsPage = lazy(() => import("./pages/FlightsPage").then((module) => ({ default: module.FlightsPage })));
 const InsurancePage = lazy(() => import("./pages/InsurancePage").then((module) => ({ default: module.InsurancePage })));
@@ -22,6 +23,9 @@ const ComparePage = lazy(() => import("./pages/ComparePage").then((module) => ({
 const MapPage = lazy(() => import("./pages/MapPage").then((module) => ({ default: module.MapPage })));
 const PeoplePage = lazy(() => import("./pages/PeoplePage").then((module) => ({ default: module.PeoplePage })));
 const JoinPage = lazy(() => import("./pages/JoinPage").then((module) => ({ default: module.JoinPage })));
+const GalleryPage = lazy(() => import("./pages/GalleryPage").then((module) => ({ default: module.GalleryPage })));
+const HospitalJoyaPage = lazy(() => import("./pages/HospitalJoyaPage").then((module) => ({ default: module.HospitalJoyaPage })));
+const CanadaPage = lazy(() => import("./pages/CanadaPage").then((module) => ({ default: module.CanadaPage })));
 
 function PrivacyRoute() {
   const { m } = useI18n();
@@ -70,13 +74,17 @@ export function AppRoutes() {
         <Suspense fallback={<Pending />}>
           <Routes location={stripped}>
             <Route path="/" element={<HomePage />} />
+            <Route path="/hospital-joya" element={<HospitalJoyaPage />} />
+            <Route path="/galeria" element={<GalleryPage />} />
             <Route path="/red" element={<NetworkPage />} />
             <Route path="/red/:hospitalId" element={<HospitalPage />} />
             <Route path="/especialidades" element={<SpecialtiesPage />} />
+            <Route path="/especialidades/:specialtyId" element={<SpecialtyPage />} />
             <Route path="/bariatrica" element={<BariatricPage />} />
             <Route path="/vuelos" element={<FlightsPage />} />
             <Route path="/seguros" element={<InsurancePage />} />
             <Route path="/que-es" element={<RolePage />} />
+            <Route path="/canada" element={<CanadaPage />} />
             <Route path="/preparacion" element={<PreparePage />} />
             <Route path="/ruta" element={<RoutePage />} />
             <Route path="/comparar" element={<ComparePage />} />
