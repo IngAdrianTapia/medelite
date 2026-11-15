@@ -1,5 +1,25 @@
 # Changelog de calidad
 
+## 2026-11-15 — acabado de la portada
+
+La foto del hero pasa a un panel con esquinas redondas, debajo de la barra. En 375 px el primer pantallazo termina en los llamados, sin cortar la cita Fraser. El fundido de los tres encuadres es más largo, Ken Burns es más corto, y con `prefers-reduced-motion` el primer encuadre permanece visible. El lede y el aviso suben a blanco al 90 % (14.61:1). Capturas antes y después en [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md).
+
+## 2026-11-15 — hero legible y barra en móvil
+
+La portada deja de poner el titular encima de la fotografía. En escritorio el texto queda en una columna navy y la foto, con los tres encuadres y el movimiento Ken Burns, ocupa la otra. En 375 px la foto va arriba y el texto debajo. El logo de la barra pasa a `h-8` por debajo de `sm`. El botón fijo de contacto se oculta hasta `md` para no tapar el contenido. `main .grid > *` admite `min-width: 0`. Se mantienen Motion, `prefers-reduced-motion`, la paleta navy y los textos es/en/fr. No se adoptó el fondo claro ni las clases sueltas de la propuesta. Ficha: [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md).
+
+## 2026-11-15 — logo de barra y pie
+
+El wordmark de la barra y del pie (`public/assets/brand/medelite-logo-horizontal.png`) pasa a PNG RGBA con fondo transparente y un contorno blanco de 1 px alrededor de la forma (dilatación del alpha ≥ 128, radio euclidiano 1). Se quita el recuadro blanco (`bg-white`) de `BrandMark`. El original se conserva en `public/assets/brand/logo_original/medelite-logo-horizontal.png`. No se tocó el favicon ni se inventaron textos, precios o datos clínicos.
+
+### Medición
+
+- PNG resultante: modo RGBA, 645×162, esquinas con alpha 0. El archivo de `main` pesaba 21 282 bytes; el nuevo pesa 43 899.
+- La forma con alpha ≥ 128 conserva el RGBA del original. El contorno es blanco opaco y ningún píxel de color toca transparencia en ortogonal. No quedan píxeles casi blancos fuera de ese contorno.
+- Composición comprobada sobre navy `#071827`, sobre el pie `#041018`, sobre blanco y sobre tablero de transparencia. Alturas de la interfaz: 48, 56, 64 y 80 px.
+- Ficha: [evidencias/2026-11-15-logo-transparente.md](./evidencias/2026-11-15-logo-transparente.md).
+
+
 ## 2026-11-15 — arquitectura nueva
 
 La portada deja de ser una columna de secciones. Ahora es un hero a pantalla completa con la fachada de Hospital Joya Cancún, una barra de vidrio, una retícula bento, una línea de tiempo ligada al scroll, un carrusel horizontal con un esquema de las nueve sedes, tarjetas grandes de especialidad, comparación de paquetes con Essential elevado, galería editorial y un cuestionario en dos paneles. No se inventaron precios, datos clínicos ni testimonios.

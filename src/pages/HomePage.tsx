@@ -75,37 +75,39 @@ export function HomePage() {
     <main id="contenido">
       <Seo title={m.meta.title} description={m.meta.description} path="/" />
 
-      <section id="inicio" className="relative h-svh min-h-[680px] overflow-hidden bg-navy text-white">
-        {HERO_FRAMES.map((name, index) => (
-          <div key={name} className="hero-frame absolute inset-0">
-            <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
-              <FacilityPhoto
-                name={name}
-                fill
-                priority={index === 0}
-                alt={index === 0 ? (PHOTO_OF[name]?.[lang] ?? name) : ""}
-                sizes="100vw"
-                className="object-center"
-              />
+      <section id="inicio" className="bg-navy px-5 pt-20 text-white lg:grid lg:min-h-svh lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-stretch lg:gap-12 lg:px-10 lg:pt-28 lg:pb-24">
+        <div className="relative h-44 overflow-hidden rounded-3xl sm:h-72 lg:order-2 lg:h-auto lg:min-h-[28rem] lg:rounded-[2rem]">
+          {HERO_FRAMES.map((name, index) => (
+            <div key={name} className="hero-frame absolute inset-0">
+              <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
+                <FacilityPhoto
+                  name={name}
+                  fill
+                  priority={index === 0}
+                  fetchPriority={index === 0 ? "high" : "low"}
+                  alt={index === 0 ? (PHOTO_OF[name]?.[lang] ?? name) : ""}
+                  sizes="(min-width: 1024px) 46vw, 100vw"
+                  className="object-center"
+                />
+              </div>
             </div>
-          </div>
-        ))}
-        <div className="grain pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-navy/25" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 z-10 px-5 pb-36 md:px-14 md:pb-20">
-          <p className="max-w-xl text-sm text-gold-line">{m.notice}</p>
-          <p className="mt-4 text-xs tracking-[0.28em] text-white/70 uppercase">{m.hero.kicker}</p>
-          <h1 className="mt-3 max-w-5xl font-serif text-6xl leading-[0.88] tracking-tight sm:text-7xl md:text-8xl">{line}</h1>
-          <p className="mt-6 max-w-xl text-lg text-white/85">{m.hero.title}</p>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">{fraser}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          ))}
+        </div>
+        <div className="flex flex-col justify-center pt-6 pb-4 lg:order-1 lg:py-6 lg:pr-2">
+          <p className="text-xs font-semibold tracking-[0.18em] text-gold-line uppercase">{m.hero.kicker}</p>
+          <h1 className="mt-4 max-w-xl font-serif text-4xl leading-[1.05] text-balance text-white sm:text-5xl lg:mt-5 lg:text-6xl">{line}</h1>
+          <p className="mt-4 max-w-xl text-lg leading-snug font-medium text-white lg:mt-5">{m.hero.title}</p>
+          <p className="mt-3 max-w-xl text-base leading-7 text-white/90">{m.hero.lede}</p>
+          <p className="mt-5 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-6 text-white/90">{m.notice}</p>
+          <div className="mt-6 flex flex-wrap gap-3 pb-2">
             <a href="#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white hover:bg-white hover:text-navy">
               {m.hero.ctaQuote}
             </a>
-            <a href="#recorrido" className="inline-flex min-h-12 items-center rounded-full border border-white/40 px-6 text-sm text-white hover:bg-white hover:text-navy">
+            <a href="#recorrido" className="inline-flex min-h-12 items-center rounded-full border border-white/55 px-6 text-sm text-white hover:bg-white hover:text-navy">
               {m.hero.ctaHow}
             </a>
           </div>
+          <p className="mt-12 max-w-xl text-sm leading-6 text-white/80 lg:mt-6">{fraser}</p>
         </div>
       </section>
 

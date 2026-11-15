@@ -63,7 +63,7 @@ export function Header() {
       </a>
       <div className={`pointer-events-auto mx-3 mt-3 flex max-w-6xl flex-wrap items-center gap-3 rounded-3xl border px-3 py-2 text-white shadow-premium md:mx-auto ${solid ? "border-white/15 bg-navy" : "border-white/30 bg-navy/70 backdrop-blur-xl"}`}>
         <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)}>
-          <BrandMark className="h-12 sm:h-14 md:h-16" />
+          <BrandMark className="h-8 sm:h-14 md:h-16" />
         </Link>
         <nav className="ml-auto hidden items-center gap-5 lg:flex" aria-label={m.nav.aria}>
           {links.map(([href, label]) => (
