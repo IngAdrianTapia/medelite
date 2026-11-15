@@ -56,6 +56,7 @@ const ROUTES = [
   ["/ruta", "ruta/index.html"],
   ["/comparar", "comparar/index.html"],
   ["/mapa", "mapa/index.html"],
+  ["/calidad", "calidad/index.html"],
   ["/equipo", "equipo/index.html"],
   ["/hospitales", "hospitales/index.html"],
   ["/privacy", "privacy/index.html"],

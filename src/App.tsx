@@ -6,6 +6,7 @@ import { Header } from "./components/Header";
 import { useI18n } from "./i18n";
 import { parseLocalePath, prefixPath } from "./i18n/locale";
 import { HomePage } from "./pages/HomePage";
+import { CalidadPage } from "./pages/CalidadPage";
 import { LegalPage } from "./pages/LegalPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
@@ -93,6 +94,7 @@ export function AppRoutes() {
             <Route path="/hospitales" element={<JoinPage />} />
             <Route path="/privacy" element={<PrivacyRoute />} />
             <Route path="/privacidad" element={<PrivacyRoute />} />
+            <Route path="/calidad" element={<CalidadPage />} />
             <Route path="/terms" element={<TermsRoute />} />
             <Route path="/terminos" element={<TermsRoute />} />
             <Route path="*" element={<NotFoundPage />} />
