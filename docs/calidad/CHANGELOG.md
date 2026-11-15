@@ -1,5 +1,15 @@
 # Changelog de calidad
 
+## 2026-11-15 — logo de barra y pie
+
+El wordmark de la barra y del pie (`public/assets/brand/medelite-logo-horizontal.png`) pasa a PNG RGBA con fondo transparente y un contorno blanco de 3 px alrededor de la forma. Se quita el recuadro blanco (`bg-white`) de `BrandMark`. El original se conserva en `public/assets/brand/logo_original/medelite-logo-horizontal.png`. No se tocó el favicon ni se inventaron textos, precios o datos clínicos.
+
+### Medición
+
+- PNG resultante: modo RGBA, 657×173, esquinas con alpha 0.
+- Composición comprobada sobre navy `#071827` (barra y pie) y sobre tablero de transparencia.
+
+
 ## 2026-11-15 — arquitectura nueva
 
 La portada deja de ser una columna de secciones. Ahora es un hero a pantalla completa con la fachada de Hospital Joya Cancún, una barra de vidrio, una retícula bento, una línea de tiempo ligada al scroll, un carrusel horizontal con un esquema de las nueve sedes, tarjetas grandes de especialidad, comparación de paquetes con Essential elevado, galería editorial y un cuestionario en dos paneles. No se inventaron precios, datos clínicos ni testimonios.
