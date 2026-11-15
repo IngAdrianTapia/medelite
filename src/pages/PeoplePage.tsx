@@ -22,7 +22,7 @@ export function PeoplePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/equipo" />
       <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>

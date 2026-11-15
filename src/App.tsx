@@ -34,7 +34,7 @@ function TermsRoute() {
 
 function Pending() {
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell">
       <p className="text-sm text-muted">…</p>
     </main>
   );

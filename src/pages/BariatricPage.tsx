@@ -70,7 +70,7 @@ export function BariatricPage() {
       ],
       missing: "El sitio no dice cuántas noches de hotel entran en el paquete, ni la moneda, ni los vuelos. Menciona el Paradise Village como hotel donde ayudan a reservar, a unos 9 minutos a pie. Hasta que lo confirmen por escrito, el hotel no cuenta como incluido.",
       price: "No hay precio publicado. MedElite tampoco inventa una banda para bariátrica.",
-      cta: "Pedir coordinación",
+      cta: "Solicitar cotización",
     },
     en: {
       kicker: "According to drjoyaofficial.com",
@@ -89,7 +89,7 @@ export function BariatricPage() {
       ],
       missing: "The site does not say how many hotel nights are in the package, or the currency, or the flights. It names Paradise Village as a hotel they help book, about a 9-minute walk. Until that is confirmed in writing, the hotel is not treated as included.",
       price: "No price is published. MedElite does not invent a bariatric band either.",
-      cta: "Request coordination",
+      cta: "Request a quote",
     },
     fr: {
       kicker: "Selon drjoyaofficial.com",
@@ -108,12 +108,12 @@ export function BariatricPage() {
       ],
       missing: "Le site ne dit pas combien de nuits d’hôtel entrent dans le forfait, ni la devise, ni les vols. Il nomme le Paradise Village comme hôtel qu’ils aident à réserver, à environ 9 minutes à pied. Tant que ce n’est pas confirmé par écrit, l’hôtel n’est pas traité comme inclus.",
       price: "Aucun prix n’est publié. MedElite n’invente pas non plus de bande bariatrique.",
-      cta: "Demander la coordination",
+      cta: "Demander un devis",
     },
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/bariatrica" />
       <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
       <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
@@ -154,7 +154,7 @@ export function BariatricPage() {
         <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href="tel:+16044428475">
           +1 (604) 442-8475
         </a>
-        <Link className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm" to="/#cotizar">
+        <Link className="inline-flex min-h-12 items-center rounded-full bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
           {t.cta}
         </Link>
       </p>

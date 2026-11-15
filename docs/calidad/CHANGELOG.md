@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-15 — rediseño visual
+
+La portada pasa a un hero a dos columnas con la fotografía real de Hospital Joya Marina, barra y pie en navy, acento bronce y el llamado «Solicitar cotización» (en: Request a quote, fr: Demander un devis). No se añadieron testimonios, precios ni datos clínicos. Los textos de es/en/fr, la CSP y las pruebas existentes se mantienen.
+
 ## 2026-11-15
 
 Alineación del sitio estático a la declaración de Tapia Computación. No se certificó ISO. No se inventaron datos médicos, precios ni textos legales.

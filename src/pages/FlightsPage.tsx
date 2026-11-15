@@ -19,7 +19,7 @@ export function FlightsPage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell">
       <Seo title={`${copy.title} — MedElite`} description={copy.deck} path="/vuelos" />
       <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{copy.title}</h1>
       <p className="mt-4 text-lg leading-relaxed text-muted">{copy.deck}</p>

@@ -81,7 +81,7 @@ export function NetworkPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-6xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell-wide">
       <Seo title={`${intro.title} — MedElite`} description={intro.deck} path="/red" />
       <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{intro.kicker}</p>
       <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.1] tracking-tight text-ink">{intro.title}</h1>

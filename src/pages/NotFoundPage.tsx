@@ -5,7 +5,7 @@ import { useI18n } from "../i18n";
 export function NotFoundPage() {
   const { m } = useI18n();
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-24">
+    <main id="contenido" className="page-shell">
       <Seo title={m.notFound.title} description={m.notFound.body} path="/" />
       <h1 className="font-serif text-5xl">{m.notFound.title}</h1>
       <p className="mt-4 text-muted">{m.notFound.body}</p>

@@ -43,7 +43,7 @@ const UI = {
     result: "3. Vuelo de ida y vuelta",
     arrival: "Aeropuerto de llegada",
     quote: "Te cotizamos tu vuelo exacto.",
-    cta: "Cotiza con tu coordinador",
+    cta: "Solicitar cotización",
     note: "La aerolínea confirma el precio. Este sitio no vende boletos.",
   },
   en: {
@@ -52,7 +52,7 @@ const UI = {
     result: "3. Round trip",
     arrival: "Arrival airport",
     quote: "We'll quote your exact flight.",
-    cta: "Get your quote",
+    cta: "Request a quote",
     note: "The airline confirms the price. This site does not sell tickets.",
   },
   fr: {
@@ -61,7 +61,7 @@ const UI = {
     result: "3. Aller-retour",
     arrival: "Aéroport d’arrivée",
     quote: "Nous établissons le devis de votre vol.",
-    cta: "Obtenez votre devis",
+    cta: "Demander un devis",
     note: "La compagnie confirme le prix. Ce site ne vend pas de billets.",
   },
 } as const satisfies Record<Lang, Record<string, string>>;
@@ -120,7 +120,7 @@ export function FlightSimulator({
         </p>
         <p className="mt-3 font-serif text-3xl text-ink">{t.quote}</p>
         <p className="mt-4">
-          <Link className="inline-flex min-h-12 items-center rounded-full bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" to="/#cotizar">
+          <Link className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy" to="/#cotizar">
             {t.cta}
           </Link>
         </p>

@@ -37,18 +37,22 @@
 @theme {
   --font-sans: "Inter", "Inter Fallback", "Avenir Next", "Segoe UI", sans-serif;
   --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --color-paper: #f8f9fa;
-  --color-ink: #0f172a;
-  --color-muted: #475569;
-  --color-line: #e2e8f0;
-  --color-navy: #0a2540;
-  --color-navy-2: #113a5d;
-  --color-soft: #f1f5f9;
+  --color-paper: #f3eee6;
+  --color-ivory: #fbf7f1;
+  --color-ink: #1c1915;
+  --color-muted: #4a433c;
+  --color-line: #e4d8c6;
+  --color-navy: #071827;
+  --color-navy-2: #12324a;
+  --color-teal: #0f5f5a;
+  --color-gold: #7a5a32;
+  --color-gold-line: #c4a574;
+  --color-soft: #efe6d8;
   --color-warn: #9a3412;
-  --color-warn-soft: #fff7ed;
-  --shadow-glass: 0 4px 30px rgba(15, 23, 42, 0.04);
-  --shadow-premium: 0 8px 32px -4px rgba(10, 37, 64, 0.08);
-  --shadow-premium-hover: 0 16px 48px -8px rgba(10, 37, 64, 0.14);
+  --color-warn-soft: #fff6ee;
+  --shadow-glass: 0 1px 0 rgba(28, 25, 21, 0.04);
+  --shadow-premium: 0 24px 60px -28px rgba(7, 24, 39, 0.45);
+  --shadow-premium-hover: 0 32px 70px -24px rgba(7, 24, 39, 0.5);
 }
 
 html {
@@ -60,15 +64,40 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-paper);
+  background:
+    radial-gradient(1200px 480px at 10% -10%, rgba(196, 165, 116, 0.18), transparent 55%),
+    var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
+.page-shell,
+.page-shell-wide {
+  margin-inline: auto;
+  width: 100%;
+  padding: 5.5rem 1.25rem 5rem;
+}
+
+.page-shell {
+  max-width: 46rem;
+}
+
+.page-shell-wide {
+  max-width: 72rem;
+}
+
+@media (min-width: 768px) {
+  .page-shell,
+  .page-shell-wide {
+    padding-top: 6.75rem;
+    padding-bottom: 6rem;
+  }
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-navy);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
   scroll-margin-top: 5.5rem;
   scroll-margin-bottom: 7rem;
@@ -80,7 +109,7 @@ body {
 }
 
 ::selection {
-  background: #0a2540;
+  background: #7a5a32;
   color: #ffffff;
 }
 

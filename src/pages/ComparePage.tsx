@@ -40,7 +40,7 @@ export function ComparePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.waitBody} path="/comparar" />
       <p className="font-serif text-4xl leading-tight">{t.hook}</p>
       <h1 className="mt-4 font-serif text-4xl">{t.title}</h1>

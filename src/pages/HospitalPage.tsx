@@ -16,7 +16,7 @@ export function HospitalPage() {
   const { lang } = useI18n();
   if (!isHospital(hospitalId)) {
     return (
-      <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+      <main id="contenido" className="page-shell">
         <h1 className="font-serif text-4xl">—</h1>
         <Link to="/red">Red</Link>
       </main>
@@ -52,7 +52,7 @@ export function HospitalPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell">
       <Seo title={`${hospital.name} — MedElite`} description={hospital.address} path={`/red/${hospital.id}`} />
       <p>
         <Link className="text-sm underline" to="/red">

@@ -53,6 +53,7 @@ const COPY = {
     cost: "Rango del paquete en CAD",
     flight: "Vuelo",
     total: "Cotiza con tu coordinador",
+    cta: "Solicitar cotización",
     share: "Enlace para compartir",
     print: "Imprimir o guardar PDF",
     ready: "Lista de preparación",
@@ -102,6 +103,7 @@ const COPY = {
     cost: "Package range in CAD",
     flight: "Flight",
     total: "Get your quote",
+    cta: "Request a quote",
     share: "Link to share",
     print: "Print or save PDF",
     ready: "Readiness checklist",
@@ -151,6 +153,7 @@ const COPY = {
     cost: "Fourchette du forfait en CAD",
     flight: "Vol",
     total: "Obtenez votre devis",
+    cta: "Demander un devis",
     share: "Lien à partager",
     print: "Imprimer ou enregistrer en PDF",
     ready: "Liste de préparation",
@@ -219,7 +222,7 @@ export function RoutePage() {
   }
 
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24 print:max-w-none">
+    <main id="contenido" className="page-shell print:max-w-none">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
       <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
       <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
@@ -285,7 +288,7 @@ export function RoutePage() {
         {quote.band ? <p>{t.cost}: CAD {quote.band.low.toLocaleString("en-CA")} – {quote.band.high.toLocaleString("en-CA")}</p> : null}
         <p className="mt-3 text-sm text-muted">{t.flight}: {t.total}.</p>
         <p className="mt-3">
-          <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white" href="/#cotizar">{t.total}</a>
+          <a className="inline-flex min-h-12 items-center rounded-full bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" href="/#cotizar">{t.cta}</a>
         </p>
       </section>
 

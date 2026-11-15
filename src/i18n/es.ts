@@ -13,7 +13,7 @@ export const es: Messages = {
     close: "Cerrar menú",
     specialties: "Especialidades",
     packages: "Paquetes",
-    quote: "Estimación",
+    quote: "Solicitar cotización",
     journey: "Recorrido",
     snowbirds: "Snowbirds",
     trust: "Confianza",
@@ -31,7 +31,7 @@ export const es: Messages = {
     title: "Atención médica de élite en México para canadienses",
     lede:
       "Coordinamos atención electiva en México para pacientes de Canadá, desde una oficina en Vancouver. El socio ancla es Grupo Médico Joya, con nueve sedes. El acto médico ocurre en México. Esta página no sustituye una consulta.",
-    ctaQuote: "Estime un rango",
+    ctaQuote: "Solicitar cotización",
     ctaHow: "Cómo funciona",
     illAlt: "Ilustración de la Bahía de Banderas al atardecer. No es una fotografía.",
     illCap: "Ilustración, no una fotografía del hospital.",

@@ -13,7 +13,7 @@ export const fr: Messages = {
     close: "Fermer le menu",
     specialties: "Spécialités",
     packages: "Forfaits",
-    quote: "Estimation",
+    quote: "Demander un devis",
     journey: "Parcours",
     snowbirds: "Snowbirds",
     trust: "Confiance",
@@ -31,7 +31,7 @@ export const fr: Messages = {
     title: "Des soins médicaux d’élite au Mexique pour les Canadiens",
     lede:
       "Nous coordonnons des soins électifs au Mexique pour des patients du Canada, depuis un bureau à Vancouver. Le partenaire principal est le Grupo Médico Joya, avec neuf établissements. L’acte médical a lieu au Mexique. Cette page ne remplace pas une consultation.",
-    ctaQuote: "Estimer une fourchette",
+    ctaQuote: "Demander un devis",
     ctaHow: "Comment ça marche",
     illAlt: "Illustration de la baie de Banderas au crépuscule. Ce n’est pas une photographie.",
     illCap: "Illustration, et non une photographie de l’hôpital.",

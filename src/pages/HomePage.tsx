@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { Link, useLocation } from "react-router";
 import { QuoteWizard } from "../components/QuoteWizard";
 import { RecorridoPaciente } from "../components/RecorridoPaciente";
@@ -14,6 +15,11 @@ import { useI18n } from "../i18n";
 export function HomePage() {
   const { hash } = useLocation();
   const { m, lang } = useI18n();
+  const reduce = useReducedMotion();
+  const cta =
+    "inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white shadow-premium transition hover:bg-white hover:text-navy";
+  const ghost =
+    "inline-flex min-h-12 items-center rounded-full border border-white/30 px-6 text-sm font-medium text-white transition hover:bg-white hover:text-navy";
 
   useEffect(() => {
     if (!/^#[a-z0-9-]+$/i.test(hash)) return;
@@ -24,52 +30,67 @@ export function HomePage() {
   return (
     <main id="contenido">
       <Seo title={m.meta.title} description={m.meta.description} path="/" />
-      <p className="bg-warn-soft px-5 py-3 text-center text-sm font-medium leading-relaxed text-warn">{m.notice}</p>
-
-      <section id="inicio" className="scroll-mt-24 bg-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-[1.1fr_0.9fr] md:py-24">
-          <div>
-            <Kicker>{m.hero.kicker}</Kicker>
-            <p className="mt-4 max-w-3xl font-serif text-5xl leading-[1.08] tracking-tight text-ink md:text-6xl">
-              {lang === "en" ? "Get treated in weeks, not years." : lang === "fr" ? "Se faire soigner en semaines, pas en années." : "Atenderse en semanas, no en años."}
-            </p>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-              {lang === "en"
-                ? "Fraser Institute, Waiting Your Turn 2025: 48.6 weeks median for orthopedics in Canada. A date here is written after the surgeon in Mexico reviews the case. It is not a guaranteed interval."
-                : lang === "fr"
-                  ? "Institut Fraser, Waiting Your Turn 2025 : 48,6 semaines médianes en orthopédie au Canada. Une date ici s’écrit après l’examen du chirurgien au Mexique. Ce n’est pas un délai garanti."
-                  : "Fraser Institute, Waiting Your Turn 2025: 48.6 semanas de espera mediana en ortopedia en Canadá. Una fecha aquí se escribe después de que el cirujano en México revisa el caso. No es un plazo garantizado."}
-            </p>
-            <h1 className="mt-6 max-w-3xl font-serif text-3xl leading-tight tracking-tight text-navy">{m.hero.title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{m.hero.lede}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2">
-                {m.hero.ctaQuote}
-              </a>
-              <a href="#recorrido" className="inline-flex min-h-12 items-center rounded-full border border-line bg-white px-6 text-sm font-medium shadow-sm hover:bg-soft">
-                {m.hero.ctaHow}
-              </a>
-            </div>
-            <dl className="mt-10 grid gap-4 sm:grid-cols-2">
-              {m.hero.metrics.map((metric) => (
-                <div key={metric.label} className="rounded-[2rem] border border-line bg-white p-5 shadow-glass">
-                  <dt className="font-serif text-3xl">{metric.value}</dt>
-                  <dd className="mt-1 text-sm leading-relaxed text-muted">{metric.label}</dd>
-                </div>
-              ))}
-            </dl>
+      <section id="inicio" className="grid scroll-mt-24 bg-navy text-white lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-2">
+        <motion.div
+          className="order-2 flex flex-col justify-center px-5 py-12 sm:px-10 lg:order-1 lg:px-14 lg:py-16"
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="max-w-xl text-sm leading-relaxed text-gold-line">{m.notice}</p>
+          <p className="mt-8 text-xs font-semibold tracking-[0.22em] text-gold-line uppercase">{m.hero.kicker}</p>
+          <p className="mt-4 max-w-xl font-serif text-5xl leading-[0.95] tracking-tight sm:text-6xl">
+            {lang === "en" ? "Get treated in weeks, not years." : lang === "fr" ? "Se faire soigner en semaines, pas en années." : "Atenderse en semanas, no en años."}
+          </p>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/75">
+            {lang === "en"
+              ? "Fraser Institute, Waiting Your Turn 2025: 48.6 weeks median for orthopedics in Canada. A date here is written after the surgeon in Mexico reviews the case. It is not a guaranteed interval."
+              : lang === "fr"
+                ? "Institut Fraser, Waiting Your Turn 2025 : 48,6 semaines médianes en orthopédie au Canada. Une date ici s’écrit après l’examen du chirurgien au Mexique. Ce n’est pas un délai garanti."
+                : "Fraser Institute, Waiting Your Turn 2025: 48.6 semanas de espera mediana en ortopedia en Canadá. Una fecha aquí se escribe después de que el cirujano en México revisa el caso. No es un plazo garantizado."}
+          </p>
+          <h1 className="mt-8 max-w-xl font-serif text-3xl leading-tight text-white/95">{m.hero.title}</h1>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80">{m.hero.lede}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#cotizar" className={cta}>
+              {m.hero.ctaQuote}
+            </a>
+            <a href="#recorrido" className={ghost}>
+              {m.hero.ctaHow}
+            </a>
           </div>
-          <figure className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-premium">
-            <FacilityPhoto
-              name="marina"
-              priority
-              alt={lang === "en" ? "Exterior of Hospital Joya Marina Vallarta." : lang === "fr" ? "Façade de l’Hospital Joya Marina Vallarta." : "Fachada del Hospital Joya Marina Vallarta."}
-              className="h-auto w-full object-cover"
-              sizes="(min-width: 768px) 32rem, 100vw"
-            />
-            <figcaption className="px-4 py-3 text-sm text-muted">{m.footer.photos}</figcaption>
+        </motion.div>
+        <figure className="relative order-1 min-h-[40vh] sm:min-h-[48vh] lg:order-2 lg:min-h-full">
+          <FacilityPhoto
+            name="marina"
+            priority
+            fill
+            alt={lang === "en" ? "Exterior of Hospital Joya Marina Vallarta." : lang === "fr" ? "Façade de l’Hospital Joya Marina Vallarta." : "Fachada del Hospital Joya Marina Vallarta."}
+            className="object-[68%_center]"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-navy/20" aria-hidden="true" />
+          <figcaption className="absolute inset-x-0 bottom-3 px-5 py-3 text-sm text-white/90 lg:bottom-24">{m.footer.photos}</figcaption>
+        </figure>
+      </section>
+
+      <section className="border-b border-line bg-ivory">
+        <dl className="mx-auto grid max-w-6xl gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {m.hero.metrics.map((metric) => (
+            <div key={metric.label} className="bg-ivory px-5 py-6">
+              <dt className="font-serif text-4xl text-navy">{metric.value}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted">{metric.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="grid sm:grid-cols-3" aria-label={m.network.title}>
+        {(["cancun", "riviera", "patient-room"] as const).map((name) => (
+          <figure key={name} className="relative h-64 sm:h-80">
+            <FacilityPhoto name={name} fill alt={PHOTO_OF[name]?.[lang] ?? name} sizes="(min-width: 640px) 33vw, 100vw" className="object-center" />
           </figure>
-        </div>
+        ))}
       </section>
 
       <Section id="rol" tone="white">
@@ -78,7 +99,7 @@ export function HomePage() {
         <Deck>{m.role.body}</Deck>
         <ul className="mt-8 grid gap-3 md:grid-cols-3">
           {m.role.points.map((point) => (
-            <li key={point} className="rounded-[2rem] border border-line bg-white p-6 text-sm leading-relaxed shadow-glass">
+            <li key={point} className="rounded-3xl border border-line bg-white p-7 text-sm leading-relaxed shadow-premium">
               {point}
             </li>
           ))}
@@ -93,8 +114,8 @@ export function HomePage() {
           {m.verticals.items.map((item, index) => {
             const photo = (["marina", "guadalajara", "cancun", "operating-room"] as const)[index] ?? "operating-room";
             return (
-            <article key={item.title} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
-              <FacilityPhoto name={photo} alt={PHOTO_OF[photo]?.[lang] ?? item.title} className="h-44 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
+            <article key={item.title} className="overflow-hidden rounded-3xl border border-line bg-white shadow-premium transition duration-300 hover:-translate-y-1 hover:shadow-premium-hover">
+              <FacilityPhoto name={photo} alt={PHOTO_OF[photo]?.[lang] ?? item.title} className="h-64 w-full object-cover" sizes="(min-width: 768px) 36rem, 100vw" />
               <div className="p-6">
               <p className="text-xs font-semibold tracking-wide text-navy uppercase">{item.request ? m.verticals.request : m.verticals.focus}</p>
               <h3 className="mt-2 font-serif text-3xl">{item.title}</h3>
@@ -117,7 +138,7 @@ export function HomePage() {
             const copy = m.packages.items[id];
             const band = PACKAGE_BANDS[id];
             return (
-              <article key={id} className="flex flex-col rounded-[2rem] border border-line bg-white p-6 shadow-glass">
+              <article key={id} className={`flex flex-col rounded-3xl border bg-white p-7 shadow-premium ${id === "essential" ? "border-gold-line" : "border-line"}`}>
                 <h3 className="font-serif text-3xl">{copy.name}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{copy.who}</p>
                 <p className="mt-5 text-xs font-semibold tracking-wide text-navy uppercase">{m.packages.from}</p>
@@ -132,6 +153,11 @@ export function HomePage() {
                     </li>
                   ))}
                 </ul>
+                <p className="mt-6">
+                  <a href="#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white hover:bg-gold">
+                    {m.hero.ctaQuote}
+                  </a>
+                </p>
               </article>
             );
           })}
@@ -140,7 +166,7 @@ export function HomePage() {
         <p className="mt-3 max-w-3xl text-sm leading-relaxed">{m.packages.payment}</p>
       </Section>
 
-      <Section id="cotizar">
+      <Section id="cotizar" tone="white">
         <QuoteWizard />
       </Section>
 
@@ -150,8 +176,8 @@ export function HomePage() {
         <Deck>{m.journey.deck}</Deck>
         <ol className="mt-8 grid gap-4 md:grid-cols-2">
           {m.journey.steps.map((step, index) => (
-            <li key={step.title} className="rounded-[2rem] border border-line bg-white p-6 shadow-glass">
-              <p className="text-xs font-semibold text-navy">{String(index + 1).padStart(2, "0")}</p>
+            <li key={step.title} className="rounded-3xl border border-line bg-white p-7 shadow-premium">
+              <p className="font-serif text-4xl text-gold">{String(index + 1).padStart(2, "0")}</p>
               <h3 className="mt-2 font-serif text-2xl">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
             </li>
@@ -202,7 +228,7 @@ export function HomePage() {
         <Deck>{m.trust.deck}</Deck>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {m.trust.items.map((item) => (
-            <article key={item.title} className="rounded-[2rem] border border-line bg-white shadow-glass p-6">
+            <article key={item.title} className="rounded-3xl border border-line bg-white p-7 shadow-premium">
               <h3 className="font-serif text-2xl">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
             </article>
@@ -224,8 +250,8 @@ export function HomePage() {
           {HOSPITALS.map((hospital) => {
             const vertical = hospital.verticals[0] ?? "general";
             return (
-              <article key={hospital.id} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
-                <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-48 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
+              <article key={hospital.id} className="overflow-hidden rounded-3xl border border-line bg-white shadow-premium transition duration-300 hover:-translate-y-1">
+                <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-60 w-full object-cover" sizes="(min-width: 768px) 36rem, 100vw" />
                 <div className="p-6">
                 <p className="text-xs font-semibold tracking-wide text-navy uppercase">{m.network.focus[vertical]}</p>
                 <h3 className="mt-2 font-serif text-2xl">{hospital.name}</h3>
@@ -307,7 +333,7 @@ export function HomePage() {
         ))}
         <h3 className="mt-10 font-serif text-3xl">{m.about.teamTitle}</h3>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <article className="rounded-[2rem] border border-line bg-white p-5 shadow-glass">
+          <article className="overflow-hidden rounded-3xl border border-line bg-white shadow-premium">
             <img
               src="/assets/img/equipo/erika-cruz-joya.jpg"
               width={640}
@@ -315,19 +341,23 @@ export function HomePage() {
               alt={m.about.erikaAlt}
               loading="lazy"
               decoding="async"
-              className="h-56 w-full rounded-2xl object-cover object-top"
+              className="h-96 w-full object-cover object-top"
             />
+            <div className="p-6">
             <h4 className="mt-4 text-lg font-semibold">Erika Cruz Joya</h4>
             <p className="text-sm text-navy">{m.about.erikaRole}</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">{m.about.erika}</p>
-          </article>
-          <article className="rounded-[2rem] border border-line bg-white p-5 shadow-glass">
-            <div className="flex h-56 items-end rounded-2xl bg-soft p-5">
-              <p className="font-serif text-5xl text-navy">AB</p>
             </div>
+          </article>
+          <article className="overflow-hidden rounded-3xl border border-line bg-white shadow-premium">
+            <div className="flex h-96 items-end bg-navy p-8">
+              <p className="font-serif text-7xl text-gold-line">AB</p>
+            </div>
+            <div className="p-6">
             <h4 className="mt-4 text-lg font-semibold">{m.about.anaName}</h4>
             <p className="text-sm text-navy">{m.about.anaRole}</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">{m.about.ana}</p>
+            </div>
           </article>
         </div>
       </Section>
@@ -338,7 +368,7 @@ export function HomePage() {
         <Deck>{m.faq.deck}</Deck>
         <div className="mt-8 grid max-w-3xl gap-3">
           {m.faq.items.map((item) => (
-            <details key={item.q} className="rounded-2xl border border-line bg-white shadow-sm px-5 py-3">
+            <details key={item.q} className="rounded-3xl border border-line bg-white px-6 py-4 shadow-premium">
               <summary className="cursor-pointer py-2 font-medium">{item.q}</summary>
               <p className="pb-3 text-sm leading-relaxed text-muted">{item.a}</p>
             </details>

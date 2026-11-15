@@ -13,7 +13,7 @@ export const en: Messages = {
     close: "Close menu",
     specialties: "Specialties",
     packages: "Packages",
-    quote: "Estimate",
+    quote: "Request a quote",
     journey: "Journey",
     snowbirds: "Snowbirds",
     trust: "Trust",
@@ -31,7 +31,7 @@ export const en: Messages = {
     title: "Elite Medical Care in Mexico for Canadians",
     lede:
       "We coordinate elective care in Mexico for patients from Canada, from an office in Vancouver. The anchor partner is Grupo Médico Joya, with nine hospitals. The medical act takes place in Mexico. This page is not a consultation.",
-    ctaQuote: "Estimate a range",
+    ctaQuote: "Request a quote",
     ctaHow: "How it works",
     illAlt: "Illustration of Banderas Bay at dusk. Not a photograph.",
     illCap: "Illustration, not a photograph of the hospital.",

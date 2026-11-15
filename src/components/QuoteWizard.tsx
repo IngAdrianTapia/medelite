@@ -145,7 +145,7 @@ export function QuoteWizard() {
       : null;
 
   return (
-    <div className="rounded-[2rem] border border-line bg-white shadow-glass p-5 shadow-[0_1px_0_rgba(22,32,51,0.04)] md:p-8">
+    <div className="rounded-3xl border border-line border-t-4 border-t-gold bg-white p-5 shadow-premium md:p-10">
       <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{m.wizard.kicker}</p>
       <h2 className="mt-3 font-serif text-4xl tracking-tight">{m.wizard.title}</h2>
       <p className="mt-3 max-w-3xl text-muted">{m.wizard.deck}</p>

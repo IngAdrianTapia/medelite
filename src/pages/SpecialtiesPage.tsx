@@ -27,7 +27,7 @@ export function SpecialtiesPage() {
       none: "La página de especialidades no dice en qué hospital se ofrece.",
       more: "Varias fichas dicen «más de 30 especialidades» sin enumerarlas: Guadalajara, Cancún, Playa del Carmen, Chapala y La Peñita.",
       directory: "Categorías del directorio (sin médicos publicados)",
-      cta: "Pedir una estimación",
+      cta: "Solicitar cotización",
       route: "Ruta de coordinación de MedElite, no una asignación publicada por Joya:",
     },
     en: {
@@ -37,7 +37,7 @@ export function SpecialtiesPage() {
       none: "The specialties page does not say which hospital offers this.",
       more: "Several pages say “more than 30 specialties” without listing them: Guadalajara, Cancún, Playa del Carmen, Chapala and La Peñita.",
       directory: "Directory categories (no physicians published)",
-      cta: "Request an estimate",
+      cta: "Request a quote",
       route: "MedElite coordination route, not an assignment published by Joya:",
     },
     fr: {
@@ -47,13 +47,13 @@ export function SpecialtiesPage() {
       none: "La page des spécialités ne dit pas dans quel hôpital c’est offert.",
       more: "Plusieurs fiches disent « plus de 30 spécialités » sans les énumérer : Guadalajara, Cancún, Playa del Carmen, Chapala et La Peñita.",
       directory: "Catégories du répertoire (aucun médecin publié)",
-      cta: "Demander une estimation",
+      cta: "Demander un devis",
       route: "Itinéraire de coordination MedElite, pas une attribution publiée par Joya :",
     },
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-6xl px-5 py-20 md:py-24">
+    <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
       <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
       <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
@@ -114,7 +114,7 @@ export function SpecialtiesPage() {
                 )}
                 {id === "ophthalmology" ? <p className="mt-3 text-sm text-muted">{t.route} Cancún, Playa del Carmen.</p> : null}
                 <p className="mt-4">
-                  <Link className="text-sm underline" to="/#cotizar">
+                  <Link className="inline-flex min-h-11 items-center rounded-full bg-gold px-4 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
                     {t.cta}
                   </Link>
                 </p>

@@ -53,12 +53,14 @@ export function FacilityPhoto({
   name,
   alt,
   priority = false,
+  fill = false,
   className = "",
   sizes = "(min-width: 1024px) 36rem, 100vw",
 }: {
   name: string;
   alt: string;
   priority?: boolean;
+  fill?: boolean;
   className?: string;
   sizes?: string;
 }) {
@@ -66,7 +68,7 @@ export function FacilityPhoto({
   const rows = VARIANTS[name] ?? [];
   const fallbackSlot = rows[rows.length - 1]?.[0] ?? 640;
   return (
-    <picture>
+    <picture className={fill ? "absolute inset-0 block h-full w-full" : "block"}>
       <source type="image/avif" srcSet={srcSet(name, "avif")} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet(name, "webp")} sizes={sizes} />
       <img
@@ -77,7 +79,7 @@ export function FacilityPhoto({
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         fetchPriority={priority ? "high" : "auto"}
-        className={className}
+        className={fill ? `h-full w-full object-cover ${className}` : className}
       />
     </picture>
   );
