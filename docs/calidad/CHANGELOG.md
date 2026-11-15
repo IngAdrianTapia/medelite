@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-15 — hero legible y barra en móvil
+
+La portada deja de poner el titular encima de la fotografía. En escritorio el texto queda en una columna navy y la foto, con los tres encuadres y el movimiento Ken Burns, ocupa la otra. En 375 px la foto va arriba y el texto debajo. El logo de la barra pasa a `h-8` por debajo de `sm`. El botón fijo de contacto se oculta hasta `md` para no tapar el contenido. `main .grid > *` admite `min-width: 0`. Se mantienen Motion, `prefers-reduced-motion`, la paleta navy y los textos es/en/fr. No se adoptó el fondo claro ni las clases sueltas de la propuesta. Ficha: [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md).
+
 ## 2026-11-15 — logo de barra y pie
 
 El wordmark de la barra y del pie (`public/assets/brand/medelite-logo-horizontal.png`) pasa a PNG RGBA con fondo transparente y un contorno blanco de 1 px alrededor de la forma (dilatación del alpha ≥ 128, radio euclidiano 1). Se quita el recuadro blanco (`bg-white`) de `BrandMark`. El original se conserva en `public/assets/brand/logo_original/medelite-logo-horizontal.png`. No se tocó el favicon ni se inventaron textos, precios o datos clínicos.

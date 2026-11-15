@@ -75,30 +75,30 @@ export function HomePage() {
     <main id="contenido">
       <Seo title={m.meta.title} description={m.meta.description} path="/" />
 
-      <section id="inicio" className="relative h-svh min-h-[680px] overflow-hidden bg-navy text-white">
-        {HERO_FRAMES.map((name, index) => (
-          <div key={name} className="hero-frame absolute inset-0">
-            <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
-              <FacilityPhoto
-                name={name}
-                fill
-                priority={index === 0}
-                alt={index === 0 ? (PHOTO_OF[name]?.[lang] ?? name) : ""}
-                sizes="100vw"
-                className="object-center"
-              />
+      <section id="inicio" className="bg-navy pt-16 text-white lg:grid lg:min-h-svh lg:grid-cols-2 lg:pt-0">
+        <div className="order-1 relative h-44 overflow-hidden sm:h-80 lg:order-2 lg:h-auto lg:min-h-svh">
+          {HERO_FRAMES.map((name, index) => (
+            <div key={name} className="hero-frame absolute inset-0">
+              <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
+                <FacilityPhoto
+                  name={name}
+                  fill
+                  priority={index === 0}
+                  alt={index === 0 ? (PHOTO_OF[name]?.[lang] ?? name) : ""}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-center"
+                />
+              </div>
             </div>
-          </div>
-        ))}
-        <div className="grain pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-navy/25" aria-hidden="true" />
-        <div className="absolute inset-x-0 bottom-0 z-10 px-5 pb-36 md:px-14 md:pb-20">
-          <p className="max-w-xl text-sm text-gold-line">{m.notice}</p>
-          <p className="mt-4 text-xs tracking-[0.28em] text-white/70 uppercase">{m.hero.kicker}</p>
-          <h1 className="mt-3 max-w-5xl font-serif text-6xl leading-[0.88] tracking-tight sm:text-7xl md:text-8xl">{line}</h1>
-          <p className="mt-6 max-w-xl text-lg text-white/85">{m.hero.title}</p>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">{fraser}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          ))}
+        </div>
+        <div className="order-2 flex flex-col justify-center px-5 py-8 sm:px-8 lg:order-1 lg:px-12 lg:py-32">
+          <p className="text-xs font-semibold tracking-[0.18em] text-gold-line uppercase">{m.hero.kicker}</p>
+          <h1 className="mt-4 max-w-xl font-serif text-4xl leading-tight text-balance text-white sm:text-5xl lg:text-6xl">{line}</h1>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-white">{m.hero.title}</p>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-white/85">{m.hero.lede}</p>
+          <p className="mt-4 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-relaxed text-white/85">{m.notice}</p>
+          <div className="mt-6 flex flex-wrap gap-3">
             <a href="#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white hover:bg-white hover:text-navy">
               {m.hero.ctaQuote}
             </a>
@@ -106,6 +106,7 @@ export function HomePage() {
               {m.hero.ctaHow}
             </a>
           </div>
+          <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/85">{fraser}</p>
         </div>
       </section>
 

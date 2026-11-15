@@ -9,6 +9,7 @@
 | [calidad-datos.md](./calidad-datos.md) | Calidad de `src/data` (ISO/IEC 25012) |
 | [seguridad.md](./seguridad.md) | Controles de seguridad, CSP, dependencias y lo que Pages no puede hacer |
 | [CHANGELOG.md](./CHANGELOG.md) | Cambios de esta alineación y su evidencia |
-| [evidencias/2026-11-15-logo-transparente.md](./evidencias/2026-11-15-logo-transparente.md) | Ficha de este cambio de logo: requisito, etapas 12207, medidas y resultado |
+| [evidencias/2026-11-15-logo-transparente.md](./evidencias/2026-11-15-logo-transparente.md) | Ficha del logo transparente: requisito, etapas 12207, medidas y resultado |
+| [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md) | Ficha del hero legible, el logo móvil y el dock |
 
 Idiomas del sitio: español (México), inglés (Canadá) y francés (Canadá). El sitio no guarda expedientes de pacientes.
