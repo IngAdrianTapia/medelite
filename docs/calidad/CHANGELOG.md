@@ -2,12 +2,14 @@
 
 ## 2026-11-15 — logo de barra y pie
 
-El wordmark de la barra y del pie (`public/assets/brand/medelite-logo-horizontal.png`) pasa a PNG RGBA con fondo transparente y un contorno blanco de 3 px alrededor de la forma. Se quita el recuadro blanco (`bg-white`) de `BrandMark`. El original se conserva en `public/assets/brand/logo_original/medelite-logo-horizontal.png`. No se tocó el favicon ni se inventaron textos, precios o datos clínicos.
+El wordmark de la barra y del pie (`public/assets/brand/medelite-logo-horizontal.png`) pasa a PNG RGBA con fondo transparente y un contorno blanco de 1 px alrededor de la forma (dilatación del alpha ≥ 128, radio euclidiano 1). Se quita el recuadro blanco (`bg-white`) de `BrandMark`. El original se conserva en `public/assets/brand/logo_original/medelite-logo-horizontal.png`. No se tocó el favicon ni se inventaron textos, precios o datos clínicos.
 
 ### Medición
 
-- PNG resultante: modo RGBA, 657×173, esquinas con alpha 0.
-- Composición comprobada sobre navy `#071827` (barra y pie) y sobre tablero de transparencia.
+- PNG resultante: modo RGBA, 645×162, esquinas con alpha 0. El archivo de `main` pesaba 21 282 bytes; el nuevo pesa 43 899.
+- La forma con alpha ≥ 128 conserva el RGBA del original. El contorno es blanco opaco y ningún píxel de color toca transparencia en ortogonal. No quedan píxeles casi blancos fuera de ese contorno.
+- Composición comprobada sobre navy `#071827`, sobre el pie `#041018`, sobre blanco y sobre tablero de transparencia. Alturas de la interfaz: 48, 56, 64 y 80 px.
+- Ficha: [evidencias/2026-11-15-logo-transparente.md](./evidencias/2026-11-15-logo-transparente.md).
 
 
 ## 2026-11-15 — arquitectura nueva
