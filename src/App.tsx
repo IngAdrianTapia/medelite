@@ -16,6 +16,11 @@ const FlightsPage = lazy(() => import("./pages/FlightsPage").then((module) => ({
 const InsurancePage = lazy(() => import("./pages/InsurancePage").then((module) => ({ default: module.InsurancePage })));
 const RolePage = lazy(() => import("./pages/RolePage").then((module) => ({ default: module.RolePage })));
 const PreparePage = lazy(() => import("./pages/PreparePage").then((module) => ({ default: module.PreparePage })));
+const RoutePage = lazy(() => import("./pages/RoutePage").then((module) => ({ default: module.RoutePage })));
+const ComparePage = lazy(() => import("./pages/ComparePage").then((module) => ({ default: module.ComparePage })));
+const MapPage = lazy(() => import("./pages/MapPage").then((module) => ({ default: module.MapPage })));
+const PeoplePage = lazy(() => import("./pages/PeoplePage").then((module) => ({ default: module.PeoplePage })));
+const JoinPage = lazy(() => import("./pages/JoinPage").then((module) => ({ default: module.JoinPage })));
 
 function PrivacyRoute() {
   const { m } = useI18n();
@@ -51,6 +56,11 @@ export function AppRoutes() {
             <Route path="/seguros" element={<InsurancePage />} />
             <Route path="/que-es" element={<RolePage />} />
             <Route path="/preparacion" element={<PreparePage />} />
+            <Route path="/ruta" element={<RoutePage />} />
+            <Route path="/comparar" element={<ComparePage />} />
+            <Route path="/mapa" element={<MapPage />} />
+            <Route path="/equipo" element={<PeoplePage />} />
+            <Route path="/hospitales" element={<JoinPage />} />
             <Route path="/privacy" element={<PrivacyRoute />} />
             <Route path="/privacidad" element={<PrivacyRoute />} />
             <Route path="/terms" element={<TermsRoute />} />

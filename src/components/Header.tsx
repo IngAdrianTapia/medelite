@@ -23,16 +23,16 @@ export function Header() {
   }, [open]);
 
   const extra = {
-    es: { flights: "Vuelos", bariatric: "Bariátrica", insurers: "Seguros" },
-    en: { flights: "Flights", bariatric: "Bariatric", insurers: "Insurers" },
-    fr: { flights: "Vols", bariatric: "Bariatrique", insurers: "Assureurs" },
+    es: { flights: "Vuelos", route: "Mi ruta", map: "Mapa" },
+    en: { flights: "Flights", route: "My route", map: "Map" },
+    fr: { flights: "Vols", route: "Ma route", map: "Carte" },
   }[lang];
   const links = [
-    ["/especialidades", m.nav.specialties],
+    ["/ruta", extra.route],
+    ["/comparar", lang === "en" ? "Compare" : lang === "fr" ? "Comparer" : "Comparar"],
     ["/red", m.nav.network],
-    ["/bariatrica", extra.bariatric],
+    ["/mapa", extra.map],
     ["/vuelos", extra.flights],
-    ["/seguros", extra.insurers],
     ["/#cotizar", m.nav.quote],
   ] as const;
 

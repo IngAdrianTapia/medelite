@@ -28,7 +28,17 @@ export function HomePage() {
         <div className="mx-auto grid max-w-6xl items-end gap-10 px-5 py-16 md:grid-cols-[1.2fr_0.8fr] md:py-24">
           <div>
             <Kicker>{m.hero.kicker}</Kicker>
-            <h1 className="mt-4 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl">{m.hero.title}</h1>
+            <p className="mt-4 max-w-3xl font-serif text-4xl leading-tight tracking-tight md:text-5xl">
+              {lang === "en" ? "Get treated in weeks, not years." : lang === "fr" ? "Se faire soigner en semaines, pas en années." : "Atenderse en semanas, no en años."}
+            </p>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+              {lang === "en"
+                ? "Fraser Institute, Waiting Your Turn 2025: 48.6 weeks median for orthopedics in Canada. A date here is written after the surgeon in Mexico reviews the case. It is not a guaranteed interval."
+                : lang === "fr"
+                  ? "Institut Fraser, Waiting Your Turn 2025 : 48,6 semaines médianes en orthopédie au Canada. Une date ici s’écrit après l’examen du chirurgien au Mexique. Ce n’est pas un délai garanti."
+                  : "Fraser Institute, Waiting Your Turn 2025: 48.6 semanas de espera mediana en ortopedia en Canadá. Una fecha aquí se escribe después de que el cirujano en México revisa el caso. No es un plazo garantizado."}
+            </p>
+            <h1 className="mt-4 max-w-3xl font-serif text-3xl leading-tight tracking-tight">{m.hero.title}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{m.hero.lede}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#cotizar" className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-medium text-white">

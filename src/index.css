@@ -52,6 +52,14 @@ body {
   background: #d5e4ee;
 }
 
+@media print {
+  header,
+  footer,
+  .fixed {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

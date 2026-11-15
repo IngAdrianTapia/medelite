@@ -3,7 +3,7 @@ import { SOCIAL } from "../data/sources";
 import { useI18n } from "../i18n";
 
 export function Footer() {
-  const { m } = useI18n();
+  const { m, lang } = useI18n();
   return (
     <footer className="border-t border-line bg-white pb-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3">
@@ -37,6 +37,16 @@ export function Footer() {
         <div>
           <h2 className="text-sm font-semibold tracking-wide uppercase">{m.footer.legal}</h2>
           <ul className="mt-3 grid gap-2 text-sm">
+            <li>
+              <Link className="underline decoration-line underline-offset-4" to="/equipo">
+                {lang === "en" ? "Published names" : lang === "fr" ? "Noms publiés" : "Nombres publicados"}
+              </Link>
+            </li>
+            <li>
+              <Link className="underline decoration-line underline-offset-4" to="/hospitales">
+                {lang === "en" ? "For hospitals" : lang === "fr" ? "Pour les hôpitaux" : "Para hospitales"}
+              </Link>
+            </li>
             <li>
               <Link className="underline decoration-line underline-offset-4" to="/privacy">
                 {m.nav.privacy}

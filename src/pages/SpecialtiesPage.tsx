@@ -3,6 +3,7 @@ import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
 import { HOSPITALS } from "../data/hospitals";
 import { DIRECTORY_SPECIALTIES, PUBLIC_SPECIALTIES, SPECIALTY_SITES } from "../data/joya";
+import { LINE_IDS, LINE_STATUS } from "../lib/journey";
 import { DIRECTORY_LABEL, PHOTO_OF, SPECIALTY_LABEL } from "../i18n/labels";
 import { useI18n } from "../i18n";
 
@@ -58,6 +59,34 @@ export function SpecialtiesPage() {
       <h1 className="mt-3 max-w-3xl font-serif text-5xl tracking-tight">{t.title}</h1>
       <p className="mt-4 max-w-3xl leading-relaxed text-muted">{t.deck}</p>
       <p className="mt-3 max-w-3xl text-sm text-muted">{t.more}</p>
+      <ul className="mt-6 flex flex-wrap gap-2">
+        {LINE_IDS.map((id) => (
+          <li key={id} className="rounded-full border border-line bg-white px-3 py-2 text-sm">
+            {{
+              knee: "Ortopedia · rodilla",
+              hip: "Ortopedia · cadera",
+              bariatric: "Bariátrica",
+              plastic: "Plástica",
+              dental: "Dental",
+              ophthalmology: "Oftalmología",
+              cardiology: "Cardiología",
+              fertility: "Fertilidad",
+              checkup: "Chequeo",
+            }[id]}
+            {LINE_STATUS[id] === "coming-soon"
+              ? lang === "en"
+                ? " · via network partners, coming soon"
+                : lang === "fr"
+                  ? " · via des partenaires, à venir"
+                  : " · vía socios de la red, próximamente"
+              : lang === "en"
+                ? " · published by Joya"
+                : lang === "fr"
+                  ? " · publié par Joya"
+                  : " · publicado por Joya"}
+          </li>
+        ))}
+      </ul>
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         {PUBLIC_SPECIALTIES.map((id) => {
           const photo = PHOTO_FOR[id] ?? "patient-room";
