@@ -39,8 +39,8 @@ export default defineConfig({
         start_url: "/",
         scope: "/",
         display: "standalone",
-        background_color: "#f3f1ea",
-        theme_color: "#002B49",
+        background_color: "#F8F9FA",
+        theme_color: "#0A2540",
         lang: "es-MX",
         icons: [
           { src: "/assets/brand/favicon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
@@ -54,7 +54,7 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         navigateFallback: "index.html",
         navigateFallbackDenylist: [/^\/assets\//],
-        globPatterns: ["**/*.{js,css,html,svg,png,webmanifest,ttf}"],
+        globPatterns: ["**/*.{js,css,html,svg,png,webmanifest,ttf,woff2}"],
       },
     }),
     {

@@ -42,7 +42,7 @@ writePage("/404", "404.html");
 
 const sw = await generateSW({
   globDirectory: dist.pathname,
-  globPatterns: ["**/*.{js,css,html,svg,png,webmanifest,ttf,txt}"],
+  globPatterns: ["**/*.{js,css,html,svg,png,webmanifest,ttf,woff2,txt}"],
   globIgnores: ["**/*.{mp3,map}"],
   swDest: join(dist.pathname, "sw.js"),
   skipWaiting: true,

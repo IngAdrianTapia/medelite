@@ -112,15 +112,15 @@ export function FlightSimulator({
   const total = illustrateTotal(quote, band);
 
   return (
-    <section className="rounded-3xl border border-line bg-paper p-5" aria-label={t.title}>
-      <p className="text-xs font-semibold tracking-[0.16em] text-navy uppercase">{FARE_DISCLAIMER}</p>
+    <section className="rounded-[2rem] border border-line bg-paper shadow-glass p-5" aria-label={t.title}>
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{FARE_DISCLAIMER}</p>
       <h3 className="mt-2 font-serif text-3xl">{t.title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-muted">{t.sample}</p>
       <p className="mt-1 text-sm text-muted">{t.yours}</p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         <label className="grid gap-1 text-sm">
           {t.origin}
-          <select className="min-h-11 rounded-xl border border-line bg-white px-3" value={origin} onChange={(event) => setOrigin(event.target.value as OriginCode)}>
+          <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={origin} onChange={(event) => setOrigin(event.target.value as OriginCode)}>
             {ORIGIN_CODES.map((code) => (
               <option key={code} value={code}>
                 {code}
@@ -130,7 +130,7 @@ export function FlightSimulator({
         </label>
         <label className="grid gap-1 text-sm">
           {t.hospital}
-          <select className="min-h-11 rounded-xl border border-line bg-white px-3" value={hospital} onChange={(event) => setHospital(event.target.value as HospitalId)}>
+          <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={hospital} onChange={(event) => setHospital(event.target.value as HospitalId)}>
             {HOSPITALS.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
@@ -180,7 +180,7 @@ export function FlightSimulator({
       ) : null}
       <p className="mt-3 text-sm leading-relaxed text-muted">{t.transfers}</p>
       <p className="mt-4 flex flex-wrap gap-3">
-        <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-medium text-white" href="tel:+16044428475">
+        <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href="tel:+16044428475">
           +1 (604) 442-8475
         </a>
         <a className="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-4 text-sm" href="mailto:info@medeliteofficial.com">

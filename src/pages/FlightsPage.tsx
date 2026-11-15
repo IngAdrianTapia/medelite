@@ -12,9 +12,9 @@ export function FlightsPage() {
     fr: "Il n’y a pas de connexion à une compagnie. Le chiffre utilise l’échantillon du 14 novembre 2026 et, si l’intervention a une bande, la fourchette du forfait en dollars canadiens.",
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${title} — MedElite`} description={deck} path="/vuelos" />
-      <h1 className="font-serif text-5xl tracking-tight">{title}</h1>
+      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{title}</h1>
       <p className="mt-4 text-muted">{deck}</p>
       <p className="mt-2 text-sm font-medium">{FARE_DISCLAIMER}</p>
       <div className="mt-8">

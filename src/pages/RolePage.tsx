@@ -37,12 +37,12 @@ export function RolePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.points[0] ?? t.title} path="/que-es" />
-      <h1 className="font-serif text-5xl tracking-tight">{t.title}</h1>
+      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <ul className="mt-8 grid gap-3">
         {t.points.map((point) => (
-          <li key={point} className="rounded-2xl border border-line bg-white p-4 leading-relaxed">
+          <li key={point} className="rounded-2xl border border-line bg-white shadow-sm p-4 leading-relaxed">
             {point}
           </li>
         ))}

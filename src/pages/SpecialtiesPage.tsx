@@ -53,10 +53,10 @@ export function SpecialtiesPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-6xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-6xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
-      <p className="text-xs font-semibold tracking-[0.18em] text-navy uppercase">{t.kicker}</p>
-      <h1 className="mt-3 max-w-3xl font-serif text-5xl tracking-tight">{t.title}</h1>
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
+      <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 max-w-3xl leading-relaxed text-muted">{t.deck}</p>
       <p className="mt-3 max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
@@ -92,7 +92,7 @@ export function SpecialtiesPage() {
           const photo = PHOTO_FOR[id] ?? "patient-room";
           const sites = SPECIALTY_SITES[id];
           return (
-            <article key={id} id={id} className="overflow-hidden rounded-3xl border border-line bg-white">
+            <article key={id} id={id} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
               <FacilityPhoto name={photo} alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} className="h-48 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
               <div className="p-5">
                 <h2 className="font-serif text-3xl">{SPECIALTY_LABEL[id][lang]}</h2>

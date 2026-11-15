@@ -145,8 +145,8 @@ export function QuoteWizard() {
       : null;
 
   return (
-    <div className="rounded-3xl border border-line bg-white p-5 shadow-[0_1px_0_rgba(22,32,51,0.04)] md:p-8">
-      <p className="text-xs font-semibold tracking-[0.18em] text-navy uppercase">{m.wizard.kicker}</p>
+    <div className="rounded-[2rem] border border-line bg-white shadow-glass p-5 shadow-[0_1px_0_rgba(22,32,51,0.04)] md:p-8">
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{m.wizard.kicker}</p>
       <h2 className="mt-3 font-serif text-4xl tracking-tight">{m.wizard.title}</h2>
       <p className="mt-3 max-w-3xl text-muted">{m.wizard.deck}</p>
       <p className="mt-4 rounded-2xl bg-soft px-4 py-3 text-sm leading-relaxed text-ink">{m.wizard.admin}</p>
@@ -235,7 +235,7 @@ export function QuoteWizard() {
               <label className="grid gap-2 text-sm">
                 {m.wizard.age}
                 <select
-                  className="min-h-11 rounded-xl border border-line bg-white px-3"
+                  className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40"
                   value={state.ageBand}
                   onChange={(event) => patch({ ageBand: isAge(event.target.value) ? event.target.value : "" })}
                 >
@@ -250,7 +250,7 @@ export function QuoteWizard() {
               <label className="grid gap-2 text-sm">
                 {m.wizard.bmi}
                 <select
-                  className="min-h-11 rounded-xl border border-line bg-white px-3"
+                  className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40"
                   value={state.bmiBand}
                   onChange={(event) => patch({ bmiBand: isBmi(event.target.value) ? event.target.value : "" })}
                 >
@@ -345,27 +345,27 @@ export function QuoteWizard() {
             <div className="mt-4 grid gap-4 md:grid-cols-2">
               <label className="grid gap-2 text-sm">
                 {m.wizard.first}
-                <input className="min-h-11 rounded-xl border border-line px-3" autoComplete="given-name" maxLength={60} value={state.firstName} onChange={(event) => patch({ firstName: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="given-name" maxLength={60} value={state.firstName} onChange={(event) => patch({ firstName: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm">
                 {m.wizard.last}
-                <input className="min-h-11 rounded-xl border border-line px-3" autoComplete="family-name" maxLength={60} value={state.lastName} onChange={(event) => patch({ lastName: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="family-name" maxLength={60} value={state.lastName} onChange={(event) => patch({ lastName: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm">
                 {m.wizard.email}
-                <input className="min-h-11 rounded-xl border border-line px-3" type="email" autoComplete="email" maxLength={120} value={state.email} onChange={(event) => patch({ email: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="email" autoComplete="email" maxLength={120} value={state.email} onChange={(event) => patch({ email: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm">
                 {m.wizard.phone}
-                <input className="min-h-11 rounded-xl border border-line px-3" type="tel" autoComplete="tel" maxLength={30} value={state.phone} onChange={(event) => patch({ phone: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="tel" autoComplete="tel" maxLength={30} value={state.phone} onChange={(event) => patch({ phone: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm md:col-span-2">
                 {m.wizard.city}
-                <input className="min-h-11 rounded-xl border border-line px-3" autoComplete="address-level2" maxLength={80} placeholder={m.wizard.cityPh} value={state.city} onChange={(event) => patch({ city: event.target.value })} />
+                <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" autoComplete="address-level2" maxLength={80} placeholder={m.wizard.cityPh} value={state.city} onChange={(event) => patch({ city: event.target.value })} />
               </label>
               <label className="grid gap-2 text-sm md:col-span-2">
                 {m.wizard.note}
-                <textarea className="min-h-28 rounded-xl border border-line px-3 py-2" maxLength={800} placeholder={m.wizard.notePh} value={state.note} onChange={(event) => patch({ note: event.target.value })} />
+                <textarea className="min-h-28 rounded-2xl border border-line bg-white px-4 py-3 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" maxLength={800} placeholder={m.wizard.notePh} value={state.note} onChange={(event) => patch({ note: event.target.value })} />
               </label>
             </div>
             <label className="mt-4 flex items-start gap-3 text-sm leading-relaxed">
@@ -408,7 +408,7 @@ export function QuoteWizard() {
               <form className="mt-6" action={mailto.action} method="GET">
                 <input type="hidden" name="subject" value={mailto.subject} />
                 <input type="hidden" name="body" value={mailto.body} />
-                <button type="submit" className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-medium text-white">
+                <button type="submit" className="inline-flex min-h-12 items-center rounded-full bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2">
                   {m.wizard.send}
                 </button>
                 <p className="mt-3 text-sm text-muted">{m.wizard.sent}</p>
@@ -425,7 +425,7 @@ export function QuoteWizard() {
           </button>
         ) : null}
         {step !== "result" ? (
-          <button type="button" className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-medium text-white" onClick={goNext}>
+          <button type="button" className="inline-flex min-h-12 items-center rounded-full bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={goNext}>
             {m.wizard.next}
           </button>
         ) : null}

@@ -46,19 +46,19 @@ export function JoinPage() {
   }[lang];
   const body = [`Nombre: ${name}`, `Correo: ${email}`, `Hospital: ${hospital}`, `Ciudad: ${city}`, `Certificaciones: ${certs}`].join("\n");
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/hospitales" />
-      <h1 className="font-serif text-5xl tracking-tight">{t.title}</h1>
+      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <form className="mt-6 grid gap-3" action="mailto:info@medeliteofficial.com" method="GET">
         <input type="hidden" name="subject" value={t.subject} />
         <input type="hidden" name="body" value={body} />
-        <label className="grid gap-1 text-sm">{t.name}<input required className="min-h-11 rounded-xl border border-line px-3" value={name} onChange={(event) => setName(event.target.value)} /></label>
-        <label className="grid gap-1 text-sm">{t.email}<input required type="email" className="min-h-11 rounded-xl border border-line px-3" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
-        <label className="grid gap-1 text-sm">{t.hospital}<input required className="min-h-11 rounded-xl border border-line px-3" value={hospital} onChange={(event) => setHospital(event.target.value)} /></label>
-        <label className="grid gap-1 text-sm">{t.city}<input required className="min-h-11 rounded-xl border border-line px-3" value={city} onChange={(event) => setCity(event.target.value)} /></label>
-        <label className="grid gap-1 text-sm">{t.certs}<textarea required className="min-h-28 rounded-xl border border-line px-3 py-2" value={certs} onChange={(event) => setCerts(event.target.value)} /></label>
-        <button className="inline-flex min-h-11 w-fit items-center rounded-full bg-navy px-4 text-sm font-medium text-white" type="submit">{t.send}</button>
+        <label className="grid gap-1 text-sm">{t.name}<input required className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={name} onChange={(event) => setName(event.target.value)} /></label>
+        <label className="grid gap-1 text-sm">{t.email}<input required type="email" className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={email} onChange={(event) => setEmail(event.target.value)} /></label>
+        <label className="grid gap-1 text-sm">{t.hospital}<input required className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={hospital} onChange={(event) => setHospital(event.target.value)} /></label>
+        <label className="grid gap-1 text-sm">{t.city}<input required className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={city} onChange={(event) => setCity(event.target.value)} /></label>
+        <label className="grid gap-1 text-sm">{t.certs}<textarea required className="min-h-28 rounded-2xl border border-line bg-white px-4 py-3 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={certs} onChange={(event) => setCerts(event.target.value)} /></label>
+        <button className="inline-flex min-h-12 w-fit items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" type="submit">{t.send}</button>
       </form>
     </main>
   );

@@ -16,7 +16,7 @@ export function HospitalPage() {
   const { lang } = useI18n();
   if (!isHospital(hospitalId)) {
     return (
-      <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+      <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
         <h1 className="font-serif text-4xl">—</h1>
         <Link to="/red">Red</Link>
       </main>
@@ -52,14 +52,14 @@ export function HospitalPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${hospital.name} — MedElite`} description={hospital.address} path={`/red/${hospital.id}`} />
       <p>
         <Link className="text-sm underline" to="/red">
           {copy.back}
         </Link>
       </p>
-      <h1 className="mt-4 font-serif text-5xl tracking-tight">{hospital.name}</h1>
+      <h1 className="mt-4 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{hospital.name}</h1>
       <p className="mt-2 text-muted">{hospital.city}</p>
       <figure className="mt-6 overflow-hidden rounded-3xl border border-line">
         <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-auto w-full object-cover" sizes="(min-width: 768px) 48rem, 100vw" priority />
@@ -84,7 +84,7 @@ export function HospitalPage() {
         ))}
       </ul>
       <p className="mt-6 flex flex-wrap gap-3">
-        <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-medium text-white" href={`tel:${facts.phones[0]?.tel ?? ""}`}>
+        <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href={`tel:${facts.phones[0]?.tel ?? ""}`}>
           {copy.call}
         </a>
         <a className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm" href="tel:+16044428475">

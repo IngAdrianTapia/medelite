@@ -9,10 +9,10 @@ export function LegalPage({
   path: "/privacy" | "/terms";
 }) {
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${doc.title} — MedElite`} description={doc.updated} path={path} />
-      <p className="text-xs font-semibold tracking-[0.18em] text-navy uppercase">{doc.kicker}</p>
-      <h1 className="mt-3 font-serif text-5xl tracking-tight">{doc.title}</h1>
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{doc.kicker}</p>
+      <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{doc.title}</h1>
       <p className="mt-3 text-sm text-muted">{doc.updated}</p>
       <div className="mt-10 grid gap-8">
         {doc.sections.map((section) => (

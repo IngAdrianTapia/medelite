@@ -81,15 +81,15 @@ export function NetworkPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-6xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-6xl px-5 py-20 md:py-24">
       <Seo title={`${intro.title} — MedElite`} description={intro.deck} path="/red" />
-      <p className="text-xs font-semibold tracking-[0.18em] text-navy uppercase">{intro.kicker}</p>
-      <h1 className="mt-3 max-w-3xl font-serif text-5xl tracking-tight">{intro.title}</h1>
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{intro.kicker}</p>
+      <h1 className="mt-3 max-w-3xl font-serif text-5xl leading-[1.1] tracking-tight text-ink">{intro.title}</h1>
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{intro.deck}</p>
       <p className="mt-4 max-w-3xl text-sm leading-relaxed">{intro.hours}</p>
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         {HOSPITALS.map((hospital) => (
-          <article key={hospital.id} className="overflow-hidden rounded-3xl border border-line bg-white">
+          <article key={hospital.id} className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
             <FacilityPhoto name={hospital.id} alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} className="h-56 w-full object-cover" sizes="(min-width: 768px) 28rem, 100vw" />
             <div className="p-5">
               <h2 className="font-serif text-2xl">
@@ -115,7 +115,7 @@ export function NetworkPage() {
         ))}
       </ul>
       <h2 className="mt-14 font-serif text-3xl">{intro.compare}</h2>
-      <div className="mt-4 overflow-x-auto rounded-3xl border border-line bg-white">
+      <div className="mt-4 overflow-x-auto rounded-[2rem] border border-line bg-white shadow-glass">
         <table className="w-full min-w-[44rem] text-left text-sm">
           <thead className="border-b border-line">
             <tr>

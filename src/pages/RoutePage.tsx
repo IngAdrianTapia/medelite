@@ -219,37 +219,37 @@ export function RoutePage() {
   }
 
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16 print:max-w-none">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24 print:max-w-none">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
-      <p className="text-xs font-semibold tracking-[0.18em] text-navy uppercase">{t.kicker}</p>
-      <h1 className="mt-3 font-serif text-5xl tracking-tight">{t.title}</h1>
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
+      <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 text-muted">{t.deck}</p>
       <form className="mt-6 grid gap-3 sm:grid-cols-2 print:hidden" onSubmit={(event) => event.preventDefault()}>
         <label className="grid gap-1 text-sm">
           {t.origin}
-          <select className="min-h-11 rounded-xl border border-line px-3" value={origin} onChange={(event) => { const value = event.target.value as OriginCode; setOrigin(value); publish({ origin: value }); }}>
+          <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={origin} onChange={(event) => { const value = event.target.value as OriginCode; setOrigin(value); publish({ origin: value }); }}>
             {ORIGIN_CODES.map((code) => <option key={code}>{code}</option>)}
           </select>
         </label>
         <label className="grid gap-1 text-sm">
           {t.line}
-          <select className="min-h-11 rounded-xl border border-line px-3" value={line} onChange={(event) => { const value = event.target.value as LineId; setLine(value); publish({ line: value }); }}>
+          <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={line} onChange={(event) => { const value = event.target.value as LineId; setLine(value); publish({ line: value }); }}>
             {LINE_IDS.map((id) => <option key={id} value={id}>{LINES[id][lang]}</option>)}
           </select>
         </label>
         <label className="grid gap-1 text-sm">
           {t.pkg}
-          <select className="min-h-11 rounded-xl border border-line px-3" value={packageId} onChange={(event) => { const value = event.target.value as PackageId; setPackageId(value); publish({ packageId: value }); }}>
+          <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={packageId} onChange={(event) => { const value = event.target.value as PackageId; setPackageId(value); publish({ packageId: value }); }}>
             {PACKAGE_IDS.map((id) => <option key={id} value={id}>{id}</option>)}
           </select>
         </label>
         <label className="grid gap-1 text-sm">
           {t.month}
-          <input className="min-h-11 rounded-xl border border-line px-3" type="month" value={month} onChange={(event) => { setMonth(event.target.value); publish({ month: event.target.value }); }} />
+          <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" type="month" value={month} onChange={(event) => { setMonth(event.target.value); publish({ month: event.target.value }); }} />
         </label>
         <label className="grid gap-1 text-sm sm:col-span-2">
           {t.hospital}
-          <select className="min-h-11 rounded-xl border border-line px-3" value={hospitalId} onChange={(event) => { const value = event.target.value as HospitalId; setHospitalId(value); publish({ hospitalId: value }); }}>
+          <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={hospitalId} onChange={(event) => { const value = event.target.value as HospitalId; setHospitalId(value); publish({ hospitalId: value }); }}>
             {HOSPITALS.map((hospital) => <option key={hospital.id} value={hospital.id}>{hospital.name}</option>)}
           </select>
         </label>
@@ -264,7 +264,7 @@ export function RoutePage() {
         ))}
       </ol>
 
-      <section id="match" className="mt-10 rounded-3xl border border-line bg-white p-5">
+      <section id="match" className="mt-10 rounded-[2rem] border border-line bg-white shadow-glass p-5">
         <h2 className="font-serif text-3xl">{t.match}</h2>
         <p className="mt-3 leading-relaxed">{t.why[match.why]}</p>
         {match.hospitalId ? <p className="mt-3 font-medium">{HOSPITALS.find((hospital) => hospital.id === match.hospitalId)?.name}</p> : null}
@@ -304,7 +304,7 @@ export function RoutePage() {
         {line === "bariatric" ? (
           <label className="mt-2 grid gap-1 text-sm">
             {t.bmi}
-            <select className="min-h-11 rounded-xl border border-line px-3" value={bmi} onChange={(event) => setBmi(event.target.value as BmiBand | "")}>
+            <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={bmi} onChange={(event) => setBmi(event.target.value as BmiBand | "")}>
               <option value="">—</option>
               <option value="under-30">{"< 30"}</option>
               <option value="30-34">30–34</option>
@@ -323,9 +323,9 @@ export function RoutePage() {
       <div className="mt-8 grid gap-3 print:hidden">
         <label className="grid gap-1 text-sm">
           {t.share}
-          <input className="min-h-11 rounded-xl border border-line px-3" readOnly value={sharePath} />
+          <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" readOnly value={sharePath} />
         </label>
-        <button type="button" className="inline-flex min-h-11 w-fit items-center rounded-full bg-navy px-4 text-sm font-medium text-white" onClick={() => window.print()}>
+        <button type="button" className="inline-flex min-h-12 w-fit items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={() => window.print()}>
           {t.print}
         </button>
       </div>

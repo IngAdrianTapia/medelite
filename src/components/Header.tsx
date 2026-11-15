@@ -37,10 +37,10 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-line bg-white/92 shadow-glass backdrop-blur-md">
       <a
         href="#contenido"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-navy focus:px-5 focus:py-2 focus:text-white"
       >
         {m.skip}
       </a>
@@ -51,25 +51,27 @@ export function Header() {
             width={643}
             height={160}
             alt="MedElite International Health"
-            className="h-9 w-auto"
+            className="h-8 w-auto"
           />
         </Link>
-        <nav className="ml-auto hidden items-center gap-5 lg:flex" aria-label={m.nav.aria}>
+        <nav className="ml-auto hidden items-center gap-6 lg:flex" aria-label={m.nav.aria}>
           {links.map(([href, label]) => (
-            <a key={href} href={href} className="text-sm text-muted hover:text-ink">
+            <a key={href} href={href} className="text-sm font-medium text-muted hover:text-navy">
               {label}
             </a>
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
-          <div className="flex rounded-full border border-line p-0.5" role="group" aria-label={m.langAria}>
+          <div className="flex rounded-full bg-soft p-1" role="group" aria-label={m.langAria}>
             {LANGS.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 aria-pressed={lang === item.id}
                 aria-label={`${item.label}, ${item.name}`}
-                className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-semibold ${lang === item.id ? "bg-navy text-white" : "text-muted"}`}
+                className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-bold tracking-wide ${
+                  lang === item.id ? "bg-white text-navy shadow-sm ring-1 ring-navy/10" : "text-muted hover:text-ink"
+                }`}
                 onClick={() => setLang(item.id)}
               >
                 {item.label}
@@ -78,32 +80,32 @@ export function Header() {
           </div>
           <a
             href="/#cotizar"
-            className="hidden min-h-11 items-center rounded-full bg-navy px-4 text-sm font-medium text-white md:inline-flex"
+            className="hidden min-h-11 items-center rounded-full bg-navy px-4 text-sm font-semibold text-white shadow-premium hover:bg-navy-2 md:inline-flex"
           >
             {m.nav.quote}
           </a>
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line lg:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line bg-white text-navy lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen((value) => !value)}
           >
             <span className="sr-only">{open ? m.nav.close : m.nav.menu}</span>
             <span aria-hidden="true" className="flex w-4 flex-col gap-1">
-              <span className="h-px bg-ink" />
-              <span className="h-px bg-ink" />
-              <span className="h-px bg-ink" />
+              <span className="h-0.5 bg-current" />
+              <span className="h-0.5 bg-current" />
+              <span className="h-0.5 bg-current" />
             </span>
           </button>
         </div>
       </div>
       {open ? (
-        <nav id="menu-movil" className="border-t border-line px-5 py-4 lg:hidden" aria-label={m.nav.aria}>
+        <nav id="menu-movil" className="border-t border-line bg-white px-5 py-4 lg:hidden" aria-label={m.nav.aria}>
           <ul className="grid gap-1">
             {links.map(([href, label]) => (
               <li key={href}>
-                <a href={href} className="block rounded-xl px-3 py-3 text-base hover:bg-paper" onClick={() => setOpen(false)}>
+                <a href={href} className="block rounded-2xl px-4 py-3 text-base font-medium hover:bg-soft" onClick={() => setOpen(false)}>
                   {label}
                 </a>
               </li>

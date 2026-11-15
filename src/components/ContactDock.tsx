@@ -10,12 +10,12 @@ export function ContactDock() {
     fr: "Urgence : appelez le service local, pas ce bureau.",
   }[lang];
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 backdrop-blur">
+    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 shadow-glass backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-3 py-2">
-        <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-medium text-white" href="tel:+16044428475">
+        <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-semibold text-white" href="tel:+16044428475">
           +1 (604) 442-8475
         </a>
-        <a className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm" href="mailto:info@medeliteofficial.com">
+        <a className="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-4 text-sm" href="mailto:info@medeliteofficial.com">
           info@medeliteofficial.com
         </a>
         <Link className="inline-flex min-h-11 items-center px-3 text-sm underline" to="/#cotizar">

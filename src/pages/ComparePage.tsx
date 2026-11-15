@@ -40,16 +40,16 @@ export function ComparePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.waitBody} path="/comparar" />
       <p className="font-serif text-4xl leading-tight">{t.hook}</p>
       <h1 className="mt-4 font-serif text-4xl">{t.title}</h1>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
-        <article className="rounded-3xl border border-line bg-white p-5">
+        <article className="rounded-[2rem] border border-line bg-white shadow-glass p-5">
           <h2 className="font-serif text-2xl">{t.wait}</h2>
           <p className="mt-3 text-sm leading-relaxed">{t.waitBody}</p>
         </article>
-        <article className="rounded-3xl border border-line bg-paper p-5">
+        <article className="rounded-[2rem] border border-line bg-paper shadow-glass p-5">
           <h2 className="font-serif text-2xl">{t.schedule}</h2>
           <p className="mt-3 text-sm leading-relaxed">{t.scheduleBody}</p>
         </article>

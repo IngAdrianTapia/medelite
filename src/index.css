@@ -1,6 +1,24 @@
 @import "tailwindcss";
 
 @font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107.64%;
+  ascent-override: 90.49%;
+  descent-override: 22.56%;
+  line-gap-override: 0%;
+}
+
+@font-face {
   font-family: "Instrument Serif";
   src: url("/assets/fonts/instrument-serif.ttf") format("truetype");
   font-weight: 400;
@@ -17,17 +35,20 @@
 }
 
 @theme {
-  --font-sans: "Avenir Next", "Segoe UI", sans-serif;
+  --font-sans: "Inter", "Inter Fallback", "Avenir Next", "Segoe UI", sans-serif;
   --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --color-paper: #f3f1ea;
-  --color-ink: #162033;
-  --color-muted: #3d4a5c;
-  --color-line: #e2ddd2;
-  --color-navy: #002b49;
-  --color-navy-2: #013a5c;
-  --color-soft: #e6eef3;
-  --color-warn: #6a3d12;
-  --color-warn-soft: #f8f1e6;
+  --color-paper: #f8f9fa;
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-line: #e2e8f0;
+  --color-navy: #0a2540;
+  --color-navy-2: #113a5d;
+  --color-soft: #f1f5f9;
+  --color-warn: #9a3412;
+  --color-warn-soft: #fff7ed;
+  --shadow-glass: 0 4px 30px rgba(15, 23, 42, 0.04);
+  --shadow-premium: 0 8px 32px -4px rgba(10, 37, 64, 0.08);
+  --shadow-premium-hover: 0 16px 48px -8px rgba(10, 37, 64, 0.14);
 }
 
 html {
@@ -41,6 +62,7 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 :focus-visible {
@@ -49,7 +71,13 @@ body {
 }
 
 ::selection {
-  background: #d5e4ee;
+  background: #0a2540;
+  color: #ffffff;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--color-navy);
 }
 
 @media print {
@@ -63,5 +91,14 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

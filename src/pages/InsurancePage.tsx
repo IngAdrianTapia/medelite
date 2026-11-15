@@ -22,9 +22,9 @@ export function InsurancePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/seguros" />
-      <h1 className="font-serif text-5xl tracking-tight">{t.title}</h1>
+      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <ul className="mt-8 columns-1 text-sm sm:columns-2">
         {INSURERS.map((name) => (
@@ -35,7 +35,7 @@ export function InsurancePage() {
       </ul>
       <p className="mt-8 leading-relaxed">{t.how}</p>
       <p className="mt-6">
-        <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-medium text-white" href="mailto:info@medeliteofficial.com">
+        <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href="mailto:info@medeliteofficial.com">
           info@medeliteofficial.com
         </a>
       </p>

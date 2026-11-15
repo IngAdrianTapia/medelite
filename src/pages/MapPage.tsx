@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { MapaSedes } from "../components/MapaSedes";
 import { Seo } from "../components/Seo";
 import { useI18n } from "../i18n";
 
@@ -34,28 +35,13 @@ export function MapPage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-6xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/mapa" />
-      <h1 className="font-serif text-5xl tracking-tight">{t.title}</h1>
-      <p className="mt-4 text-sm leading-relaxed text-muted">{t.deck}</p>
-      <svg viewBox="0 0 360 240" role="img" aria-label={t.title} className="mt-6 w-full rounded-3xl border border-line bg-white">
-        <path d="M40 150 C70 120 90 190 130 180 C160 170 170 140 200 155 C240 175 250 120 300 100 C330 90 340 130 320 150 C280 190 200 210 120 200 C70 190 30 180 40 150 Z" fill="#e7eef3" stroke="#002b49" strokeWidth="1.2" />
-        {["YVR", "YYC", "YYZ"].map((city, index) => (
-          <g key={city}>
-            <line x1={28} y1={36 + index * 18} x2={78} y2={168} stroke="#002b49" strokeWidth="1.2" />
-            <text x="4" y={40 + index * 18} fontSize="9" fill="#002b49">{city}</text>
-          </g>
-        ))}
-        {PINS.map((pin) => {
-          const flip = pin.x > 250;
-          return (
-            <g key={pin.id}>
-              <circle cx={pin.x} cy={pin.y} r="4" fill="#002b49" />
-              <text x={flip ? pin.x - 8 : pin.x + 8} y={pin.y + 3} textAnchor={flip ? "end" : "start"} fontSize="9" fill="#162033">{pin.label}</text>
-            </g>
-          );
-        })}
-      </svg>
+      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{t.deck}</p>
+      <div className="mt-8">
+        <MapaSedes />
+      </div>
       <ul className="mt-4 grid gap-1 text-sm">
         {PINS.map((pin) => (
           <li key={pin.id}>

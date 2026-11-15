@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { DiagramaManga } from "../components/DiagramaManga";
 import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
 import { PHOTO_OF } from "../i18n/labels";
@@ -112,10 +113,10 @@ export function BariatricPage() {
   }[lang];
 
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/bariatrica" />
-      <p className="text-xs font-semibold tracking-[0.18em] text-navy uppercase">{t.kicker}</p>
-      <h1 className="mt-3 font-serif text-5xl tracking-tight">{t.title}</h1>
+      <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
+      <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <FacilityPhoto name="riviera" alt={PHOTO_OF.riviera?.[lang] ?? ""} className="h-56 w-full rounded-3xl object-cover" />
@@ -133,6 +134,9 @@ export function BariatricPage() {
       <figure className="mt-6">
         <FacilityPhoto name="bariatric-room" alt={PHOTO_OF["bariatric-room"]?.[lang] ?? ""} className="h-64 w-full rounded-3xl object-cover" />
       </figure>
+      <div className="mt-10">
+        <DiagramaManga />
+      </div>
       <h2 className="mt-10 font-serif text-3xl">Procedimientos</h2>
       <ul className="mt-4 grid gap-4">
         {PROCEDURES.map((item) => (
@@ -147,7 +151,7 @@ export function BariatricPage() {
       <p className="mt-6 leading-relaxed">{t.missing}</p>
       <p className="mt-3 font-medium">{t.price}</p>
       <p className="mt-6 flex flex-wrap gap-3">
-        <a className="inline-flex min-h-11 items-center rounded-full bg-navy px-4 text-sm font-medium text-white" href="tel:+16044428475">
+        <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href="tel:+16044428475">
           +1 (604) 442-8475
         </a>
         <Link className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm" to="/#cotizar">

@@ -22,13 +22,13 @@ export function PeoplePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="mx-auto max-w-3xl px-5 py-16">
+    <main id="contenido" className="mx-auto max-w-3xl px-5 py-20 md:py-24">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/equipo" />
-      <h1 className="font-serif text-5xl tracking-tight">{t.title}</h1>
+      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <ul className="mt-8 grid gap-4">
         {PEOPLE.map((person) => (
-          <li key={person.id} className="rounded-3xl border border-line bg-white p-5">
+          <li key={person.id} className="rounded-[2rem] border border-line bg-white shadow-glass p-5">
             <h2 className="font-serif text-2xl">{person.name}</h2>
             <p className="mt-2 text-sm leading-relaxed">{person.role}</p>
             {person.credentials.length > 0 ? (
