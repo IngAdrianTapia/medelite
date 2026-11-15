@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "react-router";
 import { AGE_BANDS, BMI_BANDS, CONDITIONS, PACKAGE_BANDS, PACKAGE_IDS, PROCEDURE_IDS, formatCad, formatRange, type AgeBand, type BmiBand, type Condition, type PackageId, type ProcedureId } from "../data/packages";
+import { FlightSimulator } from "./FlightSimulator";
 import { useI18n } from "../i18n";
 import { estimateQuote, type Estimate } from "../lib/estimate";
 import { buildMailto, leadBody } from "../lib/lead";
@@ -400,6 +401,9 @@ export function QuoteWizard() {
             {estimate.flags.includes("complexity") ? <p className="mt-3 text-sm leading-relaxed">{m.wizard.complexity}</p> : null}
             {estimate.flags.includes("snowbird-not-in-mexico") ? <p className="mt-3 text-sm leading-relaxed">{m.wizard.snowFlag}</p> : null}
             <p className="mt-4 text-sm leading-relaxed text-muted">{m.wizard.notQuote}</p>
+            <div className="mt-6">
+              <FlightSimulator procedure={state.procedure} packageId={state.packageId} />
+            </div>
             {mailto ? (
               <form className="mt-6" action={mailto.action} method="GET">
                 <input type="hidden" name="subject" value={mailto.subject} />

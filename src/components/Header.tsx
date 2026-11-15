@@ -22,13 +22,18 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const extra = {
+    es: { flights: "Vuelos", bariatric: "Bariátrica", insurers: "Seguros" },
+    en: { flights: "Flights", bariatric: "Bariatric", insurers: "Insurers" },
+    fr: { flights: "Vols", bariatric: "Bariatrique", insurers: "Assureurs" },
+  }[lang];
   const links = [
-    ["/#especialidades", m.nav.specialties],
-    ["/#paquetes", m.nav.packages],
+    ["/especialidades", m.nav.specialties],
+    ["/red", m.nav.network],
+    ["/bariatrica", extra.bariatric],
+    ["/vuelos", extra.flights],
+    ["/seguros", extra.insurers],
     ["/#cotizar", m.nav.quote],
-    ["/#recorrido", m.nav.journey],
-    ["/#red", m.nav.network],
-    ["/#faq", m.nav.faq],
   ] as const;
 
   return (
@@ -64,7 +69,7 @@ export function Header() {
                 type="button"
                 aria-pressed={lang === item.id}
                 aria-label={`${item.label}, ${item.name}`}
-                className={`min-h-9 min-w-9 rounded-full px-2 text-xs font-semibold ${lang === item.id ? "bg-navy text-white" : "text-muted"}`}
+                className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-semibold ${lang === item.id ? "bg-navy text-white" : "text-muted"}`}
                 onClick={() => setLang(item.id)}
               >
                 {item.label}

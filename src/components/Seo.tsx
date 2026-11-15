@@ -24,7 +24,7 @@ export function Seo({
 }: {
   title: string;
   description: string;
-  path: "/" | "/privacy" | "/terms";
+  path: string;
 }) {
   const { lang } = useI18n();
 

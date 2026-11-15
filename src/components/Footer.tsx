@@ -5,13 +5,14 @@ import { useI18n } from "../i18n";
 export function Footer() {
   const { m } = useI18n();
   return (
-    <footer className="border-t border-line bg-white">
+    <footer className="border-t border-line bg-white pb-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
           <img src="/assets/brand/medelite-emblem-512.png" width={48} height={48} alt="" className="h-12 w-12" />
           <p className="mt-4 font-serif text-2xl">{m.footer.tag}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">{m.footer.about}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">{m.footer.fine}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">{m.footer.photos}</p>
         </div>
         <div>
           <h2 className="text-sm font-semibold tracking-wide uppercase">{m.footer.contact}</h2>

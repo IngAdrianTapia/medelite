@@ -25,7 +25,7 @@ export const es: Messages = {
   },
   langAria: "Idioma",
   notice:
-    "Importante. Los montos de esta página son rangos de planeación, con su ejemplo y su límite. No son cotizaciones. Cada plan se confirma por escrito después de la valoración del cirujano en México.",
+    "Estimaciones, no cotizaciones. El cirujano en México confirma el plan por escrito.",
   hero: {
     kicker: "MedElite International Health · Vancouver, BC",
     title: "Atención médica de élite en México para canadienses",
@@ -443,6 +443,7 @@ export const es: Messages = {
     legal: "Legal",
     copy: "© 2026 MedElite International Health.",
     pwa: "Puede instalar este sitio desde el navegador. Se actualiza solo cuando se publica una versión nueva.",
+    photos: "Fotografías: Grupo Médico Joya, usadas con autorización.",
     official: "Sitio oficial",
   },
   sourcesTitle: "Fuentes",

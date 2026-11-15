@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { QuoteWizard } from "../components/QuoteWizard";
 import { Deck, Kicker, Section, Title } from "../components/Section";
+import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
 import { HOSPITALS } from "../data/hospitals";
 import { PACKAGE_BANDS, PACKAGE_IDS, formatCad, formatRange } from "../data/packages";
@@ -47,10 +48,13 @@ export function HomePage() {
             </dl>
           </div>
           <figure className="overflow-hidden rounded-3xl border border-line bg-white">
-            <img src="/assets/img/hero-bahia.svg" width={1920} height={1080} alt={m.hero.illAlt} className="h-auto w-full" />
-            <figcaption className="px-4 py-3 text-sm text-muted">
-              {m.hero.illCap} {m.hero.route}
-            </figcaption>
+            <FacilityPhoto
+              name="marina"
+              alt={lang === "en" ? "Exterior of Hospital Joya Marina Vallarta." : lang === "fr" ? "Façade de l’Hospital Joya Marina Vallarta." : "Fachada del Hospital Joya Marina Vallarta."}
+              className="h-auto w-full object-cover"
+              sizes="(min-width: 768px) 32rem, 100vw"
+            />
+            <figcaption className="px-4 py-3 text-sm text-muted">{m.footer.photos}</figcaption>
           </figure>
         </div>
       </section>

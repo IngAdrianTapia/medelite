@@ -228,6 +228,7 @@ export interface Messages {
     copy: string;
     pwa: string;
     official: string;
+    photos: string;
   };
   sourcesTitle: string;
   privacy: { kicker: string; title: string; updated: string; sections: LegalSection[] };

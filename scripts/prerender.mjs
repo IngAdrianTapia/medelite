@@ -19,6 +19,16 @@ function writePage(route, filename) {
 }
 
 writePage("/", "index.html");
+writePage("/red", "red/index.html");
+for (const id of ["marina", "riviera", "guadalajara", "sma", "queretaro", "cancun", "playa", "chapala", "penita"]) {
+  writePage(`/red/${id}`, `red/${id}/index.html`);
+}
+writePage("/especialidades", "especialidades/index.html");
+writePage("/bariatrica", "bariatrica/index.html");
+writePage("/vuelos", "vuelos/index.html");
+writePage("/seguros", "seguros/index.html");
+writePage("/que-es", "que-es/index.html");
+writePage("/preparacion", "preparacion/index.html");
 writePage("/privacy", "privacy/index.html");
 writePage("/privacidad", "privacidad/index.html");
 writePage("/terms", "terms/index.html");

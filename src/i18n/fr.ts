@@ -25,7 +25,7 @@ export const fr: Messages = {
   },
   langAria: "Langue",
   notice:
-    "À noter. Les montants de cette page sont des fourchettes de planification, avec l’exemple et la limite indiqués. Ce ne sont pas des soumissions. Chaque plan est confirmé par écrit après l’évaluation du chirurgien au Mexique.",
+    "Estimations, pas des soumissions. Le chirurgien au Mexique confirme le plan par écrit.",
   hero: {
     kicker: "MedElite International Health · Vancouver (C.-B.)",
     title: "Des soins médicaux d’élite au Mexique pour les Canadiens",
@@ -442,6 +442,7 @@ export const fr: Messages = {
     legal: "Mentions",
     copy: "© 2026 MedElite International Health.",
     pwa: "Vous pouvez installer ce site depuis le navigateur. Il se met à jour lorsqu’une nouvelle version est publiée.",
+    photos: "Photographies : Grupo Médico Joya, utilisées avec autorisation.",
     official: "Site officiel",
   },
   sourcesTitle: "Sources",

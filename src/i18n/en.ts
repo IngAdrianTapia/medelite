@@ -25,7 +25,7 @@ export const en: Messages = {
   },
   langAria: "Language",
   notice:
-    "Please note. Amounts on this page are planning ranges, with the example and the limit stated. They are not quotes. Every plan is confirmed in writing after the surgeon in Mexico reviews the case.",
+    "Estimates, not quotes. The surgeon in Mexico confirms the plan in writing.",
   hero: {
     kicker: "MedElite International Health · Vancouver, BC",
     title: "Elite Medical Care in Mexico for Canadians",
@@ -442,6 +442,7 @@ export const en: Messages = {
     legal: "Legal",
     copy: "© 2026 MedElite International Health.",
     pwa: "You can install this site from your browser. It updates itself when a new version is published.",
+    photos: "Photographs: Grupo Médico Joya, used with permission.",
     official: "Official site",
   },
   sourcesTitle: "Sources",
