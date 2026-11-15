@@ -117,15 +117,17 @@ export function SpecialtiesPage() {
       </ul>
       <div className="mt-10 grid gap-6">
         {PUBLIC_SPECIALTIES.map((id, index) => {
-          const photo = PHOTO_FOR[id] ?? "patient-room";
+          const photo = PHOTO_FOR[id];
           const sites = SPECIALTY_SITES[id];
           return (
-            <article key={id} id={id} className={`grid overflow-hidden rounded-[2rem] bg-navy text-white md:grid-cols-2 ${index % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-              <div className="relative min-h-72">
-                <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} sizes="(min-width: 768px) 40rem, 100vw" />
-              </div>
+            <article key={id} id={id} className={`grid overflow-hidden rounded-[2rem] bg-navy text-white ${photo ? "md:grid-cols-2" : ""} ${index % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+              {photo ? (
+                <div className="relative min-h-72">
+                  <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} sizes="(min-width: 768px) 46rem, 100vw" />
+                </div>
+              ) : null}
               <div className="flex flex-col justify-end p-8">
-                <h2 className="font-serif text-3xl">{SPECIALTY_LABEL[id][lang]}</h2>
+                <h2 className="font-serif text-3xl"><Link className="underline" to={`/especialidades/${id}`}>{SPECIALTY_LABEL[id][lang]}</Link></h2>
                 {sites.length > 0 ? (
                   <ul className="mt-3 text-sm">
                     {sites.map((site) => {
@@ -156,8 +158,8 @@ export function SpecialtiesPage() {
       <h2 className="mt-14 font-serif text-3xl">{t.directory}</h2>
       <ul className="mt-4 columns-1 gap-x-8 text-sm sm:columns-2">
         {DIRECTORY_SPECIALTIES.map((id) => (
-          <li key={id} className="mb-1">
-            {DIRECTORY_LABEL[id][lang]}
+          <li key={id} className="mb-2">
+            <Link className="inline-flex min-h-11 items-center underline" to={`/especialidades/${id}`}>{DIRECTORY_LABEL[id][lang]}</Link>
           </li>
         ))}
       </ul>

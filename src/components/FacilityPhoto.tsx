@@ -61,6 +61,8 @@ export function FacilityPhoto({
   className = "",
   sizes = "(min-width: 1024px) 36rem, 100vw",
   fetchPriority,
+  /** Full-bleed frames cap their CSS width at half the bitmap so a 2x screen does not upscale. */
+  protect = false,
 }: {
   name: string;
   alt: string;
@@ -69,12 +71,15 @@ export function FacilityPhoto({
   className?: string;
   sizes?: string;
   fetchPriority?: "high" | "low" | "auto";
+  protect?: boolean;
 }) {
   const box = INTRINSIC[name] ?? [4, 3];
   const rows = VARIANTS[name] ?? [];
   const fallbackSlot = rows[rows.length - 1]?.[0] ?? 640;
+  const crispCss = Math.max(1, Math.floor(box[0] / 2));
+  const capped = protect && box[0] < 3840;
   return (
-    <picture className={fill ? "absolute inset-0 block h-full w-full" : "block"}>
+    <picture className={fill ? "absolute inset-0 flex items-center justify-center" : "block"}>
       <source type="image/avif" srcSet={srcSet(name, "avif")} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet(name, "webp")} sizes={sizes} />
       <img
@@ -85,7 +90,14 @@ export function FacilityPhoto({
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         fetchPriority={fetchPriority ?? (priority ? "high" : "auto")}
-        className={fill ? `h-full w-full object-cover ${className}` : className}
+        style={capped ? { maxWidth: `min(100%, ${crispCss}px)`, maxHeight: "100%" } : undefined}
+        className={
+          fill
+            ? capped
+              ? `h-auto max-h-full w-auto max-w-full object-contain ${className}`
+              : `h-full w-full object-cover ${className}`
+            : className
+        }
       />
     </picture>
   );

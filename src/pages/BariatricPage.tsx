@@ -119,8 +119,8 @@ export function BariatricPage() {
       <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <FacilityPhoto name="riviera" alt={PHOTO_OF.riviera?.[lang] ?? ""} className="h-56 w-full rounded-3xl object-cover" />
-        <FacilityPhoto name="bariatric-or" alt={PHOTO_OF["bariatric-or"]?.[lang] ?? ""} className="h-56 w-full rounded-3xl object-cover" />
+        <FacilityPhoto name="riviera" alt={PHOTO_OF.riviera?.[lang] ?? ""} sizes="(min-width: 640px) 22rem, 100vw" className="h-56 w-full rounded-3xl object-cover" />
+        <FacilityPhoto name="bariatric-or" alt={PHOTO_OF["bariatric-or"]?.[lang] ?? ""} sizes="(min-width: 640px) 22rem, 100vw" className="h-56 w-full rounded-3xl object-cover" />
       </div>
       <p className="mt-6 leading-relaxed">{t.where}</p>
       <p className="mt-3 leading-relaxed">{t.who}</p>
@@ -132,7 +132,7 @@ export function BariatricPage() {
         ))}
       </ul>
       <figure className="mt-6">
-        <FacilityPhoto name="bariatric-room" alt={PHOTO_OF["bariatric-room"]?.[lang] ?? ""} className="h-64 w-full rounded-3xl object-cover" />
+        <FacilityPhoto name="bariatric-room" alt={PHOTO_OF["bariatric-room"]?.[lang] ?? ""} sizes="(min-width: 640px) 46rem, 100vw" className="h-64 w-full rounded-3xl object-cover" />
       </figure>
       <div className="mt-10">
         <DiagramaManga />

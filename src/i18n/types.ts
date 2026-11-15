@@ -29,6 +29,11 @@ export interface Messages {
     network: string;
     faq: string;
     contact: string;
+    home: string;
+    joya: string;
+    medelite: string;
+    doctors: string;
+    gallery: string;
     privacy: string;
     terms: string;
   };

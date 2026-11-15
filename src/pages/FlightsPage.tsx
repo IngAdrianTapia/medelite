@@ -23,7 +23,7 @@ export function FlightsPage() {
     <main id="contenido" className="relative min-h-svh bg-navy">
       <Seo title={`${copy.title} — MedElite`} description={copy.deck} path="/vuelos" />
       <div className="absolute inset-0 opacity-40">
-        <FacilityPhoto name="marina" fill alt="" sizes="100vw" />
+        <FacilityPhoto name="marina" fill protect alt="" sizes="100vw" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
       <div className="relative mx-auto grid min-h-svh max-w-6xl items-center gap-10 px-5 pt-32 pb-20 lg:grid-cols-2">

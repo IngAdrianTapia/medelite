@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-15 — plan maestro
+
+El menú pasa a Inicio, Hospital Joya, MedElite, Especialidades, Médicos, Galería y Contacto. Las fotos Joya salen de la portada y quedan en `/hospital-joya` y `/galeria`, por categoría. Cada especialidad de las listas ya guardadas tiene ficha, sin procedimientos inventados. Plan: `docs/PLAN_MAESTRO_MEDELITE.md`. Ficha: [evidencias/2026-11-15-plan-maestro.md](./evidencias/2026-11-15-plan-maestro.md).
+
 ## 2026-11-15 — fotos Joya
 
 Las nueve sedes usan fachadas reales de la colección autorizada. Se añadieron quirófano, habitación, tomógrafo y vestíbulo, y retratos publicados del equipo. No entra el render de Manzanillo ni fotos con pacientes. Cada archivo usado tiene URL de origen en `src/data/photoCredits.ts`. Ficha: [evidencias/2026-11-15-fotos-joya.md](./evidencias/2026-11-15-fotos-joya.md).

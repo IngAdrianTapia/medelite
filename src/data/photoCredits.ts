@@ -210,7 +210,27 @@ export const HOSPITAL_INTERIORS: Partial<Record<HospitalId, readonly string[]>> 
   playa: ["patient-room"],
 };
 
-export const FACILITY_GALLERY = ["operating-room", "patient-room", "cancun-ct", "cancun-lobby"] as const;
+export type PhotoCategory = "fachadas" | "quirofanos" | "habitaciones" | "instalaciones" | "urgencias";
+
+/** Each published photo sits in the category that matches what the picture shows. */
+export const GALLERY_ITEMS: readonly { id: string; category: PhotoCategory }[] = [
+  { id: "marina", category: "fachadas" },
+  { id: "riviera", category: "fachadas" },
+  { id: "guadalajara", category: "fachadas" },
+  { id: "sma", category: "fachadas" },
+  { id: "queretaro", category: "fachadas" },
+  { id: "cancun", category: "fachadas" },
+  { id: "playa", category: "fachadas" },
+  { id: "chapala", category: "fachadas" },
+  { id: "penita", category: "fachadas" },
+  { id: "operating-room", category: "quirofanos" },
+  { id: "bariatric-or", category: "quirofanos" },
+  { id: "patient-room", category: "habitaciones" },
+  { id: "bariatric-room", category: "habitaciones" },
+  { id: "cancun-lobby", category: "instalaciones" },
+  { id: "cancun-ct", category: "instalaciones" },
+  { id: "penita", category: "urgencias" },
+];
 
 export function portraitOf(id: string): PhotoCredit | undefined {
   return PHOTO_CREDITS.find((row) => row.id === id && row.sourceFile.includes("retrato"));

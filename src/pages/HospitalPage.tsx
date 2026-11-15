@@ -56,7 +56,7 @@ export function HospitalPage() {
     <main id="contenido">
       <Seo title={`${hospital.name} — MedElite`} description={hospital.address} path={`/red/${hospital.id}`} />
       <header className="relative flex min-h-[78vh] items-end bg-navy text-white">
-        <FacilityPhoto name={hospital.id} fill priority alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="100vw" />
+        <FacilityPhoto name={hospital.id} fill protect priority alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-navy/20" />
         <div className="relative z-10 w-full px-6 pt-32 pb-12">
           <Link className="text-sm text-gold-line underline" to="/red">{copy.back}</Link>

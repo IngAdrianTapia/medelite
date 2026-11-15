@@ -3,6 +3,16 @@ import { dirname, join } from "node:path";
 import { generateSW } from "workbox-build";
 import { render } from "../dist-ssr/entry-server.js";
 
+const SPECIALTY_PATHS = [
+  "algology", "anesthesiology", "angiology", "cardiology", "bariatric", "cardiothoracic",
+  "endoscopic-surgery", "general-surgery", "maxillofacial", "surgical-oncology", "gyn-oncology",
+  "pediatric-surgery", "plastic", "spine", "gastroenterology", "geriatrics", "gynecology",
+  "hematology", "infectious-disease", "critical-care", "rehab", "internal-medicine", "nephrology",
+  "neonatology", "pulmonology", "neurosurgery", "neurology", "ophthalmology", "oncology", "ent",
+  "pediatrics", "orthopedics", "urology",
+  "dermatology", "endocrinology", "general-practice",
+];
+
 const dist = new URL("../dist/", import.meta.url);
 const template = readFileSync(new URL("index.html", dist), "utf8");
 
@@ -24,9 +34,12 @@ function writePage(route, filename, lang) {
 
 const ROUTES = [
   ["/", "index.html"],
+  ["/hospital-joya", "hospital-joya/index.html"],
+  ["/galeria", "galeria/index.html"],
   ["/red", "red/index.html"],
   ...["marina", "riviera", "guadalajara", "sma", "queretaro", "cancun", "playa", "chapala", "penita"].map((id) => [`/red/${id}`, `red/${id}/index.html`]),
   ["/especialidades", "especialidades/index.html"],
+  ...SPECIALTY_PATHS.map((id) => [`/especialidades/${id}`, `especialidades/${id}/index.html`]),
   ["/bariatrica", "bariatrica/index.html"],
   ["/vuelos", "vuelos/index.html"],
   ["/seguros", "seguros/index.html"],

@@ -33,6 +33,8 @@ export function Footer() {
         <div>
           <h2 className="text-xs tracking-[0.2em] text-gold-line uppercase">{m.footer.legal}</h2>
           <ul className="mt-4 grid gap-2 text-sm text-white/75">
+            <li><Link className="underline decoration-white/30 underline-offset-4" to="/hospital-joya">Hospital Joya</Link></li>
+            <li><Link className="underline decoration-white/30 underline-offset-4" to="/galeria">{lang === "en" ? "Gallery" : lang === "fr" ? "Galerie" : "Galería"}</Link></li>
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/equipo">{lang === "en" ? "Published names" : lang === "fr" ? "Noms publiés" : "Nombres publicados"}</Link></li>
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/hospitales">{lang === "en" ? "For hospitals" : lang === "fr" ? "Pour les hôpitaux" : "Para hospitales"}</Link></li>
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/privacy">{m.nav.privacy}</Link></li>
