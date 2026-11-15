@@ -74,7 +74,7 @@ export const en: Messages = {
       },
       {
         title: "Plastic surgery and ophthalmology",
-        body: "Plastic, reconstructive and eye surgery, with recovery as the surgeon instructs. The published range on this page is the knee example, not the price of these procedures.",
+        body: "Plastic, reconstructive and eye surgery, with recovery as the surgeon instructs. The published range on this page is the knee range, not the price of these procedures.",
         sites: "Cancún and Playa del Carmen.",
         request: false,
       },
@@ -88,11 +88,11 @@ export const en: Messages = {
   },
   packages: {
     kicker: "Packages",
-    title: "Three levels, from a knee example",
-    deck: "The ranges are the planning example for a total knee replacement, in Canadian dollars. They say “starting from” because the surgeon can change the number. They do not include a flight you buy yourself, unless the written agreement says so.",
+    title: "Three levels for a knee replacement",
+    deck: "The ranges are for a total knee replacement, in Canadian dollars. They say “starting from” because the surgeon can change the number. They do not include a flight you buy yourself, unless the written agreement says so.",
     from: "Starting from",
     range: "Planning range",
-    example: "Example: total knee replacement. Subject to medical evaluation. Not a quote.",
+    example: "Total knee replacement, in Canadian dollars. Subject to medical review. Not a quote.",
     note: "medeliteofficial.com states savings of 50–70% versus Canada. That is the company’s own commercial statement, not an independent audit. The only price is the written quote.",
     payment:
       "The intended model is a 30% deposit (Interac e-Transfer or card) and 70% by bank transfer 15 days before travel, to the account named in the written agreement. This website does not take payment and does not store card numbers.",
@@ -102,9 +102,9 @@ export const en: Messages = {
         who: "For someone already in Mexico: Puerto Vallarta, Riviera Nayarit, Ajijic, La Peñita or San Miguel de Allende.",
         points: [
           "Surgery and, if an implant is used, the implant named in the quote.",
-          "Two hospital nights in the knee example.",
+          "Two hospital nights for the knee replacement.",
           "The package design includes a complications policy, valid only if the quote names it and confirms the surgeon.",
-          "Home nursing visits and initial physiotherapy, as in the planning example.",
+          "Home nursing visits and initial physiotherapy, as set out in the knee plan.",
           "An interpreter for coordination, and video follow-up back in Canada.",
           "No hotel, no airport transfer and no flights: the person is already in Mexico.",
         ],
@@ -114,7 +114,7 @@ export const en: Messages = {
         who: "For someone travelling from Canada who wants a clear package off a wait list.",
         points: [
           "Everything in Snowbird.",
-          "Seven nights in an accessible four-star hotel room, in the knee example.",
+          "Seven nights in an accessible four-star hotel room, for the knee replacement.",
           "Private transfers: airport, hospital and hotel.",
           "An interpreter for coordination.",
           "Video follow-up back in Canada.",
@@ -126,8 +126,8 @@ export const en: Messages = {
         who: "For someone travelling with a companion who wants a more comfortable stay.",
         points: [
           "A hospital suite, subject to the availability named in the quote.",
-          "Eight nights in a five-star hotel, with breakfast, in the example.",
-          "Daily nursing at the hotel and four physiotherapy sessions in Mexico, in the knee example.",
+          "Eight nights in a five-star hotel, with breakfast, for the knee replacement.",
+          "Daily nursing at the hotel and four physiotherapy sessions in Mexico, for the knee replacement.",
           "An interpreter, transfers, and video follow-up back in Canada.",
         ],
       },
@@ -148,7 +148,7 @@ export const en: Messages = {
     procedureLegend: "Which procedure are you asking about?",
     procedures: {
       knee: { label: "Knee replacement", hint: "Orthopedic route in the Joya network." },
-      hip: { label: "Hip replacement", hint: "Same route. The range shown is the knee example." },
+      hip: { label: "Hip replacement", hint: "Same route. The published range is the knee range." },
       bariatric: { label: "Bariatric surgery", hint: "Guadalajara or Querétaro. The price is confirmed in writing." },
       plastic: { label: "Plastic surgery", hint: "Cancún or Playa del Carmen. No published band on this page." },
       ophthalmology: { label: "Ophthalmology", hint: "Cancún or Playa del Carmen. No published band on this page." },
@@ -160,7 +160,7 @@ export const en: Messages = {
     ages: ["18–39", "40–54", "55–69", "70 or older"],
     bmi: "BMI range, if you know it",
     bmis: ["Under 30", "30–34", "35–39", "40 or higher"],
-    conditions: "Check what applies. Do not type diagnoses or test results.",
+    conditions: "Check what applies. Do not type diagnoses or lab results.",
     conditionOpts: ["Diabetes", "Heart disease", "Blood thinners", "None of these"],
     inMexico: "Are you already in Mexico?",
     yes: "Yes",
@@ -176,9 +176,9 @@ export const en: Messages = {
     email: "Email",
     phone: "Phone",
     city: "City and province in Canada",
-    cityPh: "e.g. Vancouver, BC",
+    cityPh: "Vancouver, BC",
     note: "Optional note, with no detailed clinical information and no card numbers",
-    notePh: "Tell us in general terms how we can help. Do not include diagnoses, test results or card numbers.",
+    notePh: "Tell us in general terms how we can help. Do not include diagnoses, lab results or card numbers.",
     adult: "I confirm that I am 18 or older.",
     consent:
       "I consent to MedElite using these details to coordinate my request and, if needed for that request, sharing them with the hospital and surgeon in Mexico. I understand the cross-border transfer under PIPEDA and British Columbia’s PIPA, and handling in Mexico under the LFPDPPP. I have read the privacy notice.",
@@ -398,7 +398,7 @@ export const en: Messages = {
       },
       {
         q: "Is the questionnaire range the price?",
-        a: "No. It is an estimate from the knee example, or a notice that the case is on request. The written quote, after the surgeon’s review, is the only price.",
+        a: "No. It is the published knee range, or a notice that the case is on request. The written quote, after the surgeon’s review, is the only price.",
       },
       {
         q: "Can I deduct the surgery on my taxes?",
@@ -483,7 +483,7 @@ export const en: Messages = {
         heading: "Consent and transfer",
         paragraphs: [
           "The checkbox is consent to use those details for the request and, if needed to coordinate it, to share them with the relevant hospital and surgeon in Mexico.",
-          "In Canada, the federal PIPEDA applies and, because the office is in British Columbia, that province’s Personal Information Protection Act (PIPA) applies. If you live in another province, a local privacy law may also apply, for example PHIPA in Ontario.",
+          "In Canada, the federal PIPEDA applies and, because the office is in British Columbia, that province’s Personal Information Protection Act (PIPA) applies. If you live in another province, a local privacy law may also apply, such as PHIPA in Ontario.",
           "In Mexico, sensitive personal information is governed by the LFPDPPP. If a clinical record comes to exist, the hospital holds it under NOM-004-SSA3-2012. This notice does not replace the hospital’s privacy notice.",
         ],
       },
@@ -531,7 +531,7 @@ export const en: Messages = {
       {
         heading: "Estimates",
         paragraphs: [
-          "The ranges in Canadian dollars are the planning example for a total knee replacement (Snowbird, Essential and Executive). They are subject to medical evaluation. They are not an offer, they do not reserve an operating room, and they do not mean you are a candidate.",
+          "The ranges in Canadian dollars are the published plan for a total knee replacement (Snowbird, Essential and Executive). They are subject to medical evaluation. They are not an offer, they do not reserve an operating room, and they do not mean you are a candidate.",
           "If a procedure has no published band, the questionnaire marks it on request. A later written quote replaces any figure on this page.",
         ],
       },

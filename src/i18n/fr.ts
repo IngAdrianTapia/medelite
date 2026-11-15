@@ -74,7 +74,7 @@ export const fr: Messages = {
       },
       {
         title: "Chirurgie plastique et ophtalmologie",
-        body: "Chirurgie plastique, reconstructive et ophtalmologie, avec une récupération selon l’instruction du chirurgien. La fourchette publiée ici est l’exemple du genou, pas le prix de ces interventions.",
+        body: "Chirurgie plastique, reconstructive et ophtalmologie, avec une récupération selon l’instruction du chirurgien. La fourchette publiée ici est celle du genou, pas le prix de ces interventions.",
         sites: "Cancún et Playa del Carmen.",
         request: false,
       },
@@ -88,11 +88,11 @@ export const fr: Messages = {
   },
   packages: {
     kicker: "Forfaits",
-    title: "Trois niveaux, à partir d’un exemple de genou",
-    deck: "Les fourchettes sont l’exemple de planification d’une arthroplastie totale du genou, en dollars canadiens. Elles disent « à partir de » parce que le chirurgien peut changer le chiffre. Elles n’incluent pas un vol que vous achetez vous-même, sauf si l’entente écrite le précise.",
+    title: "Trois niveaux pour un remplacement du genou",
+    deck: "Les fourchettes sont celles d’une arthroplastie totale du genou, en dollars canadiens. Elles disent « à partir de » parce que le chirurgien peut changer le chiffre. Elles n’incluent pas un vol que vous achetez vous-même, sauf si l’entente écrite le précise.",
     from: "À partir de",
     range: "Fourchette de planification",
-    example: "Exemple : remplacement total du genou. Sous réserve de l’évaluation médicale. Ce n’est pas une soumission.",
+    example: "Remplacement total du genou, en dollars canadiens. Sous réserve de l’évaluation médicale. Ce n’est pas une soumission.",
     note: "medeliteofficial.com annonce des économies de 50 à 70 % par rapport au Canada. C’est une déclaration commerciale de l’entreprise, pas un audit indépendant. Le seul prix est la soumission écrite.",
     payment:
       "Le modèle prévu est un acompte de 30 % (virement Interac ou carte) et 70 % par virement bancaire 15 jours avant le voyage, au compte nommé dans l’entente écrite. Ce site n’encaisse rien et ne conserve aucun numéro de carte.",
@@ -102,9 +102,9 @@ export const fr: Messages = {
         who: "Pour une personne déjà au Mexique : Puerto Vallarta, Riviera Nayarit, Ajijic, La Peñita ou San Miguel de Allende.",
         points: [
           "Chirurgie et, s’il y a un implant, l’implant nommé dans la soumission.",
-          "Deux nuits d’hôpital dans l’exemple du genou.",
+          "Deux nuits d’hôpital pour le remplacement du genou.",
           "Le forfait est conçu pour inclure une assurance complications, valable seulement si la soumission la nomme et confirme le chirurgien.",
-          "Visites d’infirmier à domicile et début de physiothérapie, selon l’exemple de planification.",
+          "Visites d’infirmier à domicile et début de physiothérapie, selon le plan du genou.",
           "Interprète pour la coordination et suivi par vidéo au retour au Canada.",
           "Sans hôtel, sans transfert d’aéroport et sans vols : la personne est déjà au Mexique.",
         ],
@@ -114,7 +114,7 @@ export const fr: Messages = {
         who: "Pour une personne qui voyage depuis le Canada et veut un forfait clair, hors liste d’attente.",
         points: [
           "Tout ce qui est dans Snowbird.",
-          "Sept nuits dans une chambre accessible d’hôtel quatre étoiles, dans l’exemple du genou.",
+          "Sept nuits dans une chambre accessible d’hôtel quatre étoiles, pour le remplacement du genou.",
           "Transferts privés aéroport–hôpital–hôtel.",
           "Interprète pour la coordination.",
           "Suivi par vidéo au retour au Canada.",
@@ -126,8 +126,8 @@ export const fr: Messages = {
         who: "Pour une personne qui voyage avec un accompagnateur et veut un séjour plus confortable.",
         points: [
           "Chambre d’hôpital de type suite, selon la disponibilité nommée dans la soumission.",
-          "Huit nuits dans un hôtel cinq étoiles, avec déjeuner, dans l’exemple.",
-          "Soins infirmiers quotidiens à l’hôtel et quatre séances de physiothérapie au Mexique, dans l’exemple du genou.",
+          "Huit nuits dans un hôtel cinq étoiles, avec déjeuner, pour le remplacement du genou.",
+          "Soins infirmiers quotidiens à l’hôtel et quatre séances de physiothérapie au Mexique, pour le remplacement du genou.",
           "Interprète, transferts et suivi par vidéo au retour au Canada.",
         ],
       },
@@ -148,7 +148,7 @@ export const fr: Messages = {
     procedureLegend: "Quelle intervention vous intéresse?",
     procedures: {
       knee: { label: "Remplacement du genou", hint: "Itinéraire d’orthopédie dans le réseau Joya." },
-      hip: { label: "Remplacement de la hanche", hint: "Même itinéraire. La fourchette affichée est l’exemple du genou." },
+      hip: { label: "Remplacement de la hanche", hint: "Même itinéraire. La fourchette publiée est celle du genou." },
       bariatric: { label: "Chirurgie bariatrique", hint: "Guadalajara ou Querétaro. Le prix est confirmé par écrit." },
       plastic: { label: "Chirurgie plastique", hint: "Cancún ou Playa del Carmen. Aucune bande publiée sur cette page." },
       ophthalmology: { label: "Ophtalmologie", hint: "Cancún ou Playa del Carmen. Aucune bande publiée sur cette page." },
@@ -176,7 +176,7 @@ export const fr: Messages = {
     email: "Courriel",
     phone: "Téléphone",
     city: "Ville et province au Canada",
-    cityPh: "p. ex. Vancouver, C.-B.",
+    cityPh: "Vancouver, C.-B.",
     note: "Note facultative, sans donnée clinique détaillée ni numéro de carte",
     notePh: "Dites-nous de façon générale comment vous aider. N’incluez ni diagnostic, ni examen, ni numéro de carte.",
     adult: "Je confirme avoir 18 ans ou plus.",
@@ -398,7 +398,7 @@ export const fr: Messages = {
       },
       {
         q: "La fourchette du questionnaire est-elle le prix?",
-        a: "Non. C’est une estimation de l’exemple du genou, ou un avis que le dossier est sur demande. La soumission écrite, après l’examen du chirurgien, est le seul prix.",
+        a: "Non. C’est la fourchette publiée du genou, ou un avis que le dossier est sur demande. La soumission écrite, après l’examen du chirurgien, est le seul prix.",
       },
       {
         q: "Puis-je déduire la chirurgie de mes impôts?",
@@ -483,7 +483,7 @@ export const fr: Messages = {
         heading: "Consentement et transfert",
         paragraphs: [
           "La case du questionnaire est le consentement à utiliser ces renseignements pour la demande et, si nécessaire pour la coordonner, à les communiquer à l’hôpital et au chirurgien concernés au Mexique.",
-          "Au Canada, la loi fédérale PIPEDA s’applique et, parce que le bureau est en Colombie-Britannique, la Personal Information Protection Act (PIPA) de cette province s’applique. Si vous vivez dans une autre province, une loi locale peut aussi s’appliquer, par exemple la PHIPA en Ontario.",
+          "Au Canada, la loi fédérale PIPEDA s’applique et, parce que le bureau est en Colombie-Britannique, la Personal Information Protection Act (PIPA) de cette province s’applique. Si vous vivez dans une autre province, une loi locale peut aussi s’appliquer, comme la PHIPA en Ontario.",
           "Au Mexique, les renseignements personnels sensibles sont régis par la LFPDPPP. Si un dossier clinique existe, l’hôpital le détient selon la NOM-004-SSA3-2012. Cet avis ne remplace pas l’avis de confidentialité de l’hôpital.",
         ],
       },
@@ -531,7 +531,7 @@ export const fr: Messages = {
       {
         heading: "Estimations",
         paragraphs: [
-          "Les fourchettes en dollars canadiens sont l’exemple de planification d’un remplacement total du genou (Snowbird, Essential et Executive). Elles sont sous réserve de l’évaluation médicale. Ce n’est pas une offre, cela ne réserve pas de salle d’opération et cela ne signifie pas que vous êtes un candidat.",
+          "Les fourchettes en dollars canadiens sont le plan publié d’un remplacement total du genou (Snowbird, Essential et Executive). Elles sont sous réserve de l’évaluation médicale. Ce n’est pas une offre, cela ne réserve pas de salle d’opération et cela ne signifie pas que vous êtes un candidat.",
           "Si une intervention n’a pas de bande publiée, le questionnaire la marque sur demande. Une soumission écrite ultérieure remplace tout chiffre de cette page.",
         ],
       },

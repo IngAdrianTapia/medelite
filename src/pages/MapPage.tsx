@@ -20,17 +20,17 @@ export function MapPage() {
   const t = {
     es: {
       title: "Mapa de la red",
-      deck: "Esquema, no un mapa topográfico. Los trazos continuos son vuelos directos a PVR que aparecieron en la muestra del 14 de noviembre de 2026 (YVR, YYC, YYZ). Las otras ciudades canadienses de la lista no tienen tarifa directa en esa muestra.",
+      deck: "Esquema, no un mapa topográfico. Los trazos continuos son vuelos directos a Puerto Vallarta desde Vancouver, Calgary y Toronto. Las otras ciudades de la lista hacen escala.",
       soon: "Tulum, Manzanillo, Mérida y el centro oncológico se anuncian; no están en este mapa como hospitales abiertos.",
     },
     en: {
       title: "Network map",
-      deck: "A schematic, not a survey map. Solid lines are nonstop flights to PVR that appeared in the 14 November 2026 sample (YVR, YYC, YYZ). The other Canadian cities on our list have no direct fare in that sample.",
+      deck: "A schematic, not a survey map. Solid lines are nonstop flights to Puerto Vallarta from Vancouver, Calgary and Toronto. The other cities on the list connect with a stop.",
       soon: "Tulum, Manzanillo, Mérida and the oncology centre are announced. They are not on this map as open hospitals.",
     },
     fr: {
       title: "Carte du réseau",
-      deck: "Un schéma, pas une carte topographique. Les traits pleins sont des vols directs vers PVR présents dans l’échantillon du 14 novembre 2026 (YVR, YYC, YYZ). Les autres villes canadiennes de la liste n’ont pas de tarif direct dans cet échantillon.",
+      deck: "Un schéma, pas une carte topographique. Les traits pleins sont des vols directs vers Puerto Vallarta depuis Vancouver, Calgary et Toronto. Les autres villes de la liste font escale.",
       soon: "Tulum, Manzanillo, Mérida et le centre d’oncologie sont annoncés. Ils ne figurent pas ici comme hôpitaux ouverts.",
     },
   }[lang];

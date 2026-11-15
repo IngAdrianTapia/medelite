@@ -31,7 +31,7 @@ export function NetworkPage() {
       verified: `Última lectura de las fichas: ${VERIFIED_ON}.`,
       hours: "La oficina de MedElite en Vancouver atiende de lunes a viernes, de 9:00 a 17:00, hora de Vancouver. Las urgencias 24/7 son del hospital, no de esta oficina.",
       hm: "El 10 de septiembre de 2026, HM Hospitales (España) y Grupo Médico Joya anunciaron un acuerdo marco. Es un acuerdo entre esos dos grupos, no una acreditación de MedElite.",
-      notClaim: "No afirmamos JCI, CLACS ni CSG. Joya muestra en algunas fichas el Distintivo H y un sello de la pandemia; no comprobamos que sigan vigentes, y no los presentamos como propios.",
+      notClaim: "No afirmamos JCI, CLACS ni CSG. En algunas fichas de Joya aparece el Distintivo H y un sello de la pandemia; no comprobamos que sigan vigentes, y no los presentamos como propios.",
       marina: "La dirección es la de la ficha de Marina (Blvd. Francisco Medina Ascencio #2760). La página de contacto de Joya repite por error la de Riviera Nayarit.",
       playa: "Teléfonos de la página de contacto (984). La ficha también imprime (998) 206 3260. No usamos el (322) 226 8181 del pie: es el de Riviera.",
       sma: "Teléfono (415) 152 5900, el que se repite en Contacto. La ficha también escribe 152 8900; no lo usamos.",

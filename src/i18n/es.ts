@@ -74,7 +74,7 @@ export const es: Messages = {
       },
       {
         title: "Cirugía plástica y oftalmología",
-        body: "Cirugía plástica, reconstructiva y oftalmología, con recuperación según la instrucción del cirujano. El rango publicado de esta página es el ejemplo de rodilla, no el precio de estos procedimientos.",
+        body: "Cirugía plástica, reconstructiva y oftalmología, con recuperación según la instrucción del cirujano. El rango publicado de esta página es el de rodilla, no el precio de estos procedimientos.",
         sites: "Cancún y Playa del Carmen.",
         request: false,
       },
@@ -88,11 +88,11 @@ export const es: Messages = {
   },
   packages: {
     kicker: "Paquetes",
-    title: "Tres niveles, desde un ejemplo de rodilla",
-    deck: "Los rangos son el ejemplo de planeación para un reemplazo total de rodilla, en dólares canadienses. Dicen «desde» porque el cirujano puede cambiar el número. No incluyen un vuelo que usted compre por su cuenta, salvo que el acuerdo escrito lo diga.",
+    title: "Tres niveles para un reemplazo de rodilla",
+    deck: "Los rangos son para un reemplazo total de rodilla, en dólares canadienses. Dicen «desde» porque el cirujano puede cambiar el número. No incluyen un vuelo que usted compre por su cuenta, salvo que el acuerdo escrito lo diga.",
     from: "Desde",
     range: "Rango de planeación",
-    example: "Ejemplo: reemplazo total de rodilla. Sujeto a valoración médica. No es una cotización.",
+    example: "Reemplazo total de rodilla, en dólares canadienses. Sujeto a valoración médica. No es una cotización.",
     note: "medeliteofficial.com publica ahorros de 50–70 % frente a Canadá. Es una declaración comercial de la empresa, no una auditoría independiente. El único precio es la cotización escrita.",
     payment:
       "El modelo previsto es un anticipo del 30 % (Interac e-Transfer o tarjeta) y el 70 % por transferencia 15 días antes de viajar, a la cuenta que nombre el acuerdo escrito. Este sitio no cobra y no guarda números de tarjeta.",
@@ -102,9 +102,9 @@ export const es: Messages = {
         who: "Para quien ya está en México: Puerto Vallarta, Riviera Nayarit, Ajijic, La Peñita o San Miguel de Allende.",
         points: [
           "Cirugía y, si hay implante, el implante que nombre la cotización.",
-          "Dos noches de hospital en el ejemplo de rodilla.",
+          "Dos noches de hospital en el reemplazo de rodilla.",
           "El diseño del paquete prevé un seguro de complicaciones, válido solo si la cotización lo nombra y confirma al cirujano.",
-          "Visitas de enfermería en domicilio e inicio de fisioterapia, según el ejemplo de planeación.",
+          "Visitas de enfermería en domicilio e inicio de fisioterapia, según el plan de rodilla.",
           "Intérprete en la coordinación y seguimiento por video al volver a Canadá.",
           "Sin hotel, sin traslados de aeropuerto y sin vuelos: la persona ya está en México.",
         ],
@@ -114,7 +114,7 @@ export const es: Messages = {
         who: "Para quien viaja desde Canadá y quiere salir de la lista de espera con un paquete claro.",
         points: [
           "Todo lo del nivel Snowbird.",
-          "Siete noches de hotel de cuatro estrellas, en habitación accesible, en el ejemplo de rodilla.",
+          "Siete noches de hotel de cuatro estrellas, en habitación accesible, en el reemplazo de rodilla.",
           "Traslados privados aeropuerto–hospital–hotel.",
           "Intérprete en la coordinación.",
           "Seguimiento por video al volver a Canadá.",
@@ -126,8 +126,8 @@ export const es: Messages = {
         who: "Para quien viaja con acompañante y quiere una estancia más holgada.",
         points: [
           "Habitación de hospital tipo suite, según disponibilidad nombrada en la cotización.",
-          "Ocho noches de hotel de cinco estrellas, con desayuno, en el ejemplo.",
-          "Enfermería diaria en el hotel y cuatro sesiones de fisioterapia en México, en el ejemplo de rodilla.",
+          "Ocho noches de hotel de cinco estrellas, con desayuno, en el reemplazo de rodilla.",
+          "Enfermería diaria en el hotel y cuatro sesiones de fisioterapia en México, en el reemplazo de rodilla.",
           "Intérprete, traslados y seguimiento por video al volver a Canadá.",
         ],
       },
@@ -148,7 +148,7 @@ export const es: Messages = {
     procedureLegend: "¿Qué procedimiento le interesa?",
     procedures: {
       knee: { label: "Reemplazo de rodilla", hint: "Ruta de ortopedia en la red Joya." },
-      hip: { label: "Reemplazo de cadera", hint: "Misma ruta. El rango mostrado es el ejemplo de rodilla." },
+      hip: { label: "Reemplazo de cadera", hint: "Misma ruta. El rango publicado es el de rodilla." },
       bariatric: { label: "Cirugía bariátrica", hint: "Guadalajara o Querétaro. El precio se confirma por escrito." },
       plastic: { label: "Cirugía plástica", hint: "Cancún o Playa del Carmen. Sin banda publicada en esta página." },
       ophthalmology: { label: "Oftalmología", hint: "Cancún o Playa del Carmen. Sin banda publicada en esta página." },
@@ -176,7 +176,7 @@ export const es: Messages = {
     email: "Correo electrónico",
     phone: "Teléfono",
     city: "Ciudad y provincia en Canadá",
-    cityPh: "Ej.: Vancouver, BC",
+    cityPh: "Vancouver, BC",
     note: "Nota opcional, sin datos clínicos detallados ni tarjetas",
     notePh: "Cuéntenos en general cómo ayudarle. No incluya diagnósticos, estudios ni números de tarjeta.",
     adult: "Confirmo que tengo 18 años o más.",
@@ -200,7 +200,7 @@ export const es: Messages = {
       "Para este procedimiento no hay una banda publicada. Un coordinador en Vancouver le escribe con un rango después de que el cirujano en México revise el caso.",
     kneeBasis: "Banda de planeación para un reemplazo total de rodilla. Sujeta a valoración médica. No es una cotización.",
     hipBasis:
-      "La única banda publicada es la del reemplazo total de rodilla. La cadera se muestra en la misma banda hasta que el cirujano revise el caso.",
+      "La única banda publicada es la del reemplazo total de rodilla. La cadera usa la misma banda hasta que el cirujano revise el caso.",
     complexity:
       "El tope del rango sube un 8 % porque marcó una condición o un IMC de 40 o más. Es una regla de esta página, no un honorario clínico.",
     snowFlag:
@@ -399,7 +399,7 @@ export const es: Messages = {
       },
       {
         q: "¿El rango del cuestionario es el precio?",
-        a: "No. Es una estimación del ejemplo de rodilla, o un aviso de que el caso es a solicitud. La cotización escrita, después de la valoración del cirujano, es el único precio.",
+        a: "No. Es el rango publicado de rodilla, o un aviso de que el caso es a solicitud. La cotización escrita, después de la valoración del cirujano, es el único precio.",
       },
       {
         q: "¿Puedo deducir la cirugía en mis impuestos?",
@@ -484,7 +484,7 @@ export const es: Messages = {
         heading: "Consentimiento y transferencia",
         paragraphs: [
           "La casilla del cuestionario es el consentimiento para usar esos datos en la solicitud y, si hace falta para coordinarla, compartirlos con el hospital y el cirujano en México que correspondan.",
-          "En Canadá aplican la ley federal PIPEDA y, por la oficina en Columbia Británica, la Personal Information Protection Act (PIPA) de esa provincia. Si usted vive en otra provincia, también puede aplicar la ley local de privacidad, por ejemplo PHIPA en Ontario.",
+          "En Canadá aplican la ley federal PIPEDA y, por la oficina en Columbia Británica, la Personal Information Protection Act (PIPA) de esa provincia. Si usted vive en otra provincia, también puede aplicar la ley local de privacidad, como la PHIPA en Ontario.",
           "En México, los datos personales sensibles se rigen por la LFPDPPP. Si llega a existir un expediente clínico, lo lleva el hospital conforme a la NOM-004-SSA3-2012. Este aviso no sustituye el aviso de privacidad del hospital.",
         ],
       },
@@ -532,7 +532,7 @@ export const es: Messages = {
       {
         heading: "Estimaciones",
         paragraphs: [
-          "Los rangos en dólares canadienses son el ejemplo de planeación de un reemplazo total de rodilla (Snowbird, Essential y Executive). Están sujetos a valoración médica. No son una oferta, no reservan un quirófano y no garantizan que usted sea candidato.",
+          "Los rangos en dólares canadienses son el plan publicado de un reemplazo total de rodilla (Snowbird, Essential y Executive). Están sujetos a valoración médica. No son una oferta, no reservan un quirófano y no garantizan que usted sea candidato.",
           "Si el procedimiento no tiene banda publicada, el cuestionario lo marca como a solicitud. La cotización escrita posterior sustituye cualquier cifra de esta página.",
         ],
       },

@@ -29,31 +29,31 @@ export function MapaSedes() {
   const sede = HOSPITALS.find((hospital) => hospital.id === selected) ?? HOSPITALS[0];
   const ui = {
     es: {
-      title: "Nueve sedes y vuelos de muestra hacia Puerto Vallarta",
+      title: "Nueve sedes y vuelos directos hacia Puerto Vallarta",
       note: "No es un mapa topográfico ni una foto de una sede.",
       open: "Sede abierta",
-      routes: "Directos de muestra hacia PVR",
+      routes: "Vuelos directos hacia PVR",
       pick: "Elegir sede",
       openPage: "Ver la ficha",
-      flights: "Las líneas son los vuelos directos a PVR de la muestra del 14 de noviembre de 2026 (YVR, YYC, YYZ). No son rutas hacia cada hospital.",
+      flights: "Las líneas son vuelos directos a Puerto Vallarta desde Vancouver, Calgary y Toronto. No son rutas hacia cada hospital.",
     },
     en: {
-      title: "Nine hospitals and sample flights to Puerto Vallarta",
+      title: "Nine hospitals and nonstop flights to Puerto Vallarta",
       note: "Not a survey map and not a photo of a hospital.",
       open: "Open hospital",
-      routes: "Sample nonstops to PVR",
+      routes: "Nonstops to PVR",
       pick: "Choose a hospital",
       openPage: "Open the page",
-      flights: "The lines are nonstop flights to PVR in the 14 November 2026 sample (YVR, YYC, YYZ). They are not routes to every hospital.",
+      flights: "The lines are nonstop flights to Puerto Vallarta from Vancouver, Calgary and Toronto. They are not routes to every hospital.",
     },
     fr: {
-      title: "Neuf hôpitaux et vols d’échantillon vers Puerto Vallarta",
+      title: "Neuf hôpitaux et vols directs vers Puerto Vallarta",
       note: "Ce n’est pas une carte topographique ni une photo d’un hôpital.",
       open: "Hôpital ouvert",
-      routes: "Vols directs d’échantillon vers PVR",
+      routes: "Vols directs vers PVR",
       pick: "Choisir un hôpital",
       openPage: "Voir la fiche",
-      flights: "Les traits sont les vols directs vers PVR de l’échantillon du 14 novembre 2026 (YVR, YYC, YYZ). Ce ne sont pas des routes vers chaque hôpital.",
+      flights: "Les traits sont des vols directs vers Puerto Vallarta depuis Vancouver, Calgary et Toronto. Ce ne sont pas des routes vers chaque hôpital.",
     },
   }[lang];
 

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router";
 import { Seo } from "../components/Seo";
 import { PEOPLE } from "../data/people";
 import { HOSPITALS, type HospitalId } from "../data/hospitals";
-import { FARE_DISCLAIMER, ORIGIN_CODES, formatSampleAmount, type OriginCode } from "../data/flights";
+import { ORIGIN_CODES, type OriginCode } from "../data/flights";
 import { PACKAGE_IDS, type PackageId } from "../data/packages";
 import { useI18n } from "../i18n";
 import type { Lang } from "../i18n/types";
@@ -30,12 +30,12 @@ const COPY = {
     month: "Mes",
     hospital: "Sede",
     steps: {
-      depart: "Vuelo de salida desde Canadá. La tarifa de muestra, si existe, no es un boleto.",
+      depart: "Vuelo de salida desde Canadá. Usted compra el boleto, salvo que el acuerdo escrito diga otra cosa.",
       transfer: "Traslado aeropuerto–hotel. Entra en Essential y Executive.",
       preop: "Estudios y valoración preoperatoria en el hospital.",
       surgery: "Cirugía. El acto médico ocurre en México.",
-      hospital: "Noches de hospital del ejemplo (dos, en el reemplazo de rodilla).",
-      hotel: "Hotel de recuperación del ejemplo: 7 noches en Essential, 8 en Executive.",
+      hospital: "Noches de hospital del reemplazo de rodilla: dos.",
+      hotel: "Hotel de recuperación: 7 noches en Essential, 8 en Executive.",
       "fit-to-fly": "Valoración de aptitud para volar antes del regreso.",
       return: "Vuelo de regreso. Usted confirma el boleto con la aerolínea.",
       aftercare: "Seguimiento por video ya en Canadá, con un resumen para su médico de familia.",
@@ -50,9 +50,9 @@ const COPY = {
       "coming-soon": "Dental y fertilidad no están en la página de especialidades ni en el directorio. Quedan como red de socios, próximamente.",
     },
     according: "Según",
-    cost: "Estimación del paquete en CAD",
-    flight: "Muestra de vuelo",
-    total: "Suma ilustrada solo si el «$» del vuelo fuera CAD",
+    cost: "Rango del paquete en CAD",
+    flight: "Vuelo",
+    total: "Cotiza con tu coordinador",
     share: "Enlace para compartir",
     print: "Imprimir o guardar PDF",
     ready: "Lista de preparación",
@@ -79,12 +79,12 @@ const COPY = {
     month: "Month",
     hospital: "Hospital",
     steps: {
-      depart: "Outbound flight from Canada. A sample fare, if one exists, is not a ticket.",
+      depart: "Outbound flight from Canada. You buy the ticket, unless the written agreement says otherwise.",
       transfer: "Airport–hotel transfer. Included in Essential and Executive.",
-      preop: "Pre-operative tests and review at the hospital.",
+      preop: "Pre-operative studies and review at the hospital.",
       surgery: "Surgery. The medical act takes place in Mexico.",
-      hospital: "Hospital nights in the knee example (two).",
-      hotel: "Recovery hotel in the example: 7 nights on Essential, 8 on Executive.",
+      hospital: "Hospital nights for the knee replacement: two.",
+      hotel: "Recovery hotel: 7 nights on Essential, 8 on Executive.",
       "fit-to-fly": "Fit-to-fly assessment before the flight home.",
       return: "Return flight. You confirm the ticket with the airline.",
       aftercare: "Video follow-up back in Canada, with a summary for your family doctor.",
@@ -99,9 +99,9 @@ const COPY = {
       "coming-soon": "Dental and fertility are not on the specialties page or the directory. They stay as network partners, coming soon.",
     },
     according: "According to",
-    cost: "Package estimate in CAD",
-    flight: "Flight sample",
-    total: "Illustrated sum only if the flight “$” were CAD",
+    cost: "Package range in CAD",
+    flight: "Flight",
+    total: "Get your quote",
     share: "Link to share",
     print: "Print or save PDF",
     ready: "Readiness checklist",
@@ -128,12 +128,12 @@ const COPY = {
     month: "Mois",
     hospital: "Hôpital",
     steps: {
-      depart: "Vol aller depuis le Canada. Un tarif d’échantillon, s’il existe, n’est pas un billet.",
+      depart: "Vol aller depuis le Canada. Vous achetez le billet, sauf si l’entente écrite dit autre chose.",
       transfer: "Transfert aéroport–hôtel. Inclus dans Essential et Executive.",
       preop: "Examens et évaluation préopératoires à l’hôpital.",
       surgery: "Chirurgie. L’acte médical a lieu au Mexique.",
-      hospital: "Nuits d’hôpital de l’exemple du genou (deux).",
-      hotel: "Hôtel de récupération de l’exemple : 7 nuits en Essential, 8 en Executive.",
+      hospital: "Nuits d’hôpital pour le remplacement du genou : deux.",
+      hotel: "Hôtel de récupération : 7 nuits en Essential, 8 en Executive.",
       "fit-to-fly": "Évaluation d’aptitude au vol avant le retour.",
       return: "Vol de retour. Vous confirmez le billet avec la compagnie.",
       aftercare: "Suivi par vidéo de retour au Canada, avec un résumé pour votre médecin de famille.",
@@ -148,9 +148,9 @@ const COPY = {
       "coming-soon": "Le dentaire et la fertilité ne sont ni sur la page des spécialités ni dans le répertoire. Ils restent « partenaires du réseau, à venir ».",
     },
     according: "Selon",
-    cost: "Estimation du forfait en CAD",
-    flight: "Échantillon de vol",
-    total: "Somme illustrée seulement si le « $ » du vol était en CAD",
+    cost: "Fourchette du forfait en CAD",
+    flight: "Vol",
+    total: "Obtenez votre devis",
     share: "Lien à partager",
     print: "Imprimer ou enregistrer en PDF",
     ready: "Liste de préparation",
@@ -281,13 +281,12 @@ export function RoutePage() {
         </ul>
       </section>
 
-      <section className="mt-6 rounded-3xl bg-paper p-5">
-        <p className="text-xs font-semibold uppercase">{FARE_DISCLAIMER}</p>
-        {quote.band ? <p className="mt-2">{t.cost}: CAD {quote.band.low.toLocaleString("en-CA")} – {quote.band.high.toLocaleString("en-CA")}</p> : null}
-        {quote.flight.span ? <p className="mt-2">{t.flight}: {formatSampleAmount(quote.flight.span.low)} – {formatSampleAmount(quote.flight.span.high)}</p> : null}
-        {quote.total.shown && quote.total.low !== null && quote.total.high !== null ? (
-          <p className="mt-2">{t.total}: {formatSampleAmount(quote.total.low)} – {formatSampleAmount(quote.total.high)}</p>
-        ) : null}
+      <section className="mt-6 rounded-[2rem] bg-paper p-5">
+        {quote.band ? <p>{t.cost}: CAD {quote.band.low.toLocaleString("en-CA")} – {quote.band.high.toLocaleString("en-CA")}</p> : null}
+        <p className="mt-3 text-sm text-muted">{t.flight}: {t.total}.</p>
+        <p className="mt-3">
+          <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white" href="/#cotizar">{t.total}</a>
+        </p>
       </section>
 
       <section id="preparacion" className="mt-8">

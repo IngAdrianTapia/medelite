@@ -13,7 +13,7 @@ export function ComparePage() {
       schedule: "Fecha con MedElite",
       scheduleBody: "No publicamos un número de semanas garantizado. La fecha queda en el plan escrito después de que el cirujano en México revisa el caso. «En semanas, no en años» contrasta con la espera de Fraser; no es una cita prometida.",
       cost: "Costo",
-      costBody: "El único rango de MedElite publicado aquí es el ejemplo de reemplazo de rodilla, en dólares canadienses, sujeto a valoración. No es una tarifa de Joya: Joya no publica precios. El plan provincial, en general, no paga la cirugía electiva en el extranjero.",
+      costBody: "El único rango de MedElite publicado aquí es el reemplazo de rodilla, en dólares canadienses, sujeto a valoración. No es una tarifa de Joya: Joya no publica precios. El plan provincial, en general, no paga la cirugía electiva en el extranjero.",
       knee: "Rodilla, desde",
     },
     en: {
@@ -24,7 +24,7 @@ export function ComparePage() {
       schedule: "A date with MedElite",
       scheduleBody: "We do not publish a guaranteed number of weeks. The date is set in the written plan after the surgeon in Mexico reviews the case. “In weeks, not years” contrasts with the Fraser wait. It is not a promised appointment.",
       cost: "Cost",
-      costBody: "The only MedElite range published here is the total knee example, in Canadian dollars, subject to review. It is not a Joya tariff: Joya does not publish prices. A provincial plan generally does not pay for elective surgery abroad.",
+      costBody: "The only MedElite range published here is the total knee replacement, in Canadian dollars, subject to review. It is not a Joya tariff: Joya does not publish prices. A provincial plan generally does not pay for elective surgery abroad.",
       knee: "Knee, starting from",
     },
     fr: {
@@ -35,7 +35,7 @@ export function ComparePage() {
       schedule: "Une date avec MedElite",
       scheduleBody: "Nous ne publions pas un nombre de semaines garanti. La date est fixée dans le plan écrit après l’examen du chirurgien au Mexique. « En semaines, pas en années » contraste avec l’attente de Fraser. Ce n’est pas un rendez-vous promis.",
       cost: "Coût",
-      costBody: "La seule fourchette MedElite publiée ici est l’exemple du genou, en dollars canadiens, sous réserve d’évaluation. Ce n’est pas un tarif de Joya : Joya ne publie pas de prix. Un régime provincial ne paie généralement pas la chirurgie élective à l’étranger.",
+      costBody: "La seule fourchette MedElite publiée ici est le remplacement du genou, en dollars canadiens, sous réserve d’évaluation. Ce n’est pas un tarif de Joya : Joya ne publie pas de prix. Un régime provincial ne paie généralement pas la chirurgie élective à l’étranger.",
       knee: "Genou, à partir de",
     },
   }[lang];
