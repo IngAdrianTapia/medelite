@@ -48,6 +48,16 @@ export const en: Messages = {
       { value: "490,000+", label: "Canadians arriving in Jalisco by air in 2024 (SECTUR Jalisco)" },
     ],
   },
+  sales: {
+    kicker: "First step",
+    title: "Let's talk before filling out a medical questionnaire",
+    body: "Tell us what service you're looking for and how to reach you. MedElite coordinates the process; clinical assessment and medical decisions belong to the care team in Mexico.",
+    cta: "Talk to coordination",
+    call: "Call the Vancouver office",
+    email: "Email coordination",
+    subject: "Initial inquiry about care in Mexico",
+    note: "This opens your email app; nothing is sent automatically. Please don't include medical records or sensitive details in this first message.",
+  },
   role: {
     kicker: "What we do",
     title: "A coordination office, not a hospital",
@@ -60,28 +70,28 @@ export const en: Messages = {
   },
   verticals: {
     kicker: "Specialties",
-    title: "Three verticals, and everything else on request",
-    deck: "At this stage we concentrate coordination on three groups of procedures and map them to Joya hospitals as a routing guide. That map is not a hospital accreditation.",
+    title: "Areas of care, with the hospital to be confirmed",
+    deck: "Joya lists services by hospital, but that does not guarantee a particular procedure is available for every patient. MedElite checks which hospital and clinical team may be suitable; assessment and medical decisions take place in Mexico.",
     focus: "Coordination route",
     request: "On request",
     items: [
       {
         title: "Orthopedics: hip and knee",
         body: "Joint replacement for people already on a wait list. The planned stay after surgery is 7 to 10 days, with a fit-to-fly assessment before the flight home.",
-        sites: "Marina Vallarta, Riviera Nayarit, Chapala (Ajijic) and San Miguel de Allende.",
+        sites: "Joya Marina Vallarta lists trauma and orthopedics; other hospitals are confirmed case by case.",
         request: false,
       },
       {
         title: "Bariatric surgery",
         body: "Metabolic and weight-loss procedures. The same 7-to-10-day stay applies before flying. The surgeon decides whether travel is appropriate.",
-        sites: "Guadalajara and Querétaro.",
+        sites: "The hospital and procedure availability are confirmed in writing.",
         request: false,
       },
       {
         title: "Plastic surgery and ophthalmology",
         body: "Plastic, reconstructive and eye surgery, with recovery as the surgeon instructs. The published range on this page is the knee range, not the price of these procedures.",
-        sites: "Cancún and Playa del Carmen.",
-        request: false,
+        sites: "The hospital and procedure availability are confirmed in writing.",
+        request: true,
       },
       {
         title: "Other specialties",
@@ -426,7 +436,7 @@ export const en: Messages = {
     heading: "What MedElite is",
     body: "Narration in the language of this page. Synthetic voice.",
     transcript: "Transcript",
-    text: "MedElite International Health is a Canadian medical coordination service, with an office in Vancouver. It connects patients from Canada with the allied Joya hospital network in Mexico. The questionnaire on this page is not a clinical assessment. The medical decision is the surgeon’s, in Mexico. This narration was generated with artificial intelligence.",
+    text: "MedElite International Health is a Canadian medical coordination service, with an office in Vancouver. It connects patients from Canada with the allied Joya hospital network in Mexico. The questionnaire on this page is not a clinical assessment. The medical decision is the surgeon’s, in Mexico.",
   },
   contact: {
     kicker: "Contact",

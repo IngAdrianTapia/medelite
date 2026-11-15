@@ -28,27 +28,39 @@ export function HospitalPage() {
   const copy = {
     es: {
       back: "Todas las sedes",
-      services: "Lo que la ficha enumera",
-      call: "Llamar a la sede",
-      office: "O llame a coordinación en Vancouver",
-      airport: "Aeropuerto que usamos para planear el viaje. No es un tiempo de traslado medido.",
+      services: "Servicios que publica el hospital",
+      call: "Llamar al hospital",
+      office: "O llamar a MedElite en Vancouver",
+      airport: "Aeropuerto de referencia para planear el viaje; no indica el tiempo de traslado.",
       source: "Fuente",
+      partner: "MedElite coordina consultas desde Canadá con la red Hospital Joya. La atención médica en esta sede de México depende de que el hospital y el equipo clínico acepten el caso.",
+      verify: "Confirme por escrito la disponibilidad del procedimiento, el equipo clínico y el plan antes de viajar.",
+      partnerSource: "Ver la lista de hospitales de MedElite",
+      diagnostics: "Sala de resonancia publicada en la ficha de Hospital Joya Marina. Imagen: Hospital Joya.",
     },
     en: {
       back: "All hospitals",
-      services: "What the hospital page lists",
-      call: "Call this hospital",
-      office: "Or call coordination in Vancouver",
-      airport: "Airport we use to plan the trip. Not a measured transfer time.",
+      services: "Services listed by the hospital",
+      call: "Call the hospital",
+      office: "Or call MedElite in Vancouver",
+      airport: "Reference airport for travel planning; this is not a transfer time.",
       source: "Source",
+      partner: "MedElite coordinates inquiries from Canada with the Hospital Joya network. Care at this location in Mexico depends on the hospital and clinical team accepting your case.",
+      verify: "Confirm the procedure’s availability, clinical team and care plan in writing before you travel.",
+      partnerSource: "See MedElite’s hospital list",
+      diagnostics: "MRI room pictured on Hospital Joya Marina’s page. Image: Hospital Joya.",
     },
     fr: {
       back: "Tous les établissements",
-      services: "Ce que la fiche énumère",
-      call: "Appeler cet hôpital",
-      office: "Ou appeler la coordination à Vancouver",
-      airport: "Aéroport utilisé pour planifier le voyage. Ce n’est pas un temps de transfert mesuré.",
+      services: "Services indiqués par l’hôpital",
+      call: "Appeler l’hôpital",
+      office: "Ou appeler MedElite à Vancouver",
+      airport: "Aéroport de référence pour planifier le voyage; il ne s’agit pas d’un temps de trajet.",
       source: "Source",
+      partner: "MedElite coordonne les demandes depuis le Canada avec le réseau Hospital Joya. La prise en charge dans cet établissement au Mexique dépend de l’acceptation du dossier par l’hôpital et l’équipe médicale.",
+      verify: "Faites confirmer par écrit la disponibilité de l’intervention, l’équipe médicale et le plan de soins avant votre départ.",
+      partnerSource: "Voir la liste des établissements de MedElite",
+      diagnostics: "Salle d’IRM présentée sur la page de l’Hospital Joya Marina. Image : Hospital Joya.",
     },
   }[lang];
 
@@ -73,7 +85,20 @@ export function HospitalPage() {
           ))}
         </div>
       ) : null}
+      {hospital.id === "marina" ? (
+        <figure className="mx-auto max-w-[520px] px-5 pt-8">
+          <img src="/assets/photos/marina-diagnostics-480.webp" width={480} height={320} loading="lazy" alt={copy.diagnostics} className="w-full rounded-3xl" />
+          <figcaption className="mt-2 text-xs text-muted">
+            <a className="underline" href="https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/" rel="noopener noreferrer">{copy.diagnostics}</a>
+          </figcaption>
+        </figure>
+      ) : null}
       <div className="mx-auto max-w-3xl px-5 py-12">
+      <div className="mb-8 rounded-[1.5rem] border border-line bg-ivory p-6 text-sm leading-relaxed">
+        <p>{copy.partner}</p>
+        <p className="mt-3 font-medium">{copy.verify}</p>
+        <p className="mt-3"><a className="underline" href="https://www.medeliteofficial.com/destinations-partner-clinics" rel="noopener noreferrer">{copy.partnerSource}</a></p>
+      </div>
       <p>{hospital.address}</p>
       <ul className="mt-3 grid gap-2 text-sm">
         {facts.phones.map((phone) => (

@@ -1,4 +1,4 @@
-/** Wordmark PNG with a transparent background and a 1px white outline, drawn on the navy bar and footer without a solid white chip. */
+/** Transparent wordmark with a neutral gray outline, shown on the navy bar and footer without a solid chip. */
 export function BrandMark({
   className = "h-14 md:h-16",
   alt = "MedElite International Health",

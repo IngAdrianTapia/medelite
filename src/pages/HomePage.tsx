@@ -4,9 +4,9 @@ import { Link, useLocation } from "react-router";
 import { MexicoMap } from "../components/MexicoMap";
 import { QuoteWizard } from "../components/QuoteWizard";
 import { RecorridoPaciente } from "../components/RecorridoPaciente";
+import { SalesContact } from "../components/SalesContact";
 import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
-import { HOSPITALS } from "../data/hospitals";
 import { PEOPLE } from "../data/people";
 import { PACKAGE_BANDS, PACKAGE_IDS, formatCad, formatRange } from "../data/packages";
 import { CRA_MEDICAL_EXPENSES, HM_RELEASE, SOURCES } from "../data/sources";
@@ -14,7 +14,7 @@ import { POSITIONING } from "../content/positioning";
 import { PHOTO_OF } from "../i18n/labels";
 import { useI18n } from "../i18n";
 
-const HERO_FRAMES = ["cancun", "riviera", "marina"] as const;
+const HERO_FRAMES = ["marina", "riviera", "cancun"] as const;
 
 function JourneyRail({ steps }: { steps: { title: string; body: string }[] }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -51,6 +51,32 @@ export function HomePage() {
   const { m, lang } = useI18n();
   const reduce = useReducedMotion();
   const copy = POSITIONING[lang];
+  const vallarta = {
+    es: {
+      kicker: "Punto de partida · Puerto Vallarta",
+      title: "Joya Marina Vallarta, primero. La red Joya, según su caso.",
+      body: "MedElite coordina desde Canadá. Hospital Joya Marina presta atención médica en Puerto Vallarta y publica traumatología y ortopedia entre sus servicios. La sede, el equipo clínico y el procedimiento se confirman para cada paciente antes de viajar.",
+      hospital: "Conocer Hospital Joya Marina",
+      network: "Ver las demás sedes Joya",
+      source: "Ficha oficial del hospital",
+    },
+    en: {
+      kicker: "Starting point · Puerto Vallarta",
+      title: "Joya Marina Vallarta first. The Joya network as your case requires.",
+      body: "MedElite coordinates from Canada. Hospital Joya Marina provides medical care in Puerto Vallarta and lists trauma and orthopedics among its services. The hospital, clinical team and procedure are confirmed for each patient before travel.",
+      hospital: "Explore Hospital Joya Marina",
+      network: "See the other Joya hospitals",
+      source: "Official hospital page",
+    },
+    fr: {
+      kicker: "Point de départ · Puerto Vallarta",
+      title: "Joya Marina Vallarta d’abord. Le réseau Joya selon votre situation.",
+      body: "MedElite coordonne depuis le Canada. Hospital Joya Marina prodigue les soins médicaux à Puerto Vallarta et indique la traumatologie et l’orthopédie parmi ses services. L’établissement, l’équipe médicale et l’intervention sont confirmés pour chaque patient avant le voyage.",
+      hospital: "Découvrir Hospital Joya Marina",
+      network: "Voir les autres établissements Joya",
+      source: "Fiche officielle de l’hôpital",
+    },
+  }[lang];
 
   useEffect(() => {
     if (!/^#[a-z0-9-]+$/i.test(hash)) return;
@@ -87,14 +113,34 @@ export function HomePage() {
           <p className="mt-3 max-w-xl text-base leading-7 text-white/90">{m.hero.lede}</p>
           <p className="mt-5 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-6 text-white/90">{m.notice}</p>
           <div className="mt-6 flex flex-wrap gap-3 pb-2">
-            <a href="#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white hover:bg-white hover:text-navy">
-              {m.hero.ctaQuote}
+            <a href="#orientacion" className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white hover:bg-white hover:text-navy">
+              {m.sales.cta}
             </a>
             <a href="#recorrido" className="inline-flex min-h-12 items-center rounded-full border border-white/55 px-6 text-sm text-white hover:bg-white hover:text-navy">
               {m.hero.ctaHow}
             </a>
           </div>
           <p className="mt-12 max-w-xl text-sm leading-6 text-white/80 lg:mt-6">{copy.fraser}</p>
+        </div>
+      </section>
+
+      <SalesContact />
+
+      <section aria-labelledby="vallarta-title" className="bg-white px-5 py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl overflow-hidden rounded-[2rem] bg-ivory lg:grid-cols-2">
+          <figure className="relative min-h-[22rem] bg-navy lg:min-h-[30rem]">
+            <FacilityPhoto name="marina" fill alt={PHOTO_OF.marina?.[lang] ?? "Hospital Joya Marina Vallarta"} sizes="(min-width: 1024px) 50vw, 100vw" />
+          </figure>
+          <div className="flex flex-col justify-center p-7 md:p-12">
+            <p className="text-xs font-semibold tracking-[0.18em] text-gold uppercase">{vallarta.kicker}</p>
+            <h2 id="vallarta-title" className="mt-4 font-serif text-4xl leading-tight text-navy md:text-5xl">{vallarta.title}</h2>
+            <p className="mt-5 leading-relaxed text-muted">{vallarta.body}</p>
+            <div className="mt-7 flex flex-wrap gap-3 text-sm">
+              <Link to="/red/marina" className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 font-semibold text-white hover:bg-navy-2">{vallarta.hospital}</Link>
+              <Link to="/red" className="inline-flex min-h-12 items-center rounded-full border border-navy px-5 text-navy hover:bg-white">{vallarta.network}</Link>
+            </div>
+            <p className="mt-6 text-xs text-muted"><a className="underline" href="https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/" rel="noopener noreferrer">{vallarta.source}</a></p>
+          </div>
         </div>
       </section>
 
@@ -142,27 +188,14 @@ export function HomePage() {
       </section>
 
       <section id="red" className="bg-ivory py-20 md:py-28">
-        <div className="mx-auto grid max-w-6xl items-end gap-8 px-5 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="mb-8 max-w-3xl">
             <p className="text-xs tracking-[0.22em] text-gold uppercase">{m.network.kicker}</p>
             <h2 className="mt-3 font-serif text-5xl leading-[0.95] md:text-6xl">{m.network.title}</h2>
             <p className="mt-4 text-muted">{m.network.deck}</p>
             <p className="mt-3 text-sm text-muted">{copy.mapNote}</p>
           </div>
           <MexicoMap label={copy.mapLabel} />
-        </div>
-        <div className="mt-8 flex snap-x gap-4 overflow-x-auto px-5 pb-2" tabIndex={0} aria-label={m.network.title}>
-          {HOSPITALS.map((hospital) => (
-            <Link key={hospital.id} to={`/red/${hospital.id}`} className="w-72 shrink-0 snap-start">
-              <figure className="relative h-[26rem] overflow-hidden rounded-[2rem] bg-navy">
-                <FacilityPhoto name={hospital.id} fill alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="18rem" />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy to-transparent p-5 text-white">
-                  <span className="block font-serif text-2xl">{hospital.name.replace("Hospital Joya ", "")}</span>
-                  <span className="mt-1 block text-sm text-white/80">{hospital.city}</span>
-                </figcaption>
-              </figure>
-            </Link>
-          ))}
         </div>
         <div className="mx-auto mt-8 max-w-6xl space-y-3 px-5 text-sm leading-relaxed text-muted">
           <p>{m.network.source}</p>
@@ -235,11 +268,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="nosotros" className="grid bg-white lg:grid-cols-12">
-        <figure className="relative min-h-[70vh] lg:col-span-7">
-          <img src="/assets/img/equipo/erika-cruz-joya.jpg" width={640} height={800} alt={m.about.erikaAlt} className="h-full w-full object-cover object-top" />
+      <section id="nosotros" className="bg-ivory px-5 py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] md:gap-12">
+        <figure className="mx-auto w-full max-w-[16rem] overflow-hidden rounded-[2rem] bg-white shadow-premium md:max-w-[20rem]">
+          <img src="/assets/img/equipo/erika-cruz-joya.jpg" width={640} height={800} alt={m.about.erikaAlt} className="block h-auto w-full" />
         </figure>
-        <div className="flex flex-col justify-end bg-ivory px-6 py-16 lg:col-span-5 lg:px-12">
+        <div className="flex min-w-0 flex-col justify-center">
           <p className="text-xs tracking-[0.22em] text-gold uppercase">{m.about.kicker}</p>
           <h2 className="mt-3 font-serif text-5xl leading-[0.95]">{m.about.title}</h2>
           <p className="mt-4 text-muted">{m.about.lead}</p>
@@ -259,6 +293,7 @@ export function HomePage() {
               </li>
             ))}
           </ul>
+        </div>
         </div>
       </section>
       <div className="bg-ivory px-6 pb-10 text-sm leading-relaxed text-muted lg:px-12">
@@ -333,14 +368,9 @@ export function HomePage() {
               </table>
             </div>
           </article>
-          <article>
+          <article lang={lang === "es" ? "es-MX" : lang === "fr" ? "fr-CA" : "en-CA"}>
             <h2 className="font-serif text-3xl">{m.audio.heading}</h2>
-            <p className="mt-2 text-sm text-muted">{m.audio.body}</p>
-            <audio className="mt-4 w-full" controls preload="none" aria-label={m.audio.heading} src={`/assets/audio/intro-${lang}.mp3`} />
-            <details className="mt-3">
-              <summary className="cursor-pointer text-sm">{m.audio.transcript}</summary>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{m.audio.text}</p>
-            </details>
+            <p className="mt-3 text-sm leading-relaxed text-muted">{m.audio.text}</p>
           </article>
           <article id="contacto">
             <h2 className="font-serif text-3xl">{m.contact.title}</h2>
@@ -364,7 +394,7 @@ export function HomePage() {
 
       <section id="cotizar" className="relative overflow-hidden bg-navy py-20 md:py-28">
         <div className="pointer-events-none absolute inset-0 opacity-40">
-          <FacilityPhoto name="cancun" fill protect alt="" sizes="100vw" />
+          <FacilityPhoto name="marina" fill protect alt="" sizes="100vw" />
         </div>
         <div className="absolute inset-0 bg-navy/80" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-5">

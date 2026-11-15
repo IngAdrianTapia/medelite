@@ -48,6 +48,16 @@ export const es: Messages = {
       { value: "490 mil+", label: "Canadienses llegados a Jalisco por avión en 2024 (SECTUR Jalisco)" },
     ],
   },
+  sales: {
+    kicker: "Primer paso",
+    title: "Conversemos antes de llenar un formulario clínico",
+    body: "Cuéntenos qué servicio busca y cómo podemos contactarle. MedElite coordina el proceso; la valoración y la decisión médica corresponden al equipo clínico en México.",
+    cta: "Hablar con coordinación",
+    call: "Llamar a la oficina de Vancouver",
+    email: "Escribir a coordinación",
+    subject: "Consulta inicial sobre atención en México",
+    note: "El correo se abre en su aplicación: nada se envía automáticamente. No incluya expedientes ni datos sensibles en este primer mensaje.",
+  },
   role: {
     kicker: "Qué hacemos",
     title: "Una oficina de coordinación, no un hospital",
@@ -60,28 +70,28 @@ export const es: Messages = {
   },
   verticals: {
     kicker: "Especialidades",
-    title: "Tres verticales, y el resto a solicitud",
-    deck: "Durante esta etapa concentramos la coordinación en tres grupos de procedimientos y los asociamos a sedes Joya como referencia de ruta. No es una acreditación del hospital: es el mapa con el que MedElite organiza los casos.",
+    title: "Áreas de interés, con sede por confirmar",
+    deck: "La red Joya publica servicios por sede, pero eso no garantiza que un procedimiento concreto esté disponible para cada paciente. MedElite consulta la sede y el equipo adecuados; la valoración y la decisión médica ocurren en México.",
     focus: "Ruta de coordinación",
     request: "A solicitud",
     items: [
       {
         title: "Ortopedia: cadera y rodilla",
         body: "Reemplazos articulares para quien ya está en lista de espera. La estancia prevista después de la cirugía es de 7 a 10 días, con certificado de aptitud para volar antes del regreso.",
-        sites: "Marina Vallarta, Riviera Nayarit, Chapala (Ajijic) y San Miguel de Allende.",
+        sites: "Joya Marina Vallarta publica traumatología y ortopedia; las demás sedes se confirman según el caso.",
         request: false,
       },
       {
         title: "Cirugía bariátrica",
         body: "Procedimientos metabólicos y de pérdida de peso. La misma estancia de 7 a 10 días aplica antes de volar. El cirujano decide si el caso puede viajar.",
-        sites: "Guadalajara y Querétaro.",
+        sites: "La sede y la disponibilidad del procedimiento se confirman por escrito.",
         request: false,
       },
       {
         title: "Cirugía plástica y oftalmología",
         body: "Cirugía plástica, reconstructiva y oftalmología, con recuperación según la instrucción del cirujano. El rango publicado de esta página es el de rodilla, no el precio de estos procedimientos.",
-        sites: "Cancún y Playa del Carmen.",
-        request: false,
+        sites: "La sede y la disponibilidad del procedimiento se confirman por escrito.",
+        request: true,
       },
       {
         title: "Otras especialidades",
@@ -427,7 +437,7 @@ export const es: Messages = {
     heading: "Qué es MedElite",
     body: "Locución en el idioma de esta página. Voz sintética.",
     transcript: "Transcripción",
-    text: "MedElite International Health es un servicio canadiense de coordinación médica, con oficina en Vancouver. Conecta a pacientes de Canadá con la red aliada Hospitales Joya, en México. El cuestionario de esta página no es una valoración clínica. La decisión médica la toma el cirujano en México. Esta locución fue generada con inteligencia artificial.",
+    text: "MedElite International Health es un servicio canadiense de coordinación médica, con oficina en Vancouver. Conecta a pacientes de Canadá con la red aliada Hospitales Joya, en México. El cuestionario de esta página no es una valoración clínica. La decisión médica la toma el cirujano en México.",
   },
   contact: {
     kicker: "Contacto",

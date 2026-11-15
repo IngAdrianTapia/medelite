@@ -26,25 +26,25 @@ function row(es: string, en: string, fr: string): Trio {
 /** Lines already on the home page. Wording is unchanged; they moved here to be editable. */
 export const POSITIONING: Record<Lang, { headline: string; fraser: string; mapLabel: string; mapNote: string }> = {
   es: {
-    headline: "Atenderse en semanas, no en años.",
+    headline: "De Canadá a México, con un plan de atención claro.",
     fraser:
-      "Fraser Institute, Waiting Your Turn 2025: 48.6 semanas de espera mediana en ortopedia en Canadá. Una fecha aquí se escribe después de que el cirujano en México revisa el caso. No es un plazo garantizado.",
-    mapLabel: "Esquema de las nueve sedes Joya",
-    mapNote: "Un esquema, no un mapa topográfico. Los puntos son las nueve sedes Joya abiertas.",
+      "MedElite coordina el recorrido. El hospital y el equipo clínico en México valoran el caso y confirman por escrito la sede, el procedimiento y el plan antes de cualquier viaje.",
+    mapLabel: "Fotografías y fichas de las nueve sedes de Grupo Médico Joya",
+    mapNote: "Conozca las nueve sedes en fotografías. Seleccione una para ver su ficha; la disponibilidad de atención se confirma para cada caso.",
   },
   en: {
-    headline: "Get treated in weeks, not years.",
+    headline: "From Canada to Mexico, with a clear plan for care.",
     fraser:
-      "Fraser Institute, Waiting Your Turn 2025: 48.6 weeks median for orthopedics in Canada. A date here is written after the surgeon in Mexico reviews the case. It is not a guaranteed interval.",
-    mapLabel: "Schematic of nine Joya hospitals",
-    mapNote: "A schematic, not a survey map. Dots are the nine open Joya hospitals.",
+      "MedElite coordinates the journey. The hospital and clinical team in Mexico review your case and confirm the location, procedure and plan in writing before you travel.",
+    mapLabel: "Photos and pages for nine Grupo Médico Joya hospitals",
+    mapNote: "Explore nine hospitals in photos. Select one to view its page; availability of care is confirmed for each case.",
   },
   fr: {
-    headline: "Se faire soigner en semaines, pas en années.",
+    headline: "Du Canada au Mexique, avec un parcours de soins clair.",
     fraser:
-      "Institut Fraser, Waiting Your Turn 2025 : 48,6 semaines médianes en orthopédie au Canada. Une date ici s’écrit après l’examen du chirurgien au Mexique. Ce n’est pas un délai garanti.",
-    mapLabel: "Schéma des neuf hôpitaux Joya",
-    mapNote: "Un schéma, pas une carte topographique. Les points sont les neuf hôpitaux Joya ouverts.",
+      "MedElite coordonne le parcours. L’hôpital et l’équipe médicale au Mexique évaluent votre dossier et confirment par écrit l’établissement, l’intervention et le plan avant votre départ.",
+    mapLabel: "Photos et fiches des neuf hôpitaux de Grupo Médico Joya",
+    mapNote: "Découvrez les neuf établissements en photos. Sélectionnez-en un pour consulter sa fiche; les soins disponibles sont confirmés pour chaque cas.",
   },
 };
 

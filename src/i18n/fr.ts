@@ -48,6 +48,16 @@ export const fr: Messages = {
       { value: "490 000+", label: "Canadiens arrivés au Jalisco par avion en 2024 (SECTUR Jalisco)" },
     ],
   },
+  sales: {
+    kicker: "Première étape",
+    title: "Parlons avant de remplir un questionnaire médical",
+    body: "Dites-nous quel service vous recherchez et comment vous joindre. MedElite coordonne le parcours; l'évaluation et les décisions médicales reviennent à l'équipe soignante au Mexique.",
+    cta: "Parler à la coordination",
+    call: "Appeler le bureau de Vancouver",
+    email: "Écrire à la coordination",
+    subject: "Première demande de renseignements sur les soins au Mexique",
+    note: "Votre application courriel s'ouvre; rien n'est envoyé automatiquement. N'incluez pas de dossier médical ni de données sensibles dans ce premier message.",
+  },
   role: {
     kicker: "Ce que nous faisons",
     title: "Un bureau de coordination, pas un hôpital",
@@ -60,28 +70,28 @@ export const fr: Messages = {
   },
   verticals: {
     kicker: "Spécialités",
-    title: "Trois axes, et le reste sur demande",
-    deck: "À cette étape, la coordination se concentre sur trois groupes d’interventions, associés à des établissements Joya comme itinéraire. Cette carte n’est pas une accréditation de l’hôpital.",
+    title: "Des domaines de soins, sous réserve de confirmer l’établissement",
+    deck: "Joya présente les services de chaque établissement, sans garantir qu’une intervention précise est offerte à chaque patient. MedElite vérifie quel établissement et quelle équipe médicale pourraient convenir; l’évaluation et les décisions médicales ont lieu au Mexique.",
     focus: "Itinéraire de coordination",
     request: "Sur demande",
     items: [
       {
         title: "Orthopédie : hanche et genou",
         body: "Remplacement articulaire pour une personne déjà en liste d’attente. Le séjour prévu après la chirurgie est de 7 à 10 jours, avec une évaluation d’aptitude au vol avant le retour.",
-        sites: "Marina Vallarta, Riviera Nayarit, Chapala (Ajijic) et San Miguel de Allende.",
+        sites: "Joya Marina Vallarta mentionne la traumatologie et l’orthopédie; les autres établissements sont confirmés au cas par cas.",
         request: false,
       },
       {
         title: "Chirurgie bariatrique",
         body: "Interventions métaboliques et de perte de poids. Le même séjour de 7 à 10 jours s’applique avant le vol. Le chirurgien décide si le voyage est approprié.",
-        sites: "Guadalajara et Querétaro.",
+        sites: "L’établissement et la disponibilité de l’intervention sont confirmés par écrit.",
         request: false,
       },
       {
         title: "Chirurgie plastique et ophtalmologie",
         body: "Chirurgie plastique, reconstructive et ophtalmologie, avec une récupération selon l’instruction du chirurgien. La fourchette publiée ici est celle du genou, pas le prix de ces interventions.",
-        sites: "Cancún et Playa del Carmen.",
-        request: false,
+        sites: "L’établissement et la disponibilité de l’intervention sont confirmés par écrit.",
+        request: true,
       },
       {
         title: "Autres spécialités",
@@ -426,7 +436,7 @@ export const fr: Messages = {
     heading: "Ce qu’est MedElite",
     body: "Lecture dans la langue de cette page. Voix synthétique.",
     transcript: "Transcription",
-    text: "MedElite International Health est un service canadien de coordination médicale, avec un bureau à Vancouver. Il relie des patients du Canada au réseau partenaire des hôpitaux Joya, au Mexique. Le questionnaire de cette page n’est pas une évaluation clinique. La décision médicale appartient au chirurgien, au Mexique. Cette lecture a été générée par intelligence artificielle.",
+    text: "MedElite International Health est un service canadien de coordination médicale, avec un bureau à Vancouver. Il relie des patients du Canada au réseau partenaire des hôpitaux Joya, au Mexique. Le questionnaire de cette page n’est pas une évaluation clinique. La décision médicale appartient au chirurgien, au Mexique.",
   },
   contact: {
     kicker: "Contact",

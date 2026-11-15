@@ -46,7 +46,7 @@ export function Header() {
     ["/especialidades", m.nav.specialties],
     ["/equipo", m.nav.doctors],
     ["/galeria", m.nav.gallery],
-    ["/#cotizar", m.nav.contact],
+    ["/#orientacion", m.nav.contact],
   ] as const;
 
   return (
@@ -59,7 +59,8 @@ export function Header() {
       </a>
       <div className={`pointer-events-auto mx-3 mt-3 flex max-w-6xl flex-wrap items-center gap-3 rounded-3xl border px-3 py-2 text-white shadow-premium md:mx-auto ${solid ? "border-white/15 bg-navy" : "border-white/30 bg-navy/70 backdrop-blur-xl"}`}>
         <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)}>
-          <BrandMark className="h-8 sm:h-14 md:h-16" />
+          <img src="/assets/brand/medelite-emblem-512.png" width={512} height={512} alt="MedElite International Health" className="block h-10 w-10 sm:hidden" />
+          <span className="hidden sm:block"><BrandMark className="h-14 md:h-16" /></span>
         </Link>
         <nav className="ml-auto hidden items-center gap-5 lg:flex" aria-label={m.nav.aria}>
           {links.map(([href, label]) => (
@@ -89,9 +90,6 @@ export function Header() {
               </button>
             ))}
           </div>
-          <Link to="/#cotizar" className="hidden min-h-11 items-center rounded-full bg-gold px-4 text-sm font-semibold text-white hover:bg-white hover:text-navy md:inline-flex">
-            {m.hero.ctaQuote}
-          </Link>
           <button
             ref={menuButtonRef}
             type="button"

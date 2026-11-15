@@ -22,6 +22,13 @@ export const PHOTO_CREDITS: readonly PhotoCredit[] = [
     use: "Fachada de Marina en la ficha, la red y el hero.",
   },
   {
+    id: "marina-diagnostics",
+    sourceFile: "WhatsApp-Image-2026-08-27-at-11.00.16-PM.jpeg",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-08-27-at-11.00.16-PM.jpeg",
+    use: "Sala de resonancia vacía publicada en la ficha de Joya Marina; archivo convertido a WebP, 480 × 320 px.",
+  },
+  {
     id: "riviera",
     sourceFile: "hospital-joya-riviera-fachada-01.jpg",
     sourcePageUrl: "https://grupomedicojoya.com/wp-content/uploads/HJ-CURRICULUM-RIVIERA.pdf",

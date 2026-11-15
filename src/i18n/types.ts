@@ -50,6 +50,7 @@ export interface Messages {
     route: string;
     metrics: { value: string; label: string }[];
   };
+  sales: { kicker: string; title: string; body: string; cta: string; call: string; email: string; subject: string; note: string };
   role: { kicker: string; title: string; body: string; points: string[] };
   verticals: {
     kicker: string;

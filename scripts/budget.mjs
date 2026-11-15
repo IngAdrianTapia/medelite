@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { gzipSync } from "node:zlib";
 
 /** Gzip budgets measured on 2026-11-15 after splitting react and motion.
@@ -9,7 +10,7 @@ const MAX_JS_GZIP = 90_000;
 const TOTAL_JS_GZIP = 280_000;
 const MAX_PHOTO_BYTES = 140_000;
 
-const dist = new URL("../dist/", import.meta.url).pathname;
+const dist = fileURLToPath(new URL("../dist/", import.meta.url));
 const assets = join(dist, "assets");
 const jsFiles = readdirSync(assets).filter((name) => name.endsWith(".js"));
 
