@@ -18,7 +18,7 @@ Referencias: ISO/IEC 27001 (control de acceso, respaldos, cifrado, trato de los 
 - `default-src 'self'`
 - `script-src 'self'` (sin inline y sin dominios de terceros)
 - `style-src 'self' 'unsafe-inline'` porque Motion escribe estilos en el elemento
-- `img-src 'self' data:` y, para el mapa real, `https://server.arcgisonline.com` (teselas de Esri). No hay iframes de mapas. CARTO quedó fuera: hoy exige clave y muestra «API KEY REQUIRED».
+- Croquis de sedes (MapLibre GL, sin iframes ni claves): `connect-src` y `img-src` admiten `https://tiles.openfreemap.org` (estilo, teselas vectoriales, tipografías y sprites de OpenFreeMap) y `connect-src` admite `https://routing.openstreetmap.de` (ruta en auto, solo si el visitante pulsa «Ruta desde mi ubicación» y concede la ubicación; la posición no se guarda ni se manda a MedElite). `worker-src 'self' blob:` y `img-src blob:` para el worker de MapLibre. Esri y Leaflet salen del sitio.
 - `font-src`, `media-src`, `connect-src`, `worker-src` y `manifest-src` en `'self'`
 - `form-action mailto:`
 - `frame-src 'none'` (los videos se reproducen con `<video>` en el mismo origen; no hay iframes de terceros)

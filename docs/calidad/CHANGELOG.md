@@ -1,5 +1,11 @@
 # Changelog de calidad
 
+## 2026-11-16 — portada visual y croquis inmersivo de cada sede
+
+Portada con menos texto: el video institucional de Hospital Joya ocupa la pantalla de inicio (silenciado, en bucle, 720p en celular, botón de pausa), seis accesos con foto e ícono, cifras en una banda, los dos videos lado a lado, galería y especialidades que se deslizan, paquetes con foto y tres puntos, equipo resumido, y los datos largos (snowbirds, METC, confianza, tabla, audio y fuentes) dentro de un desplegable. El contacto sigue visible.
+
+El mapa de Esri se sustituye por un croquis MapLibre GL con calles vectoriales de OpenFreeMap: nombres de calles reales y grandes, vista 3D inclinada, vuelo animado entre sedes, referencias reales cercanas de OpenStreetMap (con logo solo si OSM enlaza la marca con Wikidata y Commons tiene logo), «Cómo llegar» en Google Maps, Apple Maps y Waze, y ruta trazada en el mapa desde la ubicación del visitante si la permite. Las coordenadas de las nueve sedes salen ahora de los enlaces oficiales de Google Maps de hospitaljoya.com. Ficha: [evidencias/2026-11-16-croquis-y-portada-visual.md](./evidencias/2026-11-16-croquis-y-portada-visual.md).
+
 ## 2026-11-16 — video instantáneo, mapa real y correo en el iPhone
 
 Los videos recortan la intro y el cierre en navy/negro, arrancan con un fotograma real y un póster que no se quita hasta que hay imagen, y en móvil 720 px usan un archivo 720p más ligero, con `faststart`. El institucional puede ir en bucle silenciado. Se quita el contorno ilustrado de México: la red se ve con fotos reales, como en hospitaljoya.com, y un mapa real con teselas de Esri (CARTO exige clave y no se puede usar en el sitio). El botón Correo, en el iPhone, abre un redactor que lanza el correo del aparato (el `mailto` por formulario GET no abría nada). Sigue sin YouTube; `frame-src 'none'` y `media-src 'self'`. El mapa añade solo `https://server.arcgisonline.com` a `img-src`. El presupuesto de JS gzip total pasa a 330 KB por Leaflet, que se carga solo en el mapa.
