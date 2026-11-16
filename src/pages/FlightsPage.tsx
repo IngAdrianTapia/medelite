@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { FlightSimulator } from "../components/FlightSimulator";
 import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
@@ -31,6 +32,9 @@ export function FlightsPage() {
           </div>
         </div>
         <FlightSimulator />
+      </div>
+      <div className="mx-auto max-w-6xl px-5 pb-20 md:px-8">
+        <PageCta />
       </div>
     </main>
   );

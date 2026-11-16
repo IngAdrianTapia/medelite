@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { Seo } from "../components/Seo";
 import { PACKAGE_BANDS } from "../data/packages";
 import { useI18n } from "../i18n";
@@ -65,6 +66,9 @@ export function ComparePage() {
           <li className="rounded-2xl border border-line bg-white p-6"><span className="block text-sm text-muted">{t.knee} Executive</span><span className="mt-2 block font-serif text-2xl">CAD {PACKAGE_BANDS.executive.low.toLocaleString("en-CA")}</span></li>
         </ul>
       </section>
+      <div className="mx-auto max-w-6xl px-5 pb-20 md:px-8">
+        <PageCta />
+      </div>
     </main>
   );
 }

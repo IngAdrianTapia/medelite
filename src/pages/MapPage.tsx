@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { MapaRed } from "../components/MapaRed";
 import { Seo } from "../components/Seo";
 import { useI18n } from "../i18n";
@@ -30,6 +31,7 @@ export function MapPage() {
         <MapaRed title={t.title} />
       </div>
       <p className="mt-4 text-sm text-muted">{t.soon}</p>
+      <PageCta />
     </main>
   );
 }

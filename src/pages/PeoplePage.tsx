@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { Seo } from "../components/Seo";
 import { personRole } from "../data/personRoles";
 import { portraitOf } from "../data/photoCredits";
@@ -73,6 +74,7 @@ export function PeoplePage() {
           </li>
         ))}
       </ul>
+      <PageCta />
     </main>
   );
 }
