@@ -44,20 +44,20 @@ export function ComparePage() {
       <Seo title={`${t.title} — MedElite`} description={t.waitBody} path="/comparar" />
       <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
         <p className="mx-auto max-w-[1136px] font-serif text-xl text-gold">{t.hook}</p>
-        <h1 className="mx-auto mt-4 max-w-[1136px] font-serif text-3xl leading-tight md:text-5xl">{t.title}</h1>
+        <h1 className="mx-auto mt-4 max-w-[1136px] font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
       </header>
       <div className="grid lg:grid-cols-2">
         <article className="bg-ivory px-6 py-16 lg:px-12">
-          <h2 className="font-serif text-2xl">{t.wait}</h2>
+          <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.wait}</h2>
           <p className="mt-4 text-lg leading-relaxed">{t.waitBody}</p>
         </article>
         <article className="border-y border-line bg-ivory px-5 py-16 md:px-8 lg:px-12">
-          <h2 className="font-serif text-2xl">{t.schedule}</h2>
+          <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.schedule}</h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">{t.scheduleBody}</p>
         </article>
       </div>
       <section className="mx-auto max-w-[1200px] px-5 md:px-8 py-16">
-        <h2 className="font-serif text-2xl">{t.cost}</h2>
+        <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.cost}</h2>
         <p className="mt-4 max-w-3xl leading-relaxed text-muted">{t.costBody}</p>
         <ul className="mt-8 grid gap-4 md:grid-cols-3">
           <li className="rounded-2xl border border-line bg-white p-6"><span className="block text-sm text-muted">{t.knee} Snowbird</span><span className="mt-2 block font-serif text-2xl">CAD {PACKAGE_BANDS.snowbird.low.toLocaleString("en-CA")}</span></li>

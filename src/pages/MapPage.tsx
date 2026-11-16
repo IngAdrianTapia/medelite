@@ -1,4 +1,4 @@
-import { MapaSedes } from "../components/MapaSedes";
+import { MapaRed } from "../components/MapaRed";
 import { Seo } from "../components/Seo";
 import { useI18n } from "../i18n";
 
@@ -24,10 +24,10 @@ export function MapPage() {
   return (
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/mapa" />
-      <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="font-serif text-4xl leading-[1.05] text-navy md:text-6xl">{t.title}</h1>
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{t.deck}</p>
       <div className="mt-8">
-        <MapaSedes />
+        <MapaRed title={t.title} />
       </div>
       <p className="mt-4 text-sm text-muted">{t.soon}</p>
     </main>

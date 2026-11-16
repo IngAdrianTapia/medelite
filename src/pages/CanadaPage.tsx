@@ -15,7 +15,7 @@ export function CanadaPage() {
       <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
         <div className="mx-auto max-w-3xl">
           <p className="text-xs font-semibold tracking-[0.18em] text-gold uppercase">{m.hero.kicker}</p>
-          <h1 className="mt-4 font-serif text-3xl leading-tight md:text-5xl">{chrome.title}</h1>
+          <h1 className="mt-4 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{chrome.title}</h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">{m.hero.lede}</p>
           <p className="mt-4 max-w-xl border-l-2 border-gold-line pl-4 text-sm leading-6 text-muted">{m.notice}</p>
           <p className="mt-8">
@@ -26,7 +26,7 @@ export function CanadaPage() {
         </div>
       </header>
       <section className="mx-auto max-w-3xl px-5 md:px-8 py-16">
-        <h2 className="font-serif text-2xl text-ink">{chrome.cities}</h2>
+        <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{chrome.cities}</h2>
         <ul className="mt-4 grid gap-2">
           {cities.map((city) => (
             <li key={city.id} className="rounded-2xl border border-line bg-white px-4 py-3 text-lg">{city.label[lang]}</li>
@@ -41,7 +41,7 @@ export function CanadaPage() {
       <section className="bg-ivory px-5 md:px-8 py-16">
         <div className="mx-auto max-w-3xl">
           <p className="text-xs tracking-[0.22em] text-gold uppercase">{m.journey.kicker}</p>
-          <h2 className="mt-3 font-serif text-2xl text-ink">{m.journey.title}</h2>
+          <h2 className="mt-3 font-serif text-3xl leading-tight md:text-4xl text-navy">{m.journey.title}</h2>
           <p className="mt-4 text-muted">{m.journey.deck}</p>
           <ol className="mt-8 grid gap-4">
             {m.journey.steps.map((step, index) => (

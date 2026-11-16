@@ -24,7 +24,7 @@ export function FlightsPage() {
       <Seo title={`${copy.title} — MedElite`} description={copy.deck} path="/vuelos" />
       <div className="mx-auto grid max-w-[1200px] items-start gap-10 px-5 pt-12 pb-20 md:px-8 lg:grid-cols-2 lg:pt-16">
         <div>
-          <h1 className="font-serif text-3xl leading-tight text-navy md:text-5xl">{copy.title}</h1>
+          <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{copy.title}</h1>
           <p className="mt-6 max-w-md text-lg text-muted">{copy.deck}</p>
           <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-soft shadow-premium">
             <FacilityPhoto name="marina" fill alt="" sizes="(min-width: 1024px) 560px, 100vw" />

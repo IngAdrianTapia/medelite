@@ -15,6 +15,90 @@ export interface PhotoCredit {
 
 export const PHOTO_CREDITS: readonly PhotoCredit[] = [
   {
+    id: "cancun-room",
+    sourceFile: "Servicios-Destacados-Cancun-01.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-cancun/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/Servicios-Destacados-Cancun-01.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "chapala-mri",
+    sourceFile: "Servicios-Destacados-Chapala-01.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-chapala/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/Servicios-Destacados-Chapala-01.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "penita-room",
+    sourceFile: "Servicios-Destacados-La-Penita-01.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-la-penita/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/Servicios-Destacados-La-Penita-01.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "marina-street",
+    sourceFile: "WhatsApp-Image-2026-08-27-at-11.00.15-PM.jpeg",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/06/WhatsApp-Image-2026-08-27-at-11.00.15-PM.jpeg",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "playa-nursery",
+    sourceFile: "Servicios-Destacados-Playa-Del-Carmen-01.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-playa-del-carmen/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/Servicios-Destacados-Playa-Del-Carmen-01.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "queretaro-tower",
+    sourceFile: "HJ-Queretaro.jpg",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-queretaro/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2018/10/HJ-Queretaro.jpg",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "queretaro-room",
+    sourceFile: "Servicios-Destacados-Queretaro-01.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-queretaro/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/Servicios-Destacados-Queretaro-01.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "riviera-er",
+    sourceFile: "HJ-Riviera.jpg",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-riviera/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2018/10/HJ-Riviera.jpg",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "riviera-ct",
+    sourceFile: "WhatsApp-Image-2026-08-27-at-11.00.17-PM-1.jpeg",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-riviera/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-08-27-at-11.00.17-PM-1.jpeg",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "riviera-or",
+    sourceFile: "trauma-960x750.jpg",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-riviera/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2018/10/trauma-960x750.jpg",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "sma-room",
+    sourceFile: "HJ-San-Miguel-de-Allende-01.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-san-miguel-de-allende/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/HJ-San-Miguel-de-Allende-01.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
+    id: "sma-or",
+    sourceFile: "HJ-San-Miguel-de-Allende-02.png",
+    sourcePageUrl: "https://hospitaljoya.com/hospitales/hospital-joya-san-miguel-de-allende/",
+    imageUrl: "https://hospitaljoya.com/wp-content/uploads/2026/08/HJ-San-Miguel-de-Allende-02.png",
+    use: "Galería de la sede; publicada por Hospital Joya en su ficha oficial (consultada el 16 nov 2026). Sin pacientes identificables.",
+  },
+  {
     id: "marina",
     sourceFile: "hospital-joya-marina-vista-aerea-marina-01.jpg",
     sourcePageUrl: "https://hospitaljoya.com/",
@@ -213,8 +297,14 @@ export const PHOTO_CREDITS: readonly PhotoCredit[] = [
 ];
 
 export const HOSPITAL_INTERIORS: Partial<Record<HospitalId, readonly string[]>> = {
-  cancun: ["cancun-ct", "cancun-lobby"],
-  playa: ["patient-room"],
+  marina: ["marina-diagnostics", "marina-street"],
+  riviera: ["riviera-er", "riviera-ct", "riviera-or"],
+  sma: ["sma-room", "sma-or"],
+  queretaro: ["queretaro-tower", "queretaro-room"],
+  cancun: ["cancun-ct", "cancun-lobby", "cancun-room"],
+  playa: ["patient-room", "playa-nursery"],
+  chapala: ["chapala-mri"],
+  penita: ["penita-room"],
 };
 
 export type PhotoCategory = "fachadas" | "quirofanos" | "habitaciones" | "instalaciones" | "urgencias";
@@ -238,6 +328,18 @@ export const GALLERY_ITEMS: readonly { id: string; category: PhotoCategory }[] =
   { id: "cancun-ct", category: "instalaciones" },
   { id: "marina-diagnostics", category: "instalaciones" },
   { id: "penita", category: "urgencias" },
+  { id: "cancun-room", category: "habitaciones" },
+  { id: "chapala-mri", category: "instalaciones" },
+  { id: "penita-room", category: "habitaciones" },
+  { id: "marina-street", category: "fachadas" },
+  { id: "playa-nursery", category: "instalaciones" },
+  { id: "queretaro-tower", category: "fachadas" },
+  { id: "queretaro-room", category: "habitaciones" },
+  { id: "riviera-er", category: "urgencias" },
+  { id: "riviera-ct", category: "instalaciones" },
+  { id: "riviera-or", category: "quirofanos" },
+  { id: "sma-room", category: "habitaciones" },
+  { id: "sma-or", category: "quirofanos" },
 ];
 
 export function portraitOf(id: string): PhotoCredit | undefined {
@@ -262,4 +364,16 @@ export const PHOTO_LARGEST: Record<string, string> = {
   "cancun-ct": "cancun-ct-1280.webp",
   "cancun-lobby": "cancun-lobby-779.webp",
   "marina-diagnostics": "marina-diagnostics-480.webp",
+  "cancun-room": "cancun-room-480.webp",
+  "chapala-mri": "chapala-mri-480.webp",
+  "penita-room": "penita-room-480.webp",
+  "marina-street": "marina-street-960.webp",
+  "playa-nursery": "playa-nursery-480.webp",
+  "queretaro-tower": "queretaro-tower-800.webp",
+  "queretaro-room": "queretaro-room-480.webp",
+  "riviera-er": "riviera-er-800.webp",
+  "riviera-ct": "riviera-ct-480.webp",
+  "riviera-or": "riviera-or-960.webp",
+  "sma-room": "sma-room-480.webp",
+  "sma-or": "sma-or-480.webp",
 };

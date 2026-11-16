@@ -57,7 +57,7 @@ export function SpecialtiesPage() {
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
       <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
         <div className="mx-auto grid max-w-[1136px] gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <h1 className="font-serif text-3xl leading-tight md:text-5xl">{t.title}</h1>
+          <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
           <p className="text-lg text-muted">{t.deck}</p>
         </div>
       </header>
@@ -128,7 +128,7 @@ export function SpecialtiesPage() {
                 </div>
               ) : null}
               <div className="flex flex-col justify-end p-8">
-                <h2 className="font-serif text-2xl"><Link className="underline" to={`/especialidades/${id}`}>{SPECIALTY_LABEL[id][lang]}</Link></h2>
+                <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy"><Link className="underline" to={`/especialidades/${id}`}>{SPECIALTY_LABEL[id][lang]}</Link></h2>
                 {sites.length > 0 ? (
                   <ul className="mt-3 text-sm">
                     {sites.map((site) => {
@@ -156,7 +156,7 @@ export function SpecialtiesPage() {
           );
         })}
       </div>
-      <h2 className="mt-14 font-serif text-2xl">{t.directory}</h2>
+      <h2 className="mt-14 font-serif text-3xl leading-tight md:text-4xl text-navy">{t.directory}</h2>
       <ul className="mt-4 columns-1 gap-x-8 text-sm sm:columns-2">
         {DIRECTORY_SPECIALTIES.map((id) => (
           <li key={id} className="mb-2">

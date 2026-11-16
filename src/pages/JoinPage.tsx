@@ -48,7 +48,7 @@ export function JoinPage() {
   return (
     <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/hospitales" />
-      <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <form className="mt-6 grid gap-3" action="mailto:info@medeliteofficial.com" method="GET">
         <input type="hidden" name="subject" value={t.subject} />

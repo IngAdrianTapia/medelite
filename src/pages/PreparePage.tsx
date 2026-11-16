@@ -35,7 +35,7 @@ export function PreparePage() {
   return (
     <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.pay} path="/preparacion" />
-      <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
       <ul className="mt-8 grid gap-2 text-sm">
         {t.checklist.map((item) => (
           <li key={item} className="rounded-xl border border-line bg-white px-4 py-3">

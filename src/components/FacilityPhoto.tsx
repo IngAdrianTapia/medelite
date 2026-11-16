@@ -20,6 +20,18 @@ const VARIANTS: Record<string, readonly [number, number][]> = {
   "cancun-ct": [[640, 640], [960, 960], [1280, 1280]],
   "cancun-lobby": [[640, 640], [779, 779]],
   "marina-diagnostics": [[480, 480]],
+  "cancun-room": [[480, 480]],
+  "chapala-mri": [[480, 480]],
+  "penita-room": [[480, 480]],
+  "marina-street": [[640, 640], [960, 960]],
+  "playa-nursery": [[480, 480]],
+  "queretaro-tower": [[640, 640], [800, 800]],
+  "queretaro-room": [[480, 480]],
+  "riviera-er": [[640, 640], [800, 800]],
+  "riviera-ct": [[480, 480]],
+  "riviera-or": [[640, 640], [960, 960]],
+  "sma-room": [[480, 480]],
+  "sma-or": [[480, 480]],
 };
 
 /** Largest real pixel size in this repo. Ratios match the files; nothing is upscaled in the markup. */
@@ -40,6 +52,18 @@ const INTRINSIC: Record<string, [number, number]> = {
   "cancun-ct": [1280, 898],
   "cancun-lobby": [779, 520],
   "marina-diagnostics": [480, 320],
+  "cancun-room": [480, 320],
+  "chapala-mri": [480, 320],
+  "penita-room": [480, 320],
+  "marina-street": [960, 750],
+  "playa-nursery": [480, 320],
+  "queretaro-tower": [800, 600],
+  "queretaro-room": [480, 320],
+  "riviera-er": [800, 600],
+  "riviera-ct": [480, 320],
+  "riviera-or": [960, 750],
+  "sma-room": [480, 320],
+  "sma-or": [480, 320],
 };
 
 function srcSet(name: string, ext: "avif" | "webp"): string {

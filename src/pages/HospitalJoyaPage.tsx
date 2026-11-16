@@ -32,7 +32,7 @@ export function HospitalJoyaPage() {
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/hospital-joya" />
       <p className="text-xs font-semibold tracking-[0.18em] text-gold uppercase">{t.kicker}</p>
-      <h1 className="mt-3 font-serif text-3xl leading-tight text-ink">{t.title}</h1>
+      <h1 className="mt-3 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted">{t.deck}</p>
       <p className="mt-6 flex flex-wrap gap-3">
         <Link className="inline-flex min-h-11 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white" to="/red">{t.sedes}</Link>

@@ -86,7 +86,7 @@ export function NetworkPage() {
       <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
         <div className="mx-auto max-w-[1136px]">
           <p className="text-xs tracking-[0.22em] text-gold uppercase">{intro.kicker}</p>
-          <h1 className="mt-3 max-w-4xl font-serif text-3xl leading-tight md:text-5xl">{intro.title}</h1>
+          <h1 className="mt-3 max-w-4xl font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{intro.title}</h1>
           <p className="mt-5 max-w-2xl text-lg text-muted">{intro.deck}</p>
           <p className="mt-3 max-w-2xl text-sm text-muted">{intro.hours}</p>
         </div>
@@ -113,7 +113,7 @@ export function NetworkPage() {
         ))}
       </div>
       <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-16">
-      <h2 className="mt-14 font-serif text-2xl">{intro.soon}</h2>
+      <h2 className="mt-14 font-serif text-3xl leading-tight md:text-4xl text-navy">{intro.soon}</h2>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2">
         {UPCOMING.map((id) => (
           <li key={id} className="rounded-2xl border border-dashed border-line bg-white px-4 py-3 text-sm">
@@ -121,7 +121,7 @@ export function NetworkPage() {
           </li>
         ))}
       </ul>
-      <h2 className="mt-14 font-serif text-2xl">{intro.compare}</h2>
+      <h2 className="mt-14 font-serif text-3xl leading-tight md:text-4xl text-navy">{intro.compare}</h2>
       <div tabIndex={0} aria-label={intro.compare} className="mt-4 overflow-x-auto rounded-2xl border border-line bg-white shadow-glass">
         <table className="w-full min-w-[44rem] text-left text-sm">
           <caption className="sr-only">{intro.compare}</caption>
