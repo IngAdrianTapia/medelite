@@ -4,7 +4,7 @@
  */
 
 const VARIANTS: Record<string, readonly [number, number][]> = {
-  marina: [[640, 640], [960, 960], [1280, 1280]],
+  marina: [[640, 640], [960, 960], [1280, 1280], [1600, 1600]],
   riviera: [[640, 640], [837, 837]],
   guadalajara: [[640, 640], [960, 960], [1280, 1280]],
   sma: [[640, 640], [960, 960], [1280, 1280]],
@@ -24,7 +24,7 @@ const VARIANTS: Record<string, readonly [number, number][]> = {
 
 /** Largest real pixel size in this repo. Ratios match the files; nothing is upscaled in the markup. */
 const INTRINSIC: Record<string, [number, number]> = {
-  marina: [1280, 719],
+  marina: [1600, 899],
   riviera: [837, 853],
   guadalajara: [1280, 1485],
   sma: [1280, 1380],

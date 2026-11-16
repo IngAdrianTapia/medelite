@@ -1,7 +1,5 @@
 import { useEffect } from "react";
-import { useReducedMotion } from "motion/react";
 import { Link, useLocation } from "react-router";
-import { AsistenciaIA } from "../components/AsistenciaIA";
 import { MapaSedes } from "../components/MapaSedes";
 import { Testimonios } from "../components/Testimonios";
 import { MexicoMap } from "../components/MexicoMap";
@@ -17,13 +15,11 @@ import { POSITIONING } from "../content/positioning";
 import { PHOTO_OF } from "../i18n/labels";
 import { useI18n } from "../i18n";
 
-const HERO_FRAMES = ["marina", "riviera", "cancun"] as const;
 
 
 export function HomePage() {
   const { hash } = useLocation();
   const { m, lang } = useI18n();
-  const reduce = useReducedMotion();
   const copy = POSITIONING[lang];
   const vallarta = {
     es: {
@@ -80,21 +76,15 @@ export function HomePage() {
             <p className="mt-6 border-l-2 border-gold pl-4 text-sm leading-6 text-muted">{m.notice}</p>
           </div>
           <div className="relative order-first aspect-[16/9] w-full overflow-hidden rounded-2xl bg-soft shadow-premium sm:aspect-[4/3] lg:order-none lg:aspect-[5/4]">
-          {HERO_FRAMES.map((name, index) => (
-            <div key={name} className="hero-frame absolute inset-0">
-              <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
-                <FacilityPhoto
-                  name={name}
-                  fill
-                  priority={index === 0}
-                  fetchPriority={index === 0 ? "high" : "low"}
-                  alt={index === 0 ? (PHOTO_OF[name]?.[lang] ?? name) : ""}
-                  sizes="(min-width: 1024px) 46vw, 100vw"
-                  className="object-center"
-                />
-              </div>
-            </div>
-          ))}
+            <FacilityPhoto
+              name="marina"
+              fill
+              priority
+              fetchPriority="high"
+              alt={PHOTO_OF.marina?.[lang] ?? "Hospital Joya Marina Vallarta"}
+              sizes="(min-width: 1200px) 640px, (min-width: 1024px) 52vw, 100vw"
+              className="object-center"
+            />
           </div>
         </div>
         <div className="mx-auto max-w-[1200px] px-5 pb-10 md:px-8">
@@ -277,9 +267,6 @@ export function HomePage() {
         {m.about.story.map((paragraph) => (
           <p key={paragraph} className="mx-auto mt-3 max-w-3xl">{paragraph}</p>
         ))}
-        <div className="mx-auto mt-8 max-w-3xl">
-          <AsistenciaIA />
-        </div>
       </div>
 
       <Testimonios />

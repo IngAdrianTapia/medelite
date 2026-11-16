@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { SOCIAL } from "../data/sources";
 import { useI18n } from "../i18n";
-import { AiBadge } from "./AiBadge";
 import { BrandMark } from "./BrandMark";
 
 export function Footer() {
@@ -11,7 +10,6 @@ export function Footer() {
       <div className="relative mx-auto grid max-w-[1200px] gap-12 px-5 md:grid-cols-4">
         <div className="md:col-span-2">
           <BrandMark className="h-16 md:h-20" alt="" />
-          <p className="mt-5"><AiBadge /></p>
           <p className="mt-6 max-w-md font-serif text-xl leading-snug text-navy">{m.footer.tag}</p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{m.footer.about}</p>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{m.footer.fine}</p>

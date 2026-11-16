@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router";
 import { parseLocalePath, prefixPath } from "../i18n/locale";
 import { useI18n } from "../i18n";
 import type { Lang } from "../i18n/types";
-import { AiBadge } from "./AiBadge";
 import { BrandMark } from "./BrandMark";
 
 const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
@@ -99,7 +98,7 @@ export function Header() {
   ] as const;
 
   const langGroup = (
-    <div className="flex rounded-lg border border-line bg-white p-0.5" role="group" aria-label={m.langAria}>
+    <div className="notranslate flex rounded-lg border border-line bg-white p-0.5" translate="no" role="group" aria-label={m.langAria}>
       {LANGS.map((item) => (
         <button
           key={item.id}
@@ -107,7 +106,7 @@ export function Header() {
           lang={item.html}
           aria-pressed={lang === item.id}
           aria-label={`${item.label}, ${item.name}`}
-          className={`inline-flex min-h-9 items-center justify-center gap-1.5 rounded-md sm:min-h-10 px-2 text-xs font-bold sm:px-2.5 ${lang === item.id ? "bg-navy text-white" : "text-navy hover:bg-soft"}`}
+          className={`inline-flex min-h-9 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-bold sm:min-h-10 sm:px-2.5 lg:gap-1 lg:px-1.5 xl:gap-1.5 xl:px-2.5 ${lang === item.id ? "bg-navy text-white" : "text-navy hover:bg-soft"}`}
           onClick={() => switchLang(item.id)}
         >
           <Flag id={item.id} />
@@ -125,36 +124,34 @@ export function Header() {
       >
         {m.skip}
       </a>
-      <div className="flex h-11 items-center justify-between gap-2 border-b border-line bg-ivory px-3 sm:hidden">
-        <AiBadge />
+      <div className="flex h-11 items-center justify-end gap-2 border-b border-line bg-ivory px-3 sm:hidden">
         {langGroup}
       </div>
       <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-2 px-3 sm:px-5 md:h-20 md:px-8">
         <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)} aria-label="MedElite International Health">
           <img src="/assets/brand/medelite-emblem-512.png" width={512} height={512} alt="" className="block h-11 w-11 min-[340px]:hidden" />
-          <span className="hidden min-[340px]:block"><BrandMark className="h-10 sm:h-11 md:h-14" /></span>
+          <span className="hidden min-[340px]:block"><BrandMark className="h-10 sm:h-11 md:h-14 lg:h-12 xl:h-16" /></span>
         </Link>
-        <nav className="ml-auto hidden items-center gap-5 xl:flex" aria-label={m.nav.aria}>
+        <nav className="ml-auto hidden items-center gap-3.5 lg:flex xl:gap-5" aria-label={m.nav.aria}>
           {links.slice(1).map(([href, label]) => (
             <Link
               key={href}
               to={href}
               aria-current={parseLocalePath(pathname).path === href ? "page" : undefined}
-              className="py-2 text-[15px] font-medium whitespace-nowrap text-navy hover:text-gold aria-[current=page]:text-gold aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8"
+              className="py-2 text-sm font-medium whitespace-nowrap text-navy xl:text-[15px] hover:text-gold aria-[current=page]:text-gold aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8"
             >
               {label}
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-1.5 sm:gap-2 xl:ml-4">
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2 lg:ml-3 xl:ml-4">
           <div className="hidden items-center gap-2 sm:flex">
-            <AiBadge compact />
             {langGroup}
           </div>
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-line text-navy xl:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-line text-navy lg:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen((value) => !value)}
@@ -170,7 +167,7 @@ export function Header() {
         id="menu-movil"
         ref={menuRef}
         hidden={!open}
-        className="fixed inset-x-0 top-[108px] bottom-0 z-40 sm:top-16 overflow-y-auto border-t border-line bg-white px-5 py-6 md:top-20 xl:hidden"
+        className="fixed inset-x-0 top-[108px] bottom-0 z-40 sm:top-16 overflow-y-auto border-t border-line bg-white px-5 py-6 md:top-20 lg:hidden"
         aria-label={m.nav.aria}
       >
         <ul className="mx-auto grid max-w-xl divide-y divide-line">
