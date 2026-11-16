@@ -17,7 +17,7 @@ export function AsistenciaIA({ tone = "light" }: { tone?: "light" | "dark" }) {
     fr: {
       status: "Bientôt · En cours de mise en place",
       title: "Soins assistés par intelligence artificielle",
-      body: "Des soins assistés par intelligence artificielle sont en cours de mise en place pour accompagner les patients. Ce service n’est pas encore actif ; nous l’annoncerons ici dès son lancement. Aujourd’hui, chaque demande est traitée par une personne de l’équipe, et l’évaluation et les décisions médicales relèvent des médecins.",
+      body: "Des soins assistés par intelligence artificielle sont en cours de mise en place pour accompagner les patients. Ce service n’est pas encore actif; nous l’annoncerons ici dès son lancement. Aujourd’hui, chaque demande est traitée par une personne de l’équipe, et l’évaluation et les décisions médicales relèvent des médecins.",
     },
   }[lang];
   const dark = tone === "dark";

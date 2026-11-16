@@ -11,7 +11,7 @@ const SPECIALTY_PATHS = [
   "hematology", "infectious-disease", "critical-care", "rehab", "internal-medicine", "nephrology",
   "neonatology", "pulmonology", "neurosurgery", "neurology", "ophthalmology", "oncology", "ent",
   "pediatrics", "orthopedics", "urology",
-  "dermatology", "endocrinology", "general-practice",
+  "dermatology", "endocrinology", "general-practice", "nutrition",
 ];
 
 const dist = new URL("../dist/", import.meta.url);

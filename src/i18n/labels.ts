@@ -12,7 +12,7 @@ export const SERVICE_LABEL: Record<ServiceId, Trio> = {
   er24: row("Urgencias 24/7", "24/7 emergency", "Urgences 24 h/24"),
   icu: row("Cuidados intensivos", "Intensive care", "Soins intensifs"),
   nicu: row("Cuidados neonatales o pediátricos", "Neonatal or pediatric intensive care", "Soins intensifs néonataux ou pédiatriques"),
-  hemodynamics: row("Hemodinamia", "Haemodynamics suite", "Hémodynamie"),
+  hemodynamics: row("Hemodinamia", "Hemodynamics suite", "Hémodynamie"),
   labor: row("Área de labor", "Labour and delivery", "Salle de travail"),
   ortho: row("Traumatología y ortopedia", "Trauma and orthopedics", "Traumatologie et orthopédie"),
   urology: row("Urología", "Urology", "Urologie"),
@@ -113,5 +113,6 @@ export const PHOTO_OF: Record<string, Trio> = {
   "bariatric-or": row("Quirófano vacío publicado en la página de Hospital Joya Marina. No se ve a ningún paciente.", "Empty operating room published on the Hospital Joya Marina page. No patient is visible.", "Salle d’opération vide publiée sur la page de l’Hospital Joya Marina. Aucun patient n’est visible."),
   "bariatric-room": row("Habitación vacía publicada por Grupo Médico Joya. La foto no nombra la sede.", "Empty room published by Grupo Médico Joya. The photo does not name the site.", "Chambre vide publiée par Grupo Médico Joya. La photo ne nomme pas l’établissement."),
   "cancun-ct": row("Tomógrafo en Hospital Joya Cancún. La sala está vacía.", "CT scanner at Hospital Joya Cancún. The room is empty.", "Tomodensitomètre à l’Hospital Joya Cancún. La salle est vide."),
+  "marina-diagnostics": row("Sala de resonancia magnética vacía en Hospital Joya Marina Vallarta.", "Empty MRI room at Hospital Joya Marina Vallarta.", "Salle d’IRM vide à l’Hospital Joya Marina Vallarta."),
   "cancun-lobby": row("Vestíbulo del Hospital Joya Cancún, sin personas.", "Lobby of Hospital Joya Cancún, with no people.", "Hall de l’Hospital Joya Cancún, sans personne."),
 };

@@ -315,7 +315,7 @@ export const en: Messages = {
       general: "In the network, no vertical assigned",
     },
     blurbs: {
-      marina: "The group describes it as the first tertiary hospital in Bahía de Banderas, opened in 2000, with emergency care, intensive care and a haemodynamics service. MedElite’s preferred route for major orthopedics.",
+      marina: "The group describes it as the first tertiary hospital in Bahía de Banderas, opened in 2000, with emergency care, intensive care and a hemodynamics service. MedElite’s preferred route for major orthopedics.",
       riviera: "Opened in 2011. The group presents it as tied to medical travel in the area. Orthopedic route alongside Marina, Chapala and San Miguel.",
       guadalajara: "The group describes a tertiary hospital of more than 6,500 m². Bariatric route, with Querétaro.",
       sma: "Opened in March 2021, according to the group’s page. Orthopedic route for people wintering in San Miguel de Allende.",

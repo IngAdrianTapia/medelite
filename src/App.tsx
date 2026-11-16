@@ -1,4 +1,4 @@
-import { lazy, Suspense, useLayoutEffect } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router";
 import { ContactDock } from "./components/ContactDock";
 import { Footer } from "./components/Footer";
@@ -64,12 +64,43 @@ function LocaleSync() {
   return null;
 }
 
+// Al navegar dentro del sitio: sube al inicio de la página nueva, o baja al ancla (#cotizar, #faq…)
+// cuando el enlace la trae. La primera carga respeta el comportamiento normal del navegador.
+function ScrollManager() {
+  const location = useLocation();
+  const first = useRef(true);
+  const path = parseLocalePath(location.pathname).path;
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    const id = decodeURIComponent(location.hash.replace(/^#/, ""));
+    if (!id) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    let tries = 0;
+    const timer = window.setInterval(() => {
+      const target = document.getElementById(id);
+      tries += 1;
+      if (target || tries > 40) {
+        window.clearInterval(timer);
+        target?.scrollIntoView();
+      }
+    }, 50);
+    return () => window.clearInterval(timer);
+  }, [path, location.hash]);
+  return null;
+}
+
 export function AppRoutes() {
   const location = useLocation();
   const stripped = { ...location, pathname: parseLocalePath(location.pathname).path };
   return (
     <>
       <LocaleSync />
+      <ScrollManager />
       <Header />
       <div>
         <Suspense fallback={<Pending />}>

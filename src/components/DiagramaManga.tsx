@@ -52,7 +52,7 @@ export function DiagramaManga() {
     },
     fr: {
       note: "Ce n’est pas une photo, ni une salle Joya, ni une indication.",
-      title: "Sleeve gastrique, dessin avant et après",
+      title: "Gastrectomie en manchon, dessin avant et après",
       deck: "Schéma anatomique. Pas de volumes, de durées ni de prix. Le chirurgien décide.",
       views: [
         ["all", "Vue complète"],

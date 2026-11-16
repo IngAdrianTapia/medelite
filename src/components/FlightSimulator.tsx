@@ -60,7 +60,7 @@ const UI = {
     hospital: "2. Hôpital Joya",
     result: "3. Aller-retour",
     arrival: "Aéroport d’arrivée",
-    quote: "Nous établissons le devis de votre vol.",
+    quote: "Nous préparons une soumission pour votre vol.",
     cta: "Demander une soumission",
     note: "La compagnie confirme le prix. Ce site ne vend pas de billets.",
   },

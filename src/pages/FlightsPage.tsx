@@ -15,7 +15,7 @@ export function FlightsPage() {
       deck: "Choose your city in Canada and the Joya hospital. A ticket price is not published here.",
     },
     fr: {
-      title: "Combien coûte le vol vers votre chirurgie ?",
+      title: "Combien coûte le vol vers votre chirurgie?",
       deck: "Choisissez votre ville au Canada et l’hôpital Joya. Le prix du billet n’est pas publié ici.",
     },
   }[lang];

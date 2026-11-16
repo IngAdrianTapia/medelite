@@ -4,10 +4,15 @@ import { Seo } from "../components/Seo";
 
 /** Reloj en vivo: el "sistema de actualizaciones automáticas" de la página. */
 function useClock() {
-  const [now, setNow] = useState(() => new Date());
+  // null en el HTML prerenderizado: la hora real se pinta al montar (evita error de hidratación).
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
+    const first = setTimeout(() => setNow(new Date()), 0);
     const id = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(id);
+    return () => {
+      clearTimeout(first);
+      clearInterval(id);
+    };
   }, []);
   return now;
 }
@@ -172,7 +177,7 @@ function SectionCard({ s, i }: { s: (typeof SECTIONS)[number]; i: number }) {
 
 export function CalidadPage() {
   const now = useClock();
-  const live = fecha(now);
+  const live = now ? fecha(now) : "—";
 
   return (
     <main id="contenido" className="page-shell">

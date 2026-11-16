@@ -106,7 +106,7 @@ export function Header() {
       >
         {m.skip}
       </a>
-      <div className={`pointer-events-auto mx-5 mt-3 flex max-w-6xl flex-wrap items-center gap-3 rounded-3xl border px-5 py-2 text-white shadow-premium md:mx-auto ${solid ? "border-white/15 bg-navy" : "border-white/30 bg-navy/70 backdrop-blur-xl"}`}>
+      <div className={`pointer-events-auto mx-3 mt-3 flex max-w-6xl flex-wrap items-center gap-2 rounded-3xl border px-3 py-2 sm:mx-5 sm:gap-3 sm:px-5 text-white shadow-premium md:mx-auto ${solid ? "border-white/15 bg-navy" : "border-white/30 bg-navy/70 backdrop-blur-xl"}`}>
         <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)}>
           <img src="/assets/brand/medelite-emblem-512.png" width={512} height={512} alt="MedElite International Health" className="block h-10 w-10 sm:hidden" />
           <span className="hidden sm:block"><BrandMark className="h-14 md:h-16" /></span>
