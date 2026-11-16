@@ -33,4 +33,29 @@ describe("header destinations", () => {
     }
     expect(screen.getByRole("link", { name: messages.hero.ctaQuote })).toHaveAttribute("href", "/#cotizar");
   });
+
+  it.each(["es", "en", "fr"] as const)("marks Mexico, Canada and Quebec flags in the language selector in %s", (lang) => {
+    const messages = CATALOGS[lang];
+    renderHeader(lang);
+    const groups = screen.getAllByRole("group", { name: messages.langAria });
+    expect(groups.length).toBeGreaterThan(0);
+    for (const group of groups) {
+      expect(group.querySelector('[data-flag="mx"]')).not.toBeNull();
+      expect(group.querySelector('[data-flag="ca"]')).not.toBeNull();
+      expect(group.querySelector('[data-flag="qc"]')).not.toBeNull();
+      expect(group.querySelector('[data-flag="us"]')).toBeNull();
+      expect(group.innerHTML).not.toContain("#3C3B6E");
+      expect(group.innerHTML).toContain("#006847");
+      expect(group.innerHTML).toContain("#D52B1E");
+      expect(group.innerHTML).toContain("#003DA5");
+    }
+  });
+
+  it.each(["es", "en", "fr"] as const)("keeps every primary destination, including Contact, in %s", (lang) => {
+    const messages = CATALOGS[lang];
+    renderHeader(lang);
+    for (const label of [messages.nav.joya, messages.nav.medelite, messages.nav.specialties, messages.nav.doctors, messages.nav.gallery, messages.nav.contact]) {
+      expect(screen.getAllByRole("link", { name: label }).length).toBeGreaterThan(0);
+    }
+  });
 });

@@ -11,13 +11,17 @@ const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
   { id: "fr", label: "FR", name: "Français", html: "fr-CA" },
 ];
 
+const flagFrame = {
+  viewBox: "0 0 30 20",
+  className: "h-3 w-[18px] shrink-0 rounded-[2px] ring-1 ring-black/10",
+  "aria-hidden": true,
+} as const;
 
-/** Inline flags (emoji flags do not render on Windows): ES Mexico, EN United States, FR Canada. */
+/** Inline flags (emoji flags do not render on Windows): ES Mexico, EN Canada, FR Quebec. */
 function Flag({ id }: { id: Lang }) {
-  const common = { viewBox: "0 0 30 20", className: "h-3 w-[18px] shrink-0 rounded-[2px] ring-1 ring-black/10", "aria-hidden": true } as const;
   if (id === "es") {
     return (
-      <svg {...common}>
+      <svg {...flagFrame} data-flag="mx">
         <rect width="10" height="20" fill="#006847" />
         <rect x="10" width="10" height="20" fill="#FFFFFF" />
         <rect x="20" width="10" height="20" fill="#CE1126" />
@@ -27,25 +31,33 @@ function Flag({ id }: { id: Lang }) {
   }
   if (id === "en") {
     return (
-      <svg {...common}>
+      <svg {...flagFrame} data-flag="ca">
         <rect width="30" height="20" fill="#FFFFFF" />
-        {[0, 2, 4, 6, 8, 10, 12].map((i) => (
-          <rect key={i} y={(i * 20) / 13} width="30" height={20 / 13} fill="#B22234" />
-        ))}
-        <rect width="13" height={(7 * 20) / 13} fill="#3C3B6E" />
+        <rect width="7.5" height="20" fill="#D52B1E" />
+        <rect x="22.5" width="7.5" height="20" fill="#D52B1E" />
+        <path
+          fill="#D52B1E"
+          d="M15 3.1l1.05 2.05 1.35-.55-.35 2.95 1.85-1.85.35 1 1.9-.35-.7 2.05.95.4-2.9 2.35.3 1-2.9-.4.1 3.05h-.9l.1-3.05-2.9.4.3-1-2.9-2.35.95-.4-.7-2.05 1.9.35.35-1 1.85 1.85-.35-2.95 1.35.55z"
+        />
       </svg>
     );
   }
-  // FR is Canadian French (fr-CA): flag of Canada.
+  const fleur = (cx: number, cy: number) => (
+    <path
+      key={`${cx}-${cy}`}
+      fill="#FFFFFF"
+      d={`M${cx} ${cy - 2.85}c-.12 1.45-1.4 1.35-1.55 2.35c0 .85.8.9 1.55.25c.75.65 1.55.6 1.55-.25c-.15-1-1.43-.9-1.55-2.35zm-1.5 4.15h3v.55h-1.2v1.15h-.6v-1.15h-1.2z`}
+    />
+  );
   return (
-    <svg {...common}>
-      <rect width="30" height="20" fill="#FFFFFF" />
-      <rect width="7.5" height="20" fill="#D52B1E" />
-      <rect x="22.5" width="7.5" height="20" fill="#D52B1E" />
-      <path
-        fill="#D52B1E"
-        d="M15 3.2l1.1 2.1 1.3-.6-.4 3 1.8-1.9.4 1 1.9-.4-.7 2.1.9.4-2.9 2.4.3 1-2.9-.4.1 3h-.8l.1-3-2.9.4.3-1-2.9-2.4.9-.4-.7-2.1 1.9.4.4-1 1.8 1.9-.4-3 1.3.6z"
-      />
+    <svg {...flagFrame} data-flag="qc">
+      <rect width="30" height="20" fill="#003DA5" />
+      <rect x="12.2" y="0" width="5.6" height="20" fill="#FFFFFF" />
+      <rect x="0" y="7.2" width="30" height="5.6" fill="#FFFFFF" />
+      {fleur(6.1, 4.05)}
+      {fleur(23.9, 4.05)}
+      {fleur(6.1, 16.15)}
+      {fleur(23.9, 16.15)}
     </svg>
   );
 }
@@ -98,7 +110,7 @@ export function Header() {
   ] as const;
 
   const langGroup = (
-    <div className="notranslate flex rounded-lg border border-line bg-white p-0.5" translate="no" role="group" aria-label={m.langAria}>
+    <div className="notranslate flex shrink-0 rounded-lg border border-line bg-white p-0.5" translate="no" role="group" aria-label={m.langAria}>
       {LANGS.map((item) => (
         <button
           key={item.id}
@@ -106,7 +118,7 @@ export function Header() {
           lang={item.html}
           aria-pressed={lang === item.id}
           aria-label={`${item.label}, ${item.name}`}
-          className={`inline-flex min-h-9 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-bold sm:min-h-10 sm:px-2.5 lg:gap-1 lg:px-1.5 xl:gap-1.5 xl:px-2.5 ${lang === item.id ? "bg-navy text-white" : "text-navy hover:bg-soft"}`}
+          className={`inline-flex min-h-9 items-center justify-center gap-1 rounded-md px-1.5 text-xs font-bold sm:min-h-10 sm:px-2 ${lang === item.id ? "bg-navy text-white" : "text-navy hover:bg-soft"}`}
           onClick={() => switchLang(item.id)}
         >
           <Flag id={item.id} />
@@ -127,31 +139,33 @@ export function Header() {
       <div className="flex h-11 items-center justify-end gap-2 border-b border-line bg-ivory px-3 sm:hidden">
         {langGroup}
       </div>
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-2 px-3 sm:px-5 md:h-20 md:px-8">
+      <div className="mx-auto flex h-16 w-full max-w-[1200px] items-center gap-3 px-3 sm:px-5 md:h-20 md:gap-4 md:px-8">
         <Link to="/#inicio" className="shrink-0" onClick={() => setOpen(false)} aria-label="MedElite International Health">
           <img src="/assets/brand/medelite-emblem-512.png" width={512} height={512} alt="" className="block h-11 w-11 min-[340px]:hidden" />
-          <span className="hidden min-[340px]:block"><BrandMark className="h-10 sm:h-11 md:h-14 lg:h-12 xl:h-16" /></span>
+          <span className="hidden min-[340px]:block">
+            <BrandMark className="h-10 sm:h-11 md:h-14" />
+          </span>
         </Link>
-        <nav className="ml-auto hidden items-center gap-3.5 lg:flex xl:gap-5" aria-label={m.nav.aria}>
+        <nav className="ml-auto hidden min-w-0 flex-1 items-center justify-end gap-x-3.5 min-[1280px]:flex min-[1366px]:gap-x-5" aria-label={m.nav.aria}>
           {links.slice(1).map(([href, label]) => (
             <Link
               key={href}
               to={href}
               aria-current={parseLocalePath(pathname).path === href ? "page" : undefined}
-              className="py-2 text-sm font-medium whitespace-nowrap text-navy xl:text-[15px] hover:text-gold aria-[current=page]:text-gold aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8"
+              className="shrink-0 py-2 text-sm font-medium whitespace-nowrap text-navy hover:text-gold aria-[current=page]:text-gold aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8"
             >
               {label}
             </Link>
           ))}
         </nav>
-        <div className="ml-auto flex items-center gap-1.5 sm:gap-2 lg:ml-3 xl:ml-4">
-          <div className="hidden items-center gap-2 sm:flex">
+        <div className="ml-auto flex shrink-0 items-center gap-2 min-[1280px]:ml-0">
+          <div className="hidden items-center sm:flex">
             {langGroup}
           </div>
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-line text-navy lg:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-line text-navy min-[1280px]:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             onClick={() => setOpen((value) => !value)}
@@ -167,7 +181,7 @@ export function Header() {
         id="menu-movil"
         ref={menuRef}
         hidden={!open}
-        className="fixed inset-x-0 top-[108px] bottom-0 z-40 sm:top-16 overflow-y-auto border-t border-line bg-white px-5 py-6 md:top-20 lg:hidden"
+        className="fixed inset-x-0 top-[108px] bottom-0 z-40 overflow-y-auto border-t border-line bg-white px-5 py-6 sm:top-16 md:top-20 min-[1280px]:hidden"
         aria-label={m.nav.aria}
       >
         <ul className="mx-auto grid max-w-xl divide-y divide-line">
@@ -185,7 +199,7 @@ export function Header() {
           <Link to="/#cotizar" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-gold px-5 text-sm font-semibold text-white" onClick={() => setOpen(false)}>
             {m.hero.ctaQuote}
           </Link>
-                  </div>
+        </div>
       </nav>
     </header>
   );
