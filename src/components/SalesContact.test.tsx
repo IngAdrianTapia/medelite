@@ -16,7 +16,7 @@ describe("SalesContact", () => {
     email.focus();
     expect(email).toHaveFocus();
     expect(screen.getByRole("link", { name: messages.sales.call })).toHaveAttribute("href", "tel:+16044428475");
-    expect(screen.getByText(messages.sales.note)).toBeInTheDocument();
+    expect(screen.getByText(messages.sales.note, { normalizer: (s) => s })).toBeInTheDocument();
     expect(screen.queryByRole("textbox")).not.toBeInTheDocument();
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });

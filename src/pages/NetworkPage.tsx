@@ -75,8 +75,8 @@ export function NetworkPage() {
       notClaim: "Nous ne revendiquons pas JCI, CLACS ni CSG. Joya affiche un Distintivo H et un sceau de pandémie sur certaines fiches. Nous n’avons pas vérifié qu’ils sont encore en vigueur, et nous ne les présentons pas comme les nôtres.",
       marina: "L’adresse est celle de la fiche de Marina (Blvd. Francisco Medina Ascencio #2760). La page de contact de Joya répète par erreur celle de Riviera Nayarit.",
       playa: "Téléphones de la page de contact (984). La fiche imprime aussi (998) 206 3260. Nous n’utilisons pas le (322) 226 8181 du pied de page : c’est celui de Riviera.",
-      sma: "Téléphone (415) 152 5900, celui qui revient sur la page de contact. La fiche écrit aussi 152 8900; nous ne l’utilisons pas.",
-      cancun: "Joya dit que Cancún a été reconnu par la SECTUR. Nous ne l’avons pas vérifié dans un registre. Un intertitre de cette fiche dit « Guadalajara »; c’est un texte copié et nous ne le répétons pas.",
+      sma: "Téléphone (415) 152 5900, celui qui revient sur la page de contact. La fiche écrit aussi 152 8900 ; nous ne l’utilisons pas.",
+      cancun: "Joya dit que Cancún a été reconnu par la SECTUR. Nous ne l’avons pas vérifié dans un registre. Un intertitre de cette fiche dit « Guadalajara » ; c’est un texte copié et nous ne le répétons pas.",
       icu: "La fiche dit que c’est la seule unité de soins critiques de la zone. Ce n’est pas vérifié ailleurs.",
     },
   }[lang];
