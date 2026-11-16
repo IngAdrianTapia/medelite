@@ -13,11 +13,11 @@ const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
 
 const flagFrame = {
   viewBox: "0 0 30 20",
-  className: "h-3 w-[18px] shrink-0 rounded-[2px] ring-1 ring-black/10",
+  className: "h-3.5 w-[21px] shrink-0 overflow-hidden rounded-[2px] ring-1 ring-black/15",
   "aria-hidden": true,
 } as const;
 
-/** Inline flags (emoji flags do not render on Windows): ES Mexico, EN Canada, FR Quebec. */
+/** Inline flags (emoji flags do not render on Windows): ES Mexico, EN United States, FR Canada. */
 function Flag({ id }: { id: Lang }) {
   if (id === "es") {
     return (
@@ -25,39 +25,45 @@ function Flag({ id }: { id: Lang }) {
         <rect width="10" height="20" fill="#006847" />
         <rect x="10" width="10" height="20" fill="#FFFFFF" />
         <rect x="20" width="10" height="20" fill="#CE1126" />
-        <circle cx="15" cy="10" r="2.6" fill="#8C5A2B" />
+        <circle cx="15" cy="10" r="2.15" fill="#8C5A2B" />
+        <circle cx="15" cy="10" r="0.85" fill="#C4A35A" />
       </svg>
     );
   }
   if (id === "en") {
+    const stripe = 20 / 13;
+    const cantonH = stripe * 7;
+    const stars: { cx: number; cy: number; key: string }[] = [];
+    for (let row = 0; row < 9; row++) {
+      const count = row % 2 === 0 ? 6 : 5;
+      const y = (cantonH / 10) * (row + 1);
+      const step = 12 / 6;
+      const origin = row % 2 === 0 ? step / 2 : step;
+      for (let i = 0; i < count; i++) {
+        stars.push({ cx: origin + i * step, cy: y, key: `${row}-${i}` });
+      }
+    }
     return (
-      <svg {...flagFrame} data-flag="ca">
-        <rect width="30" height="20" fill="#FFFFFF" />
-        <rect width="7.5" height="20" fill="#D52B1E" />
-        <rect x="22.5" width="7.5" height="20" fill="#D52B1E" />
-        <path
-          fill="#D52B1E"
-          d="M15 3.1l1.05 2.05 1.35-.55-.35 2.95 1.85-1.85.35 1 1.9-.35-.7 2.05.95.4-2.9 2.35.3 1-2.9-.4.1 3.05h-.9l.1-3.05-2.9.4.3-1-2.9-2.35.95-.4-.7-2.05 1.9.35.35-1 1.85 1.85-.35-2.95 1.35.55z"
-        />
+      <svg {...flagFrame} data-flag="us">
+        {Array.from({ length: 13 }, (_, i) => (
+          <rect key={i} y={i * stripe} width="30" height={stripe + 0.04} fill={i % 2 === 0 ? "#BF0A30" : "#FFFFFF"} />
+        ))}
+        <rect width="12" height={cantonH} fill="#002868" />
+        {stars.map((star) => (
+          <circle key={star.key} cx={star.cx} cy={star.cy} r="0.42" fill="#FFFFFF" />
+        ))}
       </svg>
     );
   }
-  const fleur = (cx: number, cy: number) => (
-    <path
-      key={`${cx}-${cy}`}
-      fill="#FFFFFF"
-      d={`M${cx} ${cy - 2.85}c-.12 1.45-1.4 1.35-1.55 2.35c0 .85.8.9 1.55.25c.75.65 1.55.6 1.55-.25c-.15-1-1.43-.9-1.55-2.35zm-1.5 4.15h3v.55h-1.2v1.15h-.6v-1.15h-1.2z`}
-    />
-  );
   return (
-    <svg {...flagFrame} data-flag="qc">
-      <rect width="30" height="20" fill="#003DA5" />
-      <rect x="12.2" y="0" width="5.6" height="20" fill="#FFFFFF" />
-      <rect x="0" y="7.2" width="30" height="5.6" fill="#FFFFFF" />
-      {fleur(6.1, 4.05)}
-      {fleur(23.9, 4.05)}
-      {fleur(6.1, 16.15)}
-      {fleur(23.9, 16.15)}
+    <svg {...flagFrame} data-flag="ca">
+      <rect width="30" height="20" fill="#FFFFFF" />
+      <rect width="7.5" height="20" fill="#D52B1E" />
+      <rect x="22.5" width="7.5" height="20" fill="#D52B1E" />
+      <path
+        fill="#D52B1E"
+        d="M15 3.1l1.05 2.05 1.35-.55-.35 2.95 1.85-1.85.35 1 1.9-.35-.7 2.05.95.4-2.9 2.35.3 1-2.9-.4.1 3.05h-.9l.1-3.05-2.9.4.3-1-2.9-2.35.95-.4-.7-2.05 1.9.35.35-1 1.85 1.85-.35-2.95 1.35.55z"
+      />
     </svg>
   );
 }
