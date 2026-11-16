@@ -49,17 +49,17 @@ export function MapaRed({ title, headingLevel = 3 }: { title?: string; headingLe
   if (!zone) return null;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
+    <div className="grid gap-6 md:pr-96 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
       <div className="min-w-0">
         {title ? <Heading className="sr-only">{title}</Heading> : null}
-        <div className="relative rounded-3xl border border-line bg-white p-3 sm:p-6">
+        <div className="relative overflow-hidden rounded-3xl border border-line p-3 sm:p-6" style={{ background: "linear-gradient(180deg, #eef4f7 0%, #f7f4ee 100%)" }}>
           <div className="relative" style={{ aspectRatio: `${VB.w} / ${VB.h}` }}>
             <svg viewBox={`${VB.x} ${VB.y} ${VB.w} ${VB.h}`} className="absolute inset-0 h-full w-full" role="img" aria-label={t.map}>
-              <path d={MEXICO_PATH} fill="none" stroke="#9db0bf" strokeWidth="1.1" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+              <path d={MEXICO_PATH} fill="#fbf8f2" stroke="#6d8494" strokeWidth="1.35" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
               {HOSPITALS.map((h) => {
                 const pin = HOSPITAL_PIN[h.id];
                 const on = (zone.sites as readonly string[]).includes(h.id);
-                return <circle key={h.id} cx={pin.x} cy={pin.y} r={on ? 3.2 : 2.4} fill={on ? "#00788f" : "#5b7386"} />;
+                return <circle key={h.id} cx={pin.x} cy={pin.y} r={on ? 3.4 : 2.3} fill={on ? "#00788f" : "#7b8f9c"} />;
               })}
               {ZONES.map((z) => {
                 const c = centre(z.sites);
@@ -86,7 +86,6 @@ export function MapaRed({ title, headingLevel = 3 }: { title?: string; headingLe
                     onBlur={() => setHover(null)}
                     className="group relative -translate-x-1/2 -translate-y-1/2"
                   >
-                    {active ? <span className="absolute inset-0 animate-ping rounded-full bg-teal/25 motion-reduce:hidden" aria-hidden="true" /> : null}
                     <span className={`relative grid h-11 w-11 place-items-center rounded-full border-2 text-sm font-semibold tabular-nums shadow-premium transition-all duration-300 sm:h-12 sm:w-12 ${active ? "scale-110 border-white bg-teal text-white" : "border-white bg-navy text-white group-hover:bg-teal"}`}>
                       {z.sites.length}
                     </span>

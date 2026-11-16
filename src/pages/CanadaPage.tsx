@@ -34,18 +34,18 @@ export function CanadaPage() {
           </div>
         </div>
       </header>
-      <section className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+      <section className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:pr-96 md:py-24">
         <div className="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
           <h2 className="font-serif text-3xl leading-tight text-navy md:text-4xl">{chrome.cities}</h2>
-          <div>
-            <ul className="divide-y divide-line border-y border-line">
-              {cities.map((city) => (
-                <li key={city.id} className="py-5 font-serif text-2xl text-navy">{city.label[lang]}</li>
-              ))}
-            </ul>
-            <p className="mt-5 text-[15px] leading-relaxed text-muted">{m.hero.route}</p>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted">{m.contact.city}</p>
-          </div>
+          <ul className="divide-y divide-line border-y border-line">
+            {cities.map((city) => (
+              <li key={city.id} className="py-5 font-serif text-2xl text-navy">{city.label[lang]}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="mt-10 max-w-3xl pb-8">
+          <p className="text-[15px] leading-relaxed text-muted">{m.hero.route}</p>
+          <p className="mt-2 text-[15px] leading-relaxed text-muted">{m.contact.city}</p>
         </div>
       </section>
       <section className="bg-ivory py-20 md:py-28">

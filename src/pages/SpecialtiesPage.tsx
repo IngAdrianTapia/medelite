@@ -15,7 +15,9 @@ const PHOTO_FOR: Partial<Record<(typeof PUBLIC_SPECIALTIES)[number], string>> = 
   orthopedics: "operating-room",
   urology: "guadalajara",
   pediatrics: "penita",
-  "general-surgery": "operating-room",
+  "general-surgery": "riviera-or",
+  ophthalmology: "playa",
+  neurology: "cancun",
 };
 
 export function SpecialtiesPage() {
@@ -30,6 +32,7 @@ export function SpecialtiesPage() {
       directory: "Categorías del directorio (sin médicos publicados)",
       open: "Ver la especialidad",
       route: "Ruta de coordinación de MedElite, no una asignación publicada por Joya:",
+      heroCap: "Quirófano publicado por Grupo Médico Joya. Las especialidades y las sedes son las que publica hospitaljoya.com.",
     },
     en: {
       kicker: "Specialties",
@@ -40,6 +43,7 @@ export function SpecialtiesPage() {
       directory: "Directory categories (no physicians published)",
       open: "View specialty",
       route: "MedElite coordination route, not an assignment published by Joya:",
+      heroCap: "An operating room published by Grupo Médico Joya. Specialties and sites are those published on hospitaljoya.com.",
     },
     fr: {
       kicker: "Spécialités",
@@ -50,6 +54,7 @@ export function SpecialtiesPage() {
       directory: "Catégories du répertoire (aucun médecin publié)",
       open: "Voir la spécialité",
       route: "Itinéraire de coordination MedElite, pas une attribution publiée par Joya :",
+      heroCap: "Salle d’opération publiée par Grupo Médico Joya. Les spécialités et les établissements sont ceux que publie hospitaljoya.com.",
     },
   }[lang];
   const featured = PUBLIC_SPECIALTIES.filter((id) => PHOTO_FOR[id]);
@@ -73,16 +78,20 @@ export function SpecialtiesPage() {
   return (
     <main id="contenido">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
-      <header className="border-b border-line bg-white px-5 pt-14 pb-14 md:px-8 md:pt-20">
-        <div className="mx-auto grid max-w-[1136px] gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+      <header className="border-b border-line bg-white">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-10 px-5 py-14 md:px-8 md:py-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
           <div>
             <p className="eyebrow">{t.kicker}</p>
             <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+            <p className="mt-6 text-[17px] leading-relaxed text-muted">{t.deck}</p>
           </div>
-          <p className="text-[17px] leading-relaxed text-muted">{t.deck}</p>
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-soft" data-gallery="especialidades">
+            <FacilityPhoto name="operating-room" fill alt={PHOTO_OF["operating-room"]?.[lang] ?? t.title} sizes="(min-width: 1024px) 34rem, 100vw" />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 to-transparent px-5 pt-16 pb-4 text-sm text-white">{t.heroCap}</figcaption>
+          </figure>
         </div>
       </header>
-      <div className="mx-auto max-w-[1200px] px-5 md:px-8 py-10">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 md:pr-96 py-10">
       <p className="max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {LINE_IDS.map((id) => (
@@ -180,7 +189,9 @@ export function SpecialtiesPage() {
           </li>
         ))}
       </ul>
-      <PageCta />
+      <div className="mt-16 pb-8">
+        <PageCta />
+      </div>
       </div>
     </main>
   );
