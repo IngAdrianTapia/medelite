@@ -29,7 +29,7 @@ export function PreparePage() {
       cancel: "Nous ne publions pas un calendrier d’annulation. Ce qui s’applique, c’est le contrat écrit, si vous continuez.",
       companion: "Executive prévoit un accompagnateur, le déjeuner et un séjour plus confortable. Le document écrit dit ce qui est inclus.",
       after: "Au retour, le parcours est conçu pour inclure un résumé pour votre médecin de famille. Le dossier clinique reste à l’hôpital. MedElite ne prescrit pas depuis Vancouver.",
-      range: "La fourchette du genou inclut, pour Essential et Executive, l’hôtel et les transferts. Elle n’inclut pas le vol que vous achetez. Snowbird n’inclut ni hôtel ni vol. La bariatrique, la plastique et l’ophtalmologie n’ont pas de bande publiée.",
+      range: "La fourchette du genou inclut, pour Essential et Executive, l’hôtel et les transferts. Elle n’inclut pas le vol que vous achetez. Snowbird n’inclut ni hôtel ni vol. La chirurgie bariatrique, la chirurgie plastique et l’ophtalmologie n’ont pas de fourchette publiée.",
     },
   }[lang];
   return (

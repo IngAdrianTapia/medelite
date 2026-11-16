@@ -236,9 +236,30 @@ export const GALLERY_ITEMS: readonly { id: string; category: PhotoCategory }[] =
   { id: "bariatric-room", category: "habitaciones" },
   { id: "cancun-lobby", category: "instalaciones" },
   { id: "cancun-ct", category: "instalaciones" },
+  { id: "marina-diagnostics", category: "instalaciones" },
   { id: "penita", category: "urgencias" },
 ];
 
 export function portraitOf(id: string): PhotoCredit | undefined {
   return PHOTO_CREDITS.find((row) => row.id === id && row.sourceFile.includes("retrato"));
 }
+
+/** Largest file of each photo in this repo, for the full-screen gallery view. */
+export const PHOTO_LARGEST: Record<string, string> = {
+  marina: "marina-1280.webp",
+  riviera: "riviera-837.webp",
+  guadalajara: "guadalajara-1280.webp",
+  sma: "sma-1280.webp",
+  queretaro: "queretaro-922.webp",
+  cancun: "cancun-960.webp",
+  playa: "playa-1280.webp",
+  chapala: "chapala-742.webp",
+  penita: "penita-1280.webp",
+  "operating-room": "operating-room-1280.webp",
+  "patient-room": "patient-room-1280.webp",
+  "bariatric-or": "bariatric-or-1024.webp",
+  "bariatric-room": "bariatric-room-800.webp",
+  "cancun-ct": "cancun-ct-1280.webp",
+  "cancun-lobby": "cancun-lobby-779.webp",
+  "marina-diagnostics": "marina-diagnostics-480.webp",
+};

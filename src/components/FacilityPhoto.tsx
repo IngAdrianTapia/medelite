@@ -19,6 +19,7 @@ const VARIANTS: Record<string, readonly [number, number][]> = {
   "bariatric-room": [[640, 640], [800, 800]],
   "cancun-ct": [[640, 640], [960, 960], [1280, 1280]],
   "cancun-lobby": [[640, 640], [779, 779]],
+  "marina-diagnostics": [[480, 480]],
 };
 
 /** Largest real pixel size in this repo. Ratios match the files; nothing is upscaled in the markup. */
@@ -38,6 +39,7 @@ const INTRINSIC: Record<string, [number, number]> = {
   "bariatric-room": [800, 536],
   "cancun-ct": [1280, 898],
   "cancun-lobby": [779, 520],
+  "marina-diagnostics": [480, 320],
 };
 
 function srcSet(name: string, ext: "avif" | "webp"): string {

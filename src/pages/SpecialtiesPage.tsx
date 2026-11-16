@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { FacilityPhoto } from "../components/FacilityPhoto";
+import { FiltroSedeEspecialidad } from "../components/FiltroSedeEspecialidad";
 import { Seo } from "../components/Seo";
 import { HOSPITALS } from "../data/hospitals";
 import { DIRECTORY_SPECIALTIES, PUBLIC_SPECIALTIES, SPECIALTY_SITES } from "../data/joya";
@@ -11,7 +12,6 @@ const PHOTO_FOR: Partial<Record<(typeof PUBLIC_SPECIALTIES)[number], string>> = 
   cardiology: "marina",
   gynecology: "riviera",
   orthopedics: "operating-room",
-  ophthalmology: "cancun",
   urology: "guadalajara",
   pediatrics: "penita",
   "general-surgery": "operating-room",
@@ -115,6 +115,7 @@ export function SpecialtiesPage() {
           </li>
         ))}
       </ul>
+      <FiltroSedeEspecialidad />
       <div className="mt-10 grid gap-6">
         {PUBLIC_SPECIALTIES.map((id, index) => {
           const photo = PHOTO_FOR[id];

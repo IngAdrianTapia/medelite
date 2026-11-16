@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { describe, expect, it, vi } from "vitest";
 import { AppRoutes } from "./App";
@@ -14,19 +14,21 @@ vi.stubGlobal(
   },
 );
 
-describe("locale switch", () => {
-  it("follows the language control on /calidad instead of restoring the URL language", () => {
+// The language buttons do a full page load to the equivalent prerendered page
+// (window.location.assign), which jsdom cannot follow. Check each localized URL instead.
+describe("/calidad in each language", () => {
+  it.each([
+    ["es", "/es/calidad", "Estándares de Calidad"],
+    ["en", "/en/calidad", "Software Quality Standards"],
+    ["fr", "/fr/calidad", "Normes de qualité logicielle"],
+  ] as const)("renders %s", (lang, path, heading) => {
     render(
-      <I18nProvider initialLang="es">
-        <MemoryRouter initialEntries={["/es/calidad"]}>
+      <I18nProvider initialLang={lang}>
+        <MemoryRouter initialEntries={[path]}>
           <AppRoutes />
         </MemoryRouter>
       </I18nProvider>,
     );
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Estándares de Calidad");
-    fireEvent.click(screen.getByRole("button", { name: "EN, English" }));
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Software Quality Standards");
-    fireEvent.click(screen.getByRole("button", { name: "FR, Français" }));
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Normes de qualité logicielle");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(heading);
   });
 });

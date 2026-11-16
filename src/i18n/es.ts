@@ -606,7 +606,7 @@ export const es: Messages = {
           { n: "Adecuación funcional", d: "Cubre las funciones declaradas y las hace correctamente." },
           { n: "Eficiencia de desempeño", d: "Tiempo de respuesta, rendimiento y uso de recursos." },
           { n: "Compatibilidad", d: "Coexistencia e interoperabilidad con otros sistemas." },
-          { n: "Usabilidad", d: "Apreensibilidad, operabilidad y accesibilidad." },
+          { n: "Usabilidad", d: "Capacidad de aprendizaje, operabilidad y accesibilidad." },
           { n: "Fiabilidad", d: "Madurez, disponibilidad, tolerancia a fallos." },
           { n: "Seguridad", d: "Confidencialidad, integridad, autenticidad." },
           { n: "Mantenibilidad", d: "Modularidad, analizabilidad, testabilidad." },

@@ -6,10 +6,15 @@ import type { QualitySection } from "../i18n/types";
 
 /** Reloj en vivo: el "sistema de actualizaciones automáticas" de la página. */
 function useClock() {
-  const [now, setNow] = useState(() => new Date());
+  // null en el HTML prerenderizado: la hora real se pinta al montar (evita error de hidratación).
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
+    const first = setTimeout(() => setNow(new Date()), 0);
     const id = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(id);
+    return () => {
+      clearTimeout(first);
+      clearInterval(id);
+    };
   }, []);
   return now;
 }
@@ -90,8 +95,8 @@ export function CalidadPage() {
   const page = m.calidad;
   const now = useClock();
   const locale = htmlLang(lang);
-  const live = now.toLocaleString(locale, LIVE_OPTIONS);
-  const sealDate = now.toLocaleDateString(locale, SEAL_OPTIONS);
+  const live = now ? now.toLocaleString(locale, LIVE_OPTIONS) : "—";
+  const sealDate = now ? now.toLocaleDateString(locale, SEAL_OPTIONS) : "—";
 
   return (
     <main id="contenido" className="page-shell">

@@ -12,7 +12,7 @@ if (!root) throw new Error("Missing #root");
 const tree = (
   <StrictMode>
     <I18nProvider>
-      <HistoryRouter history={UNSAFE_createBrowserHistory()}>
+      <HistoryRouter history={UNSAFE_createBrowserHistory({ v5Compat: true })}>
         <AppRoutes />
       </HistoryRouter>
     </I18nProvider>

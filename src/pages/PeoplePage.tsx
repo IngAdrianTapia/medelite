@@ -9,17 +9,17 @@ export function PeoplePage() {
   const t = {
     es: {
       title: "Nombres publicados, nada más",
-      deck: "El directorio de hospitaljoya.com no mostraba médicos el 14 de noviembre de 2026. Aquí están las personas que sí aparecen en drjoyaofficial.com o en notas de hospitaljoya.com, con la frase tal como está publicada. Erika Cruz Joya se incluye porque medeliteofficial.com la nombra fundadora y directora ejecutiva, y su foto ya está en este repositorio. No añadimos apellidos, cédulas ni biografías que esas páginas no traen.",
+      deck: "El directorio de hospitaljoya.com no mostraba médicos el 14 de noviembre de 2026. Aquí están las personas que sí aparecen en drjoyaofficial.com o en notas de hospitaljoya.com, con la frase tal como está publicada. Erika Cruz Joya se incluye porque medeliteofficial.com la nombra fundadora y directora ejecutiva, y su foto ya está publicada en este sitio. No añadimos apellidos, cédulas ni biografías que esas páginas no traen.",
       according: "Según",
     },
     en: {
       title: "Published names, and nothing else",
-      deck: "The hospitaljoya.com directory showed no physicians on 14 November 2026. These are the people who do appear on drjoyaofficial.com or in hospitaljoya.com notes, in the wording those pages use. Erika Cruz Joya is included because medeliteofficial.com names her founder and chief executive, and her photograph is already in this repository. We do not add surnames, licence numbers or biographies those pages do not print.",
+      deck: "The hospitaljoya.com directory showed no physicians on 14 November 2026. These are the people who do appear on drjoyaofficial.com or in hospitaljoya.com notes, in the wording those pages use. Erika Cruz Joya is included because medeliteofficial.com names her founder and chief executive, and her photograph is already published on this site. We do not add surnames, licence numbers or biographies those pages do not print.",
       according: "According to",
     },
     fr: {
       title: "Noms publiés, et rien d’autre",
-      deck: "Le répertoire de hospitaljoya.com n’affichait aucun médecin le 14 novembre 2026. Voici les personnes qui figurent sur drjoyaofficial.com ou dans des notes de hospitaljoya.com, dans les mots de ces pages. Erika Cruz Joya est incluse parce que medeliteofficial.com la nomme fondatrice et cheffe de la direction, et que sa photo est déjà dans ce dépôt. Nous n’ajoutons pas de noms de famille, de cédulas ni de biographies absents.",
+      deck: "Le répertoire de hospitaljoya.com n’affichait aucun médecin le 14 novembre 2026. Voici les personnes qui figurent sur drjoyaofficial.com ou dans des notes de hospitaljoya.com, dans les mots de ces pages. Erika Cruz Joya est incluse parce que medeliteofficial.com la nomme fondatrice et cheffe de la direction, et que sa photo est déjà publiée sur ce site. Nous n’ajoutons pas de noms de famille, de cédulas ni de biographies absents.",
       according: "Selon",
     },
   }[lang];

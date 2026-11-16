@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Link, useLocation } from "react-router";
+import { AsistenciaIA } from "../components/AsistenciaIA";
+import { MapaSedes } from "../components/MapaSedes";
+import { Testimonios } from "../components/Testimonios";
 import { MexicoMap } from "../components/MexicoMap";
 import { QuoteWizard } from "../components/QuoteWizard";
 import { RecorridoPaciente } from "../components/RecorridoPaciente";
@@ -195,6 +198,9 @@ export function HomePage() {
             <p className="mt-4 text-muted">{m.network.deck}</p>
             <p className="mt-3 text-sm text-muted">{copy.mapNote}</p>
           </div>
+          <div className="mb-8">
+            <MapaSedes headingLevel={3} />
+          </div>
           <MexicoMap label={copy.mapLabel} />
         </div>
         <div className="mx-auto mt-8 max-w-6xl space-y-3 px-5 text-sm leading-relaxed text-muted">
@@ -215,7 +221,7 @@ export function HomePage() {
         </div>
         <div className="mx-auto mt-10 grid max-w-6xl gap-4 px-5 lg:grid-cols-2">
           {m.verticals.items.map((item, index) => {
-            const photo = (["marina", "guadalajara", "cancun", "operating-room"] as const)[index] ?? "operating-room";
+            const photo = (["marina", "riviera", "operating-room", "cancun-ct"] as const)[index] ?? "operating-room";
             const wide = index === 0;
             return (
               <article key={item.title} className={`relative min-h-[28rem] overflow-hidden rounded-[2rem] ${wide ? "lg:col-span-2 lg:min-h-[36rem]" : ""}`}>
@@ -300,7 +306,12 @@ export function HomePage() {
         {m.about.story.map((paragraph) => (
           <p key={paragraph} className="mx-auto mt-3 max-w-3xl">{paragraph}</p>
         ))}
+        <div className="mx-auto mt-8 max-w-3xl">
+          <AsistenciaIA />
+        </div>
       </div>
+
+      <Testimonios />
 
       <section id="faq" className="bg-navy px-5 py-24 text-white">
         <div className="mx-auto max-w-3xl">
