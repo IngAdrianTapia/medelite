@@ -21,14 +21,14 @@ Referencias: ISO/IEC 27001 (control de acceso, respaldos, cifrado, trato de los 
 - `img-src 'self' data:`
 - `font-src`, `media-src`, `connect-src`, `worker-src` y `manifest-src` en `'self'`
 - `form-action mailto:`
-- `frame-src https://www.youtube-nocookie.com https://www.youtube.com` (el iframe de YouTube solo se inserta cuando la persona pulsa reproducir)
+- `frame-src 'none'` (los videos se reproducen con `<video>` en el mismo origen; no hay iframes de terceros)
 - `base-uri 'self'`
 - `object-src 'none'`
 - `upgrade-insecure-requests`
 
 `index.html` también envía `referrer` = `strict-origin-when-cross-origin`.
 
-`frame-ancestors` no va en la meta: los navegadores lo ignoran ahí. GitHub Pages no deja poner encabezados HTTP propios. Por eso no están, como encabezado, HSTS, `X-Content-Type-Options`, `frame-ancestors` ni `Permissions-Policy`. El workflow comprueba que el HTML construido contiene la CSP. `scripts/budget.mjs` comprueba `script-src 'self'` y que `frame-src` permite solo los orígenes de incrustación de YouTube.
+`frame-ancestors` no va en la meta: los navegadores lo ignoran ahí. GitHub Pages no deja poner encabezados HTTP propios. Por eso no están, como encabezado, HSTS, `X-Content-Type-Options`, `frame-ancestors` ni `Permissions-Policy`. El workflow comprueba que el HTML construido contiene la CSP. `scripts/budget.mjs` comprueba `script-src 'self'`, `frame-src 'none'` y que cada video en `dist/assets/video` queda por debajo de 50 MB.
 
 Los enlaces externos llevan `rel="noopener noreferrer"`.
 

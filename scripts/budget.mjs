@@ -42,12 +42,15 @@ const failures = [];
 if (max > MAX_JS_GZIP) failures.push(`JS gzip ${max} (${maxName}) supera ${MAX_JS_GZIP}`);
 if (total > TOTAL_JS_GZIP) failures.push(`JS gzip total ${total} supera ${TOTAL_JS_GZIP}`);
 if (photoMax > MAX_PHOTO_BYTES) failures.push(`foto ${photoMax} (${photoName}) supera ${MAX_PHOTO_BYTES}`);
-if (
-  !html.includes("script-src 'self'") ||
-  !html.includes("frame-src https://www.youtube-nocookie.com https://www.youtube.com") ||
-  html.includes("frame-src 'none'")
-) {
+if (!html.includes("script-src 'self'") || !html.includes("frame-src 'none'")) {
   failures.push("falta la CSP esperada en dist/index.html");
+}
+
+const videosDir = join(dist, "assets/video");
+const MAX_VIDEO_BYTES = 50_000_000;
+for (const name of readdirSync(videosDir).filter((n) => n.endsWith(".mp4") || n.endsWith(".webm"))) {
+  const size = statSync(join(videosDir, name)).size;
+  if (size > MAX_VIDEO_BYTES) failures.push(`video ${size} (${name}) supera ${MAX_VIDEO_BYTES}`);
 }
 
 if (failures.length > 0) {
