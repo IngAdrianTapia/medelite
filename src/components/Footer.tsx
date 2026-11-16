@@ -6,7 +6,7 @@ import { BrandMark } from "./BrandMark";
 export function Footer() {
   const { m, lang } = useI18n();
   return (
-    <footer className="relative border-t border-line bg-ivory pt-16 pb-28 text-ink md:pb-16">
+    <footer className="relative border-t border-line bg-ivory pt-16 pb-28 text-ink md:pb-28">
       <div className="relative mx-auto grid max-w-[1200px] gap-12 px-5 md:grid-cols-4">
         <div className="md:col-span-2">
           <BrandMark className="h-16 md:h-20" alt="" />
