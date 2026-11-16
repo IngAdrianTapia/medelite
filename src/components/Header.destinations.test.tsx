@@ -34,20 +34,20 @@ describe("header destinations", () => {
     expect(screen.getByRole("link", { name: messages.hero.ctaQuote })).toHaveAttribute("href", "/#cotizar");
   });
 
-  it.each(["es", "en", "fr"] as const)("marks Mexico, Canada and Quebec flags in the language selector in %s", (lang) => {
+  it.each(["es", "en", "fr"] as const)("marks Mexico, United States and Canada flags in the language selector in %s", (lang) => {
     const messages = CATALOGS[lang];
     renderHeader(lang);
     const groups = screen.getAllByRole("group", { name: messages.langAria });
     expect(groups.length).toBeGreaterThan(0);
     for (const group of groups) {
-      expect(group.querySelector('[data-flag="mx"]')).not.toBeNull();
-      expect(group.querySelector('[data-flag="ca"]')).not.toBeNull();
-      expect(group.querySelector('[data-flag="qc"]')).not.toBeNull();
-      expect(group.querySelector('[data-flag="us"]')).toBeNull();
-      expect(group.innerHTML).not.toContain("#3C3B6E");
+      const flags = [...group.querySelectorAll("[data-flag]")].map((el) => el.getAttribute("data-flag"));
+      expect(flags).toEqual(["mx", "us", "ca"]);
+      expect(group.querySelector('[data-flag="qc"]')).toBeNull();
       expect(group.innerHTML).toContain("#006847");
+      expect(group.innerHTML).toContain("#002868");
+      expect(group.innerHTML).toContain("#BF0A30");
       expect(group.innerHTML).toContain("#D52B1E");
-      expect(group.innerHTML).toContain("#003DA5");
+      expect(group.innerHTML).not.toContain("#003DA5");
     }
   });
 
