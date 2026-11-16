@@ -52,10 +52,13 @@ describe("VideoEmbed", () => {
     expect(document.body.textContent).not.toMatch(/youtube/i);
     const video = document.querySelector("video");
     expect(video).toBeTruthy();
-    expect(video).toHaveAttribute("preload", "none");
+    expect(video).toHaveAttribute("preload", "metadata");
     expect(video).toHaveAttribute("playsinline");
-    expect(video?.querySelector("source")?.getAttribute("src")).toBe("/assets/video/joya-institucional.mp4");
-    expect(video?.querySelector("source")?.getAttribute("type")).toBe("video/mp4");
+    const sources = [...(video?.querySelectorAll("source") ?? [])];
+    expect(sources[0]?.getAttribute("src")).toBe("/assets/video/joya-institucional-720.mp4");
+    expect(sources[0]?.getAttribute("media")).toBe("(max-width: 720px)");
+    expect(sources[1]?.getAttribute("src")).toBe("/assets/video/joya-institucional.mp4");
+    expect(sources.every((s) => s.getAttribute("type") === "video/mp4")).toBe(true);
     expect(screen.getByRole("link", { name: "hospitaljoya.com" })).toHaveAttribute("href", "https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/");
   });
 
@@ -105,7 +108,7 @@ describe("VideoEmbed", () => {
     fireEvent.click(screen.getByRole("button", { name: "Reproducir el video: Hospital Joya. Video institucional" }));
     const video = document.querySelector("video");
     expect(video).toBeTruthy();
-    if (video) fireEvent.play(video);
+    if (video) { fireEvent.play(video); fireEvent.playing(video); }
     await waitFor(() => {
       expect(screen.getByRole("button", { name: "Pausar" })).toBeInTheDocument();
     });

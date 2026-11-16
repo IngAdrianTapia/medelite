@@ -248,6 +248,7 @@ export function HomePage() {
             <VideoEmbed
               src="/assets/video/joya-institucional"
               title="Hospital Joya. Video institucional"
+              autoplay
               poster="/assets/video/joya-institucional"
               caption={{
                 es: "Video institucional de Hospital Joya Marina Vallarta.",

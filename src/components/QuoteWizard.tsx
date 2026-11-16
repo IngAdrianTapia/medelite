@@ -5,6 +5,7 @@ import { FlightSimulator } from "./FlightSimulator";
 import { useI18n } from "../i18n";
 import { estimateQuote, type Estimate } from "../lib/estimate";
 import { buildMailto, leadBody } from "../lib/lead";
+import { openMailto } from "../lib/mailto";
 import { EMPTY_WIZARD, STEP_IDS, nextStep, previousStep, stepErrors, type FieldError, type StepId, type WizardState } from "../lib/wizard";
 
 const STORAGE_KEY = "medelite-quote-v1";
@@ -423,14 +424,12 @@ export function QuoteWizard() {
               <FlightSimulator procedure={state.procedure} packageId={state.packageId} />
             </div>
             {mailto ? (
-              <form className="mt-6" action={mailto.action} method="GET">
-                <input type="hidden" name="subject" value={mailto.subject} />
-                <input type="hidden" name="body" value={mailto.body} />
-                <button type="submit" className="inline-flex min-h-12 items-center rounded-lg bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2">
+              <div className="mt-6">
+                <button type="button" className="inline-flex min-h-12 items-center rounded-lg bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={() => openMailto(mailto)}>
                   {m.wizard.send}
                 </button>
                 <p className="mt-3 text-sm text-muted">{m.wizard.sent}</p>
-              </form>
+              </div>
             ) : null}
           </div>
         ) : null}

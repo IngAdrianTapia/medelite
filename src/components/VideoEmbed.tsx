@@ -12,6 +12,7 @@ const UI = {
     unmute: "Activar el sonido",
     fullscreen: "Pantalla completa",
     exitFullscreen: "Salir de pantalla completa",
+    sound: "Activar el sonido",
   },
   en: {
     play: "Play the video",
@@ -21,6 +22,7 @@ const UI = {
     unmute: "Unmute",
     fullscreen: "Full screen",
     exitFullscreen: "Exit full screen",
+    sound: "Unmute",
   },
   fr: {
     play: "Lire la vidéo",
@@ -30,6 +32,7 @@ const UI = {
     unmute: "Remettre le son",
     fullscreen: "Plein écran",
     exitFullscreen: "Quitter le plein écran",
+    sound: "Remettre le son",
   },
 } as const;
 
@@ -43,16 +46,17 @@ function formatTime(seconds: number) {
 }
 
 /** Official Hospital Joya video, played from this site with a first-party HTML5 player. */
-export function VideoEmbed({ src, title, poster, caption }: { src: string; title: string; poster: string; caption: Caption }) {
+export function VideoEmbed({ src, title, poster, caption, autoplay = false }: { src: string; title: string; poster: string; caption: Caption; autoplay?: boolean }) {
   const { lang } = useI18n();
   const t = UI[lang];
   const box = useRef<HTMLDivElement>(null);
   const video = useRef<VideoNode>(null);
   const hideTimer = useRef<number>(0);
   const [started, setStarted] = useState(false);
+  const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [ended, setEnded] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(autoplay);
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [chrome, setChrome] = useState(true);
@@ -65,6 +69,20 @@ export function VideoEmbed({ src, title, poster, caption }: { src: string; title
   }, []);
 
   useEffect(() => () => window.clearTimeout(hideTimer.current), []);
+
+  useEffect(() => {
+    if (!autoplay) return;
+    const el = video.current;
+    if (!el) return;
+    el.muted = true;
+    setMuted(true);
+    setStarted(true);
+    void el.play().catch(() => {
+      setStarted(false);
+      setReady(false);
+    });
+  }, [autoplay]);
+
 
   function showChrome() {
     setChrome(true);
@@ -154,7 +172,7 @@ export function VideoEmbed({ src, title, poster, caption }: { src: string; title
     }
   }
 
-  const showBar = started && (chrome || !playing || ended);
+  const showBar = ready && (chrome || !playing || ended);
 
   return (
     <figure>
@@ -172,10 +190,19 @@ export function VideoEmbed({ src, title, poster, caption }: { src: string; title
           ref={video}
           className="absolute inset-0 h-full w-full object-cover"
           playsInline
-          preload="none"
+          muted={muted}
+          loop={autoplay}
+          preload={autoplay ? "auto" : "metadata"}
+          poster={`${poster}.jpg`}
           controlsList="nodownload noplaybackrate noremoteplayback"
           disablePictureInPicture
           title={title}
+          onPlaying={() => {
+            setReady(true);
+            setPlaying(true);
+            setEnded(false);
+            showChrome();
+          }}
           onPlay={() => {
             setPlaying(true);
             setEnded(false);
@@ -197,29 +224,34 @@ export function VideoEmbed({ src, title, poster, caption }: { src: string; title
             showChrome();
           }}
         >
+          <source src={`${src}-720.mp4`} type="video/mp4" media="(max-width: 720px)" />
           <source src={`${src}.mp4`} type="video/mp4" />
         </video>
 
-        {!started ? (
-          <button type="button" className="group absolute inset-0 h-full w-full" aria-label={`${t.play}: ${title}`} onClick={() => void start()}>
+        {!ready ? (
+          <button type="button" className="group absolute inset-0 z-10 h-full w-full" aria-label={`${t.play}: ${title}`} onClick={() => void start()}>
             <img
               src={`${poster}-1280.webp`}
               srcSet={`${poster}-640.webp 640w, ${poster}-1280.webp 1280w`}
               sizes="(min-width: 1024px) 760px, 100vw"
               width={1280}
               height={720}
-              loading="lazy"
+              loading={autoplay ? "eager" : "lazy"}
               decoding="async"
               alt=""
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.03]"
             />
-            <span className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" aria-hidden="true" />
-            <span className="absolute top-[42%] left-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-navy shadow-premium transition-transform duration-500 group-hover:scale-110 md:h-20 md:w-20" aria-hidden="true">
-              <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7" fill="currentColor"><path d="M7 4.5v15l13-7.5z" /></svg>
-            </span>
-            <span className="absolute right-4 bottom-4 left-4 text-left text-white md:right-5 md:bottom-5 md:left-5">
-              <span className="block font-serif text-[1.05rem] leading-snug line-clamp-2 sm:text-xl md:text-3xl md:leading-tight">{title}</span>
-            </span>
+            {autoplay && started ? null : (
+              <>
+                <span className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" aria-hidden="true" />
+                <span className="absolute top-[42%] left-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-navy shadow-premium transition-transform duration-500 group-hover:scale-110 md:h-20 md:w-20" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7" fill="currentColor"><path d="M7 4.5v15l13-7.5z" /></svg>
+                </span>
+                <span className="absolute right-4 bottom-4 left-4 text-left text-white md:right-5 md:bottom-5 md:left-5">
+                  <span className="block font-serif text-[1.05rem] leading-snug line-clamp-2 sm:text-xl md:text-3xl md:leading-tight">{title}</span>
+                </span>
+              </>
+            )}
           </button>
         ) : null}
 
