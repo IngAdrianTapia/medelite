@@ -289,7 +289,7 @@ export function RoutePage() {
           </figure>
         </div>
       </header>
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-12 md:pr-72 lg:grid-cols-[0.9fr_1.1fr]">
       <form className="grid h-fit gap-3 rounded-2xl bg-white p-6 shadow-premium print:hidden" onSubmit={(event) => event.preventDefault()}>
         <label className="grid gap-1 text-sm">
           {t.origin}
@@ -342,7 +342,7 @@ export function RoutePage() {
       </ol>
       </div>
 
-      <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-28">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 md:pr-72 pb-28">
       <section id="match" className="mt-10 rounded-2xl border border-line bg-white shadow-glass p-5">
         <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.match}</h2>
         <p className="mt-3 leading-relaxed">{t.why[match.why]}</p>

@@ -49,7 +49,7 @@ export function MapaRed({ title, headingLevel = 3 }: { title?: string; headingLe
   if (!zone) return null;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
+    <div className="grid gap-6 md:pr-72 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
       <div className="min-w-0">
         {title ? <Heading className="sr-only">{title}</Heading> : null}
         <div className="relative overflow-hidden rounded-3xl border border-line p-3 sm:p-6" style={{ background: "linear-gradient(180deg, #eef4f7 0%, #f7f4ee 100%)" }}>

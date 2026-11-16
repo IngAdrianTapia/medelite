@@ -68,7 +68,7 @@ export function PreparePage() {
           </figure>
         </div>
       </header>
-      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:pr-72 md:py-24">
         <div className="grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-14">
           <section aria-labelledby="lista">
             <h2 id="lista" className="font-serif text-2xl text-navy md:text-3xl">{t.listTitle}</h2>

@@ -60,7 +60,7 @@ export function RolePage() {
           </figure>
         </div>
       </header>
-      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:pr-72 md:py-24">
         <ol className="divide-y divide-line border-y border-line">
           {t.points.map((point, index) => (
             <li key={point} className="reveal grid gap-3 py-8 md:grid-cols-[8rem_1fr] md:gap-10 md:py-10">

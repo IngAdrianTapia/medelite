@@ -34,7 +34,7 @@ export function CanadaPage() {
           </div>
         </div>
       </header>
-      <section className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+      <section className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:pr-72 md:py-24">
         <div className="grid gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-16">
           <h2 className="font-serif text-3xl leading-tight text-navy md:text-4xl">{chrome.cities}</h2>
           <ul className="divide-y divide-line border-y border-line">

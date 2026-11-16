@@ -99,7 +99,7 @@ export function ComparePage() {
           </div>
         </div>
       </section>
-      <section className="mx-auto max-w-[1200px] px-5 py-20 md:px-8">
+      <section className="mx-auto max-w-[1200px] px-5 py-20 md:px-8 md:pr-72">
         <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.cost}</h2>
         <p className="mt-4 max-w-3xl leading-relaxed text-muted">{t.costBody}</p>
         <ul className="mt-8 grid gap-4 md:grid-cols-3">
@@ -108,7 +108,7 @@ export function ComparePage() {
           <li className="rounded-2xl border border-line bg-white p-6"><span className="block text-sm text-muted">{t.knee} Executive</span><span className="mt-2 block font-serif text-2xl">CAD {PACKAGE_BANDS.executive.low.toLocaleString("en-CA")}</span></li>
         </ul>
       </section>
-      <div className="mx-auto max-w-6xl px-5 pb-28 md:px-8">
+      <div className="mx-auto max-w-6xl px-5 pb-28 md:px-8 md:pr-72">
         <PageCta />
       </div>
     </main>

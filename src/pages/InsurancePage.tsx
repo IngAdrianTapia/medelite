@@ -46,7 +46,7 @@ export function InsurancePage() {
           </figure>
         </div>
       </header>
-      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-[1200px] px-5 py-16 md:px-8 md:pr-72 md:py-24">
         <ul className="grid grid-cols-2 overflow-hidden rounded-2xl border-t border-l border-line bg-white sm:grid-cols-3 lg:grid-cols-5">
           {INSURERS.map((name) => (
             <li key={name} className="flex min-h-16 items-center border-r border-b border-line px-4 py-3 text-[15px] font-medium text-navy">
