@@ -91,7 +91,7 @@ export function SpecialtiesPage() {
           </figure>
         </div>
       </header>
-      <div className="mx-auto max-w-[1200px] px-5 md:px-8 md:pr-72 py-10">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 md:pr-96 py-10">
       <p className="max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {LINE_IDS.map((id) => (
