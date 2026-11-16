@@ -20,16 +20,15 @@ export function FlightsPage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="relative min-h-svh bg-navy">
+    <main id="contenido" className="bg-white">
       <Seo title={`${copy.title} — MedElite`} description={copy.deck} path="/vuelos" />
-      <div className="absolute inset-0 opacity-40">
-        <FacilityPhoto name="marina" fill protect alt="" sizes="100vw" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
-      <div className="relative mx-auto grid min-h-svh max-w-6xl items-center gap-10 px-5 pt-32 pb-20 lg:grid-cols-2">
-        <div className="text-white">
-          <h1 className="font-serif text-5xl leading-[0.95] md:text-7xl">{copy.title}</h1>
-          <p className="mt-6 max-w-md text-lg text-white/75">{copy.deck}</p>
+      <div className="mx-auto grid max-w-[1200px] items-start gap-10 px-5 pt-12 pb-20 md:px-8 lg:grid-cols-2 lg:pt-16">
+        <div>
+          <h1 className="font-serif text-3xl leading-tight text-navy md:text-5xl">{copy.title}</h1>
+          <p className="mt-6 max-w-md text-lg text-muted">{copy.deck}</p>
+          <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-2xl bg-soft shadow-premium">
+            <FacilityPhoto name="marina" fill alt="" sizes="(min-width: 1024px) 560px, 100vw" />
+          </div>
         </div>
         <FlightSimulator />
       </div>

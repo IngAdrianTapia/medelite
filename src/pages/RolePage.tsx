@@ -44,29 +44,29 @@ export function RolePage() {
   }[lang];
   const cta = lang === "fr" ? "Demander une soumission" : lang === "en" ? "Request a quote" : "Solicitar cotización";
   return (
-    <main id="contenido" className="bg-navy text-white">
+    <main id="contenido" className="bg-white text-ink">
       <Seo title={`${t.title} — MedElite`} description={t.points[0] ?? t.title} path="/que-es" />
-      <div className="grid min-h-svh lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="flex flex-col justify-end px-6 pt-32 pb-16 lg:px-14">
-          <h1 className="font-serif text-6xl leading-[0.9] md:text-7xl">{t.title}</h1>
-          <p className="mt-8">
-            <Link className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white" to="/#cotizar">
+      <header className="border-b border-line bg-ivory">
+        <div className="mx-auto max-w-[1200px] px-5 pt-12 pb-12 md:px-8 md:pt-16">
+          <h1 className="font-serif text-3xl leading-tight text-navy md:text-5xl">{t.title}</h1>
+          <p className="mt-6">
+            <Link className="inline-flex min-h-12 items-center rounded-lg bg-gold px-6 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
               {cta}
             </Link>
           </p>
         </div>
-        <ol className="divide-y divide-white/15 border-t border-white/15 lg:border-t-0 lg:border-l">
+      </header>
+      <div className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-16">
+        <ol className="grid gap-4 md:grid-cols-2">
           {t.points.map((point, index) => (
-            <li key={point} className="grid grid-cols-[4rem_1fr] gap-4 px-6 py-8 lg:px-10">
-              <span className="font-serif text-3xl text-gold-line">{String(index + 1).padStart(2, "0")}</span>
-              <p className="text-lg leading-relaxed">{point}</p>
+            <li key={point} className="flex gap-4 rounded-2xl border border-line bg-white p-6 shadow-premium">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-soft text-sm font-bold text-gold">{String(index + 1).padStart(2, "0")}</span>
+              <p className="text-[17px] leading-relaxed text-ink">{point}</p>
             </li>
           ))}
         </ol>
-      </div>
-      <div className="px-6 pb-16 lg:px-14">
-        <div className="mx-auto max-w-4xl">
-          <AsistenciaIA tone="dark" />
+        <div className="mt-10 max-w-4xl">
+          <AsistenciaIA />
         </div>
       </div>
     </main>

@@ -83,22 +83,22 @@ export function NetworkPage() {
   return (
     <main id="contenido">
       <Seo title={`${intro.title} — MedElite`} description={intro.deck} path="/red" />
-      <header className="bg-navy px-5 pt-32 pb-12 text-white">
-        <div className="mx-auto max-w-6xl">
-          <p className="text-xs tracking-[0.22em] text-gold-line uppercase">{intro.kicker}</p>
-          <h1 className="mt-3 max-w-4xl font-serif text-5xl leading-[0.92] md:text-7xl">{intro.title}</h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/75">{intro.deck}</p>
-          <p className="mt-3 max-w-2xl text-sm text-white/60">{intro.hours}</p>
+      <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
+        <div className="mx-auto max-w-[1136px]">
+          <p className="text-xs tracking-[0.22em] text-gold uppercase">{intro.kicker}</p>
+          <h1 className="mt-3 max-w-4xl font-serif text-3xl leading-tight md:text-5xl">{intro.title}</h1>
+          <p className="mt-5 max-w-2xl text-lg text-muted">{intro.deck}</p>
+          <p className="mt-3 max-w-2xl text-sm text-muted">{intro.hours}</p>
         </div>
       </header>
       <div className="flex snap-x gap-4 overflow-x-auto bg-ivory px-5 py-8" tabIndex={0} aria-label={intro.title}>
         {HOSPITALS.map((hospital) => (
-          <article key={hospital.id} className="w-80 shrink-0 snap-start overflow-hidden rounded-[2rem] bg-white shadow-premium">
+          <article key={hospital.id} className="w-80 shrink-0 snap-start overflow-hidden rounded-2xl bg-white shadow-premium">
             <div className="relative h-64">
               <FacilityPhoto name={hospital.id} fill alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="20rem" />
             </div>
             <div className="p-5">
-              <h2 className="font-serif text-2xl">
+              <h2 className="font-serif text-xl">
                 <Link className="underline decoration-current underline-offset-4" to={`/red/${hospital.id}`}>
                   {hospital.name}
                 </Link>
@@ -112,8 +112,8 @@ export function NetworkPage() {
           </article>
         ))}
       </div>
-      <div className="mx-auto max-w-6xl px-5 pb-16">
-      <h2 className="mt-14 font-serif text-3xl">{intro.soon}</h2>
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-16">
+      <h2 className="mt-14 font-serif text-2xl">{intro.soon}</h2>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2">
         {UPCOMING.map((id) => (
           <li key={id} className="rounded-2xl border border-dashed border-line bg-white px-4 py-3 text-sm">
@@ -121,8 +121,8 @@ export function NetworkPage() {
           </li>
         ))}
       </ul>
-      <h2 className="mt-14 font-serif text-3xl">{intro.compare}</h2>
-      <div tabIndex={0} aria-label={intro.compare} className="mt-4 overflow-x-auto rounded-[2rem] border border-line bg-white shadow-glass">
+      <h2 className="mt-14 font-serif text-2xl">{intro.compare}</h2>
+      <div tabIndex={0} aria-label={intro.compare} className="mt-4 overflow-x-auto rounded-2xl border border-line bg-white shadow-glass">
         <table className="w-full min-w-[44rem] text-left text-sm">
           <caption className="sr-only">{intro.compare}</caption>
           <thead className="border-b border-line">

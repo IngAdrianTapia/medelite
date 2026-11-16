@@ -18,7 +18,7 @@ export function HospitalPage() {
   if (!isHospital(hospitalId)) {
     return (
       <main id="contenido" className="page-shell">
-        <h1 className="font-serif text-4xl">—</h1>
+        <h1 className="font-serif text-2xl">—</h1>
         <Link to="/red">Red</Link>
       </main>
     );
@@ -67,19 +67,22 @@ export function HospitalPage() {
   return (
     <main id="contenido">
       <Seo title={`${hospital.name} — MedElite`} description={hospital.address} path={`/red/${hospital.id}`} />
-      <header className="relative flex min-h-[78vh] items-end bg-navy text-white">
-        <FacilityPhoto name={hospital.id} fill protect priority alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-navy/20" />
-        <div className="relative z-10 w-full px-6 pt-32 pb-12">
-          <Link className="text-sm text-gold-line underline" to="/red">{copy.back}</Link>
-          <h1 className="mt-4 max-w-4xl font-serif text-5xl leading-[0.92] md:text-7xl">{hospital.name}</h1>
-          <p className="mt-3 text-lg text-white/80">{hospital.city}</p>
+      <header className="border-b border-line bg-ivory">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-8 px-5 py-10 md:px-8 md:py-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <div>
+            <Link className="text-sm font-medium text-gold underline underline-offset-4" to="/red">{copy.back}</Link>
+            <h1 className="mt-4 font-serif text-3xl leading-tight text-navy md:text-5xl">{hospital.name}</h1>
+            <p className="mt-3 text-lg text-muted">{hospital.city}</p>
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-soft shadow-premium">
+            <FacilityPhoto name={hospital.id} fill priority alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="(min-width: 1024px) 640px, 100vw" />
+          </div>
         </div>
       </header>
       {(HOSPITAL_INTERIORS[hospital.id] ?? []).length > 0 ? (
-        <div className="mx-auto grid max-w-6xl gap-4 px-5 pt-8 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-[1200px] gap-4 px-5 pt-8 sm:grid-cols-2 md:px-8">
           {(HOSPITAL_INTERIORS[hospital.id] ?? []).map((name) => (
-            <figure key={name} className="relative h-72 overflow-hidden rounded-[2rem] bg-navy">
+            <figure key={name} className="relative h-72 overflow-hidden rounded-2xl bg-soft">
               <FacilityPhoto name={name} fill alt={PHOTO_OF[name]?.[lang] ?? hospital.name} sizes="(min-width: 640px) 36rem, 100vw" />
             </figure>
           ))}
@@ -87,14 +90,14 @@ export function HospitalPage() {
       ) : null}
       {hospital.id === "marina" ? (
         <figure className="mx-auto max-w-[520px] px-5 pt-8">
-          <img src="/assets/photos/marina-diagnostics-480.webp" width={480} height={320} loading="lazy" alt={copy.diagnostics} className="w-full rounded-3xl" />
+          <img src="/assets/photos/marina-diagnostics-480.webp" width={480} height={320} loading="lazy" alt={copy.diagnostics} className="w-full rounded-2xl" />
           <figcaption className="mt-2 text-xs text-muted">
             <a className="underline" href="https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/" rel="noopener noreferrer">{copy.diagnostics}</a>
           </figcaption>
         </figure>
       ) : null}
       <div className="mx-auto max-w-3xl px-5 py-12">
-      <div className="mb-8 rounded-[1.5rem] border border-line bg-ivory p-6 text-sm leading-relaxed">
+      <div className="mb-8 rounded-xl border border-line bg-ivory p-6 text-sm leading-relaxed">
         <p>{copy.partner}</p>
         <p className="mt-3 font-medium">{copy.verify}</p>
         <p className="mt-3"><a className="underline" href="https://www.medeliteofficial.com/destinations-partner-clinics" rel="noopener noreferrer">{copy.partnerSource}</a></p>
@@ -112,17 +115,17 @@ export function HospitalPage() {
       <p className="mt-4 text-sm text-muted">
         {HOSPITAL_AIRPORT[hospital.id]}. {copy.airport}
       </p>
-      <h2 className="mt-8 font-serif text-3xl">{copy.services}</h2>
+      <h2 className="mt-8 font-serif text-2xl">{copy.services}</h2>
       <ul className="mt-3 grid gap-2 text-sm">
         {facts.services.map((id) => (
           <li key={id}>{SERVICE_LABEL[id][lang]}</li>
         ))}
       </ul>
       <p className="mt-6 flex flex-wrap gap-3">
-        <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href={`tel:${facts.phones[0]?.tel ?? ""}`}>
+        <a className="inline-flex min-h-12 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href={`tel:${facts.phones[0]?.tel ?? ""}`}>
           {copy.call}
         </a>
-        <a className="inline-flex min-h-11 items-center rounded-full border border-line px-4 text-sm" href="tel:+16044428475">
+        <a className="inline-flex min-h-11 items-center rounded-lg border border-line px-4 text-sm" href="tel:+16044428475">
           {copy.office} · +1 (604) 442-8475
         </a>
       </p>

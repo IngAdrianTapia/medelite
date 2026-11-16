@@ -46,14 +46,14 @@ function SectionCard({ s, i }: { s: QualitySection; i: number }) {
       transition={{ duration: 0.5, delay: (i % 2) * 0.05 }}
       className={
         isNavy
-          ? "mt-6 rounded-[2rem] bg-navy p-7 text-white md:p-10 lg:col-span-2"
-          : "rounded-[2rem] border border-line bg-white p-7 md:p-10"
+          ? "mt-6 rounded-2xl border border-gold/30 bg-soft p-7 text-ink md:p-10 lg:col-span-2"
+          : "rounded-2xl border border-line bg-white p-7 md:p-10"
       }
     >
       <div
         className={
           isNavy
-            ? "font-mono text-[11px] font-semibold tracking-[0.22em] text-gold-line"
+            ? "font-mono text-[11px] font-semibold tracking-[0.22em] text-gold"
             : "font-mono text-[11px] font-semibold tracking-[0.22em] text-gold"
         }
       >
@@ -62,7 +62,7 @@ function SectionCard({ s, i }: { s: QualitySection; i: number }) {
       <h2 className={isNavy ? "mt-2 font-serif text-4xl leading-tight md:text-5xl" : "mt-2 font-serif text-3xl leading-tight text-ink"}>
         {s.title}
       </h2>
-      <p className={isNavy ? "mt-3 max-w-2xl text-sm leading-relaxed text-white/75" : "mt-3 max-w-2xl text-sm leading-relaxed text-muted"}>
+      <p className={isNavy ? "mt-3 max-w-2xl text-sm leading-relaxed text-muted" : "mt-3 max-w-2xl text-sm leading-relaxed text-muted"}>
         {s.deck}
       </p>
       <div className={(isNavy ? "mt-6" : "mt-5") + " grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
@@ -80,7 +80,7 @@ function SectionCard({ s, i }: { s: QualitySection; i: number }) {
             }
           >
             <div className={isNavy ? "text-sm font-semibold" : "text-sm font-semibold text-ink"}>{c.n}</div>
-            <div className={isNavy ? "mt-1 text-[11px] leading-snug text-white/65" : "mt-1 text-[11px] leading-snug text-muted"}>
+            <div className={isNavy ? "mt-1 text-[11px] leading-snug text-muted" : "mt-1 text-[11px] leading-snug text-muted"}>
               {c.d}
             </div>
           </motion.div>
@@ -108,7 +108,7 @@ export function CalidadPage() {
         transition={{ duration: 0.5 }}
       >
         <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{page.kicker}</p>
-        <h1 className="mt-3 font-serif text-5xl leading-[1.05] tracking-tight text-ink md:text-6xl">
+        <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-ink md:text-[2.75rem]">
           {page.title} <span className="text-gold">{page.titleAccent}</span>
         </h1>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">{page.lede}</p>
@@ -140,7 +140,7 @@ export function CalidadPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mt-10 rounded-[2rem] border border-line bg-white p-7 md:p-10"
+        className="mt-10 rounded-2xl border border-line bg-white p-7 md:p-10"
       >
         <p className="text-sm leading-relaxed text-muted">
           {page.closingBefore}

@@ -48,7 +48,7 @@ export function JoinPage() {
   return (
     <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/hospitales" />
-      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <form className="mt-6 grid gap-3" action="mailto:info@medeliteofficial.com" method="GET">
         <input type="hidden" name="subject" value={t.subject} />
@@ -58,7 +58,7 @@ export function JoinPage() {
         <label className="grid gap-1 text-sm">{t.hospital}<input required autoComplete="organization" className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={hospital} onChange={(event) => setHospital(event.target.value)} /></label>
         <label className="grid gap-1 text-sm">{t.city}<input required autoComplete="address-level2" className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={city} onChange={(event) => setCity(event.target.value)} /></label>
         <label className="grid gap-1 text-sm">{t.certs}<textarea required className="min-h-28 rounded-2xl border border-line bg-white px-4 py-3 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={certs} onChange={(event) => setCerts(event.target.value)} /></label>
-        <button className="inline-flex min-h-12 w-fit items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" type="submit">{t.send}</button>
+        <button className="inline-flex min-h-12 w-fit items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" type="submit">{t.send}</button>
       </form>
     </main>
   );

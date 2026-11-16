@@ -24,7 +24,7 @@ export function MapPage() {
   return (
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/mapa" />
-      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">{t.deck}</p>
       <div className="mt-8">
         <MapaSedes />

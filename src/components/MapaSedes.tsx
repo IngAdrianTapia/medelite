@@ -103,10 +103,10 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
   };
 
   return (
-    <div className="rounded-[2rem] border border-line bg-white p-4 shadow-premium sm:p-6 md:p-10">
-      <Heading className="font-serif text-3xl leading-tight text-ink md:text-4xl">{ui.title}</Heading>
+    <div className="rounded-2xl border border-line bg-white p-4 shadow-premium sm:p-6 md:p-10">
+      <Heading className="font-serif text-2xl leading-tight text-ink md:text-3xl">{ui.title}</Heading>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{ui.lede}</p>
-      <div className="mt-6 hidden overflow-hidden rounded-[1.5rem] border border-line bg-[#EEF3F8] lg:block">
+      <div className="mt-6 hidden overflow-hidden rounded-xl border border-line bg-[#EEF3F8] lg:block">
         <svg viewBox={`0 0 ${MAP_W} ${MAP_H}`} className="h-auto w-full" role="group" aria-label={ui.map}>
           <path d={USA_PATH} fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1" aria-hidden="true" />
           <path d={GUATEMALA_PATH + BELIZE_PATH} fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1" aria-hidden="true" />
@@ -142,7 +142,7 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
           })}
         </svg>
       </div>
-      <div className="-mx-1 mt-5 overflow-hidden rounded-[1.25rem] border border-line bg-[#EEF3F8] lg:hidden">
+      <div className="-mx-1 mt-5 overflow-hidden rounded-xl border border-line bg-[#EEF3F8] lg:hidden">
         <svg viewBox="290 236 690 330" className="h-auto w-full" role="group" aria-label={ui.map}>
           <path d={USA_PATH} fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1.5" aria-hidden="true" />
           <path d={GUATEMALA_PATH + BELIZE_PATH} fill="#E2E8F0" stroke="#CBD5E1" strokeWidth="1.5" aria-hidden="true" />
@@ -209,7 +209,7 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
                         key={id}
                         type="button"
                         aria-pressed={id === selected}
-                        className={`min-h-12 rounded-full px-5 text-base font-semibold ${id === selected ? "bg-gold text-white" : "border border-navy bg-white text-navy"}`}
+                        className={`min-h-12 rounded-lg px-5 text-base font-semibold ${id === selected ? "bg-gold text-white" : "border border-navy bg-white text-navy"}`}
                         onClick={() => setSelected(id)}
                       >
                         {hospital.name.replace("Hospital Joya ", "")}
@@ -228,7 +228,7 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
             key={hospital.id}
             type="button"
             aria-pressed={hospital.id === selected}
-            className={`min-h-11 rounded-full px-4 text-sm font-semibold ${
+            className={`min-h-11 rounded-lg px-4 text-sm font-semibold ${
               hospital.id === selected ? "bg-navy text-white" : "border border-line bg-paper text-ink"
             }`}
             onClick={() => setSelected(hospital.id)}
@@ -242,7 +242,7 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
           <p className="text-xs font-bold tracking-[0.14em] text-navy uppercase">
             {ui.airport}: {HOSPITAL_AIRPORT[sede.id]}
           </p>
-          <p className="mt-1 font-serif text-2xl text-ink">{sede.name}</p>
+          <p className="mt-1 font-serif text-xl text-ink">{sede.name}</p>
           <p className="text-sm text-muted">{sede.city}</p>
           <p className="mt-2 text-sm leading-relaxed text-ink">{sede.address}</p>
           <p className="mt-1 text-sm">
@@ -258,10 +258,10 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <a className="inline-flex min-h-11 items-center rounded-full border border-navy px-5 text-sm font-semibold text-navy" href={mapsUrl(sede.name, sede.address)} rel="noopener noreferrer" target="_blank">
+          <a className="inline-flex min-h-11 items-center rounded-lg border border-navy px-5 text-sm font-semibold text-navy" href={mapsUrl(sede.name, sede.address)} rel="noopener noreferrer" target="_blank">
             {ui.directions}
           </a>
-          <Link className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white" to={`/red/${sede.id}`}>
+          <Link className="inline-flex min-h-11 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white" to={`/red/${sede.id}`}>
             {ui.openPage}
           </Link>
         </div>

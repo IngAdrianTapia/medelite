@@ -145,28 +145,28 @@ export function QuoteWizard() {
       : null;
 
   return (
-    <div className="grid overflow-hidden rounded-[2rem] bg-white shadow-premium lg:grid-cols-[16rem_1fr]">
-      <aside className="bg-navy p-6 text-white">
-        <p className="text-xs tracking-[0.2em] text-gold-line uppercase">{m.wizard.kicker}</p>
+    <div className="grid overflow-hidden rounded-2xl border border-line bg-white shadow-premium lg:grid-cols-[16rem_1fr]">
+      <aside className="border-b border-line bg-ivory p-6 lg:border-r lg:border-b-0">
+        <p className="text-xs font-semibold tracking-wide text-gold uppercase">{m.wizard.kicker}</p>
         <ol className="mt-6 grid gap-3" aria-label={progress}>
           {STEP_IDS.map((id, index) => (
             <li key={id}>
               <span
-                className={`flex min-h-11 items-center gap-3 text-sm ${index === stepIndex ? "text-white" : "text-white/45"}`}
+                className={`flex min-h-11 items-center gap-3 text-sm ${index === stepIndex ? "font-semibold text-navy" : "text-muted"}`}
                 aria-current={index === stepIndex ? "step" : undefined}
               >
-                <span className={`grid h-8 w-8 place-items-center rounded-full text-xs ${index === stepIndex ? "bg-gold text-white" : "border border-white/20"}`}>{index + 1}</span>
+                <span className={`grid h-8 w-8 place-items-center rounded-full text-xs ${index === stepIndex ? "bg-gold text-white" : "border border-line bg-white"}`}>{index + 1}</span>
                 {m.wizard.steps[index]}
               </span>
             </li>
           ))}
         </ol>
-        <p className="mt-6 text-xs text-white/60">{progress}</p>
+        <p className="mt-6 text-xs text-muted">{progress}</p>
       </aside>
       <div className="p-5 md:p-10">
-      <h2 className="font-serif text-4xl tracking-tight md:text-5xl">{m.wizard.title}</h2>
+      <h2 className="font-serif text-2xl tracking-tight md:text-4xl">{m.wizard.title}</h2>
       <p className="mt-3 max-w-3xl text-muted">{m.wizard.deck}</p>
-      <p className="mt-4 rounded-2xl bg-soft px-4 py-3 text-sm leading-relaxed text-ink">{m.wizard.admin}</p>
+      <p className="mt-4 rounded-xl bg-soft px-4 py-3 text-sm leading-relaxed text-ink">{m.wizard.admin}</p>
       <p className="mt-3 text-sm leading-relaxed text-warn">{m.wizard.emergency}</p>
 
       <h3 ref={headingRef} tabIndex={-1} className="mt-6 text-xl font-semibold">
@@ -407,7 +407,7 @@ export function QuoteWizard() {
             <p className="text-sm text-muted">{m.wizard.resultTitle}</p>
             {estimate.kind === "range" && estimate.low !== null && estimate.high !== null ? (
               <>
-                <p className="mt-2 font-serif text-4xl tracking-tight">{formatRange(estimate.low, estimate.high)}</p>
+                <p className="mt-2 font-serif text-2xl tracking-tight">{formatRange(estimate.low, estimate.high)}</p>
                 <p className="mt-2 text-sm text-navy">
                   {m.wizard.fromLabel} {formatCad(estimate.low)}
                 </p>
@@ -426,7 +426,7 @@ export function QuoteWizard() {
               <form className="mt-6" action={mailto.action} method="GET">
                 <input type="hidden" name="subject" value={mailto.subject} />
                 <input type="hidden" name="body" value={mailto.body} />
-                <button type="submit" className="inline-flex min-h-12 items-center rounded-full bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2">
+                <button type="submit" className="inline-flex min-h-12 items-center rounded-lg bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2">
                   {m.wizard.send}
                 </button>
                 <p className="mt-3 text-sm text-muted">{m.wizard.sent}</p>
@@ -438,16 +438,16 @@ export function QuoteWizard() {
 
       <div className="mt-8 flex flex-wrap gap-3">
         {step !== "procedure" ? (
-          <button type="button" className="inline-flex min-h-11 items-center rounded-full border border-line px-5 text-sm" onClick={goBack}>
+          <button type="button" className="inline-flex min-h-11 items-center rounded-lg border border-line px-5 text-sm" onClick={goBack}>
             {m.wizard.back}
           </button>
         ) : null}
         {step !== "result" ? (
-          <button type="button" className="inline-flex min-h-12 items-center rounded-full bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={goNext}>
+          <button type="button" className="inline-flex min-h-12 items-center rounded-lg bg-navy px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={goNext}>
             {m.wizard.next}
           </button>
         ) : null}
-        <button type="button" className="inline-flex min-h-11 items-center rounded-full px-4 text-sm text-muted underline" onClick={clearAll}>
+        <button type="button" className="inline-flex min-h-11 items-center rounded-lg px-4 text-sm text-muted underline" onClick={clearAll}>
           {m.wizard.clear}
         </button>
       </div>

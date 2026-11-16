@@ -84,16 +84,16 @@ export function Testimonios() {
   const translated = lang === "es" ? item.es : lang === "fr" ? item.fr : null;
 
   return (
-    <section aria-labelledby="testimonios-title" aria-roledescription="carousel" className="bg-ivory px-5 py-20 md:py-24">
+    <section aria-labelledby="testimonios-title" aria-roledescription="carousel" className="bg-ivory px-5 md:px-8 py-20 md:py-24">
       <div className="mx-auto max-w-4xl">
         <p className="text-xs tracking-[0.22em] text-gold uppercase">{t.kicker}</p>
-        <h2 id="testimonios-title" className="mt-3 font-serif text-4xl leading-tight text-ink md:text-5xl">{t.title}</h2>
-        <figure aria-live="polite" className="mt-8 rounded-[2rem] border border-line bg-white p-6 shadow-premium md:p-10">
-          <blockquote lang="en" cite={SOURCE} className="font-serif text-2xl leading-snug text-navy md:text-3xl">
+        <h2 id="testimonios-title" className="mt-3 font-serif text-2xl leading-tight text-ink md:text-4xl">{t.title}</h2>
+        <figure aria-live="polite" className="mt-8 rounded-2xl border border-line bg-white p-6 shadow-premium md:p-10">
+          <blockquote lang="en" cite={SOURCE} className="font-serif text-xl leading-snug text-navy md:text-2xl">
             “{item.quote}…”
           </blockquote>
           {translated ? (
-            <p className="mt-4 border-l-2 border-gold-line pl-4 text-sm leading-relaxed text-muted">
+            <p className="mt-4 border-l-2 border-gold pl-4 text-sm leading-relaxed text-muted">
               <span className="font-semibold">{t.translation}:</span> {translated}
             </p>
           ) : null}

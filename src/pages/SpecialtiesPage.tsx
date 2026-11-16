@@ -55,13 +55,13 @@ export function SpecialtiesPage() {
   return (
     <main id="contenido">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
-      <header className="bg-navy px-5 pt-32 pb-16 text-white">
-        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <h1 className="font-serif text-5xl leading-[0.92] md:text-7xl">{t.title}</h1>
-          <p className="text-lg text-white/75">{t.deck}</p>
+      <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
+        <div className="mx-auto grid max-w-[1136px] gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+          <h1 className="font-serif text-3xl leading-tight md:text-5xl">{t.title}</h1>
+          <p className="text-lg text-muted">{t.deck}</p>
         </div>
       </header>
-      <div className="mx-auto max-w-6xl px-5 py-10">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 py-10">
       <p className="max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {LINE_IDS.map((id) => (
@@ -121,14 +121,14 @@ export function SpecialtiesPage() {
           const photo = PHOTO_FOR[id];
           const sites = SPECIALTY_SITES[id];
           return (
-            <article key={id} id={id} className={`grid overflow-hidden rounded-[2rem] bg-navy text-white ${photo ? "md:grid-cols-2" : ""} ${index % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+            <article key={id} id={id} className={`grid overflow-hidden rounded-2xl border border-line bg-white text-ink shadow-premium ${photo ? "md:grid-cols-2" : ""} ${index % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
               {photo ? (
                 <div className="relative min-h-72">
                   <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} sizes="(min-width: 768px) 46rem, 100vw" />
                 </div>
               ) : null}
               <div className="flex flex-col justify-end p-8">
-                <h2 className="font-serif text-3xl"><Link className="underline" to={`/especialidades/${id}`}>{SPECIALTY_LABEL[id][lang]}</Link></h2>
+                <h2 className="font-serif text-2xl"><Link className="underline" to={`/especialidades/${id}`}>{SPECIALTY_LABEL[id][lang]}</Link></h2>
                 {sites.length > 0 ? (
                   <ul className="mt-3 text-sm">
                     {sites.map((site) => {
@@ -147,7 +147,7 @@ export function SpecialtiesPage() {
                 )}
                 {id === "ophthalmology" ? <p className="mt-3 text-sm text-muted">{t.route} Cancún, Playa del Carmen.</p> : null}
                 <p className="mt-4">
-                  <Link className="inline-flex min-h-11 items-center rounded-full bg-gold px-4 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
+                  <Link className="inline-flex min-h-11 items-center rounded-lg bg-gold px-4 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
                     {t.cta}
                   </Link>
                 </p>
@@ -156,7 +156,7 @@ export function SpecialtiesPage() {
           );
         })}
       </div>
-      <h2 className="mt-14 font-serif text-3xl">{t.directory}</h2>
+      <h2 className="mt-14 font-serif text-2xl">{t.directory}</h2>
       <ul className="mt-4 columns-1 gap-x-8 text-sm sm:columns-2">
         {DIRECTORY_SPECIALTIES.map((id) => (
           <li key={id} className="mb-2">

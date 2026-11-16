@@ -7,7 +7,7 @@ export function NotFoundPage() {
   return (
     <main id="contenido" className="page-shell">
       <Seo title={m.notFound.title} description={m.notFound.body} path="/" />
-      <h1 className="font-serif text-5xl">{m.notFound.title}</h1>
+      <h1 className="font-serif text-3xl">{m.notFound.title}</h1>
       <p className="mt-4 text-muted">{m.notFound.body}</p>
       <Link className="mt-6 inline-flex min-h-11 items-center underline" to="/">
         {m.notFound.home}

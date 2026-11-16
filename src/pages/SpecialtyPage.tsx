@@ -71,7 +71,7 @@ export function SpecialtyPage() {
   if (!isSpecialty(specialtyId)) {
     return (
       <main id="contenido" className="page-shell">
-        <h1 className="font-serif text-4xl">{t.missing}</h1>
+        <h1 className="font-serif text-2xl">{t.missing}</h1>
         <Link className="mt-4 inline-flex min-h-11 items-center underline" to="/especialidades">{t.back}</Link>
       </main>
     );
@@ -86,9 +86,9 @@ export function SpecialtyPage() {
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${labelOf(specialtyId, lang)} — MedElite`} description={t.procedures} path={`/especialidades/${specialtyId}`} />
       <Link className="text-sm text-navy underline" to="/especialidades">{t.back}</Link>
-      <h1 className="mt-4 font-serif text-5xl leading-tight text-ink">{labelOf(specialtyId, lang)}</h1>
+      <h1 className="mt-4 font-serif text-3xl leading-tight text-ink">{labelOf(specialtyId, lang)}</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted">{t.procedures}</p>
-      <h2 className="mt-10 font-serif text-3xl">{t.sites}</h2>
+      <h2 className="mt-10 font-serif text-2xl">{t.sites}</h2>
       {sites.length > 0 ? (
         <ul className="mt-3 grid gap-2 text-sm">
           {sites.map((site) => (
@@ -100,7 +100,7 @@ export function SpecialtyPage() {
       ) : (
         <p className="mt-3 text-sm text-muted">{t.none}</p>
       )}
-      <h2 className="mt-10 font-serif text-3xl">{t.people}</h2>
+      <h2 className="mt-10 font-serif text-2xl">{t.people}</h2>
       {people.length > 0 ? (
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">
           {people.map((person) => (
@@ -108,7 +108,7 @@ export function SpecialtyPage() {
               {portraitOf(person.id) ? (
                 <img src={`/assets/photos/people/${person.id}-720.webp`} alt={person.name} width={720} height={900} loading="lazy" decoding="async" className="mb-3 h-24 w-20 rounded-xl object-cover object-top" />
               ) : null}
-              <Link className="font-serif text-2xl underline" to="/equipo">{person.name}</Link>
+              <Link className="font-serif text-xl underline" to="/equipo">{person.name}</Link>
             </li>
           ))}
         </ul>
@@ -116,15 +116,15 @@ export function SpecialtyPage() {
         <p className="mt-3 text-sm text-muted">{t.noPeople}</p>
       )}
       {photo ? (
-        <figure className="mt-10 overflow-hidden rounded-[2rem] border border-line bg-white">
-          <div className="relative h-72 bg-navy">
+        <figure className="mt-10 overflow-hidden rounded-2xl border border-line bg-white">
+          <div className="relative h-72 bg-soft">
             <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? ""} sizes="(min-width: 1024px) 46rem, 100vw" />
           </div>
           <figcaption className="px-4 py-3 text-sm">{t.photo}. {PHOTO_OF[photo]?.[lang]}</figcaption>
         </figure>
       ) : null}
       <p className="mt-8">
-        <Link className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white" to="/#cotizar">{t.cta}</Link>
+        <Link className="inline-flex min-h-11 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white" to="/#cotizar">{t.cta}</Link>
       </p>
     </main>
   );

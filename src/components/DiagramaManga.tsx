@@ -76,9 +76,9 @@ export function DiagramaManga() {
   const showRemoved = vista === "all" || vista === "removed";
 
   return (
-    <div className="rounded-[2rem] border border-line bg-white p-6 shadow-premium md:p-10">
+    <div className="rounded-2xl border border-line bg-white p-6 shadow-premium md:p-10">
       <IllustrationLabel note={copy.note} />
-      <h2 className="mt-4 font-serif text-3xl leading-tight text-ink md:text-4xl">{copy.title}</h2>
+      <h2 className="mt-4 font-serif text-2xl leading-tight text-ink md:text-3xl">{copy.title}</h2>
       <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">{copy.deck}</p>
       <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label={copy.title}>
         {copy.views.map(([id, label]) => (
@@ -86,14 +86,14 @@ export function DiagramaManga() {
             key={id}
             type="button"
             aria-pressed={vista === id}
-            className={`min-h-11 rounded-full px-4 text-sm font-semibold ${vista === id ? "bg-navy text-white" : "border border-line bg-paper text-ink"}`}
+            className={`min-h-11 rounded-lg px-4 text-sm font-semibold ${vista === id ? "bg-navy text-white" : "border border-line bg-paper text-ink"}`}
             onClick={() => setVista(id)}
           >
             {label}
           </button>
         ))}
       </div>
-      <div tabIndex={0} role="region" aria-label={copy.title} className="mt-6 overflow-x-auto rounded-[2rem] border border-line bg-paper p-4">
+      <div tabIndex={0} role="region" aria-label={copy.title} className="mt-6 overflow-x-auto rounded-2xl border border-line bg-paper p-4">
         <svg viewBox="0 0 860 440" role="img" aria-label={copy.title} className="h-auto min-w-[40rem] w-full">
           <rect x="16" y="16" width="396" height="408" rx="24" fill="#FFFFFF" stroke="#E2E8F0" />
           <text x="40" y="52" fill="#0A2540" fontSize="12" fontWeight="700">

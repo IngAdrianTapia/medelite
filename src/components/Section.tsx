@@ -21,7 +21,7 @@ export function Section({
       viewport={{ once: true, margin: "0px 0px -8% 0px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="mx-auto w-full max-w-6xl px-5">{children}</div>
+      <div className="mx-auto w-full max-w-[1200px] px-5 md:px-8">{children}</div>
     </motion.section>
   );
 }
@@ -36,7 +36,7 @@ export function Kicker({ children }: { children: ReactNode }) {
 }
 
 export function Title({ children }: { children: ReactNode }) {
-  return <h2 className="mt-4 max-w-3xl font-serif text-4xl leading-[1.05] tracking-tight md:text-6xl">{children}</h2>;
+  return <h2 className="mt-4 max-w-3xl font-serif text-2xl leading-tight tracking-tight md:text-[2.75rem]">{children}</h2>;
 }
 
 export function Deck({ children }: { children: ReactNode }) {
