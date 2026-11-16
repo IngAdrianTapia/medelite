@@ -245,7 +245,16 @@ export function HomePage() {
             <p className="mt-6 text-[17px] leading-relaxed text-muted">{home.videoDeck}</p>
           </div>
           <div className="reveal lg:col-span-8">
-            <VideoEmbed src="/assets/video/joya-institucional" title="Hospital Joya. Video institucional" poster="/assets/video/joya-institucional" />
+            <VideoEmbed
+              src="/assets/video/joya-institucional"
+              title="Hospital Joya. Video institucional"
+              poster="/assets/video/joya-institucional"
+              caption={{
+                es: "Video institucional de Hospital Joya Marina Vallarta.",
+                en: "Institutional video from Hospital Joya Marina Vallarta. The video is in Spanish.",
+                fr: "Vidéo institutionnelle de l’Hospital Joya Marina Vallarta. La vidéo est en espagnol.",
+              }}
+            />
           </div>
         </div>
       </section>
