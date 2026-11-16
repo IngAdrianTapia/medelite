@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useI18n } from "../i18n";
 
+type Caption = { es: string; en: string; fr: string };
+
 const UI = {
   es: {
     play: "Reproducir el video",
@@ -10,7 +12,6 @@ const UI = {
     unmute: "Activar el sonido",
     fullscreen: "Pantalla completa",
     exitFullscreen: "Salir de pantalla completa",
-    source: "Video institucional de Hospital Joya Marina Vallarta.",
   },
   en: {
     play: "Play the video",
@@ -20,7 +21,6 @@ const UI = {
     unmute: "Unmute",
     fullscreen: "Full screen",
     exitFullscreen: "Exit full screen",
-    source: "Institutional video from Hospital Joya Marina Vallarta. The video is in Spanish.",
   },
   fr: {
     play: "Lire la vidéo",
@@ -30,7 +30,6 @@ const UI = {
     unmute: "Remettre le son",
     fullscreen: "Plein écran",
     exitFullscreen: "Quitter le plein écran",
-    source: "Vidéo institutionnelle de l’Hospital Joya Marina Vallarta. La vidéo est en espagnol.",
   },
 } as const;
 
@@ -44,7 +43,7 @@ function formatTime(seconds: number) {
 }
 
 /** Official Hospital Joya video, played from this site with a first-party HTML5 player. */
-export function VideoEmbed({ src, title, poster }: { src: string; title: string; poster: string }) {
+export function VideoEmbed({ src, title, poster, caption }: { src: string; title: string; poster: string; caption: Caption }) {
   const { lang } = useI18n();
   const t = UI[lang];
   const box = useRef<HTMLDivElement>(null);
@@ -280,7 +279,7 @@ export function VideoEmbed({ src, title, poster }: { src: string; title: string;
         ) : null}
       </div>
       <figcaption className="mt-3 text-xs leading-relaxed text-muted">
-        {t.source}{" "}
+        {caption[lang]}{" "}
         <a className="underline" href="https://hospitaljoya.com/hospitales/hospital-joya-marina-vallarta/" rel="noopener noreferrer">hospitaljoya.com</a>
       </figcaption>
     </figure>
