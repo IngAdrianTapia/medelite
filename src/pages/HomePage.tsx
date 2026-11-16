@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Link, useLocation } from "react-router";
+import { AsistenciaIA } from "../components/AsistenciaIA";
 import { MapaSedes } from "../components/MapaSedes";
 import { MexicoMap } from "../components/MexicoMap";
 import { QuoteWizard } from "../components/QuoteWizard";
@@ -304,6 +305,9 @@ export function HomePage() {
         {m.about.story.map((paragraph) => (
           <p key={paragraph} className="mx-auto mt-3 max-w-3xl">{paragraph}</p>
         ))}
+        <div className="mx-auto mt-8 max-w-3xl">
+          <AsistenciaIA />
+        </div>
       </div>
 
       <section id="faq" className="bg-navy px-5 py-24 text-white">
