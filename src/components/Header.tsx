@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
+import { parseLocalePath, prefixPath } from "../i18n/locale";
 import { useI18n } from "../i18n";
 import type { Lang } from "../i18n/types";
+import { AiBadge } from "./AiBadge";
 import { BrandMark } from "./BrandMark";
 
 const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
@@ -10,9 +12,55 @@ const LANGS: { id: Lang; label: string; name: string; html: string }[] = [
   { id: "fr", label: "FR", name: "Français", html: "fr-CA" },
 ];
 
+
+/** Inline flags (emoji flags do not render on Windows): ES Mexico, EN United States, FR Canada. */
+function Flag({ id }: { id: Lang }) {
+  const common = { viewBox: "0 0 30 20", className: "h-3 w-[18px] shrink-0 rounded-[2px] ring-1 ring-black/10", "aria-hidden": true } as const;
+  if (id === "es") {
+    return (
+      <svg {...common}>
+        <rect width="10" height="20" fill="#006847" />
+        <rect x="10" width="10" height="20" fill="#FFFFFF" />
+        <rect x="20" width="10" height="20" fill="#CE1126" />
+        <circle cx="15" cy="10" r="2.6" fill="#8C5A2B" />
+      </svg>
+    );
+  }
+  if (id === "en") {
+    return (
+      <svg {...common}>
+        <rect width="30" height="20" fill="#FFFFFF" />
+        {[0, 2, 4, 6, 8, 10, 12].map((i) => (
+          <rect key={i} y={(i * 20) / 13} width="30" height={20 / 13} fill="#B22234" />
+        ))}
+        <rect width="13" height={(7 * 20) / 13} fill="#3C3B6E" />
+      </svg>
+    );
+  }
+  // FR is Canadian French (fr-CA): flag of Canada.
+  return (
+    <svg {...common}>
+      <rect width="30" height="20" fill="#FFFFFF" />
+      <rect width="7.5" height="20" fill="#D52B1E" />
+      <rect x="22.5" width="7.5" height="20" fill="#D52B1E" />
+      <path
+        fill="#D52B1E"
+        d="M15 3.2l1.1 2.1 1.3-.6-.4 3 1.8-1.9.4 1 1.9-.4-.7 2.1.9.4-2.9 2.4.3 1-2.9-.4.1 3h-.8l.1-3-2.9.4.3-1-2.9-2.4.9-.4-.7-2.1 1.9.4.4-1 1.8 1.9-.4-3 1.3.6z"
+      />
+    </svg>
+  );
+}
+
 export function Header() {
-  const { m, lang, setLang } = useI18n();
-  const { pathname } = useLocation();
+  const { m, lang } = useI18n();
+  const { pathname, search, hash } = useLocation();
+  const switchLang = (next: Lang) => {
+    setOpen(false);
+    // Full load of the prerendered page in the other language: always lands on the equivalent page.
+    const path = parseLocalePath(pathname).path;
+    const target = prefixPath(next, path) + (path !== "/" && !path.endsWith("/") ? "/" : path === "/" ? "/" : "");
+    window.location.assign(`${target}${search}${hash}`);
+  };
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -68,7 +116,7 @@ export function Header() {
             <Link
               key={href}
               to={href}
-              aria-current={pathname === href ? "page" : undefined}
+              aria-current={parseLocalePath(pathname).path === href ? "page" : undefined}
               className="text-sm text-white/80 hover:text-white aria-[current=page]:text-gold-line"
             >
               {label}
@@ -76,6 +124,7 @@ export function Header() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2 lg:ml-3">
+          <AiBadge compact />
           <div className="flex rounded-full bg-white/10 p-1" role="group" aria-label={m.langAria}>
             {LANGS.map((item) => (
               <button
@@ -84,9 +133,10 @@ export function Header() {
                 lang={item.html}
                 aria-pressed={lang === item.id}
                 aria-label={`${item.label}, ${item.name}`}
-                className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-bold ${lang === item.id ? "bg-white text-navy" : "text-white/75"}`}
-                onClick={() => setLang(item.id)}
+                className={`inline-flex min-h-11 min-w-11 items-center justify-center gap-1 rounded-full px-1.5 text-xs font-bold sm:px-2 ${lang === item.id ? "bg-white text-navy" : "text-white/75"}`}
+                onClick={() => switchLang(item.id)}
               >
+                <Flag id={item.id} />
                 {item.label}
               </button>
             ))}
@@ -119,7 +169,7 @@ export function Header() {
           </li>
           {links.map(([href, label]) => (
             <li key={href}>
-              <Link to={href} className="block py-2 font-serif text-4xl text-white" aria-current={pathname === href ? "page" : undefined} onClick={() => setOpen(false)}>
+              <Link to={href} className="block py-2 font-serif text-4xl text-white" aria-current={parseLocalePath(pathname).path === href ? "page" : undefined} onClick={() => setOpen(false)}>
                 {label}
               </Link>
             </li>

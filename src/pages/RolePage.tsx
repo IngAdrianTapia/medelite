@@ -1,9 +1,15 @@
-import { Link } from "react-router";
+import { AsistenciaIA } from "../components/AsistenciaIA";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router";
 import { Seo } from "../components/Seo";
 import { useI18n } from "../i18n";
 
 export function RolePage() {
   const { lang } = useI18n();
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (hash === "#ia") document.getElementById("ia")?.scrollIntoView();
+  }, [hash]);
   const t = {
     es: {
       title: "Qué es MedElite y qué no es",
@@ -57,6 +63,11 @@ export function RolePage() {
             </li>
           ))}
         </ol>
+      </div>
+      <div className="px-6 pb-16 lg:px-14">
+        <div className="mx-auto max-w-4xl">
+          <AsistenciaIA tone="dark" />
+        </div>
       </div>
     </main>
   );
