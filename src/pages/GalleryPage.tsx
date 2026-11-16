@@ -25,7 +25,7 @@ export function GalleryPage() {
   return (
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/galeria" />
-      <p className="text-xs font-semibold tracking-[0.18em] text-gold uppercase">{t.kicker}</p>
+      <p className="eyebrow">{t.kicker}</p>
       <h1 className="mt-3 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted">{t.deck}</p>
       <div className="mt-8">

@@ -268,7 +268,7 @@ export function HomePage() {
             <Link to="/galeria" className="btn btn-ghost ml-2 hidden sm:inline-flex">{home.galleryAll}</Link>
           </div>
         </div>
-        <ul ref={galleryRef} onScroll={onGalleryScroll} data-gallery="inicio" className="no-scrollbar mt-12 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-6" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }} aria-label={home.galleryTitle}>
+        <ul ref={galleryRef} onScroll={onGalleryScroll} data-gallery="inicio" className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-6" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))", scrollPaddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }} aria-label={home.galleryTitle}>
           {GALLERY_STRIP.map((id, index) => (
             <li key={id} className={`zoom-img relative shrink-0 snap-start overflow-hidden rounded-3xl bg-soft ${index % 3 === 0 ? "aspect-[4/5] w-[78vw] sm:w-[22rem]" : "aspect-[4/5] w-[70vw] sm:w-[19rem]"}`}>
               <FacilityPhoto name={id} fill alt={PHOTO_OF[id]?.[lang] ?? ""} sizes="(min-width: 640px) 22rem, 78vw" />

@@ -24,55 +24,57 @@ export function PeoplePage() {
       according: "Selon",
     },
   }[lang];
+  const initials = (name: string) =>
+    name
+      .replace(/^(Dr|Dra|Lic|Ing)\.?\s+/i, "")
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((w) => w[0])
+      .join("");
+  const eyebrow = { es: "Equipo y directorio", en: "Team and directory", fr: "Équipe et répertoire" }[lang];
   return (
-    <main id="contenido" className="page-shell">
+    <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/equipo" />
-      <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-      <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
-      <ul className="mt-8 grid gap-4">
-        {PEOPLE.map((person) => (
-          <li key={person.id} className="rounded-2xl border border-line bg-white shadow-glass p-5">
-            {person.photo ? (
-              <img
-                src={person.photo}
-                alt={person.name}
-                width={640}
-                height={800}
-                loading="lazy"
-                decoding="async"
-                className="mb-4 h-40 w-32 rounded-2xl object-cover object-top"
-              />
-            ) : portraitOf(person.id) ? (
-              <picture>
-                <source type="image/avif" srcSet={`/assets/photos/people/${person.id}-720.avif`} />
-                <img
-                  src={`/assets/photos/people/${person.id}-720.webp`}
-                  alt={person.name}
-                  width={720}
-                  height={900}
-                  loading="lazy"
-                  decoding="async"
-                  className="mb-4 h-40 w-32 rounded-2xl object-cover object-top"
-                />
-              </picture>
-            ) : null}
-            <h2 className="font-serif text-xl">{person.name}</h2>
-            <p className="mt-2 text-sm leading-relaxed">{personRole(lang, person)}</p>
-            {person.credentials.length > 0 ? (
-              <ul className="mt-2 text-sm">
-                {person.credentials.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            ) : null}
-            <p className="mt-2 text-sm">
-              {t.according}{" "}
-              <a className="underline" href={person.sourceUrl} rel="noopener noreferrer">
-                {person.source}
-              </a>
-            </p>
-          </li>
-        ))}
+      <p className="eyebrow">{eyebrow}</p>
+      <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+      <p className="mt-6 max-w-[46rem] text-[17px] leading-relaxed text-muted">{t.deck}</p>
+      <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-gallery="equipo">
+        {PEOPLE.map((person) => {
+          const portrait = person.photo ?? (portraitOf(person.id) ? `/assets/photos/people/${person.id}-720.webp` : null);
+          return (
+            <li key={person.id} className="reveal lift flex flex-col overflow-hidden rounded-3xl border border-line bg-white">
+              <div className="relative aspect-[4/5] overflow-hidden bg-soft">
+                {portrait ? (
+                  <picture>
+                    {!person.photo ? <source type="image/avif" srcSet={`/assets/photos/people/${person.id}-720.avif`} /> : null}
+                    <img src={portrait} alt={person.name} width={720} height={900} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover object-top" />
+                  </picture>
+                ) : (
+                  <div aria-hidden="true" className="absolute inset-0 grid place-items-center" style={{ background: "radial-gradient(120% 90% at 30% 20%, #1d4f73 0%, #0b2545 70%)" }}>
+                    <span className="font-serif text-7xl text-white/90">{initials(person.name)}</span>
+                  </div>
+                )}
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <h2 className="font-serif text-2xl leading-tight text-navy">{person.name}</h2>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{personRole(lang, person)}</p>
+                {person.credentials.length > 0 ? (
+                  <ul className="mt-3 space-y-1 text-sm text-ink">
+                    {person.credentials.map((line) => (
+                      <li key={line}>{line}</li>
+                    ))}
+                  </ul>
+                ) : null}
+                <p className="mt-auto pt-5 text-xs text-muted">
+                  {t.according}{" "}
+                  <a className="link-line text-navy" href={person.sourceUrl} rel="noopener noreferrer">
+                    {person.source}
+                  </a>
+                </p>
+              </div>
+            </li>
+          );
+        })}
       </ul>
       <PageCta />
     </main>

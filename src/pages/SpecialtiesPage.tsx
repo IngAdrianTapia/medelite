@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { FacilityPhoto } from "../components/FacilityPhoto";
 import { FiltroSedeEspecialidad } from "../components/FiltroSedeEspecialidad";
+import { PageCta } from "../components/PageCta";
 import { Seo } from "../components/Seo";
 import { HOSPITALS } from "../data/hospitals";
 import { DIRECTORY_SPECIALTIES, PUBLIC_SPECIALTIES, SPECIALTY_SITES } from "../data/joya";
@@ -27,7 +28,7 @@ export function SpecialtiesPage() {
       none: "La página de especialidades no dice en qué hospital se ofrece.",
       more: "Varias fichas dicen «más de 30 especialidades» sin enumerarlas: Guadalajara, Cancún, Playa del Carmen, Chapala y La Peñita.",
       directory: "Categorías del directorio (sin médicos publicados)",
-      cta: "Solicitar cotización",
+      open: "Ver la especialidad",
       route: "Ruta de coordinación de MedElite, no una asignación publicada por Joya:",
     },
     en: {
@@ -37,7 +38,7 @@ export function SpecialtiesPage() {
       none: "The specialties page does not say which hospital offers this.",
       more: "Several pages say “more than 30 specialties” without listing them: Guadalajara, Cancún, Playa del Carmen, Chapala and La Peñita.",
       directory: "Directory categories (no physicians published)",
-      cta: "Request a quote",
+      open: "View specialty",
       route: "MedElite coordination route, not an assignment published by Joya:",
     },
     fr: {
@@ -47,25 +48,45 @@ export function SpecialtiesPage() {
       none: "La page des spécialités ne dit pas dans quel hôpital c’est offert.",
       more: "Plusieurs fiches disent « plus de 30 spécialités » sans les énumérer : Guadalajara, Cancún, Playa del Carmen, Chapala et La Peñita.",
       directory: "Catégories du répertoire (aucun médecin publié)",
-      cta: "Demander une soumission",
+      open: "Voir la spécialité",
       route: "Itinéraire de coordination MedElite, pas une attribution publiée par Joya :",
     },
   }[lang];
+  const featured = PUBLIC_SPECIALTIES.filter((id) => PHOTO_FOR[id]);
+  const others = PUBLIC_SPECIALTIES.filter((id) => !PHOTO_FOR[id]);
+  const sitesOf = (id: (typeof PUBLIC_SPECIALTIES)[number]) => {
+    const sites = SPECIALTY_SITES[id];
+    if (sites.length === 0) return <p className="mt-3 text-sm leading-relaxed text-muted">{t.none}</p>;
+    return (
+      <ul className="mt-3 space-y-1 text-sm">
+        {sites.map((site) => (
+          <li key={site}>
+            <Link className="link-line text-navy" to={`/red/${site}`}>
+              {HOSPITALS.find((item) => item.id === site)?.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   return (
     <main id="contenido">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/especialidades" />
-      <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
+      <header className="border-b border-line bg-white px-5 pt-14 pb-14 md:px-8 md:pt-20">
         <div className="mx-auto grid max-w-[1136px] gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-          <p className="text-lg text-muted">{t.deck}</p>
+          <div>
+            <p className="eyebrow">{t.kicker}</p>
+            <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+          </div>
+          <p className="text-[17px] leading-relaxed text-muted">{t.deck}</p>
         </div>
       </header>
       <div className="mx-auto max-w-[1200px] px-5 md:px-8 py-10">
       <p className="max-w-3xl text-sm text-muted">{t.more}</p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {LINE_IDS.map((id) => (
-          <li key={id} className="rounded-full border border-line bg-white px-3 py-2 text-sm">
+          <li key={id} className="rounded-full border border-line bg-white px-4 py-2 text-[13px] text-navy">
             {{
               es: {
                 knee: "Ortopedia · rodilla",
@@ -116,39 +137,20 @@ export function SpecialtiesPage() {
         ))}
       </ul>
       <FiltroSedeEspecialidad />
-      <div className="mt-10 grid gap-6">
-        {PUBLIC_SPECIALTIES.map((id, index) => {
-          const photo = PHOTO_FOR[id];
-          const sites = SPECIALTY_SITES[id];
+      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((id) => {
+          const photo = PHOTO_FOR[id] as string;
           return (
-            <article key={id} id={id} className={`grid overflow-hidden rounded-2xl border border-line bg-white text-ink shadow-premium ${photo ? "md:grid-cols-2" : ""} ${index % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-              {photo ? (
-                <div className="relative min-h-72">
-                  <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} sizes="(min-width: 768px) 46rem, 100vw" />
-                </div>
-              ) : null}
-              <div className="flex flex-col justify-end p-8">
-                <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy"><Link className="underline" to={`/especialidades/${id}`}>{SPECIALTY_LABEL[id][lang]}</Link></h2>
-                {sites.length > 0 ? (
-                  <ul className="mt-3 text-sm">
-                    {sites.map((site) => {
-                      const hospital = HOSPITALS.find((item) => item.id === site);
-                      return (
-                        <li key={site}>
-                          <Link className="underline" to={`/red/${site}`}>
-                            {hospital?.name}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ) : (
-                  <p className="mt-3 text-sm text-muted">{t.none}</p>
-                )}
-                {id === "ophthalmology" ? <p className="mt-3 text-sm text-muted">{t.route} Cancún, Playa del Carmen.</p> : null}
-                <p className="mt-4">
-                  <Link className="inline-flex min-h-11 items-center rounded-lg bg-gold px-4 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
-                    {t.cta}
+            <article key={id} id={id} className="reveal lift flex flex-col overflow-hidden rounded-3xl border border-line bg-white text-ink">
+              <div className="relative aspect-[16/10] overflow-hidden bg-soft">
+                <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? SPECIALTY_LABEL[id][lang]} sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw" />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <h2 className="font-serif text-[1.7rem] leading-tight text-navy">{SPECIALTY_LABEL[id][lang]}</h2>
+                {sitesOf(id)}
+                <p className="mt-auto pt-6">
+                  <Link className="link-line text-[15px] font-medium text-teal" to={`/especialidades/${id}`}>
+                    {t.open} <span aria-hidden="true">→</span>
                   </Link>
                 </p>
               </div>
@@ -156,14 +158,29 @@ export function SpecialtiesPage() {
           );
         })}
       </div>
-      <h2 className="mt-14 font-serif text-3xl leading-tight md:text-4xl text-navy">{t.directory}</h2>
-      <ul className="mt-4 columns-1 gap-x-8 text-sm sm:columns-2">
-        {DIRECTORY_SPECIALTIES.map((id) => (
-          <li key={id} className="mb-2">
-            <Link className="inline-flex min-h-11 items-center underline" to={`/especialidades/${id}`}>{DIRECTORY_LABEL[id][lang]}</Link>
+      <ul className="mt-14 divide-y divide-line border-y border-line">
+        {others.map((id) => (
+          <li key={id} id={id} className="reveal grid gap-3 py-6 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)_auto] md:items-baseline md:gap-10">
+            <h2 className="font-serif text-[1.7rem] leading-tight text-navy">{SPECIALTY_LABEL[id][lang]}</h2>
+            <div className="-mt-3 md:mt-0 [&>*:first-child]:mt-0">
+              {sitesOf(id)}
+              {id === "ophthalmology" ? <p className="mt-2 text-sm text-muted">{t.route} Cancún, Playa del Carmen.</p> : null}
+            </div>
+            <Link className="link-line w-fit whitespace-nowrap text-[15px] font-medium text-teal" to={`/especialidades/${id}`}>
+              {t.open} <span aria-hidden="true">→</span>
+            </Link>
           </li>
         ))}
       </ul>
+      <h2 className="mt-24 font-serif text-3xl leading-tight md:text-4xl text-navy">{t.directory}</h2>
+      <ul className="mt-6 columns-1 gap-x-10 border-t border-line pt-4 text-[15px] sm:columns-2 lg:columns-3">
+        {DIRECTORY_SPECIALTIES.map((id) => (
+          <li key={id} className="mb-2">
+            <Link className="inline-flex min-h-11 items-center text-navy hover:text-teal" to={`/especialidades/${id}`}>{DIRECTORY_LABEL[id][lang]}</Link>
+          </li>
+        ))}
+      </ul>
+      <PageCta />
       </div>
     </main>
   );
