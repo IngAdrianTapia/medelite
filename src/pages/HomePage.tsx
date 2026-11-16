@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { MapaRed } from "../components/MapaRed";
 import { Testimonios } from "../components/Testimonios";
@@ -24,6 +24,14 @@ export function HomePage() {
   const copy = POSITIONING[lang];
   const home = HOME_COPY[lang];
   const galleryRef = useRef<HTMLUListElement>(null);
+  const [edge, setEdge] = useState({ start: true, end: false });
+  const onGalleryScroll = () => {
+    const el = galleryRef.current;
+    if (!el) return;
+    const start = el.scrollLeft < 8;
+    const end = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
+    if (start !== edge.start || end !== edge.end) setEdge({ start, end });
+  };
   const scrollGallery = (dir: number) => {
     const el = galleryRef.current;
     if (el) el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.8, 720), behavior: "smooth" });
@@ -251,16 +259,16 @@ export function HomePage() {
             <h2 id="galeria-title" className="mt-4 font-serif text-4xl leading-[1.08] text-navy md:text-[3.25rem]">{home.galleryTitle}</h2>
           </div>
           <div className="flex items-center gap-3">
-            <button type="button" aria-label={home.galleryPrev} className="grid h-12 w-12 place-items-center rounded-full border border-line text-navy transition-colors hover:border-navy" onClick={() => scrollGallery(-1)}>
+            <button type="button" aria-label={home.galleryPrev} className="grid h-12 w-12 place-items-center rounded-full border border-line text-navy transition-[border-color,opacity] hover:border-navy disabled:cursor-default disabled:opacity-35 disabled:hover:border-line" disabled={edge.start} onClick={() => scrollGallery(-1)}>
               <span aria-hidden="true">←</span>
             </button>
-            <button type="button" aria-label={home.galleryNext} className="grid h-12 w-12 place-items-center rounded-full border border-line text-navy transition-colors hover:border-navy" onClick={() => scrollGallery(1)}>
+            <button type="button" aria-label={home.galleryNext} className="grid h-12 w-12 place-items-center rounded-full border border-line text-navy transition-[border-color,opacity] hover:border-navy disabled:cursor-default disabled:opacity-35 disabled:hover:border-line" disabled={edge.end} onClick={() => scrollGallery(1)}>
               <span aria-hidden="true">→</span>
             </button>
             <Link to="/galeria" className="btn btn-ghost ml-2 hidden sm:inline-flex">{home.galleryAll}</Link>
           </div>
         </div>
-        <ul ref={galleryRef} data-gallery="inicio" className="no-scrollbar mt-12 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-6" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }} aria-label={home.galleryTitle}>
+        <ul ref={galleryRef} onScroll={onGalleryScroll} data-gallery="inicio" className="no-scrollbar mt-12 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-6" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }} aria-label={home.galleryTitle}>
           {GALLERY_STRIP.map((id, index) => (
             <li key={id} className={`zoom-img relative shrink-0 snap-start overflow-hidden rounded-3xl bg-soft ${index % 3 === 0 ? "aspect-[4/5] w-[78vw] sm:w-[22rem]" : "aspect-[4/5] w-[70vw] sm:w-[19rem]"}`}>
               <FacilityPhoto name={id} fill alt={PHOTO_OF[id]?.[lang] ?? ""} sizes="(min-width: 640px) 22rem, 78vw" />

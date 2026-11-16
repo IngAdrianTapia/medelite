@@ -51,12 +51,12 @@ export const fr: Messages = {
   sales: {
     kicker: "Première étape",
     title: "Parlons avant de remplir un questionnaire médical",
-    body: "Dites-nous quel service vous recherchez et comment vous joindre. MedElite coordonne le parcours; l’évaluation et les décisions médicales reviennent à l’équipe soignante au Mexique.",
+    body: "Dites-nous quel service vous recherchez et comment vous joindre. MedElite coordonne le parcours ; l’évaluation et les décisions médicales reviennent à l’équipe soignante au Mexique.",
     cta: "Parler à la coordination",
     call: "Appeler le bureau de Vancouver",
     email: "Écrire à la coordination",
     subject: "Première demande de renseignements sur les soins au Mexique",
-    note: "Votre logiciel de courriel s’ouvre; rien n’est envoyé automatiquement. N’incluez pas de dossier médical ni de données sensibles dans ce premier message.",
+    note: "Votre logiciel de courriel s’ouvre ; rien n’est envoyé automatiquement. N’incluez pas de dossier médical ni de données sensibles dans ce premier message.",
   },
   role: {
     kicker: "Ce que nous faisons",
@@ -71,14 +71,14 @@ export const fr: Messages = {
   verticals: {
     kicker: "Spécialités",
     title: "Des domaines de soins, sous réserve de confirmer l’établissement",
-    deck: "Joya présente les services de chaque établissement, sans garantir qu’une intervention précise est offerte à chaque patient. MedElite vérifie quel établissement et quelle équipe médicale pourraient convenir; l’évaluation et les décisions médicales ont lieu au Mexique.",
+    deck: "Joya présente les services de chaque établissement, sans garantir qu’une intervention précise est offerte à chaque patient. MedElite vérifie quel établissement et quelle équipe médicale pourraient convenir ; l’évaluation et les décisions médicales ont lieu au Mexique.",
     focus: "Itinéraire de coordination",
     request: "Sur demande",
     items: [
       {
         title: "Orthopédie : hanche et genou",
         body: "Remplacement articulaire pour une personne déjà en liste d’attente. Le séjour prévu après la chirurgie est de 7 à 10 jours, avec une évaluation d’aptitude au vol avant le retour.",
-        sites: "Joya Marina Vallarta mentionne la traumatologie et l’orthopédie; les autres établissements sont confirmés au cas par cas.",
+        sites: "Joya Marina Vallarta mentionne la traumatologie et l’orthopédie ; les autres établissements sont confirmés au cas par cas.",
         request: false,
       },
       {
@@ -160,7 +160,7 @@ export const fr: Messages = {
     back: "Retour",
     next: "Continuer",
     clear: "Effacer les réponses de cette session",
-    procedureLegend: "Quelle intervention vous intéresse?",
+    procedureLegend: "Quelle intervention vous intéresse ?",
     procedures: {
       knee: { label: "Remplacement du genou", hint: "Itinéraire d’orthopédie dans le réseau Joya." },
       hip: { label: "Remplacement de la hanche", hint: "Même itinéraire. La fourchette publiée est celle du genou." },
@@ -169,7 +169,7 @@ export const fr: Messages = {
       ophthalmology: { label: "Ophtalmologie", hint: "Cancún ou Playa del Carmen. Aucune fourchette publiée sur cette page." },
       other: { label: "Autre spécialité", hint: "Sur demande. Aucune fourchette sur cette page." },
     },
-    packageLegend: "Quel niveau voulez-vous comparer?",
+    packageLegend: "Quel niveau voulez-vous comparer ?",
     healthLegend: "Renseignements de base pour le chirurgien",
     age: "Tranche d’âge",
     ages: ["18–39", "40–54", "55–69", "70 ou plus"],
@@ -177,14 +177,14 @@ export const fr: Messages = {
     bmis: ["Moins de 30", "30–34", "35–39", "40 ou plus"],
     conditions: "Cochez ce qui s’applique. N’écrivez pas de diagnostic ni de résultat d’examen.",
     conditionOpts: ["Diabète", "Maladie cardiaque", "Anticoagulants", "Aucune de ces situations"],
-    inMexico: "Êtes-vous déjà au Mexique?",
+    inMexico: "Êtes-vous déjà au Mexique ?",
     yes: "Oui",
     no: "Non",
     datesLegend: "Dates",
     month: "Mois souhaité",
     monthHint: "Au cours des 24 prochains mois.",
     flexible: "Mes dates sont souples",
-    companion: "Voyagez-vous avec un accompagnateur?",
+    companion: "Voyagez-vous avec un accompagnateur ?",
     contactLegend: "Comment vous joindre",
     first: "Prénom",
     last: "Nom",
@@ -252,7 +252,7 @@ export const fr: Messages = {
       "Le forfait Snowbird est sur place : sans hôtel et sans vols. Il s’adresse à une personne déjà là qui veut coordonner une chirurgie élective, un bilan ou l’accès à l’hôpital Joya de la zone. Ce n’est ni une assurance voyage ni un service d’ambulance.",
     ],
     alt: "Illustration d’une coordonnatrice avec un casque. Ce n’est pas la photographie d’une personne réelle.",
-    cap: "Illustration. La coordination à Vancouver est humaine; cette image ne représente pas une employée.",
+    cap: "Illustration. La coordination à Vancouver est humaine ; cette image ne représente pas une employée.",
   },
   metc: {
     kicker: "Impôt",
@@ -299,7 +299,7 @@ export const fr: Messages = {
   network: {
     kicker: "Réseau",
     title: "Neuf établissements du Grupo Médico Joya",
-    deck: "Faits tirés de hospitaljoya.com (vérifiés le 14 novembre 2026). MedElite ne parle pas au nom de l’hôpital. Le réseau peut ajouter d’autres hôpitaux mexicains; un nom n’apparaît ici qu’après une entente. Le partenaire principal aujourd’hui est ce groupe.",
+    deck: "Faits tirés de hospitaljoya.com (vérifiés le 14 novembre 2026). MedElite ne parle pas au nom de l’hôpital. Le réseau peut ajouter d’autres hôpitaux mexicains ; un nom n’apparaît ici qu’après une entente. Le partenaire principal aujourd’hui est ce groupe.",
     open: "Sur les pages consultées, le groupe annonce — sans les présenter comme ouverts — des établissements à Tulum, Manzanillo et Mérida, ainsi qu’un centre d’oncologie à Bahía de Banderas. Ils ne sont pas coordonnés comme des hôpitaux ouverts.",
     future: "En septembre 2026, le Grupo Médico Joya et HM Hospitales (Espagne) ont annoncé une entente-cadre. Cette entente lie ces deux groupes. Ce n’est pas une accréditation de MedElite.",
     hm: "Communiqué de HM Hospitales, 10 septembre 2026",
@@ -323,7 +323,7 @@ export const fr: Messages = {
       cancun: "Inauguré en décembre 2022, selon la fiche du groupe. Itinéraire de chirurgie plastique et d’ophtalmologie, avec Playa del Carmen.",
       playa: "Établissement de la Riviera Maya. Itinéraire de chirurgie plastique et d’ophtalmologie. Le téléphone indiqué est celui de la page de contact du groupe.",
       chapala: "À Ajijic, au bord du lac de Chapala. Itinéraire d’orthopédie pour les snowbirds de cette zone.",
-      penita: "Établissement côtier à La Peñita de Jaltemba. L’un des neuf; aucun axe ne lui est assigné à cette étape.",
+      penita: "Établissement côtier à La Peñita de Jaltemba. L’un des neuf ; aucun axe ne lui est assigné à cette étape.",
     },
   },
   facts: {
@@ -356,11 +356,11 @@ export const fr: Messages = {
       {
         ind: "Pont aérien YVR–PVR",
         fig: "Environ 5 h à 5 h 10. Pour la semaine du 16 au 22 novembre 2026, Directflights.com signalait environ 26 vols sans escale par semaine (WestJet, Air Canada, Flair).",
-        src: "Directflights.com; SECTUR Jalisco sur les fréquences d’Air Canada",
+        src: "Directflights.com ; SECTUR Jalisco sur les fréquences d’Air Canada",
       },
       {
         ind: "Canadiens vers le Jalisco, 2024",
-        fig: "Plus de 490 000 par avion; 24,5 % des touristes étrangers du Jalisco.",
+        fig: "Plus de 490 000 par avion ; 24,5 % des touristes étrangers du Jalisco.",
         src: "SECTUR Jalisco, via El Informador (juin 2025)",
       },
     ],
@@ -388,44 +388,44 @@ export const fr: Messages = {
     deck: "Des réponses alignées sur le rôle de MedElite : coordonner, pas traiter.",
     items: [
       {
-        q: "L’assurance canadienne couvre-t-elle cela?",
+        q: "L’assurance canadienne couvre-t-elle cela ?",
         a: "Les régimes provinciaux ne couvrent généralement pas la chirurgie élective à l’étranger. Certaines assurances privées examinent certaines interventions ou frais de voyage. Demandez à votre assureur. MedElite ne promet pas un remboursement.",
       },
       {
-        q: "Est-il prudent de prendre l’avion après la chirurgie?",
+        q: "Est-il prudent de prendre l’avion après la chirurgie ?",
         a: "Le plan prévoit que le chirurgien évalue l’aptitude au vol avant le départ. Pour la hanche, le genou et la chirurgie bariatrique, le séjour prévu au Mexique est de 7 à 10 jours. La compagnie aérienne peut exiger le certificat.",
       },
       {
-        q: "Que se passe-t-il au retour au Canada?",
-        a: "Le parcours est conçu pour inclure un résumé pour votre médecin de famille et un canal de suivi avec l’équipe au Mexique. Le système public traite les urgences vitales; un chirurgien au Canada peut refuser de gérer des complications mineures d’une chirurgie faite à l’étranger. C’est pourquoi le séjour et le rapport comptent.",
+        q: "Que se passe-t-il au retour au Canada ?",
+        a: "Le parcours est conçu pour inclure un résumé pour votre médecin de famille et un canal de suivi avec l’équipe au Mexique. Le système public traite les urgences vitales ; un chirurgien au Canada peut refuser de gérer des complications mineures d’une chirurgie faite à l’étranger. C’est pourquoi le séjour et le rapport comptent.",
       },
       {
-        q: "MedElite est-il l’hôpital?",
+        q: "MedElite est-il l’hôpital ?",
         a: "Non. MedElite est le bureau de coordination à Vancouver. Le Grupo Médico Joya est le partenaire hospitalier principal. L’acte médical appartient à l’hôpital et au chirurgien au Mexique.",
       },
       {
-        q: "L’appel vidéo est-il une consultation médicale au Canada?",
+        q: "L’appel vidéo est-il une consultation médicale au Canada ?",
         a: "Non. C’est une orientation informative avec le médecin au Mexique. Cela ne crée pas une pratique médicale en Colombie-Britannique et n’autorise pas une ordonnance pour le Canada.",
       },
       {
-        q: "Détenez-vous JCI, CLACS, CSG, GHA ou MTA?",
+        q: "Détenez-vous JCI, CLACS, CSG, GHA ou MTA ?",
         a: "Nous ne le prétendons pas. Ces sigles ne sont pas présentés comme des accréditations obtenues. GHA et MTA sont des normes vers lesquelles MedElite travaille.",
       },
       {
-        q: "La fourchette du questionnaire est-elle le prix?",
+        q: "La fourchette du questionnaire est-elle le prix ?",
         a: "Non. C’est la fourchette publiée du genou, ou un avis que le dossier est sur demande. La soumission écrite, après l’examen du chirurgien, est le seul prix.",
       },
       {
-        q: "Puis-je déduire la chirurgie de mes impôts?",
+        q: "Puis-je déduire la chirurgie de mes impôts ?",
         a: "Une partie médicale peut être admissible selon les règles du crédit METC de l’ARC. L’hôtel et la logistique ne le sont habituellement pas. Demandez à votre comptable. Cette page n’est pas un conseil fiscal.",
       },
       {
-        q: "Un proche peut-il voyager avec moi?",
+        q: "Un proche peut-il voyager avec moi ?",
         a: "Oui. Le niveau Executive est pensé avec un accompagnateur. Le document écrit précise ce que son séjour inclut.",
       },
       {
-        q: "Dans quelle langue coordonnez-vous?",
-        a: "Cette page est en espagnol, en anglais et en français. Le groupe décrit des soins en anglais et en espagnol dans plusieurs établissements. Si vous avez besoin du français à l’hôpital, nous le demandons en coordonnant; nous ne le garantissons pas dans chaque établissement.",
+        q: "Dans quelle langue coordonnez-vous ?",
+        a: "Cette page est en espagnol, en anglais et en français. Le groupe décrit des soins en anglais et en espagnol dans plusieurs établissements. Si vous avez besoin du français à l’hôpital, nous le demandons en coordonnant ; nous ne le garantissons pas dans chaque établissement.",
       },
     ],
   },
