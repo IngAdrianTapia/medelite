@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-16 — pendientes técnicos de publicación
+
+Sitemap, favicon, `/calidad` en es-MX, en-CA y fr-CA, y holgura en `sma-1280.webp`. No se tocó marketing, posicionamiento, médicos ni especialidades. El issue #5 ya no se reproduce; no se cerró desde aquí. Ficha: [evidencias/2026-11-16-pendientes-tecnicos.md](./evidencias/2026-11-16-pendientes-tecnicos.md).
+
 ## 2026-11-15 — versión Canadá, sin el brief
 
 `/canada` reúne el recorrido con los textos ya publicados. El titular de portada y las ciudades editables están en `src/content/positioning.ts`. Toronto, Calgary, cinco estrellas y brechas de precio no se imprimen: esperan el brief. El idioma por defecto sigue siendo inglés de Canadá, y EN queda primero en el interruptor.

@@ -55,7 +55,20 @@ jobs:
           grep -qx 'medelite.com.mx' dist/CNAME
           test -f dist/.nojekyll
           test -f dist/404.html
+          test -f dist/favicon.ico
+          test -s dist/sitemap.xml
+          grep -q "Sitemap: https://medelite.com.mx/sitemap.xml" dist/robots.txt
+          grep -q "https://medelite.com.mx/es/calidad" dist/sitemap.xml
+          grep -q "https://medelite.com.mx/en/calidad" dist/sitemap.xml
+          grep -q "https://medelite.com.mx/fr/calidad" dist/sitemap.xml
           grep -q "Content-Security-Policy" dist/index.html
+          for page in en/canada en/galeria en/hospital-joya en/especialidades es/calidad en/calidad fr/calidad; do
+            grep -q "<h1" "dist/$page/index.html"
+            if grep -q 'text-sm text-muted">…</p>' "dist/$page/index.html"; then
+              echo "placeholder still in dist/$page/index.html" >&2
+              exit 1
+            fi
+          done
 
       - name: Upload Pages artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

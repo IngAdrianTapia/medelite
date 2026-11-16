@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Seo } from "../components/Seo";
+import { htmlLang, useI18n } from "../i18n";
+import type { QualitySection } from "../i18n/types";
 
 /** Reloj en vivo: el "sistema de actualizaciones automáticas" de la página. */
 function useClock() {
@@ -17,112 +19,25 @@ function useClock() {
   return now;
 }
 
-const fecha = (d: Date) =>
-  d.toLocaleString("es-MX", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  });
+const LIVE_OPTIONS: Intl.DateTimeFormatOptions = {
+  weekday: "long",
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+};
 
-const SECTIONS = [
-  {
-    code: "ISO/IEC 25010",
-    title: "Calidad del Producto de Software",
-    deck: "Ocho características del producto que se verifican en cada entrega.",
-    tone: "navy",
-    items: [
-      { n: "Adecuación funcional", d: "Cubre las funciones declaradas y las hace correctamente." },
-      { n: "Eficiencia de desempeño", d: "Tiempo de respuesta, rendimiento y uso de recursos." },
-      { n: "Compatibilidad", d: "Coexistencia e interoperabilidad con otros sistemas." },
-      { n: "Usabilidad", d: "Apreensibilidad, operabilidad y accesibilidad." },
-      { n: "Fiabilidad", d: "Madurez, disponibilidad, tolerancia a fallos." },
-      { n: "Seguridad", d: "Confidencialidad, integridad, autenticidad." },
-      { n: "Mantenibilidad", d: "Modularidad, analizabilidad, testabilidad." },
-      { n: "Portabilidad", d: "Adaptabilidad, instalabilidad, reemplazabilidad." },
-    ],
-  },
-  {
-    code: "ISO/IEC 25012",
-    title: "Calidad de los Datos",
-    deck: "Los datos que publicamos son exactos, completos, consistentes, creíbles y vigentes.",
-    tone: "light",
-    items: [
-      { n: "Exactitud", d: "El dato es correcto respecto de la realidad." },
-      { n: "Completitud", d: "No falta información necesaria del registro." },
-      { n: "Consistencia", d: "El mismo dato no se contradice entre vistas." },
-      { n: "Credibilidad", d: "Proviene de una fuente verificable." },
-      { n: "Actualidad", d: "Conserva vigencia en el momento de uso." },
-      { n: "Accesibilidad", d: "Se consulta cuando se necesita." },
-      { n: "Trazabilidad", d: "Cada dato tiene su origen registrado." },
-      { n: "Conformidad", d: "Cumple las normas y la política de datos." },
-      { n: "Disponibilidad", d: "Disponible cuando el servicio lo requiere." },
-    ],
-  },
-  {
-    code: "ISO/IEC/IEEE 12207",
-    title: "Ciclo de Vida del Software",
-    deck: "Cada etapa deja evidencia: qué se implementó, cómo se probó y el resultado.",
-    tone: "light",
-    items: [
-      { n: "Análisis", d: "Requisitos, alcance y criterios de aceptación." },
-      { n: "Diseño", d: "Arquitectura, interfaces y datos." },
-      { n: "Construcción", d: "Implementación con estándares de código." },
-      { n: "Pruebas", d: "Unitarias, integración, sistema y aceptación." },
-      { n: "Entrega", d: "Despliegue verificado y documentado." },
-      { n: "Mantenimiento", d: "Evolución, corrección y soporte." },
-    ],
-  },
-  {
-    code: "ISO/IEC 27001",
-    title: "Seguridad de la Información",
-    deck: "Controles técnicos y de proceso para proteger la información.",
-    tone: "light",
-    items: [
-      { n: "Control de accesos", d: "Permisos mínimos y por rol." },
-      { n: "Respaldos", d: "Copias verificadas y restaurables." },
-      { n: "Cifrado", d: "Datos en tránsito y en reposo." },
-      { n: "Manejo seguro", d: "Clasificación y tratamiento de datos." },
-      { n: "Monitoreo", d: "Registro y revisión de eventos." },
-      { n: "Incidentes", d: "Respuesta y recuperación definidas." },
-    ],
-  },
-  {
-    code: "OWASP ASVS",
-    title: "Verificación de Seguridad en Aplicaciones",
-    deck: "Estándar de verificación aplicado a cada aplicación.",
-    tone: "light",
-    items: [
-      { n: "Autenticación", d: "Identidad y sesión seguras." },
-      { n: "Sesiones", d: "Expiración y protección de tokens." },
-      { n: "Validación", d: "Entrada y salida controladas." },
-      { n: "Criptografía", d: "Algoritmos y gestión de claves." },
-      { n: "Control de acceso", d: "Autorización por recurso." },
-      { n: "Lógica de negocio", d: "Flujos sin bypass." },
-    ],
-  },
-  {
-    code: "OWASP Top 10",
-    title: "Vulnerabilidades Más Comunes",
-    deck: "Prevención de las diez vulnerabilidades más comunes en aplicaciones.",
-    tone: "light",
-    items: [
-      { n: "Inyección", d: "Consultas parametrizadas y validación." },
-      { n: "Control de acceso roto", d: "Autorización verificada." },
-      { n: "Fallas criptográficas", d: "Cifrado y claves correctas." },
-      { n: "Configuración insegura", d: "Cabeceras y defaults seguros." },
-      { n: "Componentes vulnerables", d: "Dependencias auditadas." },
-      { n: "Fallos de identificación", d: "Autenticación robusta." },
-    ],
-  },
-] as const;
+const SEAL_OPTIONS: Intl.DateTimeFormatOptions = {
+  day: "2-digit",
+  month: "long",
+  year: "numeric",
+};
 
-function SectionCard({ s, i }: { s: (typeof SECTIONS)[number]; i: number }) {
-  const isNavy = s.tone === "navy";
+function SectionCard({ s, i }: { s: QualitySection; i: number }) {
+  const isNavy = i === 0;
   return (
     <motion.section
       initial={{ opacity: 0, y: 18 }}
@@ -176,30 +91,27 @@ function SectionCard({ s, i }: { s: (typeof SECTIONS)[number]; i: number }) {
 }
 
 export function CalidadPage() {
+  const { m, lang } = useI18n();
+  const page = m.calidad;
   const now = useClock();
-  const live = now ? fecha(now) : "—";
+  const locale = htmlLang(lang);
+  const live = now ? now.toLocaleString(locale, LIVE_OPTIONS) : "—";
+  const sealDate = now ? now.toLocaleDateString(locale, SEAL_OPTIONS) : "—";
 
   return (
     <main id="contenido" className="page-shell">
-      <Seo
-        title="Estándares de Calidad — MedElite"
-        description="Cada desarrollo se construye conforme a ISO/IEC 25010, ISO/IEC 25012, ISO/IEC/IEEE 12207, ISO/IEC 27001, OWASP ASVS y OWASP Top 10."
-        path="/calidad"
-      />
+      <Seo title={page.seoTitle} description={page.seoDescription} path="/calidad" />
 
       <motion.header
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">Calidad</p>
+        <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{page.kicker}</p>
         <h1 className="mt-3 font-serif text-5xl leading-[1.05] tracking-tight text-ink md:text-6xl">
-          Estándares de Calidad <span className="text-gold">de Software</span>
+          {page.title} <span className="text-gold">{page.titleAccent}</span>
         </h1>
-        <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-          Se hace constar que todo el software que desarrollamos se construye conforme a los siguientes estándares
-          internacionales, garantizando calidad, seguridad y confiabilidad para nuestros clientes.
-        </p>
+        <p className="mt-4 max-w-2xl leading-relaxed text-muted">{page.lede}</p>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -212,13 +124,13 @@ export function CalidadPage() {
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <span className="text-[11px] font-semibold tracking-[0.18em] text-gold">EN VIVO</span>
+          <span className="text-[11px] font-semibold tracking-[0.18em] text-gold">{page.live}</span>
           <span className="font-mono text-xs tabular-nums text-ink">{live}</span>
         </motion.div>
       </motion.header>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        {SECTIONS.map((s, i) => (
+        {page.sections.map((s, i) => (
           <SectionCard key={s.code} s={s} i={i} />
         ))}
       </div>
@@ -231,23 +143,23 @@ export function CalidadPage() {
         className="mt-10 rounded-[2rem] border border-line bg-white p-7 md:p-10"
       >
         <p className="text-sm leading-relaxed text-muted">
-          Cada desarrollo se documenta con evidencia —qué se implementó, cómo se probó y el resultado obtenido— conforme
-          a la norma. Además, nuestros desarrollos siguen una{" "}
-          <strong className="text-ink">ruta de certificación Microsoft en proceso</strong>.
+          {page.closingBefore}
+          <strong className="text-ink">{page.closingStrong}</strong>
+          {page.closingAfter}
         </p>
         <div className="mt-8 grid gap-6 border-t border-line pt-6 sm:grid-cols-3">
           <div>
-            <div className="border-b border-navy/30 pb-1 font-serif text-lg font-semibold text-ink">Ing. Adrián Peña Tapia</div>
-            <div className="mt-1 text-xs italic text-muted">MedElite · Tapia Computación</div>
+            <div className="border-b border-navy/30 pb-1 font-serif text-lg font-semibold text-ink">{page.signName}</div>
+            <div className="mt-1 text-xs italic text-muted">{page.signOrg}</div>
           </div>
           <div className="text-center">
             <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border-2 border-dashed border-gold-line/60">
-              <span className="text-[9px] font-semibold tracking-[0.2em] text-gold">SELLO</span>
+              <span className="text-[9px] font-semibold tracking-[0.2em] text-gold">{page.seal}</span>
             </div>
           </div>
           <div>
-            <div className="border-b border-navy/30 pb-1 font-mono text-sm text-ink">{live.split(",")[0]}</div>
-            <div className="mt-1 text-xs tracking-[0.18em] text-muted">FECHA</div>
+            <div className="border-b border-navy/30 pb-1 font-mono text-sm text-ink">{sealDate}</div>
+            <div className="mt-1 text-xs tracking-[0.18em] text-muted">{page.dateLabel}</div>
           </div>
         </div>
       </motion.section>
