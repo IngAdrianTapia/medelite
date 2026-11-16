@@ -171,6 +171,13 @@ main .grid > * {
     text-wrap: balance;
   }
 
+  /* Phone and mail links are standalone targets: at least 24 px tall (WCAG 2.2 target size). */
+  a[href^="tel:"],
+  a[href^="mailto:"] {
+    display: inline-block;
+    padding-block: 0.25rem;
+  }
+
   p {
     text-wrap: pretty;
   }

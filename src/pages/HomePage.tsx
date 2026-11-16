@@ -88,11 +88,11 @@ export function HomePage() {
               <p className="mt-7 max-w-[32rem] text-[17px] leading-relaxed text-muted md:text-lg">
                 <span className="font-semibold text-navy">{m.hero.title}.</span> {m.notice}
               </p>
-              <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8">
+              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
                 <a href="#cotizar" className="btn btn-primary min-h-14 px-8 text-base">
                   {m.hero.ctaQuote} <span className="arrow" aria-hidden="true">→</span>
                 </a>
-                <a href="#orientacion" className="link-line pb-1 text-[15px] font-medium text-navy">
+                <a href="#orientacion" className="link-line whitespace-nowrap pb-1 text-[15px] font-medium text-navy">
                   {home.coordinator}
                 </a>
               </div>
@@ -465,7 +465,7 @@ export function HomePage() {
 
       <section id="cotizar" className="border-t border-line bg-soft/60 py-20 md:py-32">
         <div className="mx-auto max-w-[1200px] px-5 md:px-8">
-          <h2 className="text-center font-serif text-3xl text-navy md:text-4xl">{m.hero.ctaQuote}</h2>
+          <h2 className="text-center font-serif text-4xl leading-[1.08] text-navy md:text-[3.25rem]">{m.hero.ctaQuote}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-muted">{m.hero.lede}</p>
           <div className="mx-auto mt-10 max-w-5xl">
             <QuoteWizard />
