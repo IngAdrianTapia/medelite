@@ -63,7 +63,7 @@ export function HomePage() {
       <Seo title={m.meta.title} description={m.meta.description} path="/" />
 
       <section id="inicio" className="border-b border-line bg-gradient-to-b from-soft/60 to-white">
-        <div className="mx-auto grid max-w-[1200px] items-center gap-8 px-5 py-10 md:px-8 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-14 lg:py-20">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-6 px-5 pt-5 pb-10 md:gap-8 md:px-8 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-14 lg:py-20">
           <div className="min-w-0">
             <p className="text-sm font-semibold tracking-wide text-gold uppercase">{m.hero.kicker}</p>
             <h1 className="mt-4 font-serif text-[2.1rem] leading-[1.1] text-navy sm:text-5xl lg:text-[3.4rem]">{copy.headline}</h1>
@@ -79,7 +79,7 @@ export function HomePage() {
             </div>
             <p className="mt-6 border-l-2 border-gold pl-4 text-sm leading-6 text-muted">{m.notice}</p>
           </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-soft shadow-premium lg:aspect-[5/4]">
+          <div className="relative order-first aspect-[16/9] w-full overflow-hidden rounded-2xl bg-soft shadow-premium sm:aspect-[4/3] lg:order-none lg:aspect-[5/4]">
           {HERO_FRAMES.map((name, index) => (
             <div key={name} className="hero-frame absolute inset-0">
               <div className={reduce ? "absolute inset-0" : "kenburns absolute inset-0"}>
