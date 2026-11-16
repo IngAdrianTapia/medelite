@@ -14,5 +14,7 @@
 | [evidencias/2026-11-15-fotos-joya.md](./evidencias/2026-11-15-fotos-joya.md) | Ficha de las fotos Joya: selección, peso, trazabilidad y capturas |
 | [evidencias/2026-11-15-plan-maestro.md](./evidencias/2026-11-15-plan-maestro.md) | Ficha del menú, la galería y el catálogo de especialidades |
 | [evidencias/2026-11-16-pendientes-tecnicos.md](./evidencias/2026-11-16-pendientes-tecnicos.md) | Sitemap, favicon, `/calidad` en tres idiomas, anclas de contacto y la foto de San Miguel |
+| [evidencias/2026-11-16-videos-html5.md](./evidencias/2026-11-16-videos-html5.md) | Videos HTML5 de Hospital Joya, sin YouTube |
+| [evidencias/2026-11-16-pie-hemodinamia.md](./evidencias/2026-11-16-pie-hemodinamia.md) | Pie del video de hemodinamia con el título oficial, en ES, EN y FR, y hoja en vivo |
 
 Idiomas del sitio: español (México), inglés (Canadá) y francés (Canadá). El sitio no guarda expedientes de pacientes.
