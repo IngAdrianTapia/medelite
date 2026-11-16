@@ -27,7 +27,35 @@ Pedido de Adrián (16 nov, textual): «El mapa tiene que ser con nombres de call
 - Antes/después en vivo: ver la sección siguiente.
 
 ## Resultado en vivo
-(se completa tras publicar)
+PR #35, squash a `main` en `66898c5` (12:26 Monterrey). Actions «Deploy GitHub Pages» 43928869845 y «pages build and deployment» 43928870146 en success; publicado a las 12:27:46 y servido en medelite.com.mx desde las 12:28:02 (Monterrey).
+
+Verificación en https://medelite.com.mx/es con Playwright + Chrome (WebGL por SwiftShader), 1440×900 y 390×844 (iPhone simulado, 2×), 12:29–12:31 Monterrey:
+
+| Comprobación | Escritorio | Celular |
+|---|---|---|
+| Video de inicio corre solo, silenciado | sí, 1080p, 3,97 s a los 4 s | sí, archivo 720p, 3,97 s a los 4 s |
+| Croquis dibujado (canvas WebGL) | sí | sí |
+| Referencias reales en el mapa | 14 (8 con logo) | 10 (4 con logo; en celular se muestran las 10 más cercanas) |
+| Nombres de calles legibles | sí (Blvd. Francisco Medina Ascencio, Paseo de las Garzas; en Guadalajara Av. Chapultepec, Calle López Cotilla, Avenida Libertad) | sí |
+| Ruta desde la ubicación (simulada en el centro de Puerto Vallarta) | 4 min · 4.1 km en auto (estimado) | igual |
+| Enlaces Cómo llegar (Guadalajara) | Google `destination=20.6743433,-103.3664002`, Apple `daddr=…`, Waze `ll=…&navigate=yes` | igual |
+| Videos de la sección | el institucional reproduce al pulsar | igual |
+| Botón Correo | redactor abierto; lanza `mailto:info@medeliteofficial.com?…` | igual |
+| Errores de JavaScript | ninguno | ninguno |
+
+Avisos de consola que no son fallos: el estilo de OpenFreeMap pide algunos íconos que su sprite no trae (`gate`, `office`, `swimming_pool`) y tres filtros de escudos de carretera de EE. UU.; MapLibre los ignora.
+
+Hojas revisadas una por una:
+- [Antes y después, escritorio](./2026-11-16-hoja-antes-despues-escritorio.jpg)
+- [Antes y después, celular](./2026-11-16-hoja-antes-despues-celular.jpg)
+- [Croquis en vivo (Marina, Guadalajara, celular, ruta) y correo](./2026-11-16-hoja-vivo-croquis-correo.jpg)
+
+## Límites, dichos con claridad
+- Las referencias son las que existen hoy en OpenStreetMap: La Peñita y Querétaro tienen pocas (sobre todo escuelas en La Peñita) y algunos nombres vienen como los escribió la comunidad («Main Church», «hsbc», «frida»). No se inventó ni corrigió ninguno.
+- Sin logo: todas las referencias sin `brand:wikidata` y cuatro marcas con Wikidata pero sin logo válido (Hard Rock Hotel, Café Punta del Cielo, Farmacia Guadalajara, Calzedonia). Llevan ícono por categoría.
+- La ruta usa el OSRM público de FOSSGIS, pensado para uso moderado; si falla, el sitio ofrece Google Maps, Apple Maps o Waze. No se probó con un GPS real, solo con ubicación simulada.
+- El video institucional trae rótulos grabados de origen («Hospital Joya Marina, único hospital de tercer nivel en la región») que aparecen en la parte baja del inicio en algunos momentos; el texto del sitio va arriba para no chocar.
+- WebGL se probó por software (SwiftShader), no en un iPhone físico.
 
 ## ISO/IEC 25010 y OWASP (registro, no certificado)
 Adecuación funcional: calles, referencias y cómo llegar reales. Usabilidad: menos texto, accesos con foto, gestos de mapa con dos dedos en celular para no atrapar el scroll. Eficiencia: carga diferida del mapa y del worker. Seguridad: sin claves; CSP ampliada solo a OpenFreeMap y al router de FOSSGIS; la ubicación no sale del navegador salvo hacia el router y solo tras el permiso del visitante. Atribución: © OpenStreetMap, OpenFreeMap/OpenMapTiles, logos de Wikimedia Commons, rutas FOSSGIS OSRM.
