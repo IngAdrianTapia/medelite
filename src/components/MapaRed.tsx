@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { HOSPITAL_AIRPORT } from "../data/flights";
+import { HOSPITAL_LL } from "../data/hospitalCoords";
 import { HOSPITALS, type HospitalId } from "../data/hospitals";
-import { HOSPITAL_PIN, MEXICO_PATH } from "../data/mexicoMap";
 import { PHOTO_OF } from "../i18n/labels";
 import { useI18n } from "../i18n";
 import { FacilityPhoto } from "./FacilityPhoto";
-
-const VB = { x: 0, y: 20, w: 960, h: 590 };
 
 type Lang = "es" | "en" | "fr";
 const ZONES: readonly { id: string; sites: readonly HospitalId[]; name: Record<Lang, string>; region: Record<Lang, string> }[] = [
@@ -17,22 +15,10 @@ const ZONES: readonly { id: string; sites: readonly HospitalId[]; name: Record<L
   { id: "caribe", sites: ["cancun", "playa"], name: { es: "Cancún y Playa del Carmen", en: "Cancún and Playa del Carmen", fr: "Cancún et Playa del Carmen" }, region: { es: "Caribe mexicano", en: "Mexican Caribbean", fr: "Caraïbes mexicaines" } },
 ];
 
-/** Real centre of each zone’s pins, and where its marker sits (off the coast or the cluster) so markers never overlap on a phone. */
-function centre(sites: readonly HospitalId[]) {
-  const pts = sites.map((s) => HOSPITAL_PIN[s]);
-  return { x: pts.reduce((a, p) => a + p.x, 0) / pts.length, y: pts.reduce((a, p) => a + p.y, 0) / pts.length };
-}
-const MARKER: Record<string, { x: number; y: number }> = {
-  pacifico: { x: 300, y: 372 },
-  occidente: { x: 452, y: 486 },
-  bajio: { x: 556, y: 330 },
-  caribe: { x: 905, y: 318 },
-};
-
 const UI = {
-  es: { map: "Mapa de México con las sedes de Hospital Joya", zones: "Zonas", count: "{n} sedes", page: "Ver la sede", maps: "Cómo llegar", airport: "Aeropuerto", note: "Contorno: Natural Earth (dominio público). Los marcadores agrupan las sedes por zona; las direcciones son las que publica hospitaljoya.com." },
-  en: { map: "Map of Mexico with Hospital Joya’s locations", zones: "Areas", count: "{n} hospitals", page: "View hospital", maps: "Directions", airport: "Airport", note: "Outline: Natural Earth (public domain). Markers group hospitals by area; addresses are those published on hospitaljoya.com." },
-  fr: { map: "Carte du Mexique avec les établissements Hospital Joya", zones: "Secteurs", count: "{n} hôpitaux", page: "Voir l’établissement", maps: "Itinéraire", airport: "Aéroport", note: "Contour : Natural Earth (domaine public). Les repères regroupent les établissements par secteur; les adresses sont celles publiées sur hospitaljoya.com." },
+  es: { map: "Mapa de las sedes de Hospital Joya", zones: "Zonas", count: "{n} sedes", page: "Ver la sede", maps: "Cómo llegar", airport: "Aeropuerto", note: "Mapa real: OpenStreetMap y CARTO. Las fichas usan las fotos y direcciones que publica hospitaljoya.com. San Miguel y Cancún están en la coordenada publicada en OpenStreetMap o Nominatim; las demás, en la zona de la dirección publicada." },
+  en: { map: "Map of Hospital Joya locations", zones: "Areas", count: "{n} hospitals", page: "View hospital", maps: "Directions", airport: "Airport", note: "Real map: OpenStreetMap and CARTO. Cards use the photos and addresses published on hospitaljoya.com. San Miguel and Cancún use the OpenStreetMap or Nominatim coordinate; the others use the area of the published address." },
+  fr: { map: "Carte des établissements Hospital Joya", zones: "Secteurs", count: "{n} hôpitaux", page: "Voir l’établissement", maps: "Itinéraire", airport: "Aéroport", note: "Carte réelle : OpenStreetMap et CARTO. Les fiches reprennent les photos et adresses publiées sur hospitaljoya.com. San Miguel et Cancún utilisent la coordonnée OpenStreetMap ou Nominatim ; les autres, la zone de l’adresse publiée." },
 } as const;
 
 function mapsUrl(name: string, address: string) {
@@ -43,61 +29,57 @@ export function MapaRed({ title, headingLevel = 3 }: { title?: string; headingLe
   const { lang } = useI18n();
   const t = UI[lang];
   const [zoneId, setZoneId] = useState("pacifico");
-  const [hover, setHover] = useState<string | null>(null);
-  const zone = ZONES.find((z) => z.id === zoneId) ?? ZONES[0];
+  const mapNode = useRef<HTMLDivElement>(null);
+  const found = ZONES.find((z) => z.id === zoneId) ?? ZONES[0];
+  if (!found) throw new Error("Medelite: no hay zonas de sedes");
+  const zone = found;
   const Heading = headingLevel === 2 ? "h2" : "h3";
-  if (!zone) return null;
+
+  useEffect(() => {
+    const el = mapNode.current;
+    if (!el) return;
+    let map: import("leaflet").Map | undefined;
+    let cancelled = false;
+    void (async () => {
+      const L = await import("leaflet");
+      await import("leaflet/dist/leaflet.css");
+      if (cancelled || !mapNode.current) return;
+      map = L.map(mapNode.current, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: "abcd",
+        maxZoom: 18,
+      }).addTo(map);
+      const markers: import("leaflet").Marker[] = [];
+      for (const h of HOSPITALS) {
+        const ll = HOSPITAL_LL[h.id];
+        const on = (zone.sites as readonly string[]).includes(h.id);
+        const icon = L.divIcon({
+          className: "",
+          iconSize: [28, 28],
+          iconAnchor: [14, 14],
+          html: `<span style="display:grid;place-items:center;width:28px;height:28px;border-radius:999px;border:2px solid #fff;background:${on ? "#00788f" : "#071827"};color:#fff;font:600 11px/1 system-ui,sans-serif;box-shadow:0 6px 16px rgba(7,24,39,.28)">${h.name.replace("Hospital Joya ", "").slice(0, 1)}</span>`,
+        });
+        const marker = L.marker([ll.lat, ll.lng], { icon, title: h.name, zIndexOffset: on ? 200 : 0 });
+        marker.bindPopup(`<strong>${h.name}</strong><br>${h.city}`);
+        marker.addTo(map);
+        markers.push(marker);
+      }
+      const focus = zone.sites.map((id) => L.latLng(HOSPITAL_LL[id].lat, HOSPITAL_LL[id].lng));
+      if (focus.length) map.fitBounds(L.latLngBounds(focus).pad(0.55), { maxZoom: 9, animate: false });
+    })();
+    return () => {
+      cancelled = true;
+      map?.remove();
+    };
+  }, [lang, zoneId, zone]);
 
   return (
-    <div className="grid gap-6 md:pr-96 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-10">
+    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:gap-10">
       <div className="min-w-0">
         {title ? <Heading className="sr-only">{title}</Heading> : null}
-        <div className="relative overflow-hidden rounded-3xl border border-line p-3 sm:p-6" style={{ background: "linear-gradient(180deg, #eef4f7 0%, #f7f4ee 100%)" }}>
-          <div className="relative" style={{ aspectRatio: `${VB.w} / ${VB.h}` }}>
-            <svg viewBox={`${VB.x} ${VB.y} ${VB.w} ${VB.h}`} className="absolute inset-0 h-full w-full" role="img" aria-label={t.map}>
-              <path d={MEXICO_PATH} fill="#fbf8f2" stroke="#6d8494" strokeWidth="1.35" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-              {HOSPITALS.map((h) => {
-                const pin = HOSPITAL_PIN[h.id];
-                const on = (zone.sites as readonly string[]).includes(h.id);
-                return <circle key={h.id} cx={pin.x} cy={pin.y} r={on ? 3.4 : 2.3} fill={on ? "#00788f" : "#7b8f9c"} />;
-              })}
-              {ZONES.map((z) => {
-                const c = centre(z.sites);
-                const mk = MARKER[z.id] ?? c;
-                return <line key={z.id} x1={c.x} y1={c.y} x2={mk.x} y2={mk.y} stroke={z.id === zone.id ? "#00788f" : "#9db0bf"} strokeWidth="1" vectorEffect="non-scaling-stroke" />;
-              })}
-            </svg>
-            {ZONES.map((z) => {
-              const c = MARKER[z.id] ?? centre(z.sites);
-              const left = ((c.x - VB.x) / VB.w) * 100;
-              const top = ((c.y - VB.y) / VB.h) * 100;
-              const active = z.id === zone.id;
-              const tip = hover === z.id;
-              return (
-                <div key={z.id} className="absolute" style={{ left: `${left}%`, top: `${top}%` }}>
-                  <button
-                    type="button"
-                    aria-pressed={active}
-                    aria-label={`${z.name[lang]} — ${t.count.replace("{n}", String(z.sites.length))}`}
-                    onClick={() => setZoneId(z.id)}
-                    onMouseEnter={() => setHover(z.id)}
-                    onMouseLeave={() => setHover(null)}
-                    onFocus={() => setHover(z.id)}
-                    onBlur={() => setHover(null)}
-                    className="group relative -translate-x-1/2 -translate-y-1/2"
-                  >
-                    <span className={`relative grid h-11 w-11 place-items-center rounded-full border-2 text-sm font-semibold tabular-nums shadow-premium transition-all duration-300 sm:h-12 sm:w-12 ${active ? "scale-110 border-white bg-teal text-white" : "border-white bg-navy text-white group-hover:bg-teal"}`}>
-                      {z.sites.length}
-                    </span>
-                  </button>
-                  <span role="tooltip" className={`pointer-events-none absolute bottom-full left-1/2 mb-7 hidden w-max max-w-[14rem] -translate-x-1/2 rounded-xl bg-navy px-3 py-2 text-xs leading-snug text-white shadow-premium transition-opacity duration-200 sm:block ${tip ? "opacity-100" : "opacity-0"}`}>
-                    <span className="block font-semibold">{z.name[lang]}</span>
-                    <span className="text-white/70">{z.region[lang]} · {t.count.replace("{n}", String(z.sites.length))}</span>
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+        <div className="overflow-hidden rounded-3xl border border-line shadow-premium">
+          <div ref={mapNode} className="h-[22rem] w-full sm:h-[28rem]" role="img" aria-label={t.map} data-nozoom />
         </div>
         <div className="no-scrollbar -mx-5 mt-4 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:px-0" role="group" aria-label={t.zones}>
           {ZONES.map((z) => (

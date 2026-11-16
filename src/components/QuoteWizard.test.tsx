@@ -43,8 +43,8 @@ describe("QuoteWizard", () => {
     fireEvent.click(screen.getByRole("button", { name: "Continuar" }));
 
     expect(screen.getByText("CAD 19,500 – CAD 22,000")).toBeInTheDocument();
-    const form = screen.getByRole("button", { name: /info@medeliteofficial.com/ }).closest("form");
-    expect(form).toHaveAttribute("action", "mailto:info@medeliteofficial.com");
+    expect(screen.getByRole("button", { name: /info@medeliteofficial.com/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /info@medeliteofficial.com/ }).closest("form")).toBeNull();
   });
 
   it("refuses to continue without consent", () => {

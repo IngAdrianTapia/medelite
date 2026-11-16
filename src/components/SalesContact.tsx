@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useI18n } from "../i18n";
+import { MailCompose } from "./MailCompose";
 
 /** A low-friction contact path. It sends nothing by itself and requests no medical data. */
 export function SalesContact() {
   const { m } = useI18n();
+  const [mailOpen, setMailOpen] = useState(false);
   return (
     <section id="orientacion" className="border-b border-line bg-white px-5 md:px-8 py-12 md:py-16" aria-labelledby="orientacion-title">
       <div className="mx-auto grid max-w-[1136px] gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
@@ -13,9 +16,9 @@ export function SalesContact() {
         </div>
         <div className="rounded-2xl border border-line bg-ivory p-6 shadow-sm md:p-8">
           <div className="grid gap-3">
-            <a href={`mailto:info@medeliteofficial.com?subject=${encodeURIComponent(m.sales.subject)}`} className="inline-flex min-h-12 items-center justify-center rounded-lg bg-navy px-5 text-center text-sm font-semibold text-white hover:bg-navy-2">
+            <button type="button" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-navy px-5 text-center text-sm font-semibold text-white hover:bg-navy-2" onClick={() => setMailOpen(true)}>
               {m.sales.email}
-            </a>
+            </button>
             <a href="tel:+16044428475" className="inline-flex min-h-12 items-center justify-center rounded-lg border border-navy px-5 text-center text-sm font-semibold text-navy hover:bg-white">
               {m.sales.call}
             </a>
@@ -23,6 +26,7 @@ export function SalesContact() {
           <p className="mt-4 text-xs leading-relaxed text-muted">{m.sales.note}</p>
         </div>
       </div>
+      <MailCompose open={mailOpen} onClose={() => setMailOpen(false)} />
     </section>
   );
 }
