@@ -25,10 +25,10 @@ export function AsistenciaIA({ tone = "light" }: { tone?: "light" | "dark" }) {
     <aside
       id="ia"
       aria-label={t.title}
-      className={`rounded-[1.5rem] border-l-2 border-gold-line px-6 py-6 md:px-8 ${dark ? "bg-white/5 text-white" : "bg-white text-ink shadow-premium"}`}
+      className={`rounded-xl border-l-2 border-gold-line px-6 py-6 md:px-8 ${dark ? "bg-white/5 text-white" : "bg-white text-ink shadow-premium"}`}
     >
       <p className={`text-xs font-semibold tracking-[0.18em] uppercase ${dark ? "text-gold-line" : "text-gold"}`}>{t.status}</p>
-      <h2 className="mt-3 font-serif text-3xl leading-tight md:text-4xl">{t.title}</h2>
+      <h2 className="mt-3 font-serif text-2xl leading-tight md:text-3xl">{t.title}</h2>
       <p className={`mt-3 max-w-3xl text-sm leading-relaxed ${dark ? "text-white/75" : "text-muted"}`}>{t.body}</p>
     </aside>
   );

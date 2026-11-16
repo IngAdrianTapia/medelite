@@ -50,15 +50,15 @@ export function PhotoCatalog({ mode }: { mode: "tabs" | "sections" }) {
     if (mode === "tabs" && category !== active) return null;
     return (
       <section key={category} id={category === "all" ? undefined : category} className="mt-10">
-        {mode === "sections" ? <h2 className="font-serif text-4xl text-ink">{t[category]}</h2> : null}
+        {mode === "sections" ? <h2 className="font-serif text-2xl text-ink">{t[category]}</h2> : null}
         {items.length === 0 ? <p className="mt-4 text-sm text-muted">{t.empty}</p> : null}
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
             <li key={`${category}-${item.id}`}>
-              <figure className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
+              <figure className="overflow-hidden rounded-2xl border border-line bg-white shadow-glass">
                 <button
                   type="button"
-                  className="group relative block h-56 w-full cursor-zoom-in bg-navy sm:h-64"
+                  className="group relative block h-56 w-full cursor-zoom-in bg-soft sm:h-64"
                   aria-label={`${enlarge}: ${PHOTO_OF[item.id]?.[lang] ?? ""}`}
                   onClick={() => setOpen({ ids: items.map((row) => row.id), index })}
                 >
@@ -69,7 +69,7 @@ export function PhotoCatalog({ mode }: { mode: "tabs" | "sections" }) {
                     sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"
                     className="transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                  <span aria-hidden="true" className="absolute right-3 bottom-3 rounded-full bg-navy/80 px-3 py-1 text-xs font-semibold text-white">⤢</span>
+                  <span aria-hidden="true" className="absolute right-3 bottom-3 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-navy shadow"><svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" /></svg></span>
                 </button>
                 <figcaption className="px-4 py-3 text-sm leading-relaxed text-ink">{PHOTO_OF[item.id]?.[lang]}</figcaption>
               </figure>
@@ -94,7 +94,7 @@ export function PhotoCatalog({ mode }: { mode: "tabs" | "sections" }) {
                 type="button"
                 role="tab"
                 aria-selected={selected}
-                className={`inline-flex min-h-11 items-center rounded-full px-4 text-sm font-semibold ${selected ? "bg-navy text-white" : "border border-line bg-white text-navy"}`}
+                className={`inline-flex min-h-11 items-center rounded-lg px-4 text-sm font-semibold ${selected ? "bg-navy text-white" : "border border-line bg-white text-navy"}`}
                 onClick={() => setActive(category)}
               >
                 {label}

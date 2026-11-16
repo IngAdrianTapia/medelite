@@ -90,7 +90,7 @@ export function FlightSimulator({
   const airport = HOSPITAL_AIRPORT[hospital];
 
   return (
-    <section className="rounded-[2rem] border border-line bg-white p-6 shadow-glass md:p-8" aria-label={t.result}>
+    <section className="rounded-2xl border border-line bg-white p-6 shadow-glass md:p-8" aria-label={t.result}>
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-2 text-sm font-medium">
           {t.origin}
@@ -113,14 +113,14 @@ export function FlightSimulator({
           </select>
         </label>
       </div>
-      <div className="mt-6 rounded-[2rem] bg-paper p-6">
+      <div className="mt-6 rounded-2xl bg-paper p-6">
         <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.result}</p>
         <p className="mt-2 text-sm text-muted">
           {cities[origin]} → {airport}. {t.arrival}: {airport}.
         </p>
-        <p className="mt-3 font-serif text-3xl text-ink">{t.quote}</p>
+        <p className="mt-3 font-serif text-2xl text-ink">{t.quote}</p>
         <p className="mt-4">
-          <Link className="inline-flex min-h-12 items-center rounded-full bg-gold px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy" to="/#cotizar">
+          <Link className="inline-flex min-h-12 items-center rounded-lg bg-gold px-6 text-sm font-semibold text-white shadow-premium hover:bg-navy" to="/#cotizar">
             {t.cta}
           </Link>
         </p>

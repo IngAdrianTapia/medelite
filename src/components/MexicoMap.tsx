@@ -12,7 +12,7 @@ export function MexicoMap({ label }: { label: string }) {
       {HOSPITALS.map((hospital) => (
         <Link key={hospital.id} to={`/red/${hospital.id}`} className="group min-w-0 overflow-hidden rounded-2xl bg-white shadow-premium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy">
           <figure>
-            <div className="relative aspect-[4/3] overflow-hidden bg-navy">
+            <div className="relative aspect-[4/3] overflow-hidden bg-soft">
               <FacilityPhoto name={hospital.id} fill alt={PHOTO_OF[hospital.id]?.[lang] ?? hospital.name} sizes="(min-width: 1024px) 12rem, (min-width: 640px) 30vw, 45vw" className="transition-transform duration-300 group-hover:scale-105" />
             </div>
             <figcaption className="p-3">

@@ -82,7 +82,7 @@ export function FiltroSedeEspecialidad() {
         <ul className="mt-2 flex flex-wrap gap-2">
           {sites.map((id) => (
             <li key={id}>
-              <Link className="inline-flex min-h-11 items-center rounded-full border border-navy px-4 text-sm font-semibold text-navy" to={`/red/${id}`}>
+              <Link className="inline-flex min-h-11 items-center rounded-lg border border-navy px-4 text-sm font-semibold text-navy" to={`/red/${id}`}>
                 {HOSPITALS.find((h) => h.id === id)?.name.replace("Hospital Joya ", "")}
               </Link>
             </li>
@@ -102,7 +102,7 @@ export function FiltroSedeEspecialidad() {
             <ul className="mt-2 flex flex-wrap gap-2">
               {specs.map((id) => (
                 <li key={id}>
-                  <Link className="inline-flex min-h-11 items-center rounded-full border border-navy px-4 text-sm font-semibold text-navy" to={`/especialidades/${id}`}>
+                  <Link className="inline-flex min-h-11 items-center rounded-lg border border-navy px-4 text-sm font-semibold text-navy" to={`/especialidades/${id}`}>
                     {SPECIALTY_LABEL[id][lang]}
                   </Link>
                 </li>
@@ -121,8 +121,8 @@ export function FiltroSedeEspecialidad() {
   }
 
   return (
-    <section aria-labelledby="filtro-title" className="mt-10 rounded-[2rem] border border-line bg-white p-5 shadow-premium md:p-8">
-      <h2 id="filtro-title" className="font-serif text-3xl leading-tight text-ink md:text-4xl">{t.title}</h2>
+    <section aria-labelledby="filtro-title" className="mt-10 rounded-2xl border border-line bg-white p-5 shadow-premium md:p-8">
+      <h2 id="filtro-title" className="font-serif text-2xl leading-tight text-ink md:text-3xl">{t.title}</h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">{t.lede}</p>
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
         <label className="text-sm font-semibold text-ink">
@@ -147,11 +147,11 @@ export function FiltroSedeEspecialidad() {
       <div aria-live="polite" className="mt-5 rounded-2xl bg-soft px-5 py-4">{result}</div>
       <div className="mt-4 flex flex-wrap gap-2">
         {hospital ? (
-          <Link className="inline-flex min-h-11 items-center rounded-full border border-navy px-5 text-sm font-semibold text-navy" to={`/red/${hospital.id}`}>{t.open}</Link>
+          <Link className="inline-flex min-h-11 items-center rounded-lg border border-navy px-5 text-sm font-semibold text-navy" to={`/red/${hospital.id}`}>{t.open}</Link>
         ) : null}
-        <Link className="inline-flex min-h-11 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white" to="/#cotizar">{t.quote}</Link>
+        <Link className="inline-flex min-h-11 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white" to="/#cotizar">{t.quote}</Link>
         {spec || site ? (
-          <button type="button" className="inline-flex min-h-11 items-center rounded-full px-4 text-sm text-muted underline" onClick={() => { setSpec(""); setSite(""); }}>{t.reset}</button>
+          <button type="button" className="inline-flex min-h-11 items-center rounded-lg px-4 text-sm text-muted underline" onClick={() => { setSpec(""); setSite(""); }}>{t.reset}</button>
         ) : null}
       </div>
     </section>

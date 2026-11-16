@@ -26,9 +26,9 @@ export function AiBadge({ compact = false, className = "" }: { compact?: boolean
       to="/que-es#ia"
       title={NOTE[lang]}
       aria-label={`${LABEL[lang]}. ${NOTE[lang]}`}
-      className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border border-gold-line/70 px-3 text-xs font-semibold tracking-wide text-gold-line hover:bg-white/10 ${className}`}
+      className={`inline-flex min-h-9 items-center sm:min-h-10 gap-1.5 whitespace-nowrap rounded-lg border border-gold/35 bg-soft px-2.5 text-xs font-semibold tracking-wide text-navy hover:border-gold sm:px-3 ${className}`}
     >
-      <AiIcon className="h-4 w-4 shrink-0" />
+      <AiIcon className="h-4 w-4 shrink-0 text-gold" />
       {compact ? (
         <>
           <span className="sm:hidden">{SHORT[lang]}</span>

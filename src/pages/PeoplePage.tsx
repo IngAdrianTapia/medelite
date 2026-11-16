@@ -26,11 +26,11 @@ export function PeoplePage() {
   return (
     <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/equipo" />
-      <h1 className="font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <ul className="mt-8 grid gap-4">
         {PEOPLE.map((person) => (
-          <li key={person.id} className="rounded-[2rem] border border-line bg-white shadow-glass p-5">
+          <li key={person.id} className="rounded-2xl border border-line bg-white shadow-glass p-5">
             {person.photo ? (
               <img
                 src={person.photo}
@@ -55,7 +55,7 @@ export function PeoplePage() {
                 />
               </picture>
             ) : null}
-            <h2 className="font-serif text-2xl">{person.name}</h2>
+            <h2 className="font-serif text-xl">{person.name}</h2>
             <p className="mt-2 text-sm leading-relaxed">{personRole(lang, person)}</p>
             {person.credentials.length > 0 ? (
               <ul className="mt-2 text-sm">

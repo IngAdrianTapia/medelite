@@ -116,7 +116,7 @@ export function BariatricPage() {
     <main id="contenido" className="page-shell">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/bariatrica" />
       <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{t.kicker}</p>
-      <h1 className="mt-3 font-serif text-5xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
+      <h1 className="mt-3 font-serif text-3xl leading-[1.1] tracking-tight text-ink">{t.title}</h1>
       <p className="mt-4 leading-relaxed text-muted">{t.deck}</p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <FacilityPhoto name="riviera" alt={PHOTO_OF.riviera?.[lang] ?? ""} sizes="(min-width: 640px) 22rem, 100vw" className="h-56 w-full rounded-3xl object-cover" />
@@ -125,7 +125,7 @@ export function BariatricPage() {
       <p className="mt-6 leading-relaxed">{t.where}</p>
       <p className="mt-3 leading-relaxed">{t.who}</p>
       <p className="mt-3 text-sm leading-relaxed text-muted">{t.numbers}</p>
-      <h2 className="mt-10 font-serif text-3xl">{t.include}</h2>
+      <h2 className="mt-10 font-serif text-2xl">{t.include}</h2>
       <ul className="mt-3 grid gap-2 text-sm">
         {t.includes.map((item) => (
           <li key={item}>{item}</li>
@@ -137,7 +137,7 @@ export function BariatricPage() {
       <div className="mt-10">
         <DiagramaManga />
       </div>
-      <h2 className="mt-10 font-serif text-3xl">Procedimientos</h2>
+      <h2 className="mt-10 font-serif text-2xl">Procedimientos</h2>
       <ul className="mt-4 grid gap-4">
         {PROCEDURES.map((item) => (
           <li key={item.id} className="rounded-2xl border border-line p-4 text-sm leading-relaxed">
@@ -151,10 +151,10 @@ export function BariatricPage() {
       <p className="mt-6 leading-relaxed">{t.missing}</p>
       <p className="mt-3 font-medium">{t.price}</p>
       <p className="mt-6 flex flex-wrap gap-3">
-        <a className="inline-flex min-h-12 items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href="tel:+16044428475">
+        <a className="inline-flex min-h-12 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" href="tel:+16044428475">
           +1 (604) 442-8475
         </a>
-        <Link className="inline-flex min-h-12 items-center rounded-full bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
+        <Link className="inline-flex min-h-12 items-center rounded-lg bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
           {t.cta}
         </Link>
       </p>

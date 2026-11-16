@@ -225,13 +225,13 @@ export function RoutePage() {
   return (
     <main id="contenido" className="print:max-w-none">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
-      <header className="bg-navy px-5 pt-32 pb-12 text-white">
-        <p className="mx-auto max-w-6xl text-xs tracking-[0.22em] text-gold-line uppercase">{t.kicker}</p>
-        <h1 className="mx-auto mt-3 max-w-6xl font-serif text-5xl leading-[0.92] md:text-7xl">{t.title}</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-white/75">{t.deck}</p>
+      <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
+        <p className="mx-auto max-w-[1136px] text-xs tracking-[0.22em] text-gold uppercase">{t.kicker}</p>
+        <h1 className="mx-auto mt-3 max-w-[1136px] font-serif text-3xl leading-tight md:text-5xl">{t.title}</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-muted">{t.deck}</p>
       </header>
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
-      <form className="grid h-fit gap-3 rounded-[2rem] bg-white p-6 shadow-premium print:hidden" onSubmit={(event) => event.preventDefault()}>
+      <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
+      <form className="grid h-fit gap-3 rounded-2xl bg-white p-6 shadow-premium print:hidden" onSubmit={(event) => event.preventDefault()}>
         <label className="grid gap-1 text-sm">
           {t.origin}
           <select className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" value={origin} onChange={(event) => { const value = event.target.value as OriginCode; setOrigin(value); publish({ origin: value }); }}>
@@ -265,16 +265,16 @@ export function RoutePage() {
       <ol id="itinerario" className="border-l-2 border-gold pl-6">
         {steps.map((step, index) => (
           <li key={step.id} className="relative pb-8">
-            <p className="font-serif text-4xl text-gold">{String(index + 1).padStart(2, "0")}</p>
+            <p className="font-serif text-2xl text-gold">{String(index + 1).padStart(2, "0")}</p>
             <p className="mt-1 text-lg">{t.steps[step.id]}</p>
           </li>
         ))}
       </ol>
       </div>
 
-      <div className="mx-auto max-w-6xl px-5 pb-16">
-      <section id="match" className="mt-10 rounded-[2rem] border border-line bg-white shadow-glass p-5">
-        <h2 className="font-serif text-3xl">{t.match}</h2>
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-16">
+      <section id="match" className="mt-10 rounded-2xl border border-line bg-white shadow-glass p-5">
+        <h2 className="font-serif text-2xl">{t.match}</h2>
         <p className="mt-3 leading-relaxed">{t.why[match.why]}</p>
         {match.hospitalId ? <p className="mt-3 font-medium">{HOSPITALS.find((hospital) => hospital.id === match.hospitalId)?.name}</p> : null}
         <ul className="mt-3 grid gap-2 text-sm">
@@ -290,16 +290,16 @@ export function RoutePage() {
         </ul>
       </section>
 
-      <section className="mt-6 rounded-[2rem] bg-paper p-5">
+      <section className="mt-6 rounded-2xl bg-paper p-5">
         {quote.band ? <p>{t.cost}: CAD {quote.band.low.toLocaleString("en-CA")} – {quote.band.high.toLocaleString("en-CA")}</p> : null}
         <p className="mt-3 text-sm text-muted">{t.flight}: {t.total}.</p>
         <p className="mt-3">
-          <a className="inline-flex min-h-12 items-center rounded-full bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" href="/#cotizar">{t.cta}</a>
+          <a className="inline-flex min-h-12 items-center rounded-lg bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" href="/#cotizar">{t.cta}</a>
         </p>
       </section>
 
       <section id="preparacion" className="mt-8">
-        <h2 className="font-serif text-3xl">{t.ready}</h2>
+        <h2 className="font-serif text-2xl">{t.ready}</h2>
         <p className="mt-2 text-sm">{t.score}: {file.readyCount} {t.of} {file.total}</p>
         <label className="mt-3 flex min-h-11 items-center gap-3 text-sm">
           <input type="checkbox" checked={adult} onChange={(event) => setAdult(event.target.checked)} />
@@ -333,7 +333,7 @@ export function RoutePage() {
           {t.share}
           <input className="min-h-12 rounded-2xl border border-line bg-white px-4 text-base shadow-sm outline-none focus-visible:border-navy focus-visible:ring-2 focus-visible:ring-navy/40" readOnly value={sharePath} />
         </label>
-        <button type="button" className="inline-flex min-h-12 w-fit items-center rounded-full bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={() => window.print()}>
+        <button type="button" className="inline-flex min-h-12 w-fit items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white shadow-premium hover:bg-navy-2" onClick={() => window.print()}>
           {t.print}
         </button>
       </div>

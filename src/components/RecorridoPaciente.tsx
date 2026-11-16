@@ -46,9 +46,9 @@ export function RecorridoPaciente() {
   if (!etapa) return null;
 
   return (
-    <div className="rounded-[2rem] border border-line bg-white p-6 shadow-premium md:p-10">
+    <div className="rounded-2xl border border-line bg-white p-6 shadow-premium md:p-10">
       <IllustrationLabel note={ui.note} />
-      <h3 className="mt-4 font-serif text-3xl leading-tight text-ink">{m.journey.title}</h3>
+      <h2 className="mt-4 font-serif text-3xl leading-tight text-navy md:text-4xl">{m.journey.title}</h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{m.journey.deck}</p>
 
       <div className="mt-8 hidden md:block" aria-hidden="true">
@@ -57,7 +57,7 @@ export function RecorridoPaciente() {
           <motion.path
             d={PATH}
             fill="none"
-            stroke="#0A2540"
+            stroke="#00788f"
             strokeWidth="3"
             strokeLinecap="round"
             initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
@@ -71,8 +71,8 @@ export function RecorridoPaciente() {
             const selected = activa === index;
             return (
               <g key={step.title} transform={`translate(${pos.x}, ${pos.y})`}>
-                <circle r="26" fill={selected ? "#0A2540" : "#FFFFFF"} stroke="#0A2540" strokeWidth="2" />
-                <text y="5" textAnchor="middle" fill={selected ? "#FFFFFF" : "#0A2540"} fontSize="14" fontWeight="700">
+                <circle r="26" fill={selected ? "#00788f" : "#FFFFFF"} stroke="#00788f" strokeWidth="2" />
+                <text y="5" textAnchor="middle" fill={selected ? "#FFFFFF" : "#00788f"} fontSize="14" fontWeight="700">
                   {String(index + 1).padStart(2, "0")}
                 </text>
               </g>
@@ -88,8 +88,8 @@ export function RecorridoPaciente() {
               <button
                 type="button"
                 aria-pressed={activa === index}
-                className={`min-h-12 w-full rounded-2xl border px-3 py-2 text-left text-sm ${
-                  activa === index ? "border-navy bg-navy text-white" : "border-line bg-paper text-ink"
+                className={`min-h-12 w-full rounded-xl border px-3 py-2 text-left text-sm ${
+                  activa === index ? "border-gold bg-gold text-white" : "border-line bg-white text-ink hover:border-gold"
                 }`}
                 onClick={() => setActiva(index)}
               >
@@ -101,21 +101,21 @@ export function RecorridoPaciente() {
         </ol>
       </div>
 
-      <div aria-live="polite" className="mt-4 rounded-2xl border border-line bg-paper p-5">
+      <div aria-live="polite" className="mt-4 rounded-xl border border-line bg-ivory p-5">
         <p className="text-xs font-bold tracking-[0.14em] text-navy uppercase">{String(activa + 1).padStart(2, "0")}</p>
-        <p className="mt-1 font-serif text-2xl text-ink">{etapa.title}</p>
+        <p className="mt-1 font-serif text-xl text-ink">{etapa.title}</p>
         <p className="mt-2 text-sm leading-relaxed text-muted">{etapa.body}</p>
         <div className="mt-4 flex gap-2">
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line bg-white px-4 text-sm font-semibold text-navy"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-line bg-white px-4 text-sm font-semibold text-navy"
             onClick={() => setActiva((prev) => (prev === 0 ? steps.length - 1 : prev - 1))}
           >
             {ui.prev}
           </button>
           <button
             type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-navy px-4 text-sm font-semibold text-white"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-gold px-4 text-sm font-semibold text-white"
             onClick={() => setActiva((prev) => (prev === steps.length - 1 ? 0 : prev + 1))}
           >
             {ui.next}
