@@ -2,7 +2,7 @@
 
 ## 2026-11-16 — pie del video de hemodinamia
 
-El pie debajo del video de la sala de hemodinamia, en `/red/marina` (ES, EN y FR), deja de repetir el texto del video institucional. Usa el título oficial del original: «La importancia de la Sala de Hemodinamia. Hospital Joya Marina Vallarta». En EN y FR se conserva ese título (no se tradujo) y se indica que el video está en español. El institucional no cambia. Sigue sin YouTube; la CSP permanece en `frame-src 'none'` y `media-src 'self'`.
+El pie debajo del video de la sala de hemodinamia, en `/red/marina` (ES, EN y FR), deja de repetir el texto del video institucional. Usa el título oficial del original: «La importancia de la Sala de Hemodinamia. Hospital Joya Marina Vallarta». En EN y FR se conserva ese título (no se tradujo) y se indica que el video está en español. El institucional no cambia. Sigue sin YouTube; la CSP permanece en `frame-src 'none'` y `media-src 'self'`. Ficha y hoja en vivo: [evidencias/2026-11-16-pie-hemodinamia.md](./evidencias/2026-11-16-pie-hemodinamia.md).
 
 ## 2026-11-16 — videos HTML5, sin YouTube
 
