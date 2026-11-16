@@ -22,19 +22,19 @@ const UI = {
     map: "Croquis interactivo de la sede", sites: "Sedes", go: "Cómo llegar", route: "Ruta desde mi ubicación", routing: "Calculando la ruta…",
     denied: "Sin permiso de ubicación. Abra la ruta en Google Maps, Apple Maps o Waze.", failed: "No se pudo trazar la ruta aquí. Ábrala en su app de mapas.",
     byCar: "en auto", estimate: "estimado", near: "Referencias cercanas", page: "Ver la sede", airport: "Aeropuerto", d3: "3D", d2: "2D", from: "a",
-    note: "Calles y lugares reales de OpenStreetMap. Logos solo cuando OSM enlaza la marca con Wikidata.", loading: "Cargando el croquis…",
+    note: "Calles y lugares reales de OpenStreetMap. Logos solo cuando OSM enlaza la marca con Wikidata.", loading: "Cargando el croquis…", credit: "Lugares © OpenStreetMap · Logos: Wikimedia Commons · Rutas: FOSSGIS OSRM",
   },
   en: {
     map: "Interactive street map of the hospital", sites: "Hospitals", go: "Directions", route: "Route from my location", routing: "Finding the route…",
     denied: "Location permission was not given. Open directions in Google Maps, Apple Maps or Waze.", failed: "The route could not be drawn here. Open it in your maps app.",
     byCar: "by car", estimate: "estimate", near: "Nearby landmarks", page: "View hospital", airport: "Airport", d3: "3D", d2: "2D", from: "",
-    note: "Real streets and places from OpenStreetMap. Logos only where OSM links the brand to Wikidata.", loading: "Loading the map…",
+    note: "Real streets and places from OpenStreetMap. Logos only where OSM links the brand to Wikidata.", loading: "Loading the map…", credit: "Places © OpenStreetMap · Logos: Wikimedia Commons · Routes: FOSSGIS OSRM",
   },
   fr: {
     map: "Plan interactif de l’établissement", sites: "Établissements", go: "Itinéraire", route: "Itinéraire depuis ma position", routing: "Calcul de l’itinéraire…",
     denied: "Position non autorisée. Ouvrez l’itinéraire dans Google Maps, Plans ou Waze.", failed: "Impossible de tracer l’itinéraire ici. Ouvrez-le dans votre application de cartes.",
     byCar: "en voiture", estimate: "estimation", near: "Repères à proximité", page: "Voir l’établissement", airport: "Aéroport", d3: "3D", d2: "2D", from: "à",
-    note: "Rues et lieux réels d’OpenStreetMap. Logos seulement si OSM relie la marque à Wikidata.", loading: "Chargement du plan…",
+    note: "Rues et lieux réels d’OpenStreetMap. Logos seulement si OSM relie la marque à Wikidata.", loading: "Chargement du plan…", credit: "Lieux © OpenStreetMap · Logos : Wikimedia Commons · Itinéraires : FOSSGIS OSRM",
   },
 } as const;
 
@@ -130,7 +130,7 @@ export function MapaRed({ title, headingLevel = 3 }: { title?: string; headingLe
             maxPitch: 70,
             scrollZoom: false,
             cooperativeGestures: touch,
-            attributionControl: { compact: true, customAttribution: "Lugares © OpenStreetMap · Logos: Wikimedia Commons · Rutas: FOSSGIS OSRM" },
+            attributionControl: { compact: true, customAttribution: UI[lang].credit },
           });
           map.addControl(new lib.NavigationControl({ visualizePitch: true }), "top-right");
           map.on("load", () => {
