@@ -18,7 +18,7 @@ Referencias: ISO/IEC 27001 (control de acceso, respaldos, cifrado, trato de los 
 - `default-src 'self'`
 - `script-src 'self'` (sin inline y sin dominios de terceros)
 - `style-src 'self' 'unsafe-inline'` porque Motion escribe estilos en el elemento
-- `img-src 'self' data:` y, para el mapa real, `https://a.basemaps.cartocdn.com` (y b, c, d). No hay iframes de mapas.
+- `img-src 'self' data:` y, para el mapa real, `https://server.arcgisonline.com` (teselas de Esri). No hay iframes de mapas. CARTO quedó fuera: hoy exige clave y muestra «API KEY REQUIRED».
 - `font-src`, `media-src`, `connect-src`, `worker-src` y `manifest-src` en `'self'`
 - `form-action mailto:`
 - `frame-src 'none'` (los videos se reproducen con `<video>` en el mismo origen; no hay iframes de terceros)

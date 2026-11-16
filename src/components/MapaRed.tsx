@@ -16,9 +16,9 @@ const ZONES: readonly { id: string; sites: readonly HospitalId[]; name: Record<L
 ];
 
 const UI = {
-  es: { map: "Mapa de las sedes de Hospital Joya", zones: "Zonas", count: "{n} sedes", page: "Ver la sede", maps: "Cómo llegar", airport: "Aeropuerto", note: "Mapa real: OpenStreetMap y CARTO. Las fichas usan las fotos y direcciones que publica hospitaljoya.com. San Miguel y Cancún están en la coordenada publicada en OpenStreetMap o Nominatim; las demás, en la zona de la dirección publicada." },
-  en: { map: "Map of Hospital Joya locations", zones: "Areas", count: "{n} hospitals", page: "View hospital", maps: "Directions", airport: "Airport", note: "Real map: OpenStreetMap and CARTO. Cards use the photos and addresses published on hospitaljoya.com. San Miguel and Cancún use the OpenStreetMap or Nominatim coordinate; the others use the area of the published address." },
-  fr: { map: "Carte des établissements Hospital Joya", zones: "Secteurs", count: "{n} hôpitaux", page: "Voir l’établissement", maps: "Itinéraire", airport: "Aéroport", note: "Carte réelle : OpenStreetMap et CARTO. Les fiches reprennent les photos et adresses publiées sur hospitaljoya.com. San Miguel et Cancún utilisent la coordonnée OpenStreetMap ou Nominatim ; les autres, la zone de l’adresse publiée." },
+  es: { map: "Mapa de las sedes de Hospital Joya", zones: "Zonas", count: "{n} sedes", page: "Ver la sede", maps: "Cómo llegar", airport: "Aeropuerto", note: "Mapa real: teselas de Esri. Las fichas usan las fotos y direcciones que publica hospitaljoya.com. San Miguel y Cancún están en la coordenada publicada en OpenStreetMap o Nominatim; las demás, en la zona de la dirección publicada." },
+  en: { map: "Map of Hospital Joya locations", zones: "Areas", count: "{n} hospitals", page: "View hospital", maps: "Directions", airport: "Airport", note: "Real map: Esri street tiles. Cards use the photos and addresses published on hospitaljoya.com. San Miguel and Cancún use the OpenStreetMap or Nominatim coordinate; the others use the area of the published address." },
+  fr: { map: "Carte des établissements Hospital Joya", zones: "Secteurs", count: "{n} hôpitaux", page: "Voir l’établissement", maps: "Itinéraire", airport: "Aéroport", note: "Carte réelle : tuiles Esri. Les fiches reprennent les photos et adresses publiées sur hospitaljoya.com. San Miguel et Cancún utilisent la coordonnée OpenStreetMap ou Nominatim ; les autres, la zone de l’adresse publiée." },
 } as const;
 
 function mapsUrl(name: string, address: string) {
@@ -45,10 +45,9 @@ export function MapaRed({ title, headingLevel = 3 }: { title?: string; headingLe
       await import("leaflet/dist/leaflet.css");
       if (cancelled || !mapNode.current) return;
       map = L.map(mapNode.current, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: "abcd",
-        maxZoom: 18,
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+        attribution: 'Teselas © <a href="https://www.esri.com/">Esri</a>',
+        maxZoom: 16,
       }).addTo(map);
       const markers: import("leaflet").Marker[] = [];
       for (const h of HOSPITALS) {
