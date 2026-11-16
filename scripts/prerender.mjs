@@ -1,18 +1,10 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { generateSW } from "workbox-build";
 import { render } from "../dist-ssr/entry-server.js";
-
-const SPECIALTY_PATHS = [
-  "algology", "anesthesiology", "angiology", "cardiology", "bariatric", "cardiothoracic",
-  "endoscopic-surgery", "general-surgery", "maxillofacial", "surgical-oncology", "gyn-oncology",
-  "pediatric-surgery", "plastic", "spine", "gastroenterology", "geriatrics", "gynecology",
-  "hematology", "infectious-disease", "critical-care", "rehab", "internal-medicine", "nephrology",
-  "neonatology", "pulmonology", "neurosurgery", "neurology", "ophthalmology", "oncology", "ent",
-  "pediatrics", "orthopedics", "urology",
-  "dermatology", "endocrinology", "general-practice",
-];
+import { PRERENDER_ROUTES } from "./routes.mjs";
+import { sitemapXml } from "./sitemap.mjs";
 
 const dist = new URL("../dist/", import.meta.url);
 const distDir = fileURLToPath(dist);
@@ -39,33 +31,16 @@ async function writePage(route, filename, lang) {
   writeFileSync(file, page);
 }
 
-const ROUTES = [
-  ["/", "index.html"],
-  ["/hospital-joya", "hospital-joya/index.html"],
-  ["/galeria", "galeria/index.html"],
-  ["/red", "red/index.html"],
-  ...["marina", "riviera", "guadalajara", "sma", "queretaro", "cancun", "playa", "chapala", "penita"].map((id) => [`/red/${id}`, `red/${id}/index.html`]),
-  ["/especialidades", "especialidades/index.html"],
-  ...SPECIALTY_PATHS.map((id) => [`/especialidades/${id}`, `especialidades/${id}/index.html`]),
-  ["/bariatrica", "bariatrica/index.html"],
-  ["/vuelos", "vuelos/index.html"],
-  ["/seguros", "seguros/index.html"],
-  ["/que-es", "que-es/index.html"],
-  ["/canada", "canada/index.html"],
-  ["/preparacion", "preparacion/index.html"],
-  ["/ruta", "ruta/index.html"],
-  ["/comparar", "comparar/index.html"],
-  ["/mapa", "mapa/index.html"],
-  ["/calidad", "calidad/index.html"],
-  ["/equipo", "equipo/index.html"],
-  ["/hospitales", "hospitales/index.html"],
-  ["/privacy", "privacy/index.html"],
-  ["/privacidad", "privacidad/index.html"],
-  ["/terms", "terms/index.html"],
-  ["/terminos", "terminos/index.html"],
-];
+const icoPath = join(distDir, "favicon.ico");
+if (!existsSync(icoPath) || statSync(icoPath).size < 32) {
+  throw new Error("dist/favicon.ico is missing. public/favicon.ico must be a real icon.");
+}
+const robots = readFileSync(join(distDir, "robots.txt"), "utf8");
+if (!robots.includes("Sitemap: https://medelite.com.mx/sitemap.xml")) {
+  throw new Error("dist/robots.txt does not reference the sitemap");
+}
 
-for (const [route, filename] of ROUTES) {
+for (const [route, filename] of PRERENDER_ROUTES) {
   await writePage(route, filename, "en");
   for (const lang of ["es", "en", "fr"]) {
     const prefixed = route === "/" ? `/${lang}` : `/${lang}${route}`;
@@ -75,9 +50,16 @@ for (const [route, filename] of ROUTES) {
 }
 await writePage("/404", "404.html", "en");
 
+const sitemap = sitemapXml(PRERENDER_ROUTES.map(([route]) => route));
+const locs = sitemap.match(/<loc>/g) ?? [];
+if (locs.length !== PRERENDER_ROUTES.length * 3) {
+  throw new Error(`sitemap has ${locs.length} urls, expected ${PRERENDER_ROUTES.length * 3}`);
+}
+writeFileSync(join(distDir, "sitemap.xml"), sitemap);
+
 const sw = await generateSW({
   globDirectory: distDir,
-  globPatterns: ["**/*.{js,css,html,svg,png,webmanifest,ttf,woff2,txt}"],
+  globPatterns: ["**/*.{js,css,html,svg,png,ico,webmanifest,ttf,woff2,txt}"],
   globIgnores: ["**/*.{mp3,map}"],
   swDest: join(distDir, "sw.js"),
   skipWaiting: true,
@@ -87,4 +69,4 @@ const sw = await generateSW({
   navigateFallbackDenylist: [/^\/assets\//],
 });
 
-console.log(`prerendered pages, service worker precache ${sw.count} files`);
+console.log(`prerendered pages, sitemap ${locs.length} urls, service worker precache ${sw.count} files`);

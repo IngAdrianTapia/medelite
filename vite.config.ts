@@ -33,7 +33,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: false,
-      includeAssets: ["assets/brand/favicon-32.png", "assets/brand/apple-touch-icon.png"],
+      includeAssets: ["favicon.ico", "assets/brand/favicon-32.png", "assets/brand/apple-touch-icon.png"],
       manifest: {
         name: "MedElite International Health",
         short_name: "MedElite",
@@ -57,7 +57,7 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         navigateFallback: "index.html",
         navigateFallbackDenylist: [/^\/assets\//],
-        globPatterns: ["**/*.{js,css,html,svg,png,webmanifest,ttf,woff2}"],
+        globPatterns: ["**/*.{js,css,html,svg,png,ico,webmanifest,ttf,woff2}"],
       },
     }),
     {

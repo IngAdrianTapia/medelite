@@ -40,6 +40,7 @@ export function Footer() {
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/hospitales">{lang === "en" ? "For hospitals" : lang === "fr" ? "Pour les hôpitaux" : "Para hospitales"}</Link></li>
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/privacy">{m.nav.privacy}</Link></li>
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/terms">{m.nav.terms}</Link></li>
+            <li><Link className="underline decoration-white/30 underline-offset-4" to="/calidad">{m.calidad.kicker}</Link></li>
             <li><Link className="underline decoration-white/30 underline-offset-4" to="/comparar">{lang === "en" ? "Compare" : lang === "fr" ? "Comparer" : "Comparar"}</Link></li>
           </ul>
           <h2 className="mt-8 text-xs tracking-[0.2em] text-gold-line uppercase">{m.footer.follow}</h2>

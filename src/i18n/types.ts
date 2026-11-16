@@ -8,6 +8,18 @@ export interface LegalSection {
   paragraphs: string[];
 }
 
+export interface QualityItem {
+  n: string;
+  d: string;
+}
+
+export interface QualitySection {
+  code: string;
+  title: string;
+  deck: string;
+  items: QualityItem[];
+}
+
 export interface FaqItem {
   q: string;
   a: string;
@@ -239,5 +251,22 @@ export interface Messages {
   sourcesTitle: string;
   privacy: { kicker: string; title: string; updated: string; sections: LegalSection[] };
   terms: { kicker: string; title: string; updated: string; sections: LegalSection[] };
+  calidad: {
+    kicker: string;
+    title: string;
+    titleAccent: string;
+    lede: string;
+    live: string;
+    seoTitle: string;
+    seoDescription: string;
+    closingBefore: string;
+    closingStrong: string;
+    closingAfter: string;
+    signName: string;
+    signOrg: string;
+    seal: string;
+    dateLabel: string;
+    sections: QualitySection[];
+  };
   notFound: { title: string; body: string; home: string };
 }

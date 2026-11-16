@@ -13,5 +13,6 @@
 | [evidencias/2026-11-15-hero-legible.md](./evidencias/2026-11-15-hero-legible.md) | Ficha del hero legible, el logo móvil y el dock |
 | [evidencias/2026-11-15-fotos-joya.md](./evidencias/2026-11-15-fotos-joya.md) | Ficha de las fotos Joya: selección, peso, trazabilidad y capturas |
 | [evidencias/2026-11-15-plan-maestro.md](./evidencias/2026-11-15-plan-maestro.md) | Ficha del menú, la galería y el catálogo de especialidades |
+| [evidencias/2026-11-16-pendientes-tecnicos.md](./evidencias/2026-11-16-pendientes-tecnicos.md) | Sitemap, favicon, `/calidad` en tres idiomas, anclas de contacto y la foto de San Miguel |
 
 Idiomas del sitio: español (México), inglés (Canadá) y francés (Canadá). El sitio no guarda expedientes de pacientes.

@@ -113,6 +113,7 @@ export function Header() {
       >
         <ul className="grid gap-2">
           <li>
+            {/* Quote questionnaire. The Contact item stays on #orientacion (mail and phone, no clinical form). */}
             <Link to="/#cotizar" className="inline-flex min-h-12 items-center rounded-full bg-gold px-5 text-sm font-semibold text-white" onClick={() => setOpen(false)}>
               {m.hero.ctaQuote}
             </Link>

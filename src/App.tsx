@@ -1,4 +1,4 @@
-import { lazy, Suspense, useLayoutEffect } from "react";
+import { lazy, Suspense, useLayoutEffect, useRef } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router";
 import { ContactDock } from "./components/ContactDock";
 import { Footer } from "./components/Footer";
@@ -50,9 +50,14 @@ function LocaleSync() {
   const { lang, setLang } = useI18n();
   const location = useLocation();
   const navigate = useNavigate();
+  const seenLang = useRef(lang);
   useLayoutEffect(() => {
     const parsed = parseLocalePath(location.pathname);
-    if (parsed.lang && parsed.lang !== lang) {
+    // A language control changes state before the URL. Follow that choice.
+    // A new URL (a link, or Back) still updates the language.
+    const chosen = seenLang.current !== lang;
+    seenLang.current = lang;
+    if (!chosen && parsed.lang && parsed.lang !== lang) {
       setLang(parsed.lang);
       return;
     }
