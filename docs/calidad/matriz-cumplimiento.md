@@ -44,7 +44,7 @@ Detalle en [calidad-datos.md](./calidad-datos.md).
 | --- | --- | --- | --- |
 | Control de acceso | Sin login de pacientes. Secretos fuera de git | Revisión de `.gitignore` y del árbol | No hay `.env` ni llaves. El acceso al repo es de GitHub, no de este código |
 | Respaldos | Git y el artefacto de Pages | Historial del remoto | No hay otro almacén |
-| Cifrado | HTTPS de Pages. CSP con `upgrade-insecure-requests` | Meta CSP en `dist/index.html` | Presente, con `frame-src 'none'` |
+| Cifrado | HTTPS de Pages. CSP con `upgrade-insecure-requests` | Meta CSP en `dist/index.html` | Presente, con `frame-src` limitado a YouTube |
 | Trato de los datos | Contacto y salud fuera de `sessionStorage`. Tarjetas rechazadas en el cuestionario | `wizard.test.ts` y revisión del efecto de guardado | El aviso de privacidad coincide |
 
 ## OWASP
