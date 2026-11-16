@@ -9,7 +9,7 @@ describe("positioning slots", () => {
   });
 
   it("publishes only cities that already have a name", () => {
-    expect(publishedCities().map((city) => city.id)).toEqual(["vancouver"]);
+    expect(publishedCities().map((city) => city.id)).toEqual(["vancouver", "toronto", "calgary", "montreal"]);
     for (const city of CANADA_CITIES) {
       if (city.status === "awaiting-brief") expect(city.label.en).toBe("");
     }

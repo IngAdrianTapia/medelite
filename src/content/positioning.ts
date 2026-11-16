@@ -2,8 +2,8 @@ import type { Lang } from "../i18n/types";
 
 /**
  * Positioning copy lives here so the marketing brief can replace it in one file.
- * Status stays `awaiting-brief` until that brief arrives.
- * Do not fill five-star, Toronto, Calgary, or price-gap claims before then.
+ * Cities (Vancouver, Toronto, Calgary, Montreal) are published by owner decision.
+ * Do not fill five-star or price-gap claims before the brief arrives.
  */
 export const POSITIONING_STATUS = "awaiting-brief" as const;
 
@@ -49,15 +49,16 @@ export const POSITIONING: Record<Lang, { headline: string; fraser: string; mapLa
 };
 
 export interface CitySlot {
-  id: "vancouver" | "toronto" | "calgary";
+  id: "vancouver" | "toronto" | "calgary" | "montreal";
   status: "published" | "awaiting-brief";
   label: Trio;
 }
 
 export const CANADA_CITIES: readonly CitySlot[] = [
   { id: "vancouver", status: "published", label: row("Vancouver", "Vancouver", "Vancouver") },
-  { id: "toronto", status: "awaiting-brief", label: row("", "", "") },
-  { id: "calgary", status: "awaiting-brief", label: row("", "", "") },
+  { id: "toronto", status: "published", label: row("Toronto", "Toronto", "Toronto") },
+  { id: "calgary", status: "published", label: row("Calgary", "Calgary", "Calgary") },
+  { id: "montreal", status: "published", label: row("Montreal", "Montreal", "Montreal") },
 ];
 
 /** Rendered on the Canada page. Empty labels and awaiting-brief cities stay off the site. */
