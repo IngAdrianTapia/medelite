@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { Link } from "react-router";
 import { PhotoCatalog } from "../components/PhotoCatalog";
 import { Seo } from "../components/Seo";
@@ -39,6 +40,7 @@ export function HospitalJoyaPage() {
         <Link className="inline-flex min-h-11 items-center rounded-lg border border-line px-5 text-sm font-semibold text-navy" to="/galeria">{t.gallery}</Link>
       </p>
       <PhotoCatalog mode="sections" />
+      <PageCta />
     </main>
   );
 }

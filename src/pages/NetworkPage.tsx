@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { Link } from "react-router";
 import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
@@ -180,6 +181,9 @@ export function NetworkPage() {
           </Link>
         </p>
       </div>
+      </div>
+      <div className="mx-auto max-w-6xl px-5 pb-20 md:px-8">
+        <PageCta />
       </div>
     </main>
   );

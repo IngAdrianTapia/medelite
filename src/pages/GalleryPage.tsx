@@ -1,3 +1,4 @@
+import { PageCta } from "../components/PageCta";
 import { PhotoCatalog } from "../components/PhotoCatalog";
 import { Seo } from "../components/Seo";
 import { useI18n } from "../i18n";
@@ -30,6 +31,7 @@ export function GalleryPage() {
       <div className="mt-8">
         <PhotoCatalog mode="tabs" />
       </div>
+      <PageCta />
     </main>
   );
 }

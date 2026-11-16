@@ -1,4 +1,5 @@
 import { Seo } from "../components/Seo";
+import { PageCta } from "../components/PageCta";
 import { useI18n } from "../i18n";
 
 export function PreparePage() {
@@ -6,6 +7,10 @@ export function PreparePage() {
   const t = {
     es: {
       title: "Antes de viajar",
+      eyebrow: "Preparación",
+      listTitle: "Lista para el viaje",
+      knowTitle: "Lo que conviene saber",
+      labels: ["Rango", "Pago", "Cancelación", "Acompañante", "Al regresar"],
       checklist: ["Pasaporte vigente", "Lista de medicamentos", "Estudios que ya tenga, sin enviarlos por este formulario", "Teléfono de su aseguradora", "Nombre de su médico de cabecera en Canadá"],
       pay: "Este sitio no cobra. El modelo previsto es un anticipo del 30 % y el resto por transferencia, solo si el acuerdo escrito lo dice. No guardamos números de tarjeta.",
       cancel: "No publicamos un calendario de cancelación. Lo que aplica es el contrato escrito, si usted sigue adelante.",
@@ -15,6 +20,10 @@ export function PreparePage() {
     },
     en: {
       title: "Before you travel",
+      eyebrow: "Preparation",
+      listTitle: "Travel checklist",
+      knowTitle: "Good to know",
+      labels: ["Range", "Payment", "Cancellation", "Companion", "After you return"],
       checklist: ["A valid passport", "A list of medicines", "Studies you already have — do not send them through this form", "Your insurer’s phone number", "Your family doctor’s name in Canada"],
       pay: "This site does not take payment. The intended model is a 30% deposit and the balance by transfer, only if the written agreement says so. We do not store card numbers.",
       cancel: "We do not publish a cancellation schedule. What applies is the written contract, if you proceed.",
@@ -24,6 +33,10 @@ export function PreparePage() {
     },
     fr: {
       title: "Avant le voyage",
+      eyebrow: "Préparation",
+      listTitle: "Liste pour le voyage",
+      knowTitle: "À savoir",
+      labels: ["Fourchette", "Paiement", "Annulation", "Accompagnateur", "Au retour"],
       checklist: ["Passeport valide", "Liste des médicaments", "Examens que vous avez déjà — ne les envoyez pas par ce formulaire", "Téléphone de votre assureur", "Nom de votre médecin de famille au Canada"],
       pay: "Ce site n’encaisse rien. Le modèle prévu est un acompte de 30 % et le solde par virement, seulement si l’entente écrite le dit. Nous ne conservons pas de numéros de carte.",
       cancel: "Nous ne publions pas un calendrier d’annulation. Ce qui s’applique, c’est le contrat écrit, si vous continuez.",
@@ -33,26 +46,38 @@ export function PreparePage() {
     },
   }[lang];
   return (
-    <main id="contenido" className="page-shell">
+    <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.pay} path="/preparacion" />
-      <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-      <ul className="mt-8 grid gap-2 text-sm">
-        {t.checklist.map((item) => (
-          <li key={item} className="rounded-xl border border-line bg-white px-4 py-3">
-            {item}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-6 leading-relaxed">{t.range}</p>
-      <p className="mt-3 leading-relaxed">{t.pay}</p>
-      <p className="mt-3 leading-relaxed">{t.cancel}</p>
-      <p className="mt-3 leading-relaxed">{t.companion}</p>
-      <p className="mt-3 leading-relaxed">{t.after}</p>
-      <p className="mt-6">
-        <a className="underline" href="mailto:info@medeliteofficial.com">
-          info@medeliteofficial.com
-        </a>
-      </p>
+      <p className="eyebrow">{t.eyebrow}</p>
+      <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+      <div className="mt-12 grid gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-14">
+        <section aria-labelledby="lista" className="reveal">
+          <h2 id="lista" className="font-serif text-2xl text-navy md:text-3xl">{t.listTitle}</h2>
+          <ol className="mt-6 divide-y divide-line rounded-2xl border border-line bg-white">
+            {t.checklist.map((item, i) => (
+              <li key={item} className="flex items-start gap-4 px-5 py-4 text-[15px] text-ink">
+                <span aria-hidden="true" className="mt-0.5 font-serif text-lg leading-none text-teal">{String(i + 1).padStart(2, "0")}</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <section aria-labelledby="saber" className="reveal">
+          <h2 id="saber" className="font-serif text-2xl text-navy md:text-3xl">{t.knowTitle}</h2>
+          <dl className="mt-6 divide-y divide-line border-y border-line">
+            {[t.range, t.pay, t.cancel, t.companion, t.after].map((text, i) => (
+              <div key={t.labels[i]} className="grid gap-1 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6">
+                <dt className="text-xs font-semibold tracking-[0.14em] text-teal uppercase">{t.labels[i]}</dt>
+                <dd className="text-[15px] leading-relaxed text-muted">{text}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 text-[15px]">
+            <a className="link-line text-navy" href="mailto:info@medeliteofficial.com">info@medeliteofficial.com</a>
+          </p>
+        </section>
+      </div>
+      <PageCta />
     </main>
   );
 }
