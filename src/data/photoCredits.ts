@@ -246,7 +246,7 @@ export function portraitOf(id: string): PhotoCredit | undefined {
 
 /** Largest file of each photo in this repo, for the full-screen gallery view. */
 export const PHOTO_LARGEST: Record<string, string> = {
-  marina: "marina-1280.webp",
+  marina: "marina-1600.webp",
   riviera: "riviera-837.webp",
   guadalajara: "guadalajara-1280.webp",
   sma: "sma-1280.webp",
