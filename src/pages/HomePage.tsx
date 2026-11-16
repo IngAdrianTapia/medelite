@@ -130,10 +130,10 @@ export function HomePage() {
         <HeroVideo pauseLabel={v.pause} playLabel={v.play} />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,22,38,.88)_0%,rgba(0,22,38,.55)_55%,rgba(0,22,38,.05)_100%)] md:bg-[linear-gradient(90deg,rgba(0,22,38,.86)_0%,rgba(0,22,38,.5)_45%,rgba(0,22,38,0)_80%)]" aria-hidden="true" />
         <div className="relative z-10 w-full pt-12 pb-16 md:py-24" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }}>
-          <p className="text-[12px] font-semibold tracking-[0.22em] text-white/80 uppercase">Vancouver · México</p>
-          <h1 className="mt-4 max-w-[15ch] font-serif text-[2.6rem] leading-[1.02] sm:text-6xl xl:text-[5.4rem]">{copy.headline}</h1>
-          <p className="mt-5 max-w-[34rem] text-[17px] leading-snug text-white/85 md:text-lg">{m.hero.title}.</p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <p className="hero-in text-[12px] font-semibold tracking-[0.22em] text-white/80 uppercase" style={{ animationDelay: "80ms" }}>Vancouver · México</p>
+          <h1 className="hero-in mt-4 max-w-[15ch] font-serif text-[2.6rem] leading-[1.02] sm:text-6xl xl:text-[5.4rem]" style={{ animationDelay: "180ms" }}>{copy.headline}</h1>
+          <p className="hero-in mt-5 max-w-[34rem] text-[17px] leading-snug text-white/85 md:text-lg" style={{ animationDelay: "300ms" }}>{m.hero.title}.</p>
+          <div className="hero-in mt-8 flex flex-wrap items-center gap-3" style={{ animationDelay: "420ms" }}>
             <a href="#cotizar" className="btn btn-primary min-h-14 px-8 text-base">
               {m.hero.ctaQuote} <span className="arrow" aria-hidden="true">→</span>
             </a>
@@ -142,8 +142,9 @@ export function HomePage() {
               {v.watch}
             </a>
           </div>
-          <Link to="/red/marina" className="mt-10 inline-block text-[13px] text-white/70 underline-offset-4 hover:underline">{v.site} · Puerto Vallarta</Link>
+          <Link to="/red/marina" className="hero-in mt-10 inline-block text-[13px] text-white/70 underline-offset-4 hover:underline" style={{ animationDelay: "540ms" }}>{v.site} · Puerto Vallarta</Link>
         </div>
+        <span className="scroll-cue hidden md:block" aria-hidden="true" />
       </section>
 
       <section aria-labelledby="explorar" className="bg-white py-14 md:py-20">
