@@ -7,17 +7,19 @@ import { defineConfig } from "vitest/config";
 /** Motion sets element styles, so style-src allows inline styles.
  * script-src stays 'self': no inline scripts and no third-party script hosts.
  * frame-ancestors is omitted: a meta CSP ignores it. GitHub Pages cannot set it as a header.
+ * Map: style, vector tiles, glyphs and sprites from tiles.openfreemap.org; on-demand car route from
+ * routing.openstreetmap.de (only after the visitor allows location). MapLibre may build its worker from a blob.
  * frame-src is 'none': videos play from this origin with HTML5 <video>, not frames.
  */
 const CSP = [
   "default-src 'self'",
   "script-src 'self'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://server.arcgisonline.com",
+  "img-src 'self' data: blob: https://tiles.openfreemap.org",
   "font-src 'self'",
   "media-src 'self'",
-  "connect-src 'self'",
-  "worker-src 'self'",
+  "connect-src 'self' https://tiles.openfreemap.org https://routing.openstreetmap.de",
+  "worker-src 'self' blob:",
   "manifest-src 'self'",
   "form-action mailto:",
   "frame-src 'none'",
@@ -58,6 +60,8 @@ export default defineConfig({
         navigateFallback: "index.html",
         navigateFallbackDenylist: [/^\/assets\//],
         globPatterns: ["**/*.{js,css,html,svg,png,ico,webmanifest,ttf,woff2}"],
+        // MapLibre (~300 KiB gzip) and brand logos load only when the map is seen; do not precache them.
+        globIgnores: ["**/maplibre*", "**/assets/logos/**"],
       },
     }),
     {
@@ -77,7 +81,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          if (id.includes("/src/data/sedePois")) return "map-references";
           if (!id.includes("node_modules")) return;
+          if (id.includes("maplibre")) return "maplibre";
           if (id.includes("motion")) return "motion";
           if (id.includes("react-dom") || id.includes("react-router") || id.includes("/react/")) return "react";
         },
