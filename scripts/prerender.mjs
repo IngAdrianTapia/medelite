@@ -12,7 +12,23 @@ const template = readFileSync(new URL("index.html", dist), "utf8");
 
 const HTML_LANG = { es: "es-MX", en: "en-CA", fr: "fr-CA" };
 
-async function writePage(route, filename, lang) {
+const SITE = "https://medelite.com.mx";
+
+/** Canonical, hreflang alternates and og:url of one page, so crawlers that read the static
+ * HTML see the same language links the browser sets after hydration. */
+function localizeHead(page, bare, lang) {
+  const suffix = bare === "/" ? "" : bare;
+  const url = (id) => `${SITE}/${id}${suffix}`;
+  return page
+    .replace(/<link rel="canonical" href="[^"]*"/, `<link rel="canonical" href="${url(lang)}"`)
+    .replace(/(<link rel="alternate" hreflang="es-MX" href=")[^"]*"/, `$1${url("es")}"`)
+    .replace(/(<link rel="alternate" hreflang="en-CA" href=")[^"]*"/, `$1${url("en")}"`)
+    .replace(/(<link rel="alternate" hreflang="fr-CA" href=")[^"]*"/, `$1${url("fr")}"`)
+    .replace(/(<link rel="alternate" hreflang="x-default" href=")[^"]*"/, `$1${url("en")}"`)
+    .replace(/(<meta property="og:url" content=")[^"]*"/, `$1${url(lang)}"`);
+}
+
+async function writePage(route, filename, lang, bare = route) {
   const html = await render(route, lang);
   // Fail the build if a lazy route regresses to the Suspense placeholder.
   const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? "";
@@ -20,7 +36,12 @@ async function writePage(route, filename, lang) {
     throw new Error(`Static page has no real heading: ${route} (${lang})`);
   }
   const marker = route === "/404" ? "404" : route;
-  const page = template
+  const head = route === "/404" ? template : localizeHead(template, bare, lang);
+  const want = `${SITE}/${lang}${bare === "/" ? "" : bare}`;
+  if (route !== "/404" && !head.includes(`<link rel="canonical" href="${want}"`)) {
+    throw new Error(`Static canonical not localized: ${route} (${lang})`);
+  }
+  const page = head
     .replace(/<html lang="[^"]*">/, `<html lang="${HTML_LANG[lang]}">`)
     .replace(
       '<div id="root"></div>',
@@ -45,7 +66,7 @@ for (const [route, filename] of PRERENDER_ROUTES) {
   for (const lang of ["es", "en", "fr"]) {
     const prefixed = route === "/" ? `/${lang}` : `/${lang}${route}`;
     const file = route === "/" ? `${lang}/index.html` : `${lang}/${filename}`;
-    await writePage(prefixed, file, lang);
+    await writePage(prefixed, file, lang, route);
   }
 }
 await writePage("/404", "404.html", "en");

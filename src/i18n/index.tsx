@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { en } from "./en";
 import { es } from "./es";
 import { fr } from "./fr";
-import { detectNavigatorLanguage, parseLocalePath } from "./locale";
+import { DEFAULT_LANG, parseLocalePath } from "./locale";
 import type { Lang, Messages } from "./types";
 
 export function messagesFor(lang: Lang): Messages {
@@ -28,8 +28,9 @@ export function readLang(): Lang {
   } catch {
     /* private mode */
   }
-  const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
-  return detectNavigatorLanguage(languages);
+  // The audience is Canadian: a first visit with no saved choice always opens in English,
+  // whatever the browser language (es-MX included). ES and FR stay one click away.
+  return DEFAULT_LANG;
 }
 
 interface I18nValue {
