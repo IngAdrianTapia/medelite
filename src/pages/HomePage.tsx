@@ -245,7 +245,7 @@ export function HomePage() {
             <p className="mt-6 text-[17px] leading-relaxed text-muted">{home.videoDeck}</p>
           </div>
           <div className="reveal lg:col-span-8">
-            <VideoEmbed id="snmjJQDhDJI" title="Hospital Joya. Video institucional" poster="/assets/video/joya-institucional" />
+            <VideoEmbed src="/assets/video/joya-institucional" title="Hospital Joya. Video institucional" poster="/assets/video/joya-institucional" />
           </div>
         </div>
       </section>

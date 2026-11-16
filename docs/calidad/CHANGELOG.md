@@ -1,5 +1,9 @@
 # Changelog de calidad
 
+## 2026-11-16 — videos HTML5, sin YouTube
+
+Los dos videos institucionales de Hospital Joya se alojan en el sitio y se reproducen con un `<video>` propio (póster, botón y controles discretos). La CSP vuelve a `frame-src 'none'`. Ficha: [evidencias/2026-11-16-videos-html5.md](./evidencias/2026-11-16-videos-html5.md).
+
 ## 2026-11-16 — pendientes técnicos de publicación
 
 Sitemap, favicon, `/calidad` en es-MX, en-CA y fr-CA, y holgura en `sma-1280.webp`. No se tocó marketing, posicionamiento, médicos ni especialidades. El issue #5 ya no se reproduce; no se cerró desde aquí. Ficha: [evidencias/2026-11-16-pendientes-tecnicos.md](./evidencias/2026-11-16-pendientes-tecnicos.md).

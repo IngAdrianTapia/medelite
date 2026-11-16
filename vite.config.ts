@@ -7,8 +7,7 @@ import { defineConfig } from "vitest/config";
 /** Motion sets element styles, so style-src allows inline styles.
  * script-src stays 'self': no inline scripts and no third-party script hosts.
  * frame-ancestors is omitted: a meta CSP ignores it. GitHub Pages cannot set it as a header.
- * frame-src allows only YouTube's privacy-enhanced embed hosts. VideoEmbed inserts
- * the iframe after the visitor clicks play, so no third-party frame loads on first paint.
+ * frame-src is 'none': videos play from this origin with HTML5 <video>, not frames.
  */
 const CSP = [
   "default-src 'self'",
@@ -21,7 +20,7 @@ const CSP = [
   "worker-src 'self'",
   "manifest-src 'self'",
   "form-action mailto:",
-  "frame-src https://www.youtube-nocookie.com https://www.youtube.com",
+  "frame-src 'none'",
   "base-uri 'self'",
   "object-src 'none'",
   "upgrade-insecure-requests",

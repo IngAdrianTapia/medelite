@@ -121,7 +121,7 @@ export function HospitalPage() {
       {hospital.id === "marina" ? (
         <section aria-label={g.video} className="mx-auto max-w-[1200px] px-5 pb-16 md:px-8 md:pb-24">
           <div className="mx-auto max-w-4xl">
-            <VideoEmbed id="TnKV07KzkHk" title="La importancia de la Sala de Hemodinamia. Hospital Joya Marina Vallarta" poster="/assets/video/joya-hemodinamia" />
+            <VideoEmbed src="/assets/video/joya-hemodinamia" title="La importancia de la Sala de Hemodinamia. Hospital Joya Marina Vallarta" poster="/assets/video/joya-hemodinamia" />
           </div>
         </section>
       ) : null}
