@@ -2,7 +2,7 @@
 
 ## 2026-11-16 — video instantáneo, mapa real y correo en el iPhone
 
-Los videos recortan la intro y el cierre en navy/negro, arrancan con un fotograma real y un póster que no se quita hasta que hay imagen, y en móvil 720 px usan un archivo 720p más ligero, con `faststart`. El institucional puede ir en bucle silenciado. Se quita el contorno ilustrado de México: la red se ve con fotos reales, como en hospitaljoya.com, y un mapa real de OpenStreetMap/CARTO. El botón Correo, en el iPhone, abre un redactor que lanza el correo del aparato (el `mailto` por formulario GET no abría nada). Sigue sin YouTube; `frame-src 'none'` y `media-src 'self'`. El mapa añade solo los tiles de CARTO a `img-src`.
+Los videos recortan la intro y el cierre en navy/negro, arrancan con un fotograma real y un póster que no se quita hasta que hay imagen, y en móvil 720 px usan un archivo 720p más ligero, con `faststart`. El institucional puede ir en bucle silenciado. Se quita el contorno ilustrado de México: la red se ve con fotos reales, como en hospitaljoya.com, y un mapa real de OpenStreetMap/CARTO. El botón Correo, en el iPhone, abre un redactor que lanza el correo del aparato (el `mailto` por formulario GET no abría nada). Sigue sin YouTube; `frame-src 'none'` y `media-src 'self'`. El mapa añade solo los tiles de CARTO a `img-src`. El presupuesto de JS gzip total pasa a 330 KB por Leaflet, que se carga solo en el mapa.
 
 
 ## 2026-11-16 — pie del video de hemodinamia

@@ -3,11 +3,11 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { gzipSync } from "node:zlib";
 
-/** Gzip budgets measured on 2026-11-15 after splitting react and motion.
- * JS max was 78,151 and the JS total was 218,870. Photo max was 126,016.
+/** Gzip budgets. 2026-11-16: Leaflet (mapa real, import dinámico, ~43 KiB gzip)
+ * sube el total. El tope por archivo se mantiene. Photo max was 126,016.
  */
 const MAX_JS_GZIP = 90_000;
-const TOTAL_JS_GZIP = 280_000;
+const TOTAL_JS_GZIP = 330_000;
 const MAX_PHOTO_BYTES = 140_000;
 
 const dist = fileURLToPath(new URL("../dist/", import.meta.url));
