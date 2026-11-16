@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router";
+import { FacilityPhoto } from "../components/FacilityPhoto";
 import { Seo } from "../components/Seo";
+import { PHOTO_OF } from "../i18n/labels";
 import { personRole } from "../data/personRoles";
 import { PEOPLE } from "../data/people";
 import { HOSPITALS, type HospitalId } from "../data/hospitals";
@@ -193,6 +195,55 @@ const LINES: Record<LineId, Record<Lang, string>> = {
   checkup: { es: "Chequeo ejecutivo", en: "Executive check-up", fr: "Bilan exécutif" },
 };
 
+
+const STEP_PHOTO: Partial<Record<"depart" | "transfer" | "preop" | "surgery" | "hospital" | "hotel" | "fit-to-fly" | "return" | "aftercare", string>> = {
+  depart: "marina-street",
+  transfer: "marina",
+  preop: "cancun-ct",
+  surgery: "operating-room",
+  hospital: "patient-room",
+  hotel: "playa",
+  "fit-to-fly": "cancun-room",
+  return: "chapala",
+  aftercare: "queretaro-tower",
+};
+
+const STEP_CAP = {
+  es: {
+    depart: "Acceso a Hospital Joya Marina Vallarta. El boleto lo compra usted, salvo que el acuerdo escrito diga otra cosa.",
+    transfer: "Hospital Joya Marina Vallarta. El traslado entra en Essential y Executive.",
+    preop: "Sala de tomografía en Hospital Joya Cancún. Los estudios se hacen en la sede del plan.",
+    surgery: "Quirófano publicado por Grupo Médico Joya. El acto médico ocurre en México.",
+    hospital: "Habitación en una sede Joya.",
+    hotel: "Hospital Joya Playa del Carmen. El hotel de recuperación lo confirma el plan escrito.",
+    "fit-to-fly": "Habitación en Hospital Joya Cancún. La aptitud para volar la valora el cirujano.",
+    return: "Hospital Joya Chapala. El vuelo de regreso lo confirma usted con la aerolínea.",
+    aftercare: "Hospital Joya Querétaro. El seguimiento por video es ya en Canadá.",
+  },
+  en: {
+    depart: "Entrance to Hospital Joya Marina Vallarta. You buy the ticket, unless the written agreement says otherwise.",
+    transfer: "Hospital Joya Marina Vallarta. The transfer is included in Essential and Executive.",
+    preop: "A CT room at Hospital Joya Cancún. The studies are done at the hospital in the plan.",
+    surgery: "An operating room published by Grupo Médico Joya. The medical act takes place in Mexico.",
+    hospital: "A room at a Joya hospital.",
+    hotel: "Hospital Joya Playa del Carmen. The recovery hotel is confirmed in the written plan.",
+    "fit-to-fly": "A room at Hospital Joya Cancún. Fitness to fly is assessed by the surgeon.",
+    return: "Hospital Joya Chapala. You confirm the return flight with the airline.",
+    aftercare: "Hospital Joya Querétaro. The video follow-up takes place once you are back in Canada.",
+  },
+  fr: {
+    depart: "Accès à l’Hospital Joya Marina Vallarta. Vous achetez le billet, sauf si l’entente écrite dit autre chose.",
+    transfer: "Hospital Joya Marina Vallarta. Le transfert est inclus dans Essential et Executive.",
+    preop: "Salle de tomodensitométrie à l’Hospital Joya Cancún. Les examens se font à l’établissement du plan.",
+    surgery: "Salle d’opération publiée par Grupo Médico Joya. L’acte médical a lieu au Mexique.",
+    hospital: "Chambre dans un établissement Joya.",
+    hotel: "Hospital Joya Playa del Carmen. L’hôtel de récupération est confirmé dans le plan écrit.",
+    "fit-to-fly": "Chambre à l’Hospital Joya Cancún. L’aptitude à voler est évaluée par le chirurgien.",
+    return: "Hospital Joya Chapala. Vous confirmez le vol de retour auprès de la compagnie aérienne.",
+    aftercare: "Hospital Joya Querétaro. Le suivi par vidéo se fait une fois de retour au Canada.",
+  },
+} as const;
+
 export function RoutePage() {
   const { lang } = useI18n();
   const t = COPY[lang];
@@ -225,10 +276,18 @@ export function RoutePage() {
   return (
     <main id="contenido" className="print:max-w-none">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
-      <header className="border-b border-line bg-white px-5 pt-14 pb-14 md:px-8 md:pt-20">
-        <p className="mx-auto max-w-[1136px] eyebrow">{t.kicker}</p>
-        <h1 className="mx-auto mt-5 max-w-[1136px] font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-        <p className="mx-auto mt-6 max-w-[1136px] text-[17px] leading-relaxed text-muted"><span className="block max-w-2xl">{t.deck}</span></p>
+      <header className="border-b border-line bg-white">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-10 px-5 py-14 md:px-8 md:py-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
+          <div>
+            <p className="eyebrow">{t.kicker}</p>
+            <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+            <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-muted">{t.deck}</p>
+          </div>
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-soft" data-gallery="ruta">
+            <FacilityPhoto name="marina-street" fill alt={PHOTO_OF["marina-street"]?.[lang] ?? t.title} sizes="(min-width: 1024px) 34rem, 100vw" />
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 to-transparent px-5 pt-16 pb-4 text-sm text-white">{STEP_CAP[lang].depart}</figcaption>
+          </figure>
+        </div>
       </header>
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
       <form className="grid h-fit gap-3 rounded-2xl bg-white p-6 shadow-premium print:hidden" onSubmit={(event) => event.preventDefault()}>
@@ -263,16 +322,27 @@ export function RoutePage() {
       </form>
 
       <ol id="itinerario" className="divide-y divide-line rounded-3xl border border-line bg-white">
-        {steps.map((step, index) => (
-          <li key={step.id} className="grid grid-cols-[3.25rem_1fr] items-baseline gap-4 px-6 py-5">
-            <span className="font-serif text-3xl leading-none text-teal">{String(index + 1).padStart(2, "0")}</span>
-            <p className="text-[17px] leading-relaxed text-ink">{t.steps[step.id]}</p>
-          </li>
-        ))}
+        {steps.map((step, index) => {
+          const photo = STEP_PHOTO[step.id];
+          return (
+            <li key={step.id} className="grid gap-4 px-5 py-5 sm:grid-cols-[3.25rem_1fr] sm:items-start md:px-6">
+              <span className="font-serif text-3xl leading-none text-teal">{String(index + 1).padStart(2, "0")}</span>
+              <div className="grid gap-4 sm:grid-cols-[1fr_minmax(8rem,11rem)] sm:items-center">
+                <p className="text-[17px] leading-relaxed text-ink">{t.steps[step.id]}</p>
+                {photo ? (
+                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-soft" data-gallery="ruta">
+                    <FacilityPhoto name={photo} fill alt={PHOTO_OF[photo]?.[lang] ?? STEP_CAP[lang][step.id]} sizes="11rem" />
+                    <figcaption className="sr-only">{STEP_CAP[lang][step.id]}</figcaption>
+                  </figure>
+                ) : null}
+              </div>
+            </li>
+          );
+        })}
       </ol>
       </div>
 
-      <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-16">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-28">
       <section id="match" className="mt-10 rounded-2xl border border-line bg-white shadow-glass p-5">
         <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.match}</h2>
         <p className="mt-3 leading-relaxed">{t.why[match.why]}</p>

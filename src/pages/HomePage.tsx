@@ -25,12 +25,12 @@ export function HomePage() {
   const home = HOME_COPY[lang];
   const galleryRef = useRef<HTMLUListElement>(null);
   const [edge, setEdge] = useState({ start: true, end: false });
-  const onGalleryScroll = () => {
+  const syncGalleryEdge = () => {
     const el = galleryRef.current;
     if (!el) return;
-    const start = el.scrollLeft < 8;
+    const start = el.scrollLeft <= 8;
     const end = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
-    if (start !== edge.start || end !== edge.end) setEdge({ start, end });
+    setEdge((prev) => (prev.start === start && prev.end === end ? prev : { start, end }));
   };
   const scrollGallery = (dir: number) => {
     const el = galleryRef.current;
@@ -68,6 +68,25 @@ export function HomePage() {
     const el = document.getElementById(hash.slice(1));
     el?.scrollIntoView();
   }, [hash]);
+
+  useEffect(() => {
+    const el = galleryRef.current;
+    if (!el) return;
+    const sync = () => syncGalleryEdge();
+    sync();
+    el.addEventListener("scroll", sync, { passive: true });
+    const observer = new ResizeObserver(sync);
+    observer.observe(el);
+    const images = [...el.querySelectorAll("img")];
+    images.forEach((img) => img.addEventListener("load", sync));
+    window.addEventListener("resize", sync);
+    return () => {
+      el.removeEventListener("scroll", sync);
+      observer.disconnect();
+      images.forEach((img) => img.removeEventListener("load", sync));
+      window.removeEventListener("resize", sync);
+    };
+  }, []);
 
   return (
     <main id="contenido">
@@ -268,7 +287,7 @@ export function HomePage() {
             <Link to="/galeria" className="btn btn-ghost ml-2 hidden sm:inline-flex">{home.galleryAll}</Link>
           </div>
         </div>
-        <ul ref={galleryRef} onScroll={onGalleryScroll} data-gallery="inicio" className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-6" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))", scrollPaddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }} aria-label={home.galleryTitle}>
+        <ul ref={galleryRef} onScroll={syncGalleryEdge} data-gallery="inicio" className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-6" style={{ paddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))", scrollPaddingInline: "max(1.25rem, calc((100vw - 1136px) / 2))" }} aria-label={home.galleryTitle}>
           {GALLERY_STRIP.map((id, index) => (
             <li key={id} className={`zoom-img relative shrink-0 snap-start overflow-hidden rounded-3xl bg-soft ${index % 3 === 0 ? "aspect-[4/5] w-[78vw] sm:w-[22rem]" : "aspect-[4/5] w-[70vw] sm:w-[19rem]"}`}>
               <FacilityPhoto name={id} fill alt={PHOTO_OF[id]?.[lang] ?? ""} sizes="(min-width: 640px) 22rem, 78vw" />
