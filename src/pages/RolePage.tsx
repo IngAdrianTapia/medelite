@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { PageCta } from "../components/PageCta";
 import { Seo } from "../components/Seo";
 import { useI18n } from "../i18n";
 
@@ -36,30 +36,21 @@ export function RolePage() {
       ],
     },
   }[lang];
-  const cta = lang === "fr" ? "Demander une soumission" : lang === "en" ? "Request a quote" : "Solicitar cotización";
+  const eyebrow = { es: "Nuestro papel", en: "Our role", fr: "Notre rôle" }[lang];
   return (
-    <main id="contenido" className="bg-white text-ink">
+    <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.points[0] ?? t.title} path="/que-es" />
-      <header className="border-b border-line bg-ivory">
-        <div className="mx-auto max-w-[1200px] px-5 pt-12 pb-12 md:px-8 md:pt-16">
-          <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-          <p className="mt-6">
-            <Link className="inline-flex min-h-12 items-center rounded-lg bg-gold px-6 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
-              {cta}
-            </Link>
-          </p>
-        </div>
-      </header>
-      <div className="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-16">
-        <ol className="grid gap-4 md:grid-cols-2">
-          {t.points.map((point, index) => (
-            <li key={point} className="flex gap-4 rounded-2xl border border-line bg-white p-6 shadow-premium">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-soft text-sm font-bold text-gold">{String(index + 1).padStart(2, "0")}</span>
-              <p className="text-[17px] leading-relaxed text-ink">{point}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <p className="eyebrow">{eyebrow}</p>
+      <h1 className="mt-5 max-w-[48rem] font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+      <ol className="mt-14 divide-y divide-line border-y border-line">
+        {t.points.map((point, index) => (
+          <li key={point} className="reveal grid gap-3 py-8 md:grid-cols-[8rem_1fr] md:gap-10 md:py-10">
+            <span aria-hidden="true" className="font-serif text-5xl leading-none text-teal/70">{String(index + 1).padStart(2, "0")}</span>
+            <p className="max-w-[44rem] font-serif text-2xl leading-snug text-navy md:text-[1.9rem]">{point}</p>
+          </li>
+        ))}
+      </ol>
+      <PageCta />
     </main>
   );
 }

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { Seo } from "../components/Seo";
 import { personRole } from "../data/personRoles";
 import { PEOPLE } from "../data/people";
@@ -225,10 +225,10 @@ export function RoutePage() {
   return (
     <main id="contenido" className="print:max-w-none">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
-      <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
-        <p className="mx-auto max-w-[1136px] text-xs tracking-[0.22em] text-gold uppercase">{t.kicker}</p>
-        <h1 className="mx-auto mt-3 max-w-[1136px] font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-muted">{t.deck}</p>
+      <header className="border-b border-line bg-white px-5 pt-14 pb-14 md:px-8 md:pt-20">
+        <p className="mx-auto max-w-[1136px] eyebrow">{t.kicker}</p>
+        <h1 className="mx-auto mt-5 max-w-[1136px] font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
+        <p className="mx-auto mt-6 max-w-[1136px] text-[17px] leading-relaxed text-muted"><span className="block max-w-2xl">{t.deck}</span></p>
       </header>
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
       <form className="grid h-fit gap-3 rounded-2xl bg-white p-6 shadow-premium print:hidden" onSubmit={(event) => event.preventDefault()}>
@@ -262,11 +262,11 @@ export function RoutePage() {
         </label>
       </form>
 
-      <ol id="itinerario" className="border-l-2 border-gold pl-6">
+      <ol id="itinerario" className="divide-y divide-line rounded-3xl border border-line bg-white">
         {steps.map((step, index) => (
-          <li key={step.id} className="relative pb-8">
-            <p className="font-serif text-2xl text-gold">{String(index + 1).padStart(2, "0")}</p>
-            <p className="mt-1 text-lg">{t.steps[step.id]}</p>
+          <li key={step.id} className="grid grid-cols-[3.25rem_1fr] items-baseline gap-4 px-6 py-5">
+            <span className="font-serif text-3xl leading-none text-teal">{String(index + 1).padStart(2, "0")}</span>
+            <p className="text-[17px] leading-relaxed text-ink">{t.steps[step.id]}</p>
           </li>
         ))}
       </ol>
@@ -291,10 +291,19 @@ export function RoutePage() {
       </section>
 
       <section className="mt-6 rounded-2xl bg-paper p-5">
-        {quote.band ? <p>{t.cost}: CAD {quote.band.low.toLocaleString("en-CA")} – {quote.band.high.toLocaleString("en-CA")}</p> : null}
+        {quote.band ? (
+          <p className="text-[17px] text-ink">
+            {t.cost}
+            {lang === "fr" ? "\u202f: " : ": "}
+            <span className="font-serif text-2xl text-navy">
+              {quote.band.low.toLocaleString(lang === "fr" ? "fr-CA" : "en-CA")} – {quote.band.high.toLocaleString(lang === "fr" ? "fr-CA" : "en-CA")}
+              {lang === "fr" ? "\u00a0$" : " $"}
+            </span>
+          </p>
+        ) : null}
         <p className="mt-3 text-sm text-muted">{t.flight}: {t.total}.</p>
         <p className="mt-3">
-          <a className="inline-flex min-h-12 items-center rounded-lg bg-gold px-5 text-sm font-semibold text-white hover:bg-navy" href="/#cotizar">{t.cta}</a>
+          <Link className="btn btn-primary min-h-12 px-7" to={{ pathname: "/", hash: "#cotizar" }}>{t.cta} <span className="arrow" aria-hidden="true">→</span></Link>
         </p>
       </section>
 

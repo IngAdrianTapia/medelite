@@ -7,7 +7,7 @@ export function SalesContact() {
     <section id="orientacion" className="border-b border-line bg-white px-5 md:px-8 py-12 md:py-16" aria-labelledby="orientacion-title">
       <div className="mx-auto grid max-w-[1136px] gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{m.sales.kicker}</p>
+          <p className="eyebrow">{m.sales.kicker}</p>
           <h2 id="orientacion-title" className="mt-3 max-w-2xl font-serif text-2xl leading-tight text-navy md:text-4xl">{m.sales.title}</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">{m.sales.body}</p>
         </div>

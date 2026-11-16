@@ -86,7 +86,7 @@ export function NetworkPage() {
       <Seo title={`${intro.title} — MedElite`} description={intro.deck} path="/red" />
       <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
         <div className="mx-auto max-w-[1136px]">
-          <p className="text-xs tracking-[0.22em] text-gold uppercase">{intro.kicker}</p>
+          <p className="eyebrow">{intro.kicker}</p>
           <h1 className="mt-3 max-w-4xl font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{intro.title}</h1>
           <p className="mt-5 max-w-2xl text-lg text-muted">{intro.deck}</p>
           <p className="mt-3 max-w-2xl text-sm text-muted">{intro.hours}</p>

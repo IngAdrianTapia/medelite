@@ -32,13 +32,19 @@ export function HospitalJoyaPage() {
   return (
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/hospital-joya" />
-      <p className="text-xs font-semibold tracking-[0.18em] text-gold uppercase">{t.kicker}</p>
-      <h1 className="mt-3 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
-      <p className="mt-4 max-w-2xl leading-relaxed text-muted">{t.deck}</p>
-      <p className="mt-6 flex flex-wrap gap-3">
-        <Link className="inline-flex min-h-11 items-center rounded-lg bg-navy px-5 text-sm font-semibold text-white" to="/red">{t.sedes}</Link>
-        <Link className="inline-flex min-h-11 items-center rounded-lg border border-line px-5 text-sm font-semibold text-navy" to="/galeria">{t.gallery}</Link>
-      </p>
+      <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-end">
+        <div>
+          <p className="eyebrow">{t.kicker}</p>
+          <h1 className="mt-5 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-7xl">{t.title}</h1>
+        </div>
+        <div>
+          <p className="max-w-[36rem] text-[17px] leading-relaxed text-muted">{t.deck}</p>
+          <p className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-[15px] font-medium">
+            <Link className="link-line text-navy" to="/red">{t.sedes} <span aria-hidden="true">→</span></Link>
+            <Link className="link-line text-navy" to="/galeria">{t.gallery} <span aria-hidden="true">→</span></Link>
+          </p>
+        </div>
+      </div>
       <PhotoCatalog mode="sections" />
       <PageCta />
     </main>

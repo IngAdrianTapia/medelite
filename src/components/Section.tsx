@@ -28,7 +28,7 @@ export function Section({
 
 export function Kicker({ children }: { children: ReactNode }) {
   return (
-    <p className="text-xs font-semibold tracking-[0.22em] text-gold uppercase">
+    <p className="eyebrow">
       <span className="mr-3 inline-block h-px w-8 translate-y-[-0.3em] bg-gold-line align-middle" aria-hidden="true" />
       {children}
     </p>
