@@ -11,7 +11,6 @@ const PHOTO_FOR: Partial<Record<(typeof PUBLIC_SPECIALTIES)[number], string>> = 
   cardiology: "marina",
   gynecology: "riviera",
   orthopedics: "operating-room",
-  ophthalmology: "cancun",
   urology: "guadalajara",
   pediatrics: "penita",
   "general-surgery": "operating-room",
