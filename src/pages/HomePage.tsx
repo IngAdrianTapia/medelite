@@ -3,6 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { Link, useLocation } from "react-router";
 import { AsistenciaIA } from "../components/AsistenciaIA";
 import { MapaSedes } from "../components/MapaSedes";
+import { Testimonios } from "../components/Testimonios";
 import { MexicoMap } from "../components/MexicoMap";
 import { QuoteWizard } from "../components/QuoteWizard";
 import { RecorridoPaciente } from "../components/RecorridoPaciente";
@@ -309,6 +310,8 @@ export function HomePage() {
           <AsistenciaIA />
         </div>
       </div>
+
+      <Testimonios />
 
       <section id="faq" className="bg-navy px-5 py-24 text-white">
         <div className="mx-auto max-w-3xl">

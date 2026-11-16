@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FacilityPhoto } from "./FacilityPhoto";
+import { Lightbox } from "./Lightbox";
 import { GALLERY_ITEMS, type PhotoCategory } from "../data/photoCredits";
 import { PHOTO_OF } from "../i18n/labels";
 import { useI18n } from "../i18n";
@@ -40,6 +41,8 @@ export function PhotoCatalog({ mode }: { mode: "tabs" | "sections" }) {
   const { lang } = useI18n();
   const t = COPY[lang];
   const [active, setActive] = useState<PhotoCategory | "all">("all");
+  const [open, setOpen] = useState<{ ids: string[]; index: number } | null>(null);
+  const enlarge = { es: "Ampliar foto", en: "Enlarge photo", fr: "Agrandir la photo" }[lang];
   const cats = mode === "tabs" ? (["all", ...ORDER] as const) : ORDER;
 
   const blocks = cats.map((category) => {
@@ -50,17 +53,24 @@ export function PhotoCatalog({ mode }: { mode: "tabs" | "sections" }) {
         {mode === "sections" ? <h2 className="font-serif text-4xl text-ink">{t[category]}</h2> : null}
         {items.length === 0 ? <p className="mt-4 text-sm text-muted">{t.empty}</p> : null}
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
+          {items.map((item, index) => (
             <li key={`${category}-${item.id}`}>
               <figure className="overflow-hidden rounded-[2rem] border border-line bg-white shadow-glass">
-                <div className="relative h-56 bg-navy sm:h-64">
+                <button
+                  type="button"
+                  className="group relative block h-56 w-full cursor-zoom-in bg-navy sm:h-64"
+                  aria-label={`${enlarge}: ${PHOTO_OF[item.id]?.[lang] ?? ""}`}
+                  onClick={() => setOpen({ ids: items.map((row) => row.id), index })}
+                >
                   <FacilityPhoto
                     name={item.id}
                     fill
-                    alt={PHOTO_OF[item.id]?.[lang] ?? ""}
+                    alt=""
                     sizes="(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"
+                    className="transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                </div>
+                  <span aria-hidden="true" className="absolute right-3 bottom-3 rounded-full bg-navy/80 px-3 py-1 text-xs font-semibold text-white">⤢</span>
+                </button>
                 <figcaption className="px-4 py-3 text-sm leading-relaxed text-ink">{PHOTO_OF[item.id]?.[lang]}</figcaption>
               </figure>
             </li>
@@ -72,6 +82,7 @@ export function PhotoCatalog({ mode }: { mode: "tabs" | "sections" }) {
 
   return (
     <div>
+      {open ? <Lightbox ids={open.ids} index={open.index} onClose={() => setOpen(null)} onIndex={(next) => setOpen({ ...open, index: next })} /> : null}
       {mode === "tabs" ? (
         <div className="flex flex-wrap gap-2" role="tablist" aria-label={t.all}>
           {cats.map((category) => {

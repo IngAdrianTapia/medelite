@@ -11,14 +11,14 @@ const PROCEDURES = [
     url: "https://drjoyaofficial.com/gastric-bypass-surgery/",
     es: "Bypass gástrico. El sitio describe un estómago de 15 a 30 ml, unos 60 minutos y 1 noche de hospital.",
     en: "Gastric bypass. The site describes a 15–30 ml stomach, about 60 minutes, and 1 hospital night.",
-    fr: "Bypass gastrique. Le site décrit un estomac de 15 à 30 ml, environ 60 minutes et 1 nuit d’hôpital.",
+    fr: "Dérivation gastrique (bypass). Le site décrit un estomac de 15 à 30 ml, environ 60 minutes et 1 nuit d’hôpital.",
   },
   {
     id: "sleeve",
     url: "https://drjoyaofficial.com/gastric-sleeve-surgery/",
     es: "Manga gástrica. El sitio describe un tubo de 80 a 120 ml, unos 45 minutos y 1 noche; más abajo habla de unos 2 días. Dejamos las dos frases.",
     en: "Gastric sleeve. The site describes an 80–120 ml sleeve, about 45 minutes and 1 night; later it says about 2 days. Both sentences are left as published.",
-    fr: "Sleeve gastrique. Le site décrit un tube de 80 à 120 ml, environ 45 minutes et 1 nuit; plus loin, environ 2 jours. Les deux phrases restent.",
+    fr: "Gastrectomie en manchon (sleeve). Le site décrit un tube de 80 à 120 ml, environ 45 minutes et 1 nuit; plus loin, environ 2 jours. Les deux phrases restent.",
   },
   {
     id: "band",
@@ -39,7 +39,7 @@ const PROCEDURES = [
     url: "https://drjoyaofficial.com/gastric-sleeve-surgery-sils/",
     es: "Manga por una sola incisión. El sitio la limita a IMC menor de 40.",
     en: "Single-incision sleeve. The site limits it to a BMI under 40.",
-    fr: "Sleeve par une seule incision. Le site la limite à un IMC inférieur à 40.",
+    fr: "Gastrectomie en manchon par une seule incision. Le site la limite à un IMC inférieur à 40.",
   },
   {
     id: "revision",
@@ -95,7 +95,7 @@ export function BariatricPage() {
       kicker: "Selon drjoyaofficial.com",
       title: "Centre de l’obésité et Hospital Joya Riviera Nayarit",
       deck: "Ce qui suit vient de drjoyaofficial.com, consulté le 14 novembre 2026. Ce n’est pas une soumission de MedElite, et ce site ne publie pas de prix. Le domaine drjoya.com est à vendre; ce n’est pas la clinique.",
-      where: "Le site dit que les chirurgies se font à l’Hospital Joya Riviera Nayarit et donne le bureau au Paseo de los Cocoteros 55, Nuevo Vallarta. Il décrit aussi 8 suites d’adulte, 1 pédiatrique et 2 suites maître pour les patients bariatriques.",
+      where: "Le site dit que les chirurgies se font à l’Hospital Joya Riviera Nayarit et donne le bureau au Paseo de los Cocoteros 55, Nuevo Vallarta. Il décrit aussi 8 suites d’adulte, 1 pédiatrique et 2 suites principales pour les patients bariatriques.",
       who: "Le site présente le Dr Armando Joya comme chirurgien du centre. Dans la note sur l’alliance avec HM Hospitales, Grupo Médico Joya le nomme directeur général. Nous ne publions pas le reste de l’équipe : les noms de famille complets n’y sont pas.",
       numbers: "Le site inscrit trois numéros : cédula 2312941, spécialiste AE-009602 et recertification 97200. Nous ne les avons pas vérifiés dans un registre public sur cette page. Nous ne répétons pas « le meilleur chirurgien » ni les chiffres de 20 ans, 25 ans ou 8 000 chirurgies, parce que le site ne s’accorde pas avec lui-même.",
       include: "Ce que la page de l’hôpital dit que les forfaits incluent",
@@ -107,7 +107,7 @@ export function BariatricPage() {
         "1 ou 2 nuits d’hôpital, selon l’intervention",
       ],
       missing: "Le site ne dit pas combien de nuits d’hôtel entrent dans le forfait, ni la devise, ni les vols. Il nomme le Paradise Village comme hôtel qu’ils aident à réserver, à environ 9 minutes à pied. Tant que ce n’est pas confirmé par écrit, l’hôtel n’est pas traité comme inclus.",
-      price: "Aucun prix n’est publié. MedElite n’invente pas non plus de bande bariatrique.",
+      price: "Aucun prix n’est publié. MedElite n’invente pas non plus de fourchette bariatrique.",
       cta: "Demander une soumission",
     },
   }[lang];

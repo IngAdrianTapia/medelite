@@ -83,7 +83,7 @@ export function MapaSedes({ headingLevel = 2 }: { headingLevel?: 2 | 3 }) {
       directions: "Ouvrir dans Google Maps",
       source: "Adresse publiée sur hospitaljoya.com",
       airport: "Aéroport d’arrivée",
-      note: "Contour du Mexique : Natural Earth (domaine public). Chaque point indique le secteur de l’adresse publiée par Hospital Joya sur hospitaljoya.com/hospitales ; l’emplacement exact est dans Google Maps.",
+      note: "Contour du Mexique : Natural Earth (domaine public). Chaque point indique le secteur de l’adresse publiée par Hospital Joya sur hospitaljoya.com/hospitales; l’emplacement exact est dans Google Maps.",
     },
   }[lang];
 

@@ -51,12 +51,12 @@ export const fr: Messages = {
   sales: {
     kicker: "Première étape",
     title: "Parlons avant de remplir un questionnaire médical",
-    body: "Dites-nous quel service vous recherchez et comment vous joindre. MedElite coordonne le parcours; l'évaluation et les décisions médicales reviennent à l'équipe soignante au Mexique.",
+    body: "Dites-nous quel service vous recherchez et comment vous joindre. MedElite coordonne le parcours; l’évaluation et les décisions médicales reviennent à l’équipe soignante au Mexique.",
     cta: "Parler à la coordination",
     call: "Appeler le bureau de Vancouver",
     email: "Écrire à la coordination",
     subject: "Première demande de renseignements sur les soins au Mexique",
-    note: "Votre application courriel s'ouvre; rien n'est envoyé automatiquement. N'incluez pas de dossier médical ni de données sensibles dans ce premier message.",
+    note: "Votre logiciel de courriel s’ouvre; rien n’est envoyé automatiquement. N’incluez pas de dossier médical ni de données sensibles dans ce premier message.",
   },
   role: {
     kicker: "Ce que nous faisons",
@@ -151,7 +151,7 @@ export const fr: Messages = {
   wizard: {
     kicker: "Estimation",
     title: "Questionnaire de coordination",
-    deck: "Quatre groupes de questions — intervention, santé de base, dates et coordonnées — et une fourchette lorsqu’une bande est publiée. Si vous l’envoyez, votre logiciel de courriel ouvre un message à info@medeliteofficial.com. Rien n’est transmis à un serveur de cette page.",
+    deck: "Quatre groupes de questions — intervention, santé de base, dates et coordonnées — et une fourchette lorsqu’une fourchette est publiée. Si vous l’envoyez, votre logiciel de courriel ouvre un message à info@medeliteofficial.com. Rien n’est transmis à un serveur de cette page.",
     admin:
       "Ceci est un questionnaire administratif pour constituer un dossier de coordination. Ce n’est pas une évaluation médicale et ce n’est pas un triage clinique au Canada. Le chirurgien au Mexique examine le dossier.",
     emergency: "S’il s’agit d’une urgence, appelez les services d’urgence locaux. MedElite n’est ni une ambulance ni un service d’urgence.",
@@ -165,8 +165,8 @@ export const fr: Messages = {
       knee: { label: "Remplacement du genou", hint: "Itinéraire d’orthopédie dans le réseau Joya." },
       hip: { label: "Remplacement de la hanche", hint: "Même itinéraire. La fourchette publiée est celle du genou." },
       bariatric: { label: "Chirurgie bariatrique", hint: "Guadalajara ou Querétaro. Le prix est confirmé par écrit." },
-      plastic: { label: "Chirurgie plastique", hint: "Cancún ou Playa del Carmen. Aucune bande publiée sur cette page." },
-      ophthalmology: { label: "Ophtalmologie", hint: "Cancún ou Playa del Carmen. Aucune bande publiée sur cette page." },
+      plastic: { label: "Chirurgie plastique", hint: "Cancún ou Playa del Carmen. Aucune fourchette publiée sur cette page." },
+      ophthalmology: { label: "Ophtalmologie", hint: "Cancún ou Playa del Carmen. Aucune fourchette publiée sur cette page." },
       other: { label: "Autre spécialité", hint: "Sur demande. Aucune fourchette sur cette page." },
     },
     packageLegend: "Quel niveau voulez-vous comparer?",
@@ -200,7 +200,7 @@ export const fr: Messages = {
     errors: {
       required: "Remplissez les champs indiqués.",
       email: "Entrez un courriel valide.",
-      phone: "Entrez un téléphone d’au moins 10 chiffres.",
+      phone: "Entrez un numéro de téléphone d’au moins 10 chiffres.",
       consent: "La case de consentement est nécessaire pour continuer.",
       adult: "Ce formulaire est réservé aux personnes de 18 ans et plus.",
       card: "N’incluez pas de numéro de carte.",
@@ -212,10 +212,10 @@ export const fr: Messages = {
     resultTitle: "Votre fourchette estimée",
     fromLabel: "À partir de",
     onRequest:
-      "Aucune bande n’est publiée pour cette intervention. Un coordonnateur à Vancouver vous écrira une fourchette après l’examen du chirurgien au Mexique.",
+      "Aucune fourchette n’est publiée pour cette intervention. Un coordonnateur à Vancouver vous écrira une fourchette après l’examen du chirurgien au Mexique.",
     kneeBasis: "Bande de planification pour un remplacement total du genou. Sous réserve de l’évaluation médicale. Ce n’est pas une soumission.",
     hipBasis:
-      "La seule bande publiée est celle du remplacement total du genou. La hanche est affichée dans la même bande jusqu’à l’examen du chirurgien.",
+      "La seule fourchette publiée est celle du remplacement total du genou. La hanche est affichée dans la même fourchette jusqu’à l’examen du chirurgien.",
     complexity:
       "Le haut de la fourchette augmente de 8 % parce que vous avez indiqué une condition ou un IMC de 40 ou plus. C’est une règle de cette page, pas des honoraires cliniques.",
     snowFlag:
@@ -233,13 +233,13 @@ export const fr: Messages = {
     title: "De l’estimation au suivi à la maison",
     deck: "Huit étapes. L’hôpital confirme les dates. Si le chirurgien juge le voyage dangereux, aucun déplacement n’est organisé.",
     steps: [
-      { title: "Estimation", body: "Le questionnaire de cette page produit une fourchette lorsqu’une bande est publiée, ou marque le dossier comme sur demande." },
+      { title: "Estimation", body: "Le questionnaire de cette page produit une fourchette lorsqu’une fourchette est publiée, ou marque le dossier comme sur demande." },
       { title: "Appel vidéo avec le chirurgien", body: "La séance avec le chirurgien mexicain est informative. Ce n’est pas l’exercice de la médecine au Canada. Le diagnostic et la décision de traiter ont lieu au Mexique." },
       { title: "Réservation", body: "Si le dossier se poursuit, vous recevez une soumission écrite. Tout paiement se fait hors de ce site, selon ce document." },
       { title: "Voyage", body: "Nous décrivons les vols directs, l’entrée au Mexique, l’accompagnateur et les transferts. Vous achetez vos vols, sauf indication contraire de l’entente." },
       { title: "Chirurgie", body: "La chirurgie a lieu à l’hôpital au Mexique, par le chirurgien de cet hôpital. MedElite n’opère pas." },
-      { title: "Récupération de 7 à 10 jours", body: "Pour la hanche, le genou et la bariatrique, le plan est de rester au Mexique de 7 à 10 jours avant de prendre l’avion. Les autres interventions suivent l’instruction du chirurgien." },
-      { title: "Aptitude au vol", body: "Avant le vol de retour, le chirurgien évalue si vous pouvez voler. La compagnie aérienne peut exiger ce certificat en raison du risque de thrombose." },
+      { title: "Récupération de 7 à 10 jours", body: "Pour la hanche, le genou et la chirurgie bariatrique, le plan est de rester au Mexique de 7 à 10 jours avant de prendre l’avion. Les autres interventions suivent l’instruction du chirurgien." },
+      { title: "Aptitude au vol", body: "Avant le vol de retour, le chirurgien évalue si vous pouvez prendre l’avion. La compagnie aérienne peut exiger ce certificat en raison du risque de thrombose." },
       { title: "Suivi à la maison", body: "Le parcours est conçu pour inclure un résumé de sortie pour votre médecin de famille et un contact de suivi. Le dossier clinique reste à l’hôpital." },
     ],
   },
@@ -393,7 +393,7 @@ export const fr: Messages = {
       },
       {
         q: "Est-il prudent de prendre l’avion après la chirurgie?",
-        a: "Le plan prévoit que le chirurgien évalue l’aptitude au vol avant le départ. Pour la hanche, le genou et la bariatrique, le séjour prévu au Mexique est de 7 à 10 jours. La compagnie aérienne peut exiger le certificat.",
+        a: "Le plan prévoit que le chirurgien évalue l’aptitude au vol avant le départ. Pour la hanche, le genou et la chirurgie bariatrique, le séjour prévu au Mexique est de 7 à 10 jours. La compagnie aérienne peut exiger le certificat.",
       },
       {
         q: "Que se passe-t-il au retour au Canada?",
@@ -547,7 +547,7 @@ export const fr: Messages = {
         heading: "Estimations",
         paragraphs: [
           "Les fourchettes en dollars canadiens sont le plan publié d’un remplacement total du genou (Snowbird, Essential et Executive). Elles sont sous réserve de l’évaluation médicale. Ce n’est pas une offre, cela ne réserve pas de salle d’opération et cela ne signifie pas que vous êtes un candidat.",
-          "Si une intervention n’a pas de bande publiée, le questionnaire la marque sur demande. Une soumission écrite ultérieure remplace tout chiffre de cette page.",
+          "Si une intervention n’a pas de fourchette publiée, le questionnaire la marque sur demande. Une soumission écrite ultérieure remplace tout chiffre de cette page.",
         ],
       },
       {
@@ -561,7 +561,7 @@ export const fr: Messages = {
         heading: "Paiement, voyage et assurance",
         paragraphs: [
           "Ce site ne traite aucun paiement. Le modèle prévu — acompte de 30 % et solde par virement — ne vous lie que si une entente écrite le dit.",
-          "Le séjour de 7 à 10 jours et le certificat d’aptitude au vol font partie du parcours conçu pour la hanche, le genou et la bariatrique. Le chirurgien peut prolonger le séjour ou déconseiller le vol.",
+          "Le séjour de 7 à 10 jours et le certificat d’aptitude au vol font partie du parcours conçu pour la hanche, le genou et la chirurgie bariatrique. Le chirurgien peut prolonger le séjour ou déconseiller le vol.",
           "Une police complications fait partie de la conception du forfait et n’est pas tenue pour en vigueur tant que la soumission ne nomme pas la police et ne confirme pas l’inscription du chirurgien et de l’hôpital.",
         ],
       },
