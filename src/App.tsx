@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router";
 import { ContactDock } from "./components/ContactDock";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
+import { RevealObserver, ZoomLayer } from "./components/ZoomLayer";
 import { useI18n } from "./i18n";
 import { parseLocalePath, prefixPath } from "./i18n/locale";
 import { HomePage } from "./pages/HomePage";
@@ -139,6 +140,8 @@ export function AppRoutes() {
       </div>
       <Footer />
       <ContactDock />
+      <ZoomLayer />
+      <RevealObserver />
     </>
   );
 }

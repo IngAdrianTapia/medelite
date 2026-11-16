@@ -108,7 +108,7 @@ export function CalidadPage() {
         transition={{ duration: 0.5 }}
       >
         <p className="text-xs font-bold tracking-[0.15em] text-navy uppercase">{page.kicker}</p>
-        <h1 className="mt-3 font-serif text-3xl leading-tight tracking-tight text-ink md:text-[2.75rem]">
+        <h1 className="mt-3 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">
           {page.title} <span className="text-gold">{page.titleAccent}</span>
         </h1>
         <p className="mt-4 max-w-2xl leading-relaxed text-muted">{page.lede}</p>

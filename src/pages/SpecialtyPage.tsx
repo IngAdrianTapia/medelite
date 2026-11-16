@@ -71,7 +71,7 @@ export function SpecialtyPage() {
   if (!isSpecialty(specialtyId)) {
     return (
       <main id="contenido" className="page-shell">
-        <h1 className="font-serif text-2xl">{t.missing}</h1>
+        <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.missing}</h1>
         <Link className="mt-4 inline-flex min-h-11 items-center underline" to="/especialidades">{t.back}</Link>
       </main>
     );
@@ -86,9 +86,9 @@ export function SpecialtyPage() {
     <main id="contenido" className="page-shell-wide">
       <Seo title={`${labelOf(specialtyId, lang)} — MedElite`} description={t.procedures} path={`/especialidades/${specialtyId}`} />
       <Link className="text-sm text-navy underline" to="/especialidades">{t.back}</Link>
-      <h1 className="mt-4 font-serif text-3xl leading-tight text-ink">{labelOf(specialtyId, lang)}</h1>
+      <h1 className="mt-4 font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{labelOf(specialtyId, lang)}</h1>
       <p className="mt-4 max-w-2xl leading-relaxed text-muted">{t.procedures}</p>
-      <h2 className="mt-10 font-serif text-2xl">{t.sites}</h2>
+      <h2 className="mt-10 font-serif text-3xl leading-tight md:text-4xl text-navy">{t.sites}</h2>
       {sites.length > 0 ? (
         <ul className="mt-3 grid gap-2 text-sm">
           {sites.map((site) => (
@@ -100,7 +100,7 @@ export function SpecialtyPage() {
       ) : (
         <p className="mt-3 text-sm text-muted">{t.none}</p>
       )}
-      <h2 className="mt-10 font-serif text-2xl">{t.people}</h2>
+      <h2 className="mt-10 font-serif text-3xl leading-tight md:text-4xl text-navy">{t.people}</h2>
       {people.length > 0 ? (
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">
           {people.map((person) => (

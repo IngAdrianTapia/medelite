@@ -227,7 +227,7 @@ export function RoutePage() {
       <Seo title={`${t.title} — MedElite`} description={t.deck} path="/ruta" />
       <header className="border-b border-line bg-ivory px-5 pt-12 pb-12 md:px-8 md:pt-16">
         <p className="mx-auto max-w-[1136px] text-xs tracking-[0.22em] text-gold uppercase">{t.kicker}</p>
-        <h1 className="mx-auto mt-3 max-w-[1136px] font-serif text-3xl leading-tight md:text-5xl">{t.title}</h1>
+        <h1 className="mx-auto mt-3 max-w-[1136px] font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-muted">{t.deck}</p>
       </header>
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 py-12 lg:grid-cols-[0.9fr_1.1fr]">
@@ -274,7 +274,7 @@ export function RoutePage() {
 
       <div className="mx-auto max-w-[1200px] px-5 md:px-8 pb-16">
       <section id="match" className="mt-10 rounded-2xl border border-line bg-white shadow-glass p-5">
-        <h2 className="font-serif text-2xl">{t.match}</h2>
+        <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.match}</h2>
         <p className="mt-3 leading-relaxed">{t.why[match.why]}</p>
         {match.hospitalId ? <p className="mt-3 font-medium">{HOSPITALS.find((hospital) => hospital.id === match.hospitalId)?.name}</p> : null}
         <ul className="mt-3 grid gap-2 text-sm">
@@ -299,7 +299,7 @@ export function RoutePage() {
       </section>
 
       <section id="preparacion" className="mt-8">
-        <h2 className="font-serif text-2xl">{t.ready}</h2>
+        <h2 className="font-serif text-3xl leading-tight md:text-4xl text-navy">{t.ready}</h2>
         <p className="mt-2 text-sm">{t.score}: {file.readyCount} {t.of} {file.total}</p>
         <label className="mt-3 flex min-h-11 items-center gap-3 text-sm">
           <input type="checkbox" checked={adult} onChange={(event) => setAdult(event.target.checked)} />

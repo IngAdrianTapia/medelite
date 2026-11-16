@@ -42,7 +42,7 @@ export function RolePage() {
       <Seo title={`${t.title} — MedElite`} description={t.points[0] ?? t.title} path="/que-es" />
       <header className="border-b border-line bg-ivory">
         <div className="mx-auto max-w-[1200px] px-5 pt-12 pb-12 md:px-8 md:pt-16">
-          <h1 className="font-serif text-3xl leading-tight text-navy md:text-5xl">{t.title}</h1>
+          <h1 className="font-serif text-[2.6rem] leading-[1.04] text-navy md:text-6xl">{t.title}</h1>
           <p className="mt-6">
             <Link className="inline-flex min-h-12 items-center rounded-lg bg-gold px-6 text-sm font-semibold text-white hover:bg-navy" to="/#cotizar">
               {cta}
